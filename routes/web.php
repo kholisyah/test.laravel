@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AkunController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +15,9 @@ Route::get('/project', function () {
 Route::get('/dasbord', function () {
     return view('dasbord');
 });
+// Rute untuk 'jadwal'
+Route::get('/jadwal', [AkunController::class, 'index']);
+
 // Route untuk menampilkan daftar post
 Route::get('/project', [PostController::class, 'index'])->name('posts.index');
 
@@ -38,3 +43,13 @@ Route::put('/edit-profil/{profil}', [ProfilController::class, 'actuallyUpdatePro
 //Route untuk delete profil
 Route::delete('/delete-profil/{profil}', [ProfilController::class, 'deleteProfil']);
 
+
+// Rute untuk halaman jadwal (untuk Akun)
+Route::get('/jadwal', [AkunController::class, 'index']);
+// Rute untuk menambah akun baru
+Route::post('/create-post', [AkunController::class, 'createPost']);
+// Rute untuk menampilkan halaman edit (untuk Akun)
+Route::get('/edit-posts/{akun}', [AkunController::class, 'showEditScreen']);
+Route::put('/edit-posts/{akun}', [AkunController::class, 'actuallyUpdatePost']);
+// Rute untuk menghapus akun
+Route::delete('/delete-posts/{akun}', [AkunController::class, 'deletePost']);
