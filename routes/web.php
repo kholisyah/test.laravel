@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
@@ -53,3 +54,28 @@ Route::get('/edit-posts/{akun}', [AkunController::class, 'showEditScreen']);
 Route::put('/edit-posts/{akun}', [AkunController::class, 'actuallyUpdatePost']);
 // Rute untuk menghapus akun
 Route::delete('/delete-posts/{akun}', [AkunController::class, 'deletePost']);
+
+// Barang Routes
+Route::resource('barang', BarangController::class);
+Route::get('barang/{barang}/edit', [BarangController::class, 'edit'])->name('barang.edit');
+Route::post('barang/store', [BarangController::class, 'store'])->name('barang.store');
+Route::put('barang/{barang}', [BarangController::class, 'update'])->name('barang.update');
+Route::delete('barang/{barang}', [BarangController::class, 'destroy'])->name('barang.destroy');
+// Route untuk form edit
+Route::get('/barang/edit/{id_barang}', [BarangController::class, 'edit']);
+
+// Route untuk proses update
+Route::put('/barang/update/{id_barang}', [BarangController::class, 'update']);
+// route untuk proses delete
+Route::delete('/barang/delete/{id_barang}', [BarangController::class, 'destroy'])->name('barang.destroy');
+// Route untuk menampilkan form edit
+Route::get('/barang/edit/{id_barang}', [BarangController::class, 'edit'])->name('barang.edit');
+
+// Route untuk memproses update barang
+Route::put('/barang/update/{id_barang}', [BarangController::class, 'update'])->name('barang.update');
+// Rute untuk menampilkan form edit
+Route::get('/barang/edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
+
+// Rute untuk memproses update barang
+Route::put('/barang/update/{id}', [BarangController::class, 'update'])->name('barang.update');
+

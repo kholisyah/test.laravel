@@ -7,6 +7,42 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<head>
+    <!-- Style CSS tambahan -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1, h2 {
+            color: #343a40;
+        }
+        .card {
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        #profilList .card-title {
+            color: #007bff;
+        }
+        #profilForm .text-danger {
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Create Profil Sanggar</h1>
