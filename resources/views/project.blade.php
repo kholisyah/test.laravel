@@ -166,7 +166,7 @@
             </select>
             
             <!-- Tombol submit form -->
-            <button type="submit">Save</button>
+            <button type="submit">Simpan</button>
         </form>
 
         <!-- Container untuk menampilkan data pendaftaran yang tersimpan -->
@@ -192,7 +192,7 @@
                     <form class="delete-form" action="/delete-post/{{ $post->id }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" onclick="return confirm('Yakin ingin dihapus?')">Delete</button>
+                        <button type="submit" onclick="return confirm('Yakin ingin dihapus?')">Hapus</button>
                     </form>
                 </div>
             </div>
