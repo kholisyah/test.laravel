@@ -7,6 +7,7 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -149,3 +150,25 @@ Route::put('/admin/{admin}', [AdminController::class, 'update'])->name('admin.up
 // Menghapus admin
 Route::delete('/admin/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
+// Route untuk semua operasi terkait transaksi
+
+// Menampilkan daftar semua transaksi
+Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
+
+// Menampilkan form pembuatan transaksi baru
+Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create');
+
+// Menyimpan data transaksi baru ke dalam database
+Route::post('/transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
+
+// Menampilkan form edit untuk transaksi berdasarkan ID
+Route::get('/transaksi/{id}/edit', [TransaksiController::class, 'edit'])->name('transaksi.edit');
+
+// Memperbarui data transaksi yang sudah ada di database
+Route::put('/transaksi/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
+
+// Menghapus transaksi berdasarkan ID dari database
+Route::delete('/transaksi/{id}', [TransaksiController::class, 'destroy'])->name('transaksi.destroy');
+
+// Menampilkan detail dari transaksi tertentu berdasarkan ID
+Route::get('/transaksi/{id}', [TransaksiController::class, 'show'])->name('transaksi.show');
