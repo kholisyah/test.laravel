@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PelangganController;
@@ -129,3 +130,22 @@ Route::delete('/penyewaan/{id}', [PenyewaanController::class, 'destroy'])->name(
 // Menampilkan detail penyewaan berdasarkan ID
 Route::get('/penyewaan/{id}', [PenyewaanController::class, 'show'])->name('penyewaan.show');
 // Penjelasan: Rute ini digunakan untuk menampilkan detail lengkap penyewaan tertentu. Metode `show` pada `PenyewaanController` akan menampilkan informasi rinci tentang penyewaan yang dipilih berdasarkan ID yang diberikan di URL (`{id}`).
+
+//admin
+Route::resource('admin', AdminController::class);
+
+// Menampilkan daftar admin
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
+// Menyimpan admin baru
+Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
+
+// Menampilkan form edit admin
+Route::get('/admin/edit/{admin}', [AdminController::class, 'edit'])->name('admin.edit');
+
+// Memperbarui admin
+Route::put('/admin/{admin}', [AdminController::class, 'update'])->name('admin.update');
+
+// Menghapus admin
+Route::delete('/admin/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
+
