@@ -206,7 +206,7 @@
             
             <label>Stok:</label>
             <input type="number" name="stok" required>
-            <label>Jumlah Aksesoris:</label>
+            <label>Aksesoris:</label>
             <input type="number" name="aksesoris" required>
             <button type="submit">Simpan</button>
         </form>

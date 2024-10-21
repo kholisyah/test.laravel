@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('harga_sewa', 10, 2); // Harga sewa
             $table->string('jenis'); // Jenis barang
             $table->integer('stok'); // Stok barang
-            $table->integer('jumlah_aksesoris');
+            $table->integer('aksesoris');
             $table->timestamps(); // Kolom created_at dan updated_at
 
         });
