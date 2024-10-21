@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Akun; // Mengimpor model Akun untuk berinteraksi dengan tabel 'akun'
-use Illuminate\Http\Request; // Mengimpor Request untuk menangani input dari user
+use App\Models\Akun; // 
+use Illuminate\Http\Request; 
 
 class AkunController extends Controller
 {
