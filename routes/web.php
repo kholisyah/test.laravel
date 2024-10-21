@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
@@ -78,4 +79,23 @@ Route::get('/barang/edit/{id}', [BarangController::class, 'edit'])->name('barang
 
 // Rute untuk memproses update barang
 Route::put('/barang/update/{id}', [BarangController::class, 'update'])->name('barang.update');
+
+// untuk pelanggan
+
+Route::put('/pelanggan/update/{id}', [PelangganController::class, 'update'])->name('pelanggan.update');
+
+// Rute untuk menampilkan daftar pelanggan
+Route::get('/pelanggan', [PelangganController::class, 'index'])->name('pelanggan.index');
+
+// Rute untuk menyimpan pelanggan baru
+Route::post('/pelanggan/store', [PelangganController::class, 'store'])->name('pelanggan.store');
+
+// Rute untuk mengedit pelanggan
+Route::get('/pelanggan/edit/{id}', [PelangganController::class, 'edit'])->name('pelanggan.edit');
+Route::post('/pelanggan/update/{id}', [PelangganController::class, 'update'])->name('pelanggan.update');
+
+// Rute untuk menghapus pelanggan
+Route::delete('/pelanggan/destroy/{id}', [PelangganController::class, 'destroy'])->name('pelanggan.destroy');
+
+Route::put('/pelanggan/update/{id}', [PelangganController::class, 'update']);
 
