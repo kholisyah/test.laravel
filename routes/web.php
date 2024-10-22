@@ -33,6 +33,7 @@ Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
 Route::put('/edit-post/{post}', [PostController::class, 'actuallyUpdatePost']);
 //Route untuk delete post
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
+Route::post('/create-post', [PostController::class, 'store']);
 
 
 // Route untuk menampilkan daftar profil
@@ -56,6 +57,13 @@ Route::get('/edit-posts/{akun}', [AkunController::class, 'showEditScreen']);
 Route::put('/edit-posts/{akun}', [AkunController::class, 'actuallyUpdatePost']);
 // Rute untuk menghapus akun
 Route::delete('/delete-posts/{akun}', [AkunController::class, 'deletePost']);
+
+// Rute untuk halaman edit
+Route::get('/edit-posts/{id}', [AkunController::class, 'edit'])->name('edit');
+
+// Rute untuk menyimpan pembaruan data
+Route::post('/update-posts/{id}', [AkunController::class, 'update'])->name('update');
+
 
 // Barang Routes
 Route::resource('barang', BarangController::class);

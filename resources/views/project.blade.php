@@ -30,7 +30,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Pengaturan gaya untuk judul */
+        /* Gaya dasar untuk judul */
         h2 {
             text-align: center;
             color: #333;
@@ -86,7 +86,7 @@
         .data-item {
             background-color: #fafafa;
             padding: 20px;
-            margin-bottom: 1px; 
+            margin-bottom: 10px; 
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             display: flex;
@@ -140,43 +140,32 @@
     </style>
 </head>
 <body>
-    <!-- Container utama form pendaftaran dan daftar data -->
     <div class="container">
-        <!-- Judul halaman -->
         <h2>Pendaftaran</h2>
-        <!-- Form pendaftaran -->
         <form id="postForm" action="/create-post" method="POST">
             @csrf
-            <input type="text" name="nama" placeholder="Nama">
-            <input type="email" name="email" placeholder="Email">
-            <input type="text" name="alamat" placeholder="Alamat">
-            <input type="tel" name="no_telepon" placeholder="No Telepon">
-            
-            <!-- Pilihan kategori (Dewasa atau Anak-anak) -->
+            <input type="text" name="nama" placeholder="Nama" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="alamat" placeholder="Alamat" required>
+            <input type="tel" name="no_telepon" placeholder="No Telepon" required>
             <label for="kategori">Kategori: </label>
-            <select name="kategori" id="kategori">
+            <select name="kategori" id="kategori" required>
                 <option value="dewasa">Dewasa</option>
                 <option value="anak-anak">Anak-anak</option>
             </select>
-            
-            <!-- Pilihan biaya administrasi -->
             <label for="biaya_administrasi">Biaya Administrasi: </label>
-            <select name="biaya_administrasi" id="biaya_administrasi">
+            <select name="biaya_administrasi" id="biaya_administrasi" required>
                 <option value="25000">25.000</option>
             </select>
-            
-            <!-- Tombol submit form -->
             <button type="submit">Simpan</button>
         </form>
 
-        <!-- Container untuk menampilkan data pendaftaran yang tersimpan -->
         <div class="data-container">
             <h2>Data Pendaftaran Yang Tersimpan</h2>
             @foreach ($posts as $post)
             <div class="data-item">
                 <div>
                     <h3>{{ $post->nama }}</h3>
-                    <!-- Detail data pendaftaran yang tersembunyi -->
                     <div class="detail">
                         <p>Email: {{ $post->email }}</p>
                         <p>Alamat: {{ $post->alamat }}</p>
@@ -185,7 +174,6 @@
                         <p>Biaya Administrasi: Rp{{ $post->biaya_administrasi }}</p>
                     </div>
                 </div>
-                <!-- Bagian action untuk View, Edit, dan Delete -->
                 <div class="actions">
                     <a class="view-button">View</a>
                     <a href="/edit-post/{{ $post->id }}">Edit</a>
@@ -200,10 +188,8 @@
         </div>
     </div>
 
-    <!-- Script untuk menangani interaksi form dan tampilan data -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Event ketika form disubmit
         $('#postForm').on('submit', function(event) {
             event.preventDefault(); // Mencegah reload halaman
 
@@ -233,27 +219,29 @@
                                 <a class="view-button">View</a>
                                 <a href="/edit-post/${response.id}">Edit</a>
                                 <form class="delete-form" action="/delete-post/${response.id}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" onclick="return confirm('Yakin ingin dihapus?')">Delete</button>
                                 </form>
                             </div>
                         </div>`;
-                    $('.data-container').append(newData);
 
+                    // Append data baru ke dalam container
+                    $('.data-container').append(newData);
+                    
                     // Event listener untuk tombol View pada data baru
                     $('.view-button').last().on('click', function() {
                         $(this).closest('.data-item').find('.detail').slideToggle();
                     });
                 },
-                error: function(error) {
-                    alert('Terjadi kesalahan saat menyimpan data');
+                error: function(xhr, status, error) {
+                    alert('Terjadi kesalahan saat menyimpan data: ' + error);
                 }
             });
         });
 
-        // Tampilkan atau sembunyikan detail data saat tombol View diklik
-        $('.view-button').on('click', function() {
+        // Menangani tampilan detail data
+        $(document).on('click', '.view-button', function() {
             $(this).closest('.data-item').find('.detail').slideToggle();
         });
     </script>
