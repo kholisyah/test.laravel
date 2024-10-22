@@ -56,11 +56,12 @@ class PelangganController extends Controller
     }
 
     // Fungsi untuk menampilkan semua data pelanggan
-    public function index() // Baris 58
+    public function index()
     {
-        $pelanggans = Pelanggan::all(); // Baris 60, mengambil semua data pelanggan
-        return view('index', compact('pelanggans')); // Baris 61, menampilkan semua data pelanggan di view index
+        $pelanggans = Pelanggan::all(); // Mengambil semua data pelanggan
+        return view('index', compact('pelanggans'));
     }
+    
 
     // Fungsi untuk menyimpan data pelanggan baru
     public function store(Request $request) // Baris 65

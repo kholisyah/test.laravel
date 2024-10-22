@@ -101,6 +101,8 @@ Route::post('/pelanggan/update/{id}', [PelangganController::class, 'update'])->n
 Route::delete('/pelanggan/destroy/{id}', [PelangganController::class, 'destroy'])->name('pelanggan.destroy');
 
 Route::put('/pelanggan/update/{id}', [PelangganController::class, 'update']);
+Route::get('/index', [PelangganController::class, 'index'])->name('index');
+
 
 // Rute untuk fitur penyewaan
 
