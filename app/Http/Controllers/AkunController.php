@@ -30,11 +30,12 @@ class AkunController extends Controller
     }
     
     // Method untuk menampilkan halaman edit
+
     public function showEditScreen(Akun $akun) {
-        // Mengirim data akun ke view 'edit-posts' untuk ditampilkan pada form edit
-        return view('edit-posts', ['akun' => $akun]); // Menampilkan halaman edit dengan data akun
+        return view('edit-posts', ['akun' => $akun]); // Pastikan path ini benar
     }
     
+        
     // Method untuk mengambil dan menampilkan semua data akun
     public function index() {
         $akuns = Akun::all(); // Mengambil semua data dari tabel 'akun'
