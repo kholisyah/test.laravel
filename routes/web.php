@@ -23,16 +23,14 @@ Route::get('/dasbord', function () {
 // Rute untuk 'jadwal'
 Route::get('/jadwal', [AkunController::class, 'index']);
 
+//Rout pendaftaran
 // Route untuk menampilkan daftar post
 Route::get('/project', [PostController::class, 'index'])->name('posts.index');
-
 // Route untuk create post
 Route::post('/create-post', [PostController::class, 'createPost'])->name('create-post');
-
 //Route untuk edit post
 Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
 Route::put('/edit-post/{post}', [PostController::class, 'actuallyUpdatePost']);
-
 //Route untuk delete post
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
 
@@ -101,6 +99,8 @@ Route::post('/pelanggan/update/{id}', [PelangganController::class, 'update'])->n
 Route::delete('/pelanggan/destroy/{id}', [PelangganController::class, 'destroy'])->name('pelanggan.destroy');
 
 Route::put('/pelanggan/update/{id}', [PelangganController::class, 'update']);
+Route::get('/index', [PelangganController::class, 'index'])->name('index');
+
 
 // Rute untuk fitur penyewaan
 
