@@ -57,6 +57,13 @@ Route::put('/edit-posts/{akun}', [AkunController::class, 'actuallyUpdatePost']);
 // Rute untuk menghapus akun
 Route::delete('/delete-posts/{akun}', [AkunController::class, 'deletePost']);
 
+// Rute untuk halaman edit
+Route::get('/edit-posts/{id}', [AkunController::class, 'edit'])->name('edit');
+
+// Rute untuk menyimpan pembaruan data
+Route::post('/update-posts/{id}', [AkunController::class, 'update'])->name('update');
+
+
 // Barang Routes
 Route::resource('barang', BarangController::class);
 Route::get('barang/{barang}/edit', [BarangController::class, 'edit'])->name('barang.edit');

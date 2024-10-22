@@ -7,6 +7,40 @@ use Illuminate\Http\Request;
 
 class AkunController extends Controller
 {
+    public function edit($id)
+{
+    $akun = Akun::findOrFail($id); // Mengambil data berdasarkan id
+    return view('edit-posts', compact('akun')); // Mengarahkan ke view edit-posts dengan data
+}
+
+public function update(Request $request, $id)
+{
+    // Validasi input
+    $request->validate([
+        'tanggal' => 'required',
+        'waktu' => 'required',
+        'jenis_tari' => 'required',
+        'pelatih' => 'required',
+        'anggota' => 'required',
+    ]);
+
+    // Mengambil data jadwal yang ingin diupdate
+    $akun = Akun::findOrFail($id);
+    
+    // Mengupdate data dengan input baru
+    $akun->tanggal = $request->input('tanggal');
+    $akun->waktu = $request->input('waktu');
+    $akun->jenis_tari = $request->input('jenis_tari');
+    $akun->pelatih = $request->input('pelatih');
+    $akun->anggota = $request->input('anggota');
+    
+    // Menyimpan perubahan
+    $akun->save();
+
+    // Redirect ke halaman awal setelah berhasil update
+    return redirect('/')->with('success', 'Jadwal berhasil diupdate!');
+}
+
     // Method untuk menghapus akun tertentu
     public function deletePost(Akun $akun) {
         $akun->delete(); // Menghapus data akun dari database
