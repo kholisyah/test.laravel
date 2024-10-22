@@ -35,7 +35,7 @@ class PostController extends Controller
     // Menampilkan view edit-post dengan data post yang akan di-edit
         return view('edit-post', ['post' => $post]);
     }
-    // Fungsi untuk membuat post baru
+    // Fungsi untuk membuat post baru update
     public function createPost(Request $request) {
         // Validasi input dari request
         $incomingField = $request->validate([

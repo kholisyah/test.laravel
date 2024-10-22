@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->timestamps(); //dalam migrasi database di Laravel adalah untuk secara otomatis
             $table->string('nama');  // Menambahkan kolom nama
             $table->string('email'); // Menambahkan kolom email
             $table->string('alamat'); // Menambahkan kolom alamat
