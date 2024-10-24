@@ -122,8 +122,7 @@
                     </div>
                     <div class="d-flex gap-1">
                         <!-- Tombol untuk mengedit jadwal latihan -->
-                        <a href="/edit-posts/{{ $akun->id }}" class="btn btn-warning">Edit</a>
-
+                        <a href="/edit-posts/{{ $akun->id }}">Edit</a>
                         <!-- Form untuk menghapus jadwal -->
                         <form action="/delete-posts/{{ $akun->id }}" method="POST" style="display:inline;">
                             @csrf
