@@ -38,7 +38,7 @@ public function update(Request $request, $id)
     $akun->save();
 
     // Redirect ke halaman awal setelah berhasil update
-    return redirect('/')->with('success', 'Jadwal berhasil diupdate!');
+    return redirect('/jadwal')->with('success', 'Jadwal berhasil diupdate!');
 }
 
     // Method untuk menghapus akun tertentu
