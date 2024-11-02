@@ -1,182 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- Menetapkan encoding karakter sebagai UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mengatur tampilan agar responsif di perangkat mobile -->
-    <title>Data Penyewaan</title> <!-- Judul halaman yang ditampilkan pada tab browser -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Memuat font Google 'Roboto' -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Penyewaan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS untuk styling halaman */
+        /* Gaya dasar untuk body halaman */
         body {
             font-family: 'Roboto', sans-serif; /* Mengatur font */
-            background-color: #f3f4f6; /* Warna latar belakang halaman */
-            margin: 0;
-            padding: 20px; /* Jarak dari tepi halaman */
+            background-color: #f4f4f4; /* Warna latar belakang halaman */
+            margin: 0; /* Menghapus margin default */
+            padding: 20px; /* Memberikan padding di sekitar konten */
         }
-
-        h1 {
-            color: #2c3e50; /* Warna teks untuk judul */
-            text-align: center; /* Mengatur teks berada di tengah */
-            margin-bottom: 20px;
-            font-size: 2.5em; /* Ukuran font judul */
-        }
-
-        h2 {
-            color: #34495e; /* Warna teks untuk subjudul */
-            margin-top: 20px;
-            font-size: 1.8em;
-        }
-
         .container {
-            max-width: 800px; /* Membatasi lebar maksimum konten */
-            margin: auto; /* Mengatur posisi konten di tengah secara horizontal */
-            background-color: #ffffff; /* Warna latar belakang container */
-            padding: 30px;
-            border-radius: 12px; /* Membuat sudut-sudut container melengkung */
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+            max-width: 800px; /* Maksimal lebar kontainer */
+            margin: auto; /* Mengatur posisi kontainer di tengah */
+            background: #fff; /* Warna latar belakang kontainer */
+            padding: 20px; /* Padding di dalam kontainer */
+            border-radius: 8px; /* Sudut membulat */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Bayangan kontainer */
         }
-
+        h1 {
+            text-align: center; /* Menyelaraskan teks ke tengah */
+            color: #333; /* Warna teks judul */
+        }
         .alert {
-            margin: 20px 0;
-            padding: 15px;
-            border-radius: 6px; /* Membuat sudut alert melengkung */
+            padding: 10px; /* Padding untuk alert */
+            margin-bottom: 20px; /* Margin bawah alert */
+            border-radius: 5px; /* Sudut membulat pada alert */
         }
-
         .alert-success {
-            color: #155724; /* Warna teks hijau untuk pesan sukses */
-            background-color: #d4edda; /* Warna latar belakang untuk pesan sukses */
-            border: 1px solid #c3e6cb; /* Warna border untuk pesan sukses */
+            background-color: #dff0d8; /* Warna latar belakang untuk pesan sukses */
+            color: #3c763d; /* Warna teks untuk pesan sukses */
         }
-
         .alert-danger {
-            color: #721c24; /* Warna teks merah untuk pesan error */
-            background-color: #f8d7da; /* Warna latar belakang untuk pesan error */
-            border: 1px solid #f5c6cb; /* Warna border untuk pesan error */
+            background-color: #f2dede; /* Warna latar belakang untuk pesan error */
+            color: #a94442; /* Warna teks untuk pesan error */
         }
-
-        form {
-            margin-bottom: 30px;
-            background-color: #eef1f5;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        }
-
         label {
-            display: block; /* Menampilkan label dalam satu baris penuh */
-            margin: 10px 0 5px;
+            display: block; /* Menampilkan label sebagai blok */
+            margin: 10px 0 5px; /* Margin untuk label */
         }
-
-        input[type="text"], input[type="number"], input[type="date"], select {
-            width: calc(100% - 20px); /* Mengatur lebar input dengan pengurangan 20px */
-            padding: 12px;
-            border: 2px solid #ced4da; /* Border abu-abu */
-            border-radius: 6px;
-            margin-bottom: 15px;
-            transition: border-color 0.3s; /* Animasi transisi untuk border saat fokus */
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%; /* Lebar input 100% dari kontainer */
+            padding: 10px; /* Padding dalam input */
+            margin-bottom: 20px; /* Margin bawah input */
+            border: 1px solid #ccc; /* Garis batas input */
+            border-radius: 4px; /* Sudut membulat pada input */
+            box-sizing: border-box; /* Mengatur box-sizing untuk memasukkan padding dan border dalam lebar */
         }
-
-        input:focus, select:focus {
-            border-color: #007bff; /* Mengubah warna border saat elemen fokus */
-        }
-
         button {
-            background-color: #007bff; /* Warna tombol biru */
-            color: white;
-            padding: 12px 18px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* Animasi transisi untuk background saat hover */
+            background-color: #007bff; /* Warna latar belakang tombol */
+            color: white; /* Warna teks tombol */
+            border: none; /* Tanpa garis batas */
+            padding: 10px 15px; /* Padding dalam tombol */
+            border-radius: 5px; /* Sudut membulat pada tombol */
+            cursor: pointer; /* Menunjukkan bahwa tombol dapat diklik */
+            transition: background-color 0.3s; /* Transisi untuk perubahan warna latar belakang */
         }
-
         button:hover {
-            background-color: #0056b3; /* Warna tombol saat hover */
+            background-color: #0056b3; /* Warna latar belakang tombol saat dihover */
         }
-
         .card {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 15px 0;
-            padding: 15px;
-            transition: transform 0.2s; /* Animasi transformasi saat hover */
+            background: #f8f9fa; /* Warna latar belakang kartu */
+            border: 1px solid #ddd; /* Garis batas kartu */
+            border-radius: 5px; /* Sudut membulat pada kartu */
+            margin: 10px 0; /* Margin vertikal antara kartu */
+            padding: 10px; /* Padding dalam kartu */
+            transition: transform 0.2s; /* Transisi untuk efek hover */
         }
-
         .card:hover {
-            transform: scale(1.02); /* Efek memperbesar kartu saat hover */
+            transform: scale(1.02); /* Efek zoom saat hover pada kartu */
         }
-
         .card-header {
-            font-size: 1.5em; /* Ukuran font header kartu */
-            color: #2c3e50;
-            margin-bottom: 10px;
-            cursor: pointer; /* Menjadikan header dapat diklik */
+            font-weight: bold; /* Menebalkan teks header kartu */
+            font-size: 1.2em; /* Ukuran font header kartu */
         }
-
-        .card-body {
-            margin-bottom: 10px;
-        }
-
-        .card-footer {
-            text-align: right; /* Mengatur tombol di bagian kanan footer */
-        }
-
-        .edit-button {
-            background-color: #007bff; /* Warna tombol edit biru */
-            color: white;
-            padding: 6px 12px;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .edit-button:hover {
-            background-color: #0056b3; /* Warna tombol edit saat hover */
-        }
-
-        .delete-button {
-            background-color: #dc3545; /* Warna tombol hapus merah */
-            color: white;
-            padding: 6px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .delete-button:hover {
-            background-color: #c82333; /* Warna tombol hapus saat hover */
-        }
-
         .details {
-            display: none; /* Sembunyikan bagian detail secara default */
-            margin-top: 10px;
+            padding: 10px; /* Padding untuk detail penyewaan */
+            background: #ffffff; /* Warna latar belakang detail */
+            border: 1px solid #ccc; /* Garis batas detail */
+            border-radius: 5px; /* Sudut membulat pada detail */
+            margin-top: 10px; /* Margin atas untuk memisahkan detail dari kartu */
         }
-
-        .view-button {
-            background-color: #007bff; /* Warna tombol view biru */
-            color: white;
-            padding: 6px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .card-footer {
+            display: flex; /* Menampilkan footer kartu sebagai flex container */
+            justify-content: flex-end; /* Mengatur isi footer ke kanan */
+            align-items: center; /* Menyelaraskan item di tengah secara vertikal */
         }
-
-        .view-button:hover {
-            background-color: #0056b3; /* Warna tombol view saat hover */
+        .view-button,
+        .edit-button,
+        .delete-button {
+            background-color: #007bff; /* Warna tombol untuk aksi */
+            color: white; /* Warna teks tombol */
+            border: none; /* Tanpa garis batas */
+            padding: 5px 10px; /* Padding untuk tombol aksi */
+            border-radius: 4px; /* Sudut membulat pada tombol */
+            text-decoration: none; /* Menghapus garis bawah pada tautan */
+            cursor: pointer; /* Menunjukkan bahwa tombol dapat diklik */
+            margin-left: 10px; /* Margin kiri untuk memisahkan tombol */
+        }
+        .view-button:hover,
+        .edit-button:hover,
+        .delete-button:hover {
+            background-color: #0056b3; /* Warna latar belakang saat dihover */
+        }
+        .delete-button {
+            background-color: #dc3545; /* Warna tombol hapus */
+        }
+        .delete-button:hover {
+            background-color: #c82333; /* Warna latar belakang saat dihover pada tombol hapus */
+        }
+        .back-button {
+            display: inline-block; /* Menampilkan tombol kembali sebagai inline-block */
+            margin-top: 20px; /* Margin atas untuk memisahkan tombol dari konten lain */
+            background-color: #6c757d; /* Warna tombol kembali */
+            color: white; /* Warna teks tombol */
+            padding: 10px 15px; /* Padding untuk tombol kembali */
+            border-radius: 5px; /* Sudut membulat pada tombol kembali */
+            text-decoration: none; /* Menghapus garis bawah pada tautan */
+        }
+        .back-button:hover {
+            background-color: #5a6268; /* Warna latar belakang saat dihover pada tombol kembali */
         }
     </style>
     <script>
-        // Fungsi untuk menampilkan atau menyembunyikan detail penyewaan
+        // Fungsi untuk toggle tampilan detail penyewaan
         function toggleDetails(id) {
-            var details = document.getElementById("details-" + id); // Mengambil elemen detail berdasarkan id
-            if (details.style.display === "none" || details.style.display === "") {
-                details.style.display = "block"; // Menampilkan detail jika tersembunyi
-            } else {
-                details.style.display = "none"; // Menyembunyikan detail jika sudah tampil
-            }
+            var details = document.getElementById("details-" + id);
+            // Mengubah display style dari detail penyewaan
+            details.style.display = (details.style.display === "none" || details.style.display === "") ? "block" : "none";
         }
     </script>
 </head>
@@ -184,83 +141,89 @@
     <div class="container">
         <h1>Data Penyewaan</h1>
     
-        <!-- Menampilkan pesan sukses -->
+        <!-- Menampilkan pesan sukses jika ada -->
         @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div> <!-- Menampilkan pesan sukses dari session -->
+            <div class="alert alert-success">{{ session('success') }}</div>
         @endif
+        <!-- Menampilkan pesan error jika ada -->
         @if (session('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div> <!-- Menampilkan pesan error dari session -->
+            <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
     
-        <!-- Form Create Penyewaan -->
+        <!-- Menampilkan error validasi jika ada -->
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li> <!-- Menampilkan pesan error validasi -->
+                        <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
         @endif
         
-        <form action="{{ route('penyewaan.store') }}" method="POST"> <!-- Form untuk menyimpan data penyewaan -->
-            @csrf <!-- Token keamanan CSRF -->
+        <!-- Formulir untuk menambah penyewaan -->
+        <form action="{{ route('penyewaan.store') }}" method="POST">
+            @csrf
+            
             <label>Nama Penyewa:</label>
             <input type="text" name="nama_penyewa" required> <!-- Input untuk nama penyewa -->
-            
-            <label>Durasi Sewa (Hari):</label>
-            <input type="number" name="durasi_sewa" required> <!-- Input untuk durasi sewa -->
-            
+
+            <label>Alamat:</label>
+            <input type="text" name="alamat" required> <!-- Input untuk alamat penyewa -->
+
+            <label>No.HP:</label>
+            <input type="text" name="no_hp" required> <!-- Input untuk nomor HP penyewa -->
+
             <label>Tanggal Peminjaman:</label>
             <input type="date" name="tanggal_peminjaman" required> <!-- Input untuk tanggal peminjaman -->
-            
-            <label>Tanggal Pengembalian:</label>
-            <input type="date" name="tanggal_pengembalian" required> <!-- Input untuk tanggal pengembalian -->
-            
-            <label>Biaya Sewa:</label>
-            <input type="number" name="biaya" required> <!-- Input untuk biaya sewa -->
-            
-            <label>Status:</label>
-            <select name="status" required> <!-- Dropdown untuk status penyewaan -->
-                <option value="disewa">Disewa</option>
-                <option value="dikembalikan">Dikembalikan</option>
+
+            <!-- Menambahkan dropdown untuk memilih jenis baju -->
+            <label>Jenis Baju:</label>
+            <select name="jenis_baju" required>
+                <option value="">Pilih jenis baju</option>
+                <option value="Baju Adat">Baju Adat</option>
+                <option value="Baju Tarian">Baju Tarian</option>
             </select>
-            <button type="submit">Simpan</button> <!-- Tombol simpan -->
+
+             <!-- Menambahkan dropdown untuk memilih kategori -->
+             <label>Kategori:</label>
+             <select name="kategori" required>
+                 <option value="">Pilih Kategori</option>
+                 <option value="anak">Anak</option>
+                 <option value="orang_tua">Orang Tua</option>
+                 <option value="dewasa">Dewasa</option>
+             </select>
+         
+
+            <button type="submit">Simpan</button> <!-- Tombol untuk menyimpan data penyewaan -->
         </form>
-    
-        <h2>Data Yang Tersimpan</h2>
-        @if(isset($penyewaans) && count($penyewaans) > 0) <!-- Memeriksa apakah ada data penyewaan -->
-            @foreach($penyewaans as $penyewaan) <!-- Mengulangi setiap data penyewaan -->
-                <div class="card">
-                    <div class="card-header">Penyewaan oleh {{ $penyewaan->nama_penyewa }}</div> <!-- Menampilkan nama penyewa -->
-    
-                    <div class="details" id="details-{{ $penyewaan->id_penyewaan }}" style="display: none;"> <!-- Bagian detail penyewaan -->
-                        <div class="card-body">
-                            <p><strong>Durasi Sewa:</strong> {{ $penyewaan->durasi_sewa }} hari</p> <!-- Menampilkan durasi sewa -->
-                            <p><strong>Tanggal Peminjaman:</strong> {{ $penyewaan->tanggal_peminjaman }}</p> <!-- Menampilkan tanggal peminjaman -->
-                            <p><strong>Tanggal Pengembalian:</strong> {{ $penyewaan->tanggal_pengembalian }}</p> <!-- Menampilkan tanggal pengembalian -->
-                            <p><strong>Biaya Sewa:</strong> Rp {{ $penyewaan->biaya }}</p> <!-- Menampilkan biaya sewa -->
-                            <p><strong>Status:</strong> {{ $penyewaan->status }}</p> <!-- Menampilkan status penyewaan -->
-                        </div>
-                    </div>
-    
-                    <div class="card-footer">
-                        <!-- Tombol View dan Edit di sebelah -->
-                        <button class="view-button" onclick="toggleDetails({{ $penyewaan->id_penyewaan }})">View</button> <!-- Tombol untuk melihat detail -->
-                        <a href="{{ route('penyewaan.edit', $penyewaan->id_penyewaan) }}" class="edit-button">Edit</a> <!-- Link untuk mengedit data penyewaan -->
-    
-                        <!-- Form delete -->
-                        <form action="{{ route('penyewaan.destroy', $penyewaan->id_penyewaan) }}" method="POST" style="display:inline;"> <!-- Form untuk menghapus data penyewaan -->
-                            @csrf
-                            @method('DELETE') <!-- Metode DELETE untuk menghapus -->
-                            <button type="submit" class="delete-button" onclick="return confirm('Apakah Anda yakin ingin menghapus data penyewaan ini?');">Hapus</button> <!-- Tombol hapus -->
-                        </form>
-                    </div>
+
+        <!-- Menampilkan data penyewaan dalam bentuk kartu -->
+        @foreach ($penyewaans as $penyewaan)
+            <div class="card">
+                <div class="card-header">{{ $penyewaan->nama_penyewa }} - {{ $penyewaan->jenis_baju }}</div>
+                <div class="details" id="details-{{ $penyewaan->id_penyewaan }}" style="display: none;">
+                    <p><strong>Nama Penyewa:</strong> {{ $penyewaan->nama_penyewa }}</p>
+                    <p><strong>Alamat:</strong> {{ $penyewaan->alamat }}</p>
+                    <p><strong>No. HP:</strong> {{ $penyewaan->no_hp }}</p>
+                    <p><strong>Tanggal Peminjaman:</strong> {{ $penyewaan->tanggal_peminjaman }}</p>
+                    <p><strong>Jenis Baju:</strong> {{ $penyewaan->jenis_baju }}</p>
+                    <p><strong>Kategori:</strong> {{ $penyewaan->kategori }}</p>
                 </div>
-            @endforeach
-        @else
-            <p>Data tidak ditemukan.</p> <!-- Pesan jika tidak ada data penyewaan -->
-        @endif
-    </div>    
+                <div class="card-footer">
+                    <!-- Tombol untuk melihat detail penyewaan -->
+                    <button class="view-button" onclick="toggleDetails({{ $penyewaan->id_penyewaan }})">Lihat Detail</button>
+                    <!-- Tautan untuk mengedit penyewaan -->
+                    <a class="edit-button" href="{{ route('penyewaan.edit', $penyewaan->id_penyewaan) }}">Edit</a>
+                    <!-- Tautan untuk menghapus penyewaan -->
+                    <form action="{{ route('penyewaan.destroy', $penyewaan->id_penyewaan) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete-button" onclick="return confirm('Apakah Anda yakin ingin menghapus penyewaan ini?');">Hapus</button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+    </div>
 </body>
 </html>

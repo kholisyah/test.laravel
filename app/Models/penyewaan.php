@@ -13,12 +13,6 @@ class penyewaan extends Model
     protected $primaryKey = 'id_penyewaan'; // Kolom yang dijadikan primary key adalah 'id_penyewaan', bukan 'id' yang merupakan default.
 
     // Menetapkan kolom-kolom yang bisa diisi melalui mass assignment (pengisian data secara massal).
-    protected $fillable = [
-        'nama_penyewa',          // Nama penyewa, tipe string.
-        'durasi_sewa',           // Durasi sewa, tipe integer (misalnya dalam hari atau jam).
-        'tanggal_peminjaman',    // Tanggal awal peminjaman, tipe date.
-        'tanggal_pengembalian',  // Tanggal pengembalian barang yang dipinjam, tipe date.
-        'biaya',                 // Biaya penyewaan, tipe numeric.
-        'status',                // Status penyewaan (misalnya sedang berlangsung, selesai, dll.), tipe string.
-    ];
+    protected $fillable = ['nama_penyewa', 'alamat', 'no_hp', 'tanggal_peminjaman', 'jenis_baju', 'kategori', 'durasi_sewa', 'biaya'];
+
 }

@@ -26,11 +26,11 @@ class PenyewaanController extends Controller
         // Validasi input
         $validated = $request->validate([
             'nama_penyewa' => 'required|string|max:255',
-            'durasi_sewa' => 'required|integer',
+            'alamat' => 'required|string|max:500',
+            'no_hp' => 'required', // Field no_hp harus diisi
+            'jenis_baju' => 'required',
             'tanggal_peminjaman' => 'required|date',
-            'tanggal_pengembalian' => 'required|date|after_or_equal:tanggal_peminjaman',
-            'biaya' => 'required|numeric',
-            'status' => 'required|string',
+            'kategori' => 'required|string', // Field kategori harus diisi dan harus berupa integer
         ]);
 
         // Menyimpan data

@@ -13,14 +13,14 @@ return new class extends Migration
     {
         // Membuat tabel baru bernama 'penyewaans'
         Schema::create('penyewaans', function (Blueprint $table) {
-            $table->id();  // Membuat kolom auto-increment primary key 'id'
-            $table->string('nama_penyewa');  // Kolom untuk menyimpan nama penyewa dengan tipe string
-            $table->integer('durasi_sewa');  // Kolom untuk menyimpan durasi sewa dalam bentuk integer
-            $table->date('tanggal_peminjaman');  // Kolom untuk menyimpan tanggal peminjaman, tipe date
-            $table->date('tanggal_pengembalian');  // Kolom untuk menyimpan tanggal pengembalian, tipe date
-            $table->decimal('biaya', 10, 2);  // Kolom untuk menyimpan biaya penyewaan, dengan total 10 digit dan 2 angka desimal
-            $table->string('status');  // Kolom untuk menyimpan status penyewaan, misalnya 'berlangsung', 'selesai', dll.
-            $table->timestamps();  // Menambahkan kolom created_at dan updated_at secara otomatis
+            $table->id('id_penyewaan');
+            $table->string('nama_penyewa');
+            $table->text('alamat');
+            $table->string('no_hp', 15);
+            $table->string('jenis_baju');
+            $table->date('tanggal_peminjaman');
+            $table->string('kategori');
+            $table->timestamps();
         });
     }
 
