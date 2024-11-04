@@ -205,7 +205,7 @@
                 <div class="details" id="details-{{ $penyewaan->id_penyewaan }}" style="display: none;">
                     <p><strong>Nama Penyewa:</strong> {{ $penyewaan->nama_penyewa }}</p>
                     <p><strong>Alamat:</strong> {{ $penyewaan->alamat }}</p>
-                    <p><strong>No. HP:</strong> {{ $penyewaan->no_hp }}</p>
+                    <p><strong>No.HP:</strong> {{ $penyewaan->no_hp }}</p>
                     <p><strong>Tanggal Peminjaman:</strong> {{ $penyewaan->tanggal_peminjaman }}</p>
                     <p><strong>Jenis Baju:</strong> {{ $penyewaan->jenis_baju }}</p>
                     <p><strong>Kategori:</strong> {{ $penyewaan->kategori }}</p>
