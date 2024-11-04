@@ -53,10 +53,11 @@
     <!-- Sidebar Kiri -->
     <div class="sidebar">
         <h4 class="text-white">Dashboard</h4>
-        <a href="/project">pendaftaran</a>
+        <a href="/profil">Profil</a>
+        <a href="/project">Pendaftaran</a>
         <a href="/jadwal">Penjadwalan Latihan</a>
-        <a href="/penyewaan">penyewaan</a>
-        <!-- Tambahkan tautan lainnya sesuai kebutuhan -->
+        <a href="/penyewaan">Penyewaan</a>
+       
     </div>
 
     <!-- Konten Utama -->
