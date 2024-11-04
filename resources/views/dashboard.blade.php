@@ -71,7 +71,7 @@
                         <h3 class="card-title text-center">Penjadwalan Latihan</h3>
                         <p class="text-center">Kelola jadwal latihan tarian di sanggar.</p>
                         <div class="text-center">
-                            <a href="/jadwal" class="btn btn-primary">Lihat Jadwal</a>
+                            <a href="/lihat-jadwal" class="btn btn-primary">Lihat Jadwal</a>
                         </div>
                     </div>
                 </div>
