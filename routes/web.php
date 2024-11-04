@@ -9,6 +9,7 @@ use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,6 +24,10 @@ Route::get('/project', function () {
 });
 Route::get('/dasbord', function () {
     return view('dasbord');
+});
+
+Route::get('/home', function () {
+    return view('home');
 });
 // Rute untuk 'jadwal'
 Route::get('/jadwal', [AkunController::class, 'index']);
@@ -187,3 +192,8 @@ Route::get('/transaksi/{id}', [TransaksiController::class, 'show'])->name('trans
 
 // Rute untuk melihat jadwal latihan
 Route::get('/lihat-jadwal', [JadwalController::class, 'index'])->name('lihat-jadwal');
+
+//home
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/login', [UserController::class, 'login']);
