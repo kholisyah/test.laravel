@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PostController;
@@ -183,3 +184,7 @@ Route::delete('/transaksi/{id}', [TransaksiController::class, 'destroy'])->name(
 
 // Menampilkan detail dari transaksi tertentu berdasarkan ID
 Route::get('/transaksi/{id}', [TransaksiController::class, 'show'])->name('transaksi.show');
+
+
+// Rute untuk melihat jadwal latihan
+Route::get('/lihat-jadwal', [JadwalController::class, 'index'])->name('lihat-jadwal');
