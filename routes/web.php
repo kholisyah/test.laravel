@@ -37,7 +37,6 @@ Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
 Route::put('/edit-post/{post}', [PostController::class, 'actuallyUpdatePost']);
 //Route untuk delete post
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
-Route::post('/create-post', [PostController::class, 'store']);
 
 
 // Route untuk menampilkan daftar profil
