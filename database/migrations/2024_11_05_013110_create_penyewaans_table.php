@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id('id_penyewaan');
             $table->string('nama_penyewa');
             $table->text('alamat');
-            $table->string('no_hp', 15);
+            $table->string('no_hp');
             $table->string('jenis_baju');
             $table->date('tanggal_peminjaman');
             $table->string('kategori');
