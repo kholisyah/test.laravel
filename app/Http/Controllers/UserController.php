@@ -25,11 +25,11 @@ class UserController extends Controller
     }
     public function register (Request $request) {
         $incomingFields = $request->validate([
-            'name' => ['required', 'min:3', 'max:10'],
+            'nama' => ['required', 'min:3', 'max:10'],
             'email' => ['required', 'email'],
             'password' => ['required', 'min:4', 'max:8']
         ]);
-        $$incomingFields['password'] = bcrypt($incomingFields['password']);
+        $incomingFields['password'] = bcrypt($incomingFields['password']);
        $user = User::create($incomingFields);
         Auth::login($user);
         return redirect ('/home');

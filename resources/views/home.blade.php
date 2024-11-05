@@ -23,7 +23,7 @@
         <h2>Register</h2>
         <form action="/register" method="POST">
             @csrf
-            <input name="nama" type="text" placeholder="name">
+            <input name="nama" type="text" placeholder="nama">
             <input name="email" type="text" placeholder="email">
             <input name="password" type="password" placeholder="password">
             <button>Register</button>
@@ -34,7 +34,7 @@
         <h2>Login</h2>
         <form action="/login" method="POST">
             @csrf
-            <input name="loginnama" type="text" placeholder="name">
+            <input name="loginname" type="text" placeholder="name">
             <input name="loginpassword" type="password" placeholder="password">
             <button>login</button>
         </form>
