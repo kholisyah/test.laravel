@@ -15,7 +15,7 @@ class UserController extends Controller
              'loginpassword' =>'required'
         ]);
         if (Auth::attempt(['name' => $incomingFields['loginname'], 'password' => $incomingFields['loginpassword']])) {
-            $request->session()->$request->session()->regenerate();
+            $request->session()->regenerate();
         }
         return redirect('/home');
     }
