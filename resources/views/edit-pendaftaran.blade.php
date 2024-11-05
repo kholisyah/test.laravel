@@ -82,32 +82,32 @@
     <!-- Container utama form edit -->
     <div class="container">
         <h2>Edit Pendaftaran</h2>
-        <form action="/edit-post/{{ $post->id }}" method="POST">
+        <form action="/edit-pendaftaran/{{ $pendaftaran->id }}" method="POST">
             @csrf
             @method('PUT')
             <!-- Input nama -->
-            <input type="text" name="nama" value="{{ $post->nama }}">
+            <input type="text" name="nama" value="{{ $pendaftaran->nama }}">
             
             <!-- Input email -->
-            <input type="email" name="email" value="{{ $post->email }}">
+            <input type="email" name="email" value="{{ $pendaftaran->email }}">
             
             <!-- Ganti input password menjadi alamat -->
-            <input type="text" name="alamat" value="{{ $post->alamat }}">
+            <input type="text" name="alamat" value="{{ $pendaftaran->alamat }}">
             
             <!-- Input nomor telepon -->
-            <input type="tel" name="no_telepon" value="{{ $post->no_telepon }}">
+            <input type="tel" name="no_telepon" value="{{ $pendaftaran->no_telepon }}">
 
             <!-- Keterangan Kategori -->
             <label for="kategori">Kategori: </label>
             <select name="kategori" id="kategori">
-                <option value="dewasa" {{ $post->kategori == 'dewasa' ? 'selected' : '' }}>Dewasa</option>
-                <option value="anak-anak" {{ $post->kategori == 'anak-anak' ? 'selected' : '' }}>Anak-anak</option>
+                <option value="dewasa" {{ $pendaftaran->kategori == 'dewasa' ? 'selected' : '' }}>Dewasa</option>
+                <option value="anak-anak" {{ $pendaftaran->kategori == 'anak-anak' ? 'selected' : '' }}>Anak-anak</option>
             </select>
 
             <!-- Keterangan Biaya Administrasi -->
             <label for="biaya_administrasi">Biaya Administrasi: </label>
             <select name="biaya_administrasi" id="biaya_administrasi">
-                <option value="25000" {{ $post->biaya_administrasi == '25000' ? 'selected' : '' }}>25.000</option>
+                <option value="25000" {{ $pendaftaran->biaya_administrasi == '25000' ? 'selected' : '' }}>25.000</option>
             </select>
 
             <!-- Tombol submit untuk memperbarui data -->

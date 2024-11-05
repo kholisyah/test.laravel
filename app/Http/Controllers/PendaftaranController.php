@@ -1,19 +1,19 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PendaftaranController extends Controller
 {
-    // Fungsi untuk menghapus post berdasarkan instance model Post
-    public function deletePost(Post $post) {
-        $post->delete();
+    // Fungsi untuk menghapus pendaftaran berdasarkan instance model Pendaftaran
+    public function deletePendaftaran(Pendaftaran $pendaftaran) {
+        $pendaftaran->delete();
         return redirect('/project');
     }
 
-    // Fungsi untuk memperbarui data post
-    public function actuallyUpdatePost(Post $post, Request $request) {
+    // Fungsi untuk memperbarui data pendaftaran
+    public function actuallyUpdatePendaftaran(Pendaftaran $pendaftaran, Request $request) {
         try {
             $incomingField = $request->validate([
                 'nama' => 'required',
@@ -24,20 +24,20 @@ class PostController extends Controller
                 'biaya_administrasi' => 'required|numeric|min:25000'
             ]);
 
-            $post->update($incomingField);
+            $pendaftaran->update($incomingField);
             return redirect('/project');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->validator->errors());
         }
     }
 
-    // Fungsi untuk menampilkan halaman edit post
-    public function showEditScreen(Post $post) {
-        return view('edit-post', ['post' => $post]);
+    // Fungsi untuk menampilkan halaman edit pendaftaran
+    public function showEditScreen(Pendaftaran $pendaftaran) {
+        return view('edit-pendaftaran', ['pendaftaran' => $pendaftaran]);
     }
 
-    // Fungsi untuk membuat post baru
-    public function createPost(Request $request) {
+    // Fungsi untuk membuat pendaftaran baru
+    public function createPendaftaran(Request $request) {
         try {
             $incomingField = $request->validate([
                 'nama' => 'required',
@@ -48,21 +48,21 @@ class PostController extends Controller
                 'biaya_administrasi' => 'required|numeric|min:25000'
             ]);
 
-            $post = Post::create($incomingField);
+            $pendaftaran = Pendaftaran::create($incomingField);
 
             if ($request->ajax()) {
-                return response()->json($post);
+                return response()->json($pendaftaran);
             }
 
-            return redirect('/posts');
+            return redirect('/pendaftarans');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->validator->errors());
         }
     }
 
-    // Fungsi untuk menampilkan semua post
+    // Fungsi untuk menampilkan semua pendaftaran
     public function index() {
-        $posts = Post::all();
-        return view('project', compact('posts'));
+        $pendaftarans = Pendaftaran::all();
+        return view('project', compact('pendaftarans'));
     }
 }

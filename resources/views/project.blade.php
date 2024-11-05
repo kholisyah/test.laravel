@@ -44,7 +44,7 @@
             gap: 15px;
         }
 
-        /* Pengaturan input form (text, email, alamat, no telepon, dll.) */
+        /* Pengaturan input form */
         input[type="text"], input[type="email"], input[type="tel"], select {
             width: 100%;
             padding: 15px;
@@ -55,12 +55,12 @@
             transition: border 0.3s ease;
         }
 
-        /* Pengaturan perubahan warna border ketika input aktif */
+        /* Perubahan warna border ketika input aktif */
         input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus {
             border-color: #6c63ff;
         }
 
-        /* Pengaturan gaya tombol submit */
+        /* Gaya tombol submit */
         button {
             padding: 12px 20px;
             background-color: #6c63ff;
@@ -82,7 +82,7 @@
             margin-top: 40px;
         }
 
-        /* Gaya item data yang ditampilkan */
+        /* Gaya item data */
         .data-item {
             background-color: #fafafa;
             padding: 20px;
@@ -142,7 +142,7 @@
 <body>
     <div class="container">
         <h2>Pendaftaran</h2>
-        <form id="postForm" action="/create-post" method="POST">
+        <form id="pendaftaranForm" action="/create-pendaftaran" method="POST">
             @csrf
             <input type="text" name="nama" placeholder="Nama" required>
             <input type="email" name="email" placeholder="Email" required>
@@ -162,22 +162,22 @@
 
         <div class="data-container">
             <h2>Data Pendaftaran Yang Tersimpan</h2>
-            @foreach ($posts as $post)
+            @foreach ($pendaftarans as $pendaftaran)
             <div class="data-item">
                 <div>
-                    <h3>{{ $post->nama }}</h3>
+                    <h3>{{ $pendaftaran->nama }}</h3>
                     <div class="detail">
-                        <p>Email: {{ $post->email }}</p>
-                        <p>Alamat: {{ $post->alamat }}</p>
-                        <p>No Telepon: {{ $post->no_telepon }}</p>
-                        <p>Kategori: {{ $post->kategori }}</p>
-                        <p>Biaya Administrasi: Rp{{ $post->biaya_administrasi }}</p>
+                        <p>Email: {{ $pendaftaran->email }}</p>
+                        <p>Alamat: {{ $pendaftaran->alamat }}</p>
+                        <p>No Telepon: {{ $pendaftaran->no_telepon }}</p>
+                        <p>Kategori: {{ $pendaftaran->kategori }}</p>
+                        <p>Biaya Administrasi: Rp{{ $pendaftaran->biaya_administrasi }}</p>
                     </div>
                 </div>
                 <div class="actions">
                     <a class="view-button">View</a>
-                    <a href="/edit-post/{{ $post->id }}">Edit</a>
-                    <form class="delete-form" action="/delete-post/{{ $post->id }}" method="POST">
+                    <a href="/edit-pendaftaran/{{ $pendaftaran->id }}">Edit</a>
+                    <form class="delete-form" action="/delete-pendaftaran/{{ $pendaftaran->id }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" onclick="return confirm('Yakin ingin dihapus?')">Hapus</button>
@@ -190,17 +190,17 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $('#postForm').on('submit', function(event) {
+        $('#pendaftaranForm').on('submit', function(event) {
             event.preventDefault(); // Mencegah reload halaman
 
             // Kirim data via AJAX
             $.ajax({
-                url: '/create-post',
+                url: '/create-pendaftaran',
                 method: 'POST',
                 data: $(this).serialize(),
                 success: function(response) {
                     alert('Data berhasil disimpan!');
-                    $('#postForm')[0].reset(); // Reset form
+                    $('#pendaftaranForm')[0].reset(); // Reset form
 
                     // Tambahkan data baru ke tampilan
                     const newData = `
@@ -217,8 +217,8 @@
                             </div>
                             <div class="actions">
                                 <a class="view-button">View</a>
-                                <a href="/edit-post/${response.id}">Edit</a>
-                                <form class="delete-form" action="/delete-post/${response.id}" method="POST">
+                                <a href="/edit-pendaftaran/${response.id}">Edit</a>
+                                <form class="delete-form" action="/delete-pendaftaran/${response.id}" method="POST">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" onclick="return confirm('Yakin ingin dihapus?')">Delete</button>

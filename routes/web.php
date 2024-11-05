@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenyewaanController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PendaftaranController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,16 +33,20 @@ Route::get('/home', function () {
 // Rute untuk 'jadwal'
 Route::get('/jadwal', [AkunController::class, 'index']);
 
-//Rout pendaftaran
-// Route untuk menampilkan daftar post
-Route::get('/project', [PostController::class, 'index'])->name('posts.index');
-// Route untuk create post
-Route::post('/create-post', [PostController::class, 'createPost'])->name('create-post');
-//Route untuk edit post
-Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
-Route::put('/edit-post/{post}', [PostController::class, 'actuallyUpdatePost']);
-//Route untuk delete post
-Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
+// Rute untuk menampilkan semua pendaftaran
+Route::get('/project', [PendaftaranController::class, 'index']);
+
+// Rute untuk menambah pendaftaran baru
+Route::post('/create-pendaftaran', [PendaftaranController::class, 'createPendaftaran']);
+
+// Rute untuk menampilkan halaman edit pendaftaran
+Route::get('/edit-pendaftaran/{pendaftaran}', [PendaftaranController::class, 'showEditScreen']);
+
+// Rute untuk memperbarui pendaftaran
+Route::put('/edit-pendaftaran/{pendaftaran}', [PendaftaranController::class, 'actuallyUpdatePendaftaran']);
+
+// Rute untuk menghapus pendaftaran
+Route::delete('/delete-pendaftaran/{pendaftaran}', [PendaftaranController::class, 'deletePendaftaran']);
 
 
 // Route untuk menampilkan daftar profil
