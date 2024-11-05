@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profil; // Ganti Dasbord menjadi Profil
+use App\Models\Profil;
 use Illuminate\Http\Request;
 
 class ProfilController extends Controller
@@ -10,11 +10,13 @@ class ProfilController extends Controller
     // Menampilkan daftar profil
     public function index() {
         $profils = Profil::all(); 
-        return view('profil', compact('profils'));
+        return view('dasbord', compact('profils')); // Menggunakan 'dasbord' sebagai nama view
     }
+
+    // Menampilkan form untuk membuat profil baru
     public function create()
     {
-        return view('profil.create');
+        return view('profil.create'); // Pastikan file ini ada di resources/views/profil/create.blade.php
     }
 
     // Membuat profil baru
@@ -34,12 +36,12 @@ class ProfilController extends Controller
     }
 
     // Menampilkan halaman edit profil
-    public function showEditScreen(Profil $profil) { // Ganti Dasbord menjadi Profil
-        return view('edit-profil', ['profil' => $profil]);
+    public function showEditScreen(Profil $profil) {
+        return view('edit-profil', ['profil' => $profil]); // Pastikan view ini ada di resources/views/edit-profil.blade.php
     }
 
     // Update profil yang ada
-    public function actuallyUpdateProfil(Profil $profil, Request $request) { // Ganti Dasbord menjadi Profil
+    public function actuallyUpdateProfil(Profil $profil, Request $request) {
         $incomingField = $request->validate([
             'nama_sanggar' => 'required',
             'alamat' => 'required',
@@ -53,7 +55,7 @@ class ProfilController extends Controller
     }
 
     // Menghapus profil
-    public function deleteProfil(Profil $profil) { // Ganti Dasbord menjadi Profil
+    public function deleteProfil(Profil $profil) {
         $profil->delete();
         return redirect()->route('profil.index');
     }

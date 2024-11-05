@@ -53,7 +53,7 @@
     <!-- Sidebar Kiri -->
     <div class="sidebar">
         <h4 class="text-white">Dashboard</h4>
-        <a href="/profil">Profil</a>
+        <a href="/dasbord">Profil</a>
         <a href="/project">Pendaftaran</a>
         <a href="/jadwal">Penjadwalan Latihan</a>
         <a href="/penyewaan">Penyewaan</a>

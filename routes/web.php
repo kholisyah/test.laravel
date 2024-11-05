@@ -49,17 +49,23 @@ Route::put('/edit-pendaftaran/{pendaftaran}', [PendaftaranController::class, 'ac
 Route::delete('/delete-pendaftaran/{pendaftaran}', [PendaftaranController::class, 'deletePendaftaran']);
 
 
-// Route untuk menampilkan daftar profil
-Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
-// Route untuk create profil
-Route::get('/create-profil', [ProfilController::class, 'create'])->name('profil.create');
-//Route untuk edit profil
-Route::get('/edit-profil/{profil}', [ProfilController::class, 'showEditScreen'])->name('profil.edit');
-//Route untuk update edit profil
-Route::put('/edit-profil/{profil}', [ProfilController::class, 'actuallyUpdateProfil']);
-//Route untuk delete profil
-Route::delete('/delete-profil/{profil}', [ProfilController::class, 'deleteProfil']);
 
+Route::get('/dasbord', [ProfilController::class, 'index'])->name('profil.index');
+
+// Route untuk menampilkan form pembuatan profil baru
+Route::get('/dasbord/create', [ProfilController::class, 'create'])->name('profil.create');
+
+// Route untuk menyimpan data profil baru
+Route::post('/create-profil', [ProfilController::class, 'createProfil'])->name('profil.store');
+
+// Route untuk menampilkan form edit profil
+Route::get('/dasbord/{profil}/edit', [ProfilController::class, 'showEditScreen'])->name('profil.edit');
+
+// Route untuk update profil yang sudah ada
+Route::put('/dasbord/{profil}', [ProfilController::class, 'actuallyUpdateProfil'])->name('profil.update');
+
+// Route untuk menghapus profil
+Route::delete('/dasbord/{profil}', [ProfilController::class, 'deleteProfil'])->name('profil.delete');
 
 // Rute untuk halaman jadwal (untuk Akun)
 Route::get('/jadwal', [AkunController::class, 'index']);
