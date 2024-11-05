@@ -154,9 +154,7 @@
                 <option value="anak-anak">Anak-anak</option>
             </select>
             <label for="biaya_administrasi">Biaya Administrasi: </label>
-            <select name="biaya_administrasi" id="biaya_administrasi" required>
-                <option value="25000">25.000</option>
-            </select>
+            <input type="text" name="biaya_administrasi" id="biaya_administrasi" value="25000" readonly>
             <button type="submit">Simpan</button>
         </form>
 
