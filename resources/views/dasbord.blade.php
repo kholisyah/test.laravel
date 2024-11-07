@@ -51,6 +51,7 @@
                 <!-- Form Profil -->
                 <form id="profilForm">
                     @csrf
+                    <input type="hidden" id="profil_id" name="profil_id">
                     <div class="mb-3">
                         <label for="nama_sanggar" class="form-label">Nama Sanggar</label>
                         <input type="text" class="form-control" id="nama_sanggar" name="nama_sanggar" required>
@@ -90,8 +91,39 @@
 
     <script>
         $(document).ready(function() {
+            loadProfilData();
+
+            function loadProfilData() {
+                $.get("{{ url('/get-profils') }}", function(data) {
+                    $('#profilList').empty();
+                    data.forEach(function(profil) {
+                        appendProfilToList(profil);
+                    });
+                });
+            }
+
+            function appendProfilToList(profil) {
+                $('#profilList').append(`
+                    <div class="card mt-3" data-id="${profil.id_profils}">
+                        <div class="card-body">
+                            <h5 class="card-title">${profil.nama_sanggar}</h5>
+                            <p class="card-text"><strong>Alamat:</strong> ${profil.alamat}</p>
+                            <p class="card-text"><strong>Latar Belakang:</strong> ${profil.latar_belakang}</p>
+                            <p class="card-text"><strong>Kegiatan:</strong> ${profil.kegiatan}</p>
+                            <p class="card-text"><strong>Prestasi:</strong> ${profil.prestasi}</p>
+                            <button class="btn btn-warning btn-edit">Edit</button>
+                            <button class="btn btn-danger btn-delete">Delete</button>
+                        </div>
+                    </div>
+                `);
+            }
+
             $('#profilForm').on('submit', function(e) {
-                e.preventDefault(); // Mencegah reload
+                e.preventDefault();
+
+                let profilId = $('#profil_id').val();
+                let url = profilId ? `{{ url('/update-profil') }}/${profilId}` : "{{ url('/create-profil') }}";
+                let method = profilId ? 'PUT' : 'POST';
 
                 let formData = {
                     _token: $('input[name="_token"]').val(),
@@ -103,29 +135,25 @@
                 };
 
                 $.ajax({
-                    type: 'POST',
-                    url: '{{ url("/create-profil") }}',
+                    type: method,
+                    url: url,
                     data: formData,
                     dataType: 'json',
                     success: function(data) {
-                        // Kosongkan form setelah sukses submit
+                        if (profilId) {
+                            let profilCard = $(`#profilList .card[data-id='${profilId}']`);
+                            profilCard.find('.card-title').text(data.nama_sanggar);
+                            profilCard.find('.card-text').eq(0).html(`<strong>Alamat:</strong> ${data.alamat}`);
+                            profilCard.find('.card-text').eq(1).html(`<strong>Latar Belakang:</strong> ${data.latar_belakang}`);
+                            profilCard.find('.card-text').eq(2).html(`<strong>Kegiatan:</strong> ${data.kegiatan}`);
+                            profilCard.find('.card-text').eq(3).html(`<strong>Prestasi:</strong> ${data.prestasi}`);
+                        } else {
+                            appendProfilToList(data);
+                        }
                         $('#profilForm')[0].reset();
-
-                        // Tambahkan profil baru ke daftar profil
-                        $('#profilList').append(`
-                            <div class="card mt-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">${data.nama_sanggar}</h5>
-                                    <p class="card-text"><strong>Alamat:</strong> ${data.alamat}</p>
-                                    <p class="card-text"><strong>Latar Belakang:</strong> ${data.latar_belakang}</p>
-                                    <p class="card-text"><strong>Kegiatan:</strong> ${data.kegiatan}</p>
-                                    <p class="card-text"><strong>Prestasi:</strong> ${data.prestasi}</p>
-                                </div>
-                            </div>
-                        `);
+                        $('#profil_id').val('');
                     },
                     error: function(response) {
-                        // Tampilkan error dari validasi Laravel
                         let errors = response.responseJSON.errors;
                         $('#error-nama_sanggar').text(errors.nama_sanggar ? errors.nama_sanggar[0] : '');
                         $('#error-alamat').text(errors.alamat ? errors.alamat[0] : '');
@@ -134,6 +162,33 @@
                         $('#error-prestasi').text(errors.prestasi ? errors.prestasi[0] : '');
                     }
                 });
+            });
+
+            $('#profilList').on('click', '.btn-edit', function() {
+                let card = $(this).closest('.card');
+                let profilId = card.data('id');
+
+                $('#profil_id').val(profilId);
+                $('#nama_sanggar').val(card.find('.card-title').text());
+                $('#alamat').val(card.find('.card-text').eq(0).text().replace('Alamat: ', ''));
+                $('#latar_belakang').val(card.find('.card-text').eq(1).text().replace('Latar Belakang: ', ''));
+                $('#kegiatan').val(card.find('.card-text').eq(2).text().replace('Kegiatan: ', ''));
+                $('#prestasi').val(card.find('.card-text').eq(3).text().replace('Prestasi: ', ''));
+            });
+
+            $('#profilList').on('click', '.btn-delete', function() {
+                let profilId = $(this).closest('.card').data('id');
+                
+                if (confirm('Yakin ingin menghapus profil ini?')) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: `{{ url('/delete-profil') }}/${profilId}`,
+                        data: { _token: $('input[name="_token"]').val() },
+                        success: function() {
+                            $(`#profilList .card[data-id='${profilId}']`).remove();
+                        }
+                    });
+                }
             });
         });
     </script>
