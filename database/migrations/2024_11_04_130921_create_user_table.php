@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->id();
-            $table->string('nama'); 
-            $table->string('email'); 
+            $table->string('nama')->unique();
             $table->string('password');
-            $table->string('email_verified_at')->nullable();
-            $table->string('remember_token')->nullable();
             $table->timestamps();
         });
+        
     }
+    
 
     /**
      * Reverse the migrations.

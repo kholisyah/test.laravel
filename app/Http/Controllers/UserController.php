@@ -11,27 +11,26 @@ class UserController extends Controller
     //login
     public function login(Request $request){
         $incomingFields = $request->validate([
-            'loginname' =>'required',
-             'loginpassword' =>'required'
+            'nama' =>'required',
+             'password' =>'required'
         ]);
-        if (Auth::attempt(['name' => $incomingFields['loginname'], 'password' => $incomingFields['loginpassword']])) {
+        if (Auth::attempt(['nama' => $incomingFields['nama'], 'password' => $incomingFields['password']])) {
             $request->session()->regenerate();
         }
-        return redirect('/home');
+        return redirect('/dashboard');
     }
     public function logout(){
         Auth::logout();
-        return redirect('/home');
+        return redirect('/login');
     }
     public function register (Request $request) {
         $incomingFields = $request->validate([
             'nama' => ['required', 'min:3', 'max:10'],
-            'email' => ['required', 'email'],
             'password' => ['required', 'min:4', 'max:8']
         ]);
         $incomingFields['password'] = bcrypt($incomingFields['password']);
        $user = User::create($incomingFields);
         Auth::login($user);
-        return redirect ('/home');
+        return redirect ('/dashboard');
     }
 }
