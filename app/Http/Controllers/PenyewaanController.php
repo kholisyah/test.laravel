@@ -86,9 +86,6 @@ class PenyewaanController extends Controller
 
         // Tampilkan view show dengan data penyewaan
         return view('penyewaan.show', compact('penyewaan'));
-
-        $penyewaans = Penyewaan::with('masterBaju')->get();
-
     }
 }
 
