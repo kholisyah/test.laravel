@@ -35,6 +35,9 @@
         .btn-primary:hover {
             background-color: #0056b3;
         }
+        .btn-edit, .btn-delete {
+            margin-top: 10px;
+        }
         #profilList .card-title {
             color: #007bff;
         }
@@ -120,10 +123,13 @@
 
             $('#profilForm').on('submit', function(e) {
                 e.preventDefault();
+<<<<<<< HEAD
+=======
 
                 let profilId = $('#profil_id').val();
                 let url = profilId ? `{{ url('/update-profil') }}/${profilId}` : "{{ url('/create-profil') }}";
                 let method = profilId ? 'PUT' : 'POST';
+>>>>>>> 5c3576bc3adfcc4418d3559fbd314290cb0ef064
 
                 let formData = {
                     _token: $('input[name="_token"]').val(),
@@ -140,6 +146,24 @@
                     data: formData,
                     dataType: 'json',
                     success: function(data) {
+<<<<<<< HEAD
+                        $('#profilForm')[0].reset();
+
+                        // Tambahkan profil baru dengan tombol Edit dan Hapus
+                        $('#profilList').append(`
+                            <div class="card mt-3" data-id="${data.id}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${data.nama_sanggar}</h5>
+                                    <p class="card-text"><strong>Alamat:</strong> ${data.alamat}</p>
+                                    <p class="card-text"><strong>Latar Belakang:</strong> ${data.latar_belakang}</p>
+                                    <p class="card-text"><strong>Kegiatan:</strong> ${data.kegiatan}</p>
+                                    <p class="card-text"><strong>Prestasi:</strong> ${data.prestasi}</p>
+                                    <button class="btn btn-warning btn-edit">Edit</button>
+                                    <button class="btn btn-danger btn-delete">Hapus</button>
+                                </div>
+                            </div>
+                        `);
+=======
                         if (profilId) {
                             let profilCard = $(`#profilList .card[data-id='${profilId}']`);
                             profilCard.find('.card-title').text(data.nama_sanggar);
@@ -152,6 +176,7 @@
                         }
                         $('#profilForm')[0].reset();
                         $('#profil_id').val('');
+>>>>>>> 5c3576bc3adfcc4418d3559fbd314290cb0ef064
                     },
                     error: function(response) {
                         let errors = response.responseJSON.errors;
@@ -164,6 +189,33 @@
                 });
             });
 
+<<<<<<< HEAD
+            // Event untuk tombol Edit
+            $('#profilList').on('click', '.btn-edit', function() {
+                let card = $(this).closest('.card');
+                let id = card.data('id');
+
+                // Dapatkan data dari server dan isi form
+                // Implementasi AJAX GET untuk edit tergantung rute Anda
+            });
+
+            // Event untuk tombol Hapus
+            $('#profilList').on('click', '.btn-delete', function() {
+                let card = $(this).closest('.card');
+                let id = card.data('id');
+
+                $.ajax({
+                    type: 'DELETE',
+                    url: `{{ url("/delete-profil") }}/${id}`,
+                    data: { _token: $('input[name="_token"]').val() },
+                    success: function() {
+                        card.remove();
+                    },
+                    error: function() {
+                        alert('Gagal menghapus data.');
+                    }
+                });
+=======
             $('#profilList').on('click', '.btn-edit', function() {
                 let card = $(this).closest('.card');
                 let profilId = card.data('id');
@@ -189,6 +241,7 @@
                         }
                     });
                 }
+>>>>>>> 5c3576bc3adfcc4418d3559fbd314290cb0ef064
             });
         });
     </script>
