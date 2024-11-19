@@ -7,77 +7,196 @@
     <title>Dashboard Sanggar Galuh</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Mengatur layout dashboard */
+        /* Mengatur layout dasar */
         body {
             display: flex;
             min-height: 100vh;
-            flex-direction: row;
+            margin: 0;
+            background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+            font-family: 'Poppins', sans-serif;
         }
-        /* Sidebar di sebelah kiri */
+
+        /* Sidebar */
         .sidebar {
-            min-width: 200px;
-            background-color: #343a40;
-            padding: 15px;
+            min-width: 240px;
+            background-color: #1d3557;
+            color: #f1faee;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        .sidebar h4 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
         .sidebar a {
             display: block;
-            color: white;
+            color: #f1faee;
             text-decoration: none;
             margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 500;
         }
+
         .sidebar a:hover {
-            background-color: #495057;
+            background-color: #457b9d;
+            transform: translateX(5px);
         }
-        /* Konten utama dashboard */
+
+        .sidebar a:active {
+            background-color: #1d3557;
+            transform: translateX(0);
+        }
+
+        /* Konten Utama */
         .content {
             flex: 1;
-            padding: 20px;
+            padding: 30px;
             background-color: #f8f9fa;
         }
+
+        .content h1 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1d3557;
+        }
+
+        /* Kartu Dashboard */
         .dashboard-card {
-            margin: 20px 0;
-            padding: 15px;
+            background: #ffffff;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
-        h1 {
-            font-size: 28px;
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
-        h3 {
-            font-size: 18px;
+
+        .dashboard-card h3 {
+            color: #1d3557;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .dashboard-card p {
+            font-size: 16px;
+            color: #6c757d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-card a {
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background-color: #457b9d;
+            color: #ffffff;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .dashboard-card a:hover {
+            background-color: #1d3557;
+            transform: scale(1.05);
+        }
+
+        /* Animasi Tambahan */
+        .text-center {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Sidebar Kiri -->
+    <!-- Sidebar -->
     <div class="sidebar">
-        <h4 class="text-white">Dashboard</h4>
+        <h4>Dashboard</h4>
         <a href="/dasbord">Profil</a>
         <a href="/project">Pendaftaran</a>
         <a href="/jadwal">Penjadwalan Latihan</a>
         <a href="/penyewaan">Penyewaan</a>
-       
     </div>
 
-    <!-- Konten Utama -->
-    <div class="content">
-        <h1 class="text-center">Dashboard Sanggar Galuh</h1>
+   <!-- Konten Utama -->
+<div class="content">
+    <h1>Dashboard Sanggar Galuh</h1>
+    <div class="row">
+        <!-- Penjadwalan Latihan -->
+        <div class="col-md-6">
+            <div class="card dashboard-card">
+                <div class="card-body">
+                    <h3>Penjadwalan Latihan</h3>
+                    <p>Kelola jadwal latihan tarian di sanggar.</p>
+                    <div class="text-center">
+                        <a href="/lihat-jadwal">Lihat Jadwal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <div class="card dashboard-card shadow-sm">
-                    <div class="card-body">
-                        <h3 class="card-title text-center">Penjadwalan Latihan</h3>
-                        <p class="text-center">Kelola jadwal latihan tarian di sanggar.</p>
-                        <div class="text-center">
-                            <a href="/lihat-jadwal" class="btn btn-primary">Lihat Jadwal</a>
-                        </div>
+        <!-- Lihat Profil -->
+        <div class="col-md-6">
+            <div class="card dashboard-card">
+                <div class="card-body">
+                    <h3>Lihat Profil</h3>
+                    <p>Perbarui atau lihat informasi mengenai sanggar dan anggota.</p>
+                    <div class="text-center">
+                        <a href="/lihat-profil">Lihat Profil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lihat Penyewaan -->
+        <div class="col-md-6">
+            <div class="card dashboard-card">
+                <div class="card-body">
+                    <h3>Lihat Penyewaan</h3>
+                    <p>Cek status penyewaan ruang atau fasilitas di sanggar.</p>
+                    <div class="text-center">
+                        <a href="/lihat-penyewaan">Lihat Penyewaan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lihat Pendaftaran -->
+        <div class="col-md-6">
+            <div class="card dashboard-card">
+                <div class="card-body">
+                    <h3>Lihat Pendaftaran</h3>
+                    <p>Lihat daftar pendaftaran untuk kelas atau kegiatan sanggar.</p>
+                    <div class="text-center">
+                        <a href="/lihat-pendaftaran">Lihat Pendaftaran</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
