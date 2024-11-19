@@ -161,7 +161,7 @@
             <div class="card dashboard-card">
                 <div class="card-body">
                     <h3>Lihat Profil</h3>
-                    <p>Perbarui atau lihat informasi mengenai sanggar dan anggota.</p>
+                    <p>lihat informasi mengenai sanggar dan anggota.</p>
                     <div class="text-center">
                         <a href="/lihat-profil">Lihat Profil</a>
                     </div>
