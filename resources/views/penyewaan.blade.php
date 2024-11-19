@@ -221,41 +221,17 @@
             <label>Tanggal Peminjaman:</label>
             <input type="date" name="tanggal_peminjaman" required>
 
-            <!-- Dropdown untuk memilih jenis baju -->
-            <label>Jenis Baju:</label>
-            <select name="jenis_baju" id="jenis_baju" required onchange="showTarianOptions()">
-                <option value="">Pilih jenis baju</option>
-                <option value="Baju Adat">Baju Adat</option>
-                <option value="Baju Tarian">Baju Tarian</option>
-            </select>
+                    <label>Jenis Baju:</label>
+        <select name="jenis_baju" id="jenis_baju" required onchange="showTarianOptions()">
+            <option value="">Pilih jenis baju</option>
+            @foreach(App\Models\MasterBaju::all() as $baju)
+                <option value="{{ $baju->jenis_baju }}" data-harga="{{ $baju->harga_sewa }}">{{ $baju->jenis_baju }}</option>
+            @endforeach
+        </select>
 
-            <!-- Opsi tambahan untuk baju tarian yang muncul saat dipilih -->
-            <div id="tarian_options" style="display: none;">
-                <label>Jenis Baju Tarian:</label>
-                <select name="jenis_baju_tarian">
-                    <option value="">Pilih jenis baju tarian</option>
-                    <option value="Baju Tarian Dayak">Baju Tarian Dayak</option>
-                    <option value="Baju Tarian Radap Rahayu">Baju Tarian Radap Rahayu</option>
-                    <option value="Baju Tarian Baksa Kembang">Baju Tarian Baksa Kembang</option>
-                    <option value="Baju Giring-giring">Baju Tarian Giring-giring</option>
-                </select>
-            </div>
+        <!-- Menampilkan harga sewa berdasarkan jenis baju yang dipilih -->
+        <p id="harga_baju"></p>
 
-            <!-- Opsi tambahan untuk baju adat yang muncul saat dipilih -->
-            <div id="baju_adat_options" class="baju-adat-options" style="display: none;">
-                <label>Jenis Baju Adat:</label>
-                <select name="jenis_baju_adat">
-                    <option value="">Pilih jenis baju adat</option>
-                    <option value="Jawa">Baju Adat Jawa</option>
-                    <option value="Bali">Baju Adat Bali</option>
-                    <option value="NTT">Baju Adat NTT</option>
-                    <option value="Betawi">Baju Adat Betawi</option>
-                    <option value="Banjar">Baju Adat Banjar</option>
-                    <option value="Sunda">Baju Adat Sunda</option>
-                    <option value="Sumsel">Baju Adat Sumsel</option>
-                    <option value="Batak">Baju Adat Batak</option>
-                </select>
-            </div>
 
             <!-- Dropdown untuk memilih kategori umur -->
             <label>Kategori:</label>

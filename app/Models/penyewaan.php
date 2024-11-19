@@ -15,4 +15,8 @@ class penyewaan extends Model
     // Menetapkan kolom-kolom yang bisa diisi melalui mass assignment (pengisian data secara massal).
     protected $fillable = ['nama_penyewa', 'alamat', 'no_hp', 'tanggal_peminjaman', 'jenis_baju', 'kategori', 'durasi_sewa', 'biaya'];
 
+    public function masterBaju()
+{
+    return $this->belongsTo(MasterBaju::class, 'jenis_baju', 'jenis_baju');
+}
 }
