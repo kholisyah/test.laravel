@@ -35,6 +35,9 @@
         .btn-primary:hover {
             background-color: #0056b3;
         }
+        .btn-edit, .btn-delete {
+            margin-top: 10px;
+        }
         #profilList .card-title {
             color: #007bff;
         }
@@ -91,7 +94,7 @@
     <script>
         $(document).ready(function() {
             $('#profilForm').on('submit', function(e) {
-                e.preventDefault(); // Mencegah reload
+                e.preventDefault();
 
                 let formData = {
                     _token: $('input[name="_token"]').val(),
@@ -108,30 +111,57 @@
                     data: formData,
                     dataType: 'json',
                     success: function(data) {
-                        // Kosongkan form setelah sukses submit
                         $('#profilForm')[0].reset();
 
-                        // Tambahkan profil baru ke daftar profil
+                        // Tambahkan profil baru dengan tombol Edit dan Hapus
                         $('#profilList').append(`
-                            <div class="card mt-3">
+                            <div class="card mt-3" data-id="${data.id}">
                                 <div class="card-body">
                                     <h5 class="card-title">${data.nama_sanggar}</h5>
                                     <p class="card-text"><strong>Alamat:</strong> ${data.alamat}</p>
                                     <p class="card-text"><strong>Latar Belakang:</strong> ${data.latar_belakang}</p>
                                     <p class="card-text"><strong>Kegiatan:</strong> ${data.kegiatan}</p>
                                     <p class="card-text"><strong>Prestasi:</strong> ${data.prestasi}</p>
+                                    <button class="btn btn-warning btn-edit">Edit</button>
+                                    <button class="btn btn-danger btn-delete">Hapus</button>
                                 </div>
                             </div>
                         `);
                     },
                     error: function(response) {
-                        // Tampilkan error dari validasi Laravel
                         let errors = response.responseJSON.errors;
                         $('#error-nama_sanggar').text(errors.nama_sanggar ? errors.nama_sanggar[0] : '');
                         $('#error-alamat').text(errors.alamat ? errors.alamat[0] : '');
                         $('#error-latar_belakang').text(errors.latar_belakang ? errors.latar_belakang[0] : '');
                         $('#error-kegiatan').text(errors.kegiatan ? errors.kegiatan[0] : '');
                         $('#error-prestasi').text(errors.prestasi ? errors.prestasi[0] : '');
+                    }
+                });
+            });
+
+            // Event untuk tombol Edit
+            $('#profilList').on('click', '.btn-edit', function() {
+                let card = $(this).closest('.card');
+                let id = card.data('id');
+
+                // Dapatkan data dari server dan isi form
+                // Implementasi AJAX GET untuk edit tergantung rute Anda
+            });
+
+            // Event untuk tombol Hapus
+            $('#profilList').on('click', '.btn-delete', function() {
+                let card = $(this).closest('.card');
+                let id = card.data('id');
+
+                $.ajax({
+                    type: 'DELETE',
+                    url: `{{ url("/delete-profil") }}/${id}`,
+                    data: { _token: $('input[name="_token"]').val() },
+                    success: function() {
+                        card.remove();
+                    },
+                    error: function() {
+                        alert('Gagal menghapus data.');
                     }
                 });
             });
