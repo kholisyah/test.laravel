@@ -131,3 +131,4 @@ Route::post('/login', [UserController::class, 'login']);
 
 //lihat sanggar
 Route::get('/lihat-profil', [LihatProfilController::class, 'index'])->name('lihat-profil');
+Route::get('/profil', [LihatProfilController::class, 'index']);
