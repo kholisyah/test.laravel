@@ -7,17 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Halaman login</h1>
     <form action="/login" method="POST">
         @csrf
         <input name="nama" type="text" placeholder="Nama" required>
         <input name="password" type="password" placeholder="Password" required>
-        <select name="role" required>
-            <option value="user" selected>User</option>
-            <option value="admin">Admin</option>
-        </select>
         <button type="submit">Login</button>
-    </form>
-    
-      
+    </form>  
 </body>
 </html>

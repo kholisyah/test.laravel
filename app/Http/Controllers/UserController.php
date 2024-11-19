@@ -23,14 +23,21 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/login');
     }
-    public function register (Request $request) {
-        $incomingFields = $request->validate([
-            'nama' => ['required', 'min:3', 'max:10'],
-            'password' => ['required', 'min:4', 'max:8']
-        ]);
-        $incomingFields['password'] = bcrypt($incomingFields['password']);
-       $user = User::create($incomingFields);
-        Auth::login($user);
-        return redirect ('/dashboard');
-    }
+    public function register(Request $request)
+{
+    $request->validate([
+        'nama' => 'required|string|max:255',
+        'password' => 'required|string|min:8',
+        'email' => 'required|email|max:255|unique:User',
+    ]);
+
+    // Simpan data ke database
+    User::create([
+        'nama' => $request->nama,
+        'password' => bcrypt($request->password),
+        'email' => $request->email,
+    ]);
+
+    return redirect('/')->with('success', 'Registrasi berhasil!');
+}
 }
