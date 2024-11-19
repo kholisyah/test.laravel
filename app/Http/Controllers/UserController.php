@@ -30,6 +30,7 @@ class UserController extends Controller
         'password' => 'required|string|min:8',
         'email' => 'required|email|max:255|unique:User',
     ]);
+    
 
     // Simpan data ke database
     User::create([
