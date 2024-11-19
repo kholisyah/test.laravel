@@ -92,9 +92,6 @@ Route::get('/edit-posts/{id}', [AkunController::class, 'edit'])->name('edit');
 // Rute untuk menyimpan pembaruan data
 Route::post('/update-posts/{id}', [AkunController::class, 'update'])->name('update');
 
-
-// Rute untuk fitur penyewaan
-
 // Menampilkan daftar penyewaan
 Route::get('/penyewaan', [PenyewaanController::class, 'index'])->name('penyewaan.index');
 // Penjelasan: Mengakses URL `/penyewaan` akan memanggil metode `index` di `PenyewaanController`, yang bertugas untuk menampilkan daftar semua penyewaan. Ini biasanya halaman yang berisi tabel penyewaan yang tersedia.
@@ -133,5 +130,4 @@ Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
 
 //lihat sanggar
-Route::get('/lihat-profil', [LihatProfilController::class, 'show'])->name('lihat-profil.show');
-
+Route::get('/lihat-profil', [LihatProfilController::class, 'index'])->name('lihat-profil');
