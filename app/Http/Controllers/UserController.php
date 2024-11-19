@@ -38,6 +38,6 @@ class UserController extends Controller
         'email' => $request->email,
     ]);
 
-    return redirect('/')->with('success', 'Registrasi berhasil!');
+    return redirect('/login')->with('success', 'Registrasi berhasil!');
 }
 }

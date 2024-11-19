@@ -9,13 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('lihat_profils', function (Blueprint $table) {
             $table->id();
-            $table->string('nama'); 
-            $table->string('password');
-            $table->string('email');
+            $table->string('nama');
+            $table->text('deskripsi');
+            $table->text('visi');
+            $table->text('misi');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('lihat_profils'); // Perbaikan nama tabel
     }
 };

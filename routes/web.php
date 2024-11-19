@@ -12,6 +12,7 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\LihatProfilController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -130,4 +131,7 @@ Route::get('/lihat-jadwal', [JadwalController::class, 'index'])->name('lihat-jad
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
+
+//lihat sanggar
+Route::get('/lihat-profil', [LihatProfilController::class, 'show'])->name('lihat-profil.show');
 
