@@ -132,7 +132,9 @@
             <input name="password" type="password" placeholder="Password" required>
 
             <button type="submit">Register</button>
-        </form>        
+        </form> 
+        <div class="extra-link">
+            <span>sudah punya akun? <a href="/login">klik disini</a></span>       
     </div>
 </body>
 </html>
