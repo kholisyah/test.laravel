@@ -129,6 +129,6 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
 
-//lihat Profil
+//lihat sanggar
 Route::get('/lihat-profil', [LihatProfilController::class, 'index'])->name('lihat-profil');
 Route::get('/profil', [LihatProfilController::class, 'index']);
