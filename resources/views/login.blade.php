@@ -16,7 +16,7 @@
             align-items: center;
             height: 100vh;
             background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
-        }
+        } 
 
         /* Kontainer utama */
         .login-container {
