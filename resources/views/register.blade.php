@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <style>
-        /* Gaya latar belakang */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -17,7 +16,6 @@
             background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
         }
 
-        /* Kontainer utama */
         .register-container {
             background: #ffffff;
             border-radius: 20px;
@@ -35,14 +33,12 @@
             color: #333333;
         }
 
-        /* Formulir */
         .register-container form {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        /* Kontainer untuk setiap baris input */
         .form-row {
             display: flex;
             align-items: center;
@@ -59,10 +55,10 @@
 
         .form-row input {
             flex-grow: 1;
-            padding: 10px;
+            padding: 15px; /* Diperbesar */
             border: 2px solid #f0f0f0;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px; /* Diperbesar */
             background: #f9f9f9;
             color: #333;
             transition: 0.3s;
@@ -74,7 +70,6 @@
             outline: none;
         }
 
-        /* Tombol */
         .register-container button {
             width: 100%;
             padding: 12px;
@@ -98,7 +93,6 @@
             transform: translateY(0);
         }
 
-        /* Tautan tambahan */
         .register-container .extra-link {
             text-align: center;
             margin-top: 20px;
@@ -115,7 +109,6 @@
             text-decoration: underline;
         }
     </style>
-    
 </head>
 <body>
     <div class="register-container">
@@ -132,9 +125,10 @@
             <input name="password" type="password" placeholder="Password" required>
 
             <button type="submit">Register</button>
-        </form> 
+        </form>
         <div class="extra-link">
             <span>sudah punya akun? <a href="/login">klik disini</a></span>       
+        </div>
     </div>
 </body>
 </html>
