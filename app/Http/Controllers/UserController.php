@@ -28,7 +28,7 @@ class UserController extends Controller
     $request->validate([
         'nama' => 'required|string|max:255',
         'password' => 'required|string|min:8',
-        'email' => 'required|email|max:255|unique:User',
+        'email' => 'required|email|max:255|unique:user',
     ]);
     
 
@@ -39,6 +39,7 @@ class UserController extends Controller
         'email' => $request->email,
     ]);
 
-    return redirect('/login')->with('success', 'Registrasi berhasil!');
+    return redirect('/login');
+
 }
 }
