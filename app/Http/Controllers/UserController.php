@@ -38,8 +38,6 @@ class UserController extends Controller
         'password' => bcrypt($request->password),
         'email' => $request->email,
     ]);
-
     return redirect('/login');
-
 }
 }
