@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    //login
-    public function login(Request $request){
+     //login
+     public function login(Request $request){
         $incomingFields = $request->validate([
             'nama' =>'required',
              'password' =>'required'
