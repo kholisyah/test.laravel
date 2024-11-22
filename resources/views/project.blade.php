@@ -153,8 +153,8 @@
                 <option value="dewasa">Dewasa</option>
                 <option value="anak-anak">Anak-anak</option>
             </select>
-            <label for="biaya_administrasi">Biaya Administrasi Sebesar : (25000) </label>
-            <label for="biaya_administrasi">Pembayaran Melalui Nomor Rekening Berikut : (239476456)</label> 
+            <label for="biaya_administrasi">Biaya Administrasi Sebesar:</label>
+            <input type="text" name="biaya_administrasi" id="biaya_administrasi" value="25000" readonly>
             <button type="submit">Simpan</button>
         </form>
 
