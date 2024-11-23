@@ -187,7 +187,7 @@
             <div class="card dashboard-card">
                 <div class="card-body">
                     <h3>Lihat Pendaftaran</h3>
-                    <p>Lihat daftar pendaftaran untuk kelas atau kegiatan sanggar.</p>
+                    <p>Lihat daftar pendaftaran yang ada.</p>
                     <div class="text-center">
                         <a href="/lihat-pendaftaran">Lihat Pendaftaran</a>
                     </div>
