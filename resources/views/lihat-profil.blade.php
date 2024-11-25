@@ -63,6 +63,12 @@
         .card-body ul li {
             padding-bottom: 15px; /* Memberikan jarak antar item misi */
         }
+        .no-bullet {
+    list-style-type: none; /* Menghilangkan bullet */
+    padding: 0; /* Menghapus padding kiri default */
+    margin: 0; /* Menghapus margin default */
+}
+
     </style>
 </head>
 <body>
@@ -70,14 +76,14 @@
         <h2 class="text-center mb-4">Profil Sanggar Galuh</h2>
 
         <!-- Deskripsi Profil Sanggar -->
-        <div class="card">
-            <div class="card-header bg-primary">
-                Deskripsi Profil
+            <div class="card">
+                <div class="card-header bg-primary">
+                    Deskripsi Profil
+                </div>
+                <div class="card-body">
+                    <p>{{ $profil->deskripsi ?? 'Sanggar Galuh didirikan pada tahun 2010 oleh Maulida, S.Pd, dengan tujuan untuk melestarikan dan mengembangkan seni tari tradisional Indonesia, khususnya tari-tarian daerah Kalimantan Selatan. Sanggar ini tidak hanya berfokus pada pembelajaran tari, tetapi juga memberikan ruang bagi generasi muda untuk mengenal, mencintai, dan melestarikan budaya lokal. Kami menyediakan berbagai pelatihan untuk berbagai usia, mulai dari anak-anak hingga dewasa, dengan pengajaran yang berbasis pada teknik dan filosofi tari tradisional yang mendalam. Sanggar Galuh berlokasi di Komplek Perumahan Hamparan Permai No.68 Blok.4, Desa Atu Atu, depan RTH, samping kolam renang' }}</p>    
+                </div>
             </div>
-            <div class="card-body">
-                <p>{{ $profil->deskripsi ?? 'Sanggar Galuh didirikan pada tahun 2010 oleh Maulida, S.Pd, dengan tujuan untuk melestarikan dan mengembangkan seni tari tradisional Indonesia, khususnya tari-tarian daerah Kalimantan Selatan. Sanggar ini tidak hanya berfokus pada pembelajaran tari, tetapi juga memberikan ruang bagi generasi muda untuk mengenal, mencintai, dan melestarikan budaya lokal. Kami menyediakan berbagai pelatihan untuk berbagai usia, mulai dari anak-anak hingga dewasa, dengan pengajaran yang berbasis pada teknik dan filosofi tari tradisional yang mendalam.' }}</p>
-            </div>
-        </div>
 
         <!-- Visi -->
         <div class="card">
@@ -96,20 +102,18 @@
             </div>
             <div class="card-body">
                 @if ($profil->misi)
-                    <ul>
-                        @foreach(explode(',', $profil->misi) as $misi)
-                            <li>{{ $misi }}</li>
+                    <ul class="no-bullet">
+                        @foreach (explode("\n", $profil->misi) as $misi)
+                            @if (trim($misi)) {{-- Abaikan baris kosong --}}
+                                <li>{{ trim($misi) }}</li>
+                            @endif
                         @endforeach
                     </ul>
                 @else
-                    <p>'1. Menyelenggarakan pelatihan seni tari tradisional yang berkualitas, dengan pendekatan yang sesuai dengan perkembangan zaman namun tetap menjaga kelestarian nilai-nilai budaya asli.
-                        2. Membuka peluang bagi generasi muda untuk menggali potensi diri dalam bidang seni tari melalui berbagai program pelatihan dan pertunjukan.
-                        3. Menjadi media pembelajaran yang mendalam mengenai seni tari tradisional bagi masyarakat luas, baik di tingkat lokal maupun nasional.
-                        4. Berperan serta dalam meningkatkan penghargaan dan kecintaan masyarakat terhadap budaya dan seni tari tradisional Indonesia.
-                        5. Mengadakan acara dan pertunjukan seni tari untuk mempromosikan hasil karya peserta dan memperkenalkan seni tari kepada publik lebih luas.</p>
+                    <p>Belum ada data misi.</p>
                 @endif
             </div>
-        </div>
+        </div>            
 
         <!-- Kembali ke Dashboard -->
         <a href="{{ url('/dashboard') }}" class="btn btn-primary">Kembali ke Dashboard</a>
