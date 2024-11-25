@@ -132,3 +132,6 @@ Route::post('/login', [UserController::class, 'login']);
 //lihat Profil
 Route::get('/lihat-profil', [LihatProfilController::class, 'index'])->name('lihat-profil');
 Route::get('/profil', [LihatProfilController::class, 'index']);
+
+//lihat-penyewaan
+Route::get('/lihat-penyewaan', [PenyewaanController::class, 'lihatPenyewaan'])->name('penyewaan.lihat');

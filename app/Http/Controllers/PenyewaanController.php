@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class PenyewaanController extends Controller
 {
+    public function lihatPenyewaan()
+{
+    // Ambil semua data penyewaan
+    $penyewaans = Penyewaan::all();
+    
+    // Kirim data penyewaan ke view
+    return view('lihat-penyewaan', compact('penyewaans'));
+}
+
     // Menampilkan semua data penyewaan
     public function index()
     {
