@@ -174,7 +174,7 @@
             <div class="card dashboard-card">
                 <div class="card-body">
                     <h3>Lihat Penyewaan</h3>
-                    <p>Cek status penyewaan ruang atau fasilitas di sanggar.</p>
+                    <p>Cek status penyewaan baju di sanggar.</p>
                     <div class="text-center">
                         <a href="/lihat-penyewaan">Lihat Penyewaan</a>
                     </div>
