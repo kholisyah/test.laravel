@@ -144,7 +144,6 @@
         <h4>Sanggar Galuh Pelaihari</h4>
 
         <!-- Menu -->
-        <a href="/dashboard">Dashboard</a>
         <a href="/lihat-profil">Profil</a>
         <a href="/project">Pendaftaran</a>
         <a href="/jadwal">Penjadwalan</a>
