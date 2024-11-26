@@ -64,6 +64,16 @@
             background-color: #8ED2F6;
             transform: translateX(5px);
         }
+        .sidebar .btn-danger {
+            background-color: #8ED2F6;
+            border: none;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .sidebar .btn-danger:hover {
+            background-color: #007BBA;
+            transform: scale(1.05);
+        }
 
         /* Konten Utama */
         .content {
@@ -138,18 +148,27 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Logo -->
-        <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
-        <h4>Sanggar Galuh Pelaihari</h4>
+        <div class="sidebar">
+            <!-- Logo -->
+            <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+            <h4>Sanggar Galuh Pelaihari</h4>
 
-        <!-- Menu -->
-        <a href="/lihat-profil">Profil</a>
-        <a href="/project">Pendaftaran</a>
-        <a href="/jadwal">Penjadwalan</a>
-        <a href="/penyewaan">Penyewaan</a>
-    </div>
+            <!-- Menu -->
+            <a href="/lihat-profil">Profil</a>
+            <a href="/project">Pendaftaran</a>
+            <a href="/jadwal">Penjadwalan</a>
+            <a href="/penyewaan">Penyewaan</a>
 
+            <!-- Spacer untuk memindahkan tombol ke bawah -->
+            <div style="flex-grow: 1;"></div>
+
+            <!-- Tombol Logout -->
+            <form action="{{ route('logout') }}" method="POST" style="width: 100%; text-align: center;">
+                @csrf
+                <button type="submit" class="btn btn-danger w-100">Logout</button>
+            </form>
+        </div>
+    
     <!-- Konten Utama -->
     <div class="content">
         <h1>Selamat Datang di Sanggar Galuh Pelaihari</h1>

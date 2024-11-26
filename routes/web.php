@@ -13,6 +13,7 @@ use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\LihatProfilController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -138,3 +139,9 @@ Route::get('/lihat-penyewaan', [PenyewaanController::class, 'lihatPenyewaan'])->
 
 //lihat-pendaftaran
 Route::get('/lihat-pendaftaran', [PendaftaranController::class, 'lihatPendaftaran']);
+
+//logout
+Route::post('/logout', function () {
+    Auth::logout(); // Fungsi bawaan Laravel untuk logout
+    return redirect('/login'); // Redirect ke halaman utama atau halaman lain setelah logout
+})->name('logout');
