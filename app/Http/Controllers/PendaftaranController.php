@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class PendaftaranController extends Controller
 {
+    public function lihatPendaftaran()
+{
+    $pendaftarans = Pendaftaran::all();
+    return view('lihat-pendaftaran', compact('pendaftarans'));
+}
+
     // Fungsi untuk menghapus pendaftaran berdasarkan instance model Pendaftaran
     public function deletePendaftaran(Pendaftaran $pendaftaran) {
         $pendaftaran->delete();

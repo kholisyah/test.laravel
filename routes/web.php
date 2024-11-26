@@ -135,3 +135,6 @@ Route::get('/profil', [LihatProfilController::class, 'index']);
 
 //lihat-penyewaan
 Route::get('/lihat-penyewaan', [PenyewaanController::class, 'lihatPenyewaan'])->name('penyewaan.lihat');
+
+//lihat-pendaftaran
+Route::get('/lihat-pendaftaran', [PendaftaranController::class, 'lihatPendaftaran']);
