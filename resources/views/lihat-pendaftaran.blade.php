@@ -94,5 +94,7 @@
         </div>
         @endforeach
     </div>
+    <!-- Kembali ke Dashboard -->
+    <a href="{{ url('/dashboard') }}" class="btn btn-primary">Kembali ke Dashboard</a>
 </body>
 </html>
