@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        /* Reset CSS */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -40,34 +47,58 @@
         }
 
         .form-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            position: relative;
         }
 
         .form-row label {
-            flex-basis: 100px;
+            display: block;
+            margin-bottom: 5px;
             font-size: 16px;
             color: #555;
             font-weight: 500;
-            text-align: right;
         }
 
         .form-row input {
-            flex-grow: 1;
-            padding: 15px; /* Diperbesar */
+            width: 100%;
+            padding: 15px;
             border: 2px solid #f0f0f0;
             border-radius: 8px;
-            font-size: 18px; /* Diperbesar */
+            font-size: 18px;
             background: #f9f9f9;
             color: #333;
             transition: 0.3s;
+            padding-right: 40px; /* Ruang untuk ikon mata */
         }
 
         .form-row input:focus {
             border-color: #7DD3FC;
             background: #ffffff;
             outline: none;
+        }
+
+        .form-row .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .form-row .toggle-password:hover {
+            color: #0284C7;
+        }
+
+        /* Icon Eye Minimalist */
+        .form-row .toggle-password svg {
+            width: 24px;
+            height: 24px;
+            fill: #555;
+        }
+
+        .form-row .toggle-password:hover svg {
+            fill: #0284C7;
         }
 
         .register-container button {
@@ -115,20 +146,50 @@
         <h1>Halaman Register</h1>
         <form action="/register" method="POST">
             @csrf
-            <label for="nama">Nama:</label>
-            <input name="nama" type="text" placeholder="Nama" required>
+            <div class="form-row">
+                <label for="nama">Nama:</label>
+                <input id="nama" name="nama" type="text" placeholder="Nama" required>
+            </div>
 
-            <label for="email">Email:</label>
-            <input name="email" type="email" placeholder="Email" required>
+            <div class="form-row">
+                <label for="email">Email:</label>
+                <input id="email" name="email" type="email" placeholder="Email" required>
+            </div>
 
-            <label for="password">Password:</label>
-            <input name="password" type="password" placeholder="Password" required>
+            <div class="form-row">
+                <label for="password">Password:</label>
+                <input id="password" name="password" type="password" placeholder="Password" required>
+                <span class="toggle-password" onclick="toggleVisibility('password')">
+                    <!-- Ikon Mata Minimalis -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4C7 4 3.73 8 2 12c1.73 4 5 8 10 8s8.27-4 10-8c-1.73-4-5-8-10-8zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                </span>
+            </div>
+
+            <div class="form-row">
+                <label for="confirm-password">Konfirmasi Password:</label>
+                <input id="confirm-password" name="confirm-password" type="password" placeholder="Konfirmasi Password" required>
+                <span class="toggle-password" onclick="toggleVisibility('confirm-password')">
+                    <!-- Ikon Mata Minimalis -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4C7 4 3.73 8 2 12c1.73 4 5 8 10 8s8.27-4 10-8c-1.73-4-5-8-10-8zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                </span>
+            </div>
 
             <button type="submit">Register</button>
         </form>
         <div class="extra-link">
-            <span>sudah punya akun? <a href="/login">klik disini</a></span>       
+            <span>sudah punya akun? <a href="/login">klik disini</a></span>
         </div>
     </div>
+
+    <script>
+        function toggleVisibility(inputId) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+    </script>
 </body>
 </html>
