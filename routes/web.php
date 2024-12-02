@@ -40,6 +40,12 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 });
+Route::get('/profile', [UserController::class, 'showProfile'])->name('profile.show')->middleware('auth');
+// Menampilkan dan mengelola data pengguna
+Route::get('/user', [UserController::class, 'showAllUser'])->name('user.index')->middleware('auth');
+Route::get('/profile/edit/{id}', [UserController::class, 'editProfile'])->name('profile.edit')->middleware('auth');
+Route::delete('/profile/delete/{id}', [UserController::class, 'deleteProfile'])->name('profile.delete')->middleware('auth');
+
 // Rute untuk 'jadwal'
 Route::get('/jadwal', [AkunController::class, 'index']);
 
