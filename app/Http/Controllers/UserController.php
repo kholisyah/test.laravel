@@ -23,6 +23,7 @@ class UserController extends Controller
         
         return back()->withErrors(['login' => 'Login gagal']);
     }
+    
 
     // logout
     public function logout()

@@ -33,16 +33,20 @@ Route::get('/home', function () {
     return view('home');
 });
 
+// Route untuk menampilkan form login
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login'); // Pastikan route ini memiliki nama 'login'
+
+// Route untuk memproses login
+Route::post('/login', [UserController::class, 'login']);
+
 
 Route::get('/register', function () {
     return view('register');
 });
 Route::get('/profile', [UserController::class, 'showProfile'])->name('profile.show')->middleware('auth');
 // Menampilkan dan mengelola data pengguna
-Route::get('/user', [UserController::class, 'showAllUser'])->name('user.index')->middleware('auth');
 Route::get('/profile/edit/{id}', [UserController::class, 'editProfile'])->name('profile.edit')->middleware('auth');
 Route::delete('/profile/delete/{id}', [UserController::class, 'deleteProfile'])->name('profile.delete')->middleware('auth');
 
