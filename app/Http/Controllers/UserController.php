@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function index()
+{
+    $logins = DB::table('user')->get(); // Ganti 'akun' dengan nama tabel login
+    return view('lihat-login', ['logins' => $logins]);
+}
+
          //login
          public function login(Request $request){
             $incomingFields = $request->validate([
@@ -31,7 +38,6 @@ class UserController extends Controller
             'email' => 'required|email|max:255|unique:user',
         ]);
         
-    
         // Simpan data ke database
         User::create([
             'nama' => $request->nama,

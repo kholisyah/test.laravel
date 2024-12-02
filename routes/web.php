@@ -155,3 +155,6 @@ Route::post('/logout', function () {
     Auth::logout(); // Fungsi bawaan Laravel untuk logout
     return redirect('/login'); // Redirect ke halaman utama atau halaman lain setelah logout
 })->name('logout');
+
+Route::get('/lihat-login', [UserController::class, 'index']);
+
