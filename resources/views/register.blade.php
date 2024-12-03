@@ -125,22 +125,18 @@
         <form action="/register" method="POST">
             @csrf
             <div class="form-row">
-                <label for="nama">Nama:</label>
                 <input id="nama" name="nama" type="text" placeholder="Nama" required>
             </div>
 
             <div class="form-row">
-                <label for="email">Email:</label>
                 <input id="email" name="email" type="email" placeholder="Email" required>
             </div>
 
             <div class="form-row">
-                <label for="password">Password:</label>
                 <input id="password" name="password" type="password" placeholder="Password" required>
             </div>
 
             <div class="form-row">
-                <label for="confirm-password">Konfirmasi Password:</label>
                 <input id="confirm-password" name="confirm-password" type="password" placeholder="Konfirmasi Password" required>
             </div>
 
