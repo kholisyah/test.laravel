@@ -120,6 +120,7 @@
                 @endforeach
             </tbody>
         </table>
+        <a href="{{ url('/dashboard') }}" class="btn btn-primary">Kembali ke Dashboard</a>
     </div>
 </body>
 </html>
