@@ -9,6 +9,33 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('edit-login', compact('user')); // Tampilkan form edit dengan data pengguna
+    }
+    
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete(); // Hapus pengguna
+        return redirect()->route('lihat-login'); // Kembali ke halaman daftar login setelah penghapusan
+    }
+    
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        return redirect()->route('lihat-login')->with('success', 'Data berhasil diperbarui');
+    }
+
     public function index()
 {
     $logins = DB::table('user')->get(); // Ganti 'akun' dengan nama tabel login

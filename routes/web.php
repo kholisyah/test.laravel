@@ -156,5 +156,10 @@ Route::post('/logout', function () {
     return redirect('/login'); // Redirect ke halaman utama atau halaman lain setelah logout
 })->name('logout');
 
+//lihat login
 Route::get('/lihat-login', [UserController::class, 'index']);
+Route::get('/edit-login/{id}', [UserController::class, 'edit'])->name('edit-login');
+Route::put('/update-login/{id}', [UserController::class, 'update'])->name('update-login');
+Route::delete('/delete-login/{id}', [UserController::class, 'destroy'])->name('delete-login');
+Route::get('/lihat-login', [UserController::class, 'index'])->name('lihat-login');
 

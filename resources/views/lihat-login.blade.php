@@ -105,22 +105,29 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Data login akan di-loop di sini -->
                 @foreach ($logins as $login)
                 <tr>
                     <td>{{ $login->id }}</td>
                     <td>{{ $login->nama }}</td>
                     <td>{{ $login->email }}</td>
-                    <td class="action-buttons">
-                        <!-- Tombol untuk Edit dan Delete -->
-                        <button class="btn btn-edit">Edit</button>
-                        <button class="btn btn-delete">Hapus</button>
+                    <td>
+                        <div class="action-buttons">
+                            <!-- Edit Button -->
+                            <a href="{{ route('edit-login', $login->id) }}" class="btn btn-edit">Edit</a>
+                            
+                            <!-- Delete Button (Form to Delete) -->
+                            <form action="{{ route('delete-login', $login->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-delete">Hapus</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
-        </table>
-        <a href="{{ url('/dashboard') }}" class="btn btn-primary">Kembali ke Dashboard</a>
+        </table>        
+        <a href="{{ url('/dashboard') }}" class="btn btn-edit">Kembali ke Dashboard</a>
     </div>
 </body>
 </html>
