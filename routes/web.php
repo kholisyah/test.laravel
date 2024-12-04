@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\PostController;
@@ -8,12 +9,12 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\DropBoxController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\LihatProfilController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PendaftaranController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -163,3 +164,11 @@ Route::put('/update-login/{id}', [UserController::class, 'update'])->name('updat
 Route::delete('/delete-login/{id}', [UserController::class, 'destroy'])->name('delete-login');
 Route::get('/lihat-login', [UserController::class, 'index'])->name('lihat-login');
 
+//DropBox
+route::post('upload',[DropBoxController::class, 'uploadFile'])->name('upload');
+route::get('/dropbox/create-folder',[DropBoxController::class, 'createFolder']);
+
+Route::get('/dropbox/list-folder', [DropBoxController::class, 'listFolder']);
+Route::get('/dropbox/upload-file', [DropBoxController::class, 'uploadFile']);
+Route::get('/dropbox/get-temp-link', [DropBoxController::class, 'getTemporaryLink']);
+Route::get('/dropbox/move-file', [DropBoxController::class, 'moveFile']);
