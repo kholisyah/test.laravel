@@ -142,7 +142,7 @@
 <body>
     <div class="container">
         <h2>Pendaftaran</h2>
-        <form id="pendaftaranForm" action="/create-pendaftaran" method="POST" enctype="multipart/form-data">
+        <form id="pendaftaranForm" action="/create-pendaftaran" method="POST">
             @csrf
             <input type="text" name="nama" placeholder="Nama" required>
             <input type="email" name="email" placeholder="Email" required>
@@ -155,16 +155,9 @@
             </select>
             <label for="biaya_administrasi">Biaya Administrasi Sebesar:</label>
             <input type="text" name="biaya_administrasi" id="biaya_administrasi" value="25000" readonly>
-            
-            <!-- Input untuk upload file -->
-            <div class="form-group">
-                <label for="file">file upload</label>
-                <input type="file" name="file" id="file" class="form-control">
-            </div>
-
             <button type="submit">Simpan</button>
         </form>
-        
+
         <div class="data-container">
             <h2>Data Pendaftaran Yang Tersimpan</h2>
             @foreach ($pendaftarans as $pendaftaran)
@@ -192,7 +185,7 @@
             @endforeach
         </div>
     </div>
-
+    <a href="{{ url('/syarat') }}" class="btn btn-primary">klik disini</a>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('#pendaftaranForm').on('submit', function(event) {

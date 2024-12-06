@@ -34,6 +34,10 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/syarat', function () {
+    return view('syarat');
+});
+
 // Route untuk menampilkan form login
 Route::get('/login', function () {
     return view('login');
@@ -167,8 +171,8 @@ Route::get('/lihat-login', [UserController::class, 'index'])->name('lihat-login'
 //DropBox
 route::post('upload',[DropBoxController::class, 'uploadFile'])->name('upload');
 route::get('/dropbox/create-folder',[DropBoxController::class, 'createFolder']);
-
 Route::get('/dropbox/list-folder', [DropBoxController::class, 'listFolder']);
 Route::get('/dropbox/upload-file', [DropBoxController::class, 'uploadFile']);
 Route::get('/dropbox/get-temp-link', [DropBoxController::class, 'getTemporaryLink']);
 Route::get('/dropbox/move-file', [DropBoxController::class, 'moveFile']);
+

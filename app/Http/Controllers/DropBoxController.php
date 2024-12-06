@@ -55,7 +55,7 @@ return view('dropbox.upload'); // Nama view sesuai dengan file blade
  ]);
 
 // Mendapatkan folder tujuan dari input
-$folderPath = 'saya';
+$folderPath = ('saya');
 // $request->input('folder_path'); // Folder tujuan di Dropbox
 $file = $request->file('file'); // File yang diunggah
 $fileName = $file->getClientOriginalName(); // Nama asli file
@@ -71,6 +71,7 @@ $dropboxFilePath = $folderPath . '/' . $fileName;
 
 try {
 // Mengunggah file ke Dropbox 
+
  $content = file_get_contents($file->getRealPath());
  $this->client->upload($dropboxFilePath, $content);
 
