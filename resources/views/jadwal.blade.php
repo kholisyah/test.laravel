@@ -7,35 +7,101 @@
     <title>Jadwal Latihan</title> <!-- Menentukan judul halaman yang ditampilkan di tab browser -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Menghubungkan pustaka Bootstrap untuk gaya dan tata letak yang responsif -->
     <style>
+        /* Mengubah warna latar belakang untuk body dan kontainer */
+        body {
+            background-color: #f0f8ff; /* Latar belakang biru muda */
+        }
+
         .container {
             max-width: 800px; /* Membatasi lebar kontainer utama agar tidak terlalu lebar */
             margin: auto; /* Menempatkan kontainer di tengah halaman */
         }
+
         .card-body {
             padding: 10px; /* Menambah ruang di dalam body card */
+            background-color: #ffffff; /* Warna latar belakang putih untuk card */
         }
+
+        /* Mengubah warna teks untuk label, judul dan paragraf */
         .form-label, h4, p {
             font-size: 14px; /* Mengatur ukuran font untuk label dan teks */
             margin-bottom: 5px; /* Menambahkan jarak di bawah label dan teks */
+            color: #333; /* Warna teks gelap */
         }
+
+        /* Menyesuaikan warna untuk input dan tombol */
         input.form-control, button {
             font-size: 14px; /* Mengatur ukuran font untuk input dan tombol */
             padding: 8px; /* Menambah ruang di dalam input dan tombol */
+            border: 1px solid #4A90E2; /* Warna border biru */
         }
-        .card {
-            margin-bottom: 10px; /* Menambahkan jarak antara card */
-        }
+
         button {
             padding: 5px 10px; /* Mengatur padding tombol */
+            background-color: #4A90E2; /* Warna latar belakang biru pada tombol */
+            color: white; /* Warna teks putih pada tombol */
+            border-radius: 4px; /* Sudut tombol yang melengkung */
+            border: none; /* Menghilangkan border default tombol */
         }
+
+        /* Menambahkan efek hover pada tombol */
+        button:hover {
+            background-color: #357ABD; /* Warna tombol saat hover */
+        }
+
         .btn {
             font-size: 12px; /* Mengatur ukuran font tombol */
         }
+
+        /* Mengubah ukuran font untuk judul */
         h1, h2 {
             font-size: 20px; /* Mengatur ukuran font untuk judul utama dan subjudul */
+            color: #4A90E2; /* Warna teks biru pada judul */
         }
+
+        /* Mengubah warna untuk judul card */
         .card-title {
             font-size: 16px; /* Mengatur ukuran font untuk judul card */
+            color: #4A90E2; /* Warna biru pada judul card */
+        }
+
+        /* Menambahkan efek bayangan pada card */
+        .card {
+            margin-bottom: 10px; /* Menambahkan jarak antara card */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek bayangan untuk card */
+        }
+
+        /* Menyesuaikan tombol edit dan hapus */
+        .btn-warning {
+            background-color: #FFB84D; /* Warna tombol edit (kuning lembut) */
+            color: white; /* Warna teks putih */
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800; /* Warna tombol edit saat hover */
+        }
+
+        .btn-danger {
+            background-color: #DC3545; /* Warna tombol hapus (merah) */
+            color: white; /* Warna teks putih */
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Warna tombol hapus saat hover */
+        }
+
+        /* Warna khusus untuk tombol "Simpan" */
+        .btn-save {
+            background-color: #4A90E2; /* Warna biru pada tombol simpan */
+            color: white; /* Warna teks putih */
+            font-size: 14px; /* Ukuran font tombol */
+            border-radius: 5px; /* Sudut tombol yang lebih bulat */
+            padding: 10px 20px; /* Padding tombol agar lebih besar */
+            border: none; /* Menghilangkan border default tombol */
+        }
+
+        .btn-save:hover {
+            background-color: #357ABD; /* Warna tombol simpan saat hover */
         }
     </style>
 </head>
@@ -67,7 +133,8 @@
                         <label for="anggota" class="form-label">Anggota</label> <!-- Label untuk input anggota -->
                         <input type="text" id="anggota" name="anggota" class="form-control" placeholder="Masukkan nama anggota" required> <!-- Input untuk memasukkan nama anggota -->
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Simpan</button> <!-- Tombol untuk menyimpan data -->
+                    <!-- Tombol Simpan dengan kelas baru -->
+                    <button type="submit" class="btn btn-save w-100">Simpan</button> <!-- Tombol untuk menyimpan data -->
                 </form>
             </div>
         </div>

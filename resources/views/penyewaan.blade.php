@@ -12,7 +12,7 @@
         /* Style dasar untuk body */
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
+            background-color: #EAF6FB; /* Ganti background body */
             margin: 0;
             padding: 20px;
         }
@@ -21,7 +21,7 @@
         .container {
             max-width: 800px;
             margin: auto;
-            background: #fff;
+            background: #F4FAFD; /* Ganti warna background container */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -30,7 +30,7 @@
         /* Style untuk judul halaman */
         h1 {
             text-align: center;
-            color: #333;
+            color: #4A90E2; /* Ganti warna judul */
         }
 
         /* Style untuk pesan alert */
@@ -39,21 +39,22 @@
             margin-bottom: 20px;
             border-radius: 5px;
         }
-        
+
         /* Pesan sukses dengan warna hijau */
         .alert-success {
-            background-color: #dff0d8;
-            color: #3c763d;
+            background-color: #B5E5C9; /* Hijau lebih lembut */
+            color: #2F8C4E; /* Warna teks sukses */
         }
-        
+
         /* Pesan error dengan warna merah */
         .alert-danger {
-            background-color: #f2dede;
-            color: #a94442;
+            background-color: #FFCCCC; /* Merah lebih lembut */
+            color: #A94442;
         }
 
         /* Style untuk label input */
         label {
+            color: #333; /* Warna label */
             display: block;
             margin: 10px 0 5px;
         }
@@ -66,14 +67,14 @@
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #B5DDEB; /* Border biru muda */
             border-radius: 4px;
             box-sizing: border-box;
         }
 
         /* Style untuk tombol utama */
         button {
-            background-color: #007bff;
+            background-color: #4A90E2; /* Tombol biru */
             color: white;
             border: none;
             padding: 10px 15px;
@@ -84,12 +85,12 @@
 
         /* Efek hover untuk tombol */
         button:hover {
-            background-color: #0056b3;
+            background-color: #357ABD; /* Warna tombol saat hover */
         }
 
         /* Style untuk kartu data penyewaan */
         .card {
-            background: #f8f9fa;
+            background: #F8F9FA;
             border: 1px solid #ddd;
             border-radius: 5px;
             margin: 10px 0;
@@ -106,6 +107,7 @@
         .card-header {
             font-weight: bold;
             font-size: 1.2em;
+            color: #4A90E2; /* Ganti warna header kartu */
         }
 
         /* Style untuk bagian detail yang muncul saat tombol "Lihat Detail" diklik */
@@ -128,7 +130,7 @@
         .view-button,
         .edit-button,
         .delete-button {
-            background-color: #007bff;
+            background-color: #4A90E2; /* Ganti warna tombol aksi */
             color: white;
             border: none;
             padding: 5px 10px;
@@ -140,7 +142,7 @@
 
         /* Style khusus untuk tombol hapus */
         .delete-button {
-            background-color: #dc3545;
+            background-color: #DC3545; /* Warna merah untuk tombol hapus */
         }
 
         /* Style untuk opsi baju adat tambahan */

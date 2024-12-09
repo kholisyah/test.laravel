@@ -16,7 +16,7 @@
 
         /* Gaya dasar untuk body, background dan padding */
         body {
-            background-color: #f0f2f5;
+            background-color: #EAF6FB;
             padding: 20px;
         }
 
@@ -24,7 +24,7 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #fff;
+            background-color: #F4FAFD;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -57,13 +57,13 @@
 
         /* Perubahan warna border ketika input aktif */
         input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus {
-            border-color: #6c63ff;
+            border-color: #B5DDEB;
         }
 
         /* Gaya tombol submit */
         button {
             padding: 12px 20px;
-            background-color: #6c63ff;
+            background-color: #B5DDEB;
             color: white;
             border: none;
             border-radius: 5px;
@@ -74,7 +74,7 @@
 
         /* Efek hover pada tombol */
         button:hover {
-            background-color: #574bcc;
+            background-color: #A2D4E8;
         }
 
         /* Container untuk menampilkan data yang telah tersimpan */
@@ -96,7 +96,7 @@
 
         /* Gaya judul dalam item data */
         .data-item h3 {
-            color: #6c63ff;
+            color: #4A90E2;
             margin-bottom: 5px;
         }
 
@@ -108,7 +108,7 @@
 
         /* Gaya link untuk tombol View dan Edit */
         .data-item a {
-            color: #6c63ff;
+            color: #4A90E2;
             text-decoration: none;
             margin-right: 15px;
             font-size: 14px;
@@ -128,14 +128,14 @@
 
         /* Gaya untuk tombol Delete */
         .delete-form button {
-            background-color: #ff6363;
+            background-color: #FFAAAA;
             padding: 8px 12px;
             border-radius: 5px;
         }
 
         /* Efek hover untuk tombol Delete */
         .delete-form button:hover {
-            background-color: #e55d5d;
+            background-color: #FF8A8A;
         }
     </style>
 </head>
@@ -189,18 +189,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $('#pendaftaranForm').on('submit', function(event) {
-            event.preventDefault(); // Mencegah reload halaman
+            event.preventDefault();
 
-            // Kirim data via AJAX
             $.ajax({
                 url: '/create-pendaftaran',
                 method: 'POST',
                 data: $(this).serialize(),
                 success: function(response) {
                     alert('Data berhasil disimpan!');
-                    $('#pendaftaranForm')[0].reset(); // Reset form
-
-                    // Tambahkan data baru ke tampilan
+                    $('#pendaftaranForm')[0].reset();
                     const newData = `
                         <div class="data-item">
                             <div>
@@ -223,11 +220,7 @@
                                 </form>
                             </div>
                         </div>`;
-
-                    // Append data baru ke dalam container
                     $('.data-container').append(newData);
-                    
-                    // Event listener untuk tombol View pada data baru
                     $('.view-button').last().on('click', function() {
                         $(this).closest('.data-item').find('.detail').slideToggle();
                     });
@@ -238,7 +231,6 @@
             });
         });
 
-        // Menangani tampilan detail data
         $(document).on('click', '.view-button', function() {
             $(this).closest('.data-item').find('.detail').slideToggle();
         });
