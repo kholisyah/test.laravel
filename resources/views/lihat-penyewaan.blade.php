@@ -9,7 +9,7 @@
         /* Style untuk body dan tampilan umum */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
+            background-color: #F4FAFD; /* Latar belakang biru pastel */
             margin: 0;
             padding: 20px;
         }
@@ -18,7 +18,7 @@
         h1 {
             text-align: center;
             margin-bottom: 40px;
-            color: #007bff;
+            color: #4A4A4A;
             font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -28,9 +28,10 @@
         /* Styling tabel */
         .table {
             margin-top: 20px;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            background-color: #EAF6FB; /* Warna biru pastel lembut */
         }
 
         .table th, .table td {
@@ -41,9 +42,8 @@
         }
 
         .table th {
-            background-color: #007bff;
-            color: white;
-            font-weight: bold;
+            background-color: #B5DDEB; /* Header tabel biru pastel */
+            color: #4A4A4A;
         }
 
         .table td {
@@ -53,13 +53,13 @@
 
         /* Styling untuk row hover */
         .table tbody tr:hover {
-            background-color: #f1f1f1;
+            background-color: #CDEAF5; /* Efek hover baris tabel */
         }
 
         /* Styling tombol */
         .btn {
-            background-color: #007bff;
-            color: white;
+            background-color: #B5DDEB; /* Tombol biru pastel */
+            color: #4A4A4A;
             padding: 8px 15px;
             border: none;
             border-radius: 5px;
@@ -70,7 +70,7 @@
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #A2D4E8; /* Warna hover biru pastel lebih gelap */
         }
 
         /* Styling untuk tombol kembali ke dashboard */

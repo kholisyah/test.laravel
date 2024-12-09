@@ -16,7 +16,7 @@
 
         /* Gaya dasar untuk body, background dan padding */
         body {
-            background-color: #f0f2f5;
+            background-color: #F4FAFD; /* Latar belakang biru pastel */
             padding: 20px;
         }
 
@@ -24,17 +24,18 @@
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background-color: #fff;
+            background-color: #EAF6FB; /* Warna biru pastel lembut */
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Gaya dasar untuk judul */
         h2 {
             text-align: center;
-            color: #333;
+            color: #4A4A4A;
             margin-bottom: 20px;
+            font-size: 24px;
         }
 
         /* Tabel styling */
@@ -47,36 +48,41 @@
         th, td {
             text-align: left;
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid #D9EEF7; /* Batas tabel biru pastel */
+            font-size: 14px;
         }
 
         th {
-            background-color: #6c63ff;
-            color: #fff;
+            background-color: #B5DDEB; /* Header tabel biru pastel */
+            color: #4A4A4A;
         }
 
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #FFFFFF; /* Baris tabel putih */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #D9EEF7; /* Baris tabel biru pastel terang */
         }
 
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #CDEAF5; /* Efek hover baris tabel */
         }
 
         /* Tombol kembali */
         .back-button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #6c63ff;
-            color: #fff;
+            background-color: #B5DDEB; /* Tombol biru pastel */
+            color: #4A4A4A;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             text-align: center;
             transition: background-color 0.3s ease;
         }
 
         .back-button:hover {
-            background-color: #574bcc;
+            background-color: #A2D4E8; /* Warna hover biru pastel lebih gelap */
         }
     </style>
 </head>

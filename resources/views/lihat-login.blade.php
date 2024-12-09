@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+            background-color: #F4FAFD; /* Latar belakang biru pastel */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -22,9 +22,9 @@
         }
 
         .login-container {
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: #EAF6FB; /* Warna kotak */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 600px;
             padding: 20px;
@@ -34,7 +34,7 @@
             text-align: center;
             font-size: 24px;
             margin-bottom: 20px;
-            color: #333;
+            color: #4A4A4A; /* Warna teks utama */
         }
 
         table {
@@ -46,18 +46,22 @@
         table th, table td {
             padding: 10px;
             text-align: left;
-            border: 1px solid #ddd;
+            border: 1px solid #D9EEF7; /* Warna batas tabel */
             font-size: 14px;
         }
 
         table th {
-            background: #7DD3FC;
-            color: white;
+            background: #B5DDEB; /* Warna header tabel */
+            color: #4A4A4A;
             font-weight: bold;
         }
 
         table tbody tr:nth-child(odd) {
-            background: #f9f9f9;
+            background: #FFFFFF; /* Baris tabel putih */
+        }
+
+        table tbody tr:nth-child(even) {
+            background: #D9EEF7; /* Baris tabel biru pastel lebih terang */
         }
 
         .action-buttons {
@@ -66,29 +70,31 @@
         }
 
         .btn {
-            padding: 5px 10px;
+            padding: 8px 15px;
             font-size: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
         }
 
         .btn-edit {
-            background: #38BDF8;
-            color: white;
+            background: #B5DDEB; /* Warna biru pastel */
+            color: #4A4A4A;
         }
 
         .btn-delete {
-            background: #EF4444;
-            color: white;
+            background: #F28D8D; /* Warna merah pastel */
+            color: #4A4A4A;
         }
 
         .btn-edit:hover {
-            background: #0284C7;
+            background: #A2D4E8; /* Warna hover biru pastel lebih gelap */
         }
 
         .btn-delete:hover {
-            background: #DC2626;
+            background: #E67E7E; /* Warna hover merah pastel lebih gelap */
         }
     </style>
 </head>
@@ -127,7 +133,7 @@
                 @endforeach
             </tbody>
         </table>        
-        <a href="{{ url('/dashboard') }}" class="btn btn-edit">Kembali ke Dashboard</a>
+        <a href="{{ url('/dashboard') }}" class="btn btn-edit" style="margin-top: 20px; display: inline-block; text-align: center;">Kembali ke Dashboard</a>
     </div>
 </body>
 </html>

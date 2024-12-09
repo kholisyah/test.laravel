@@ -12,22 +12,22 @@
             display: flex;
             min-height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #1E3A5F, #162D49);
+            background: linear-gradient(135deg, #CFE9F3, #EAF6FB); /* Warna biru pastel lembut */
             font-family: 'Poppins', sans-serif;
-            color: #D9E6F2;
+            color: #4A4A4A;
         }
 
         /* Sidebar */
         .sidebar {
             min-width: 240px;
-            background-color: #223A5F;
-            color: #AFCBE3;
+            background-color: #D9EEF7; /* Biru pastel cerah */
+            color: #4A4A4A;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-            border-right: 2px solid #304B6E;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            border-right: 2px solid #B5DDEB; 
         }
 
         .sidebar img {
@@ -36,19 +36,18 @@
             border-radius: 50%;
             margin-bottom: 20px;
             object-fit: cover;
-            border: 3px solid #304B6E;
+            border: 3px solid #A2D4E8;
         }
 
         .sidebar h4 {
             font-size: 22px;
             margin-bottom: 20px;
             text-align: center;
-            color: #AFCBE3;
         }
 
         .sidebar a {
             display: block;
-            color: #AFCBE3;
+            color: #4A4A4A;
             text-decoration: none;
             margin: 10px 0;
             padding: 12px;
@@ -57,23 +56,23 @@
             font-weight: 500;
             width: 100%;
             text-align: center;
-            background-color: #304B6E;
+            background-color: #EAF6FB;
         }
 
         .sidebar a:hover {
-            background-color: #1E2F48;
+            background-color: #D2ECF5;
             transform: translateX(5px);
         }
 
         .sidebar .btn-danger {
-            background-color: #304B6E;
+            background-color: #EAF6FB;
             border: none;
-            color: #FFFFFF;
+            color: #4A4A4A;
             transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
         }
 
         .sidebar .btn-danger:hover {
-            background-color: #1E2F48;
+            background-color: #D2ECF5;
             transform: scale(1.05);
         }
 
@@ -81,43 +80,43 @@
         .content {
             flex: 1;
             padding: 30px;
-            background-color: #1B2D46;
+            background-color: #F4FAFD; /* Biru pastel sangat lembut */
         }
 
         .content h1 {
             font-size: 34px;
             text-align: center;
             margin-bottom: 40px;
-            color: #AFCBE3;
+            color: #4A4A4A;
         }
 
         /* Kartu Dashboard */
         .dashboard-card {
-            background: #2A3E5D;
+            background: #EAF6FB;
             border: none;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             padding: 20px;
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             height: 100%;
-            border: 1px solid #304B6E;
+            border: 1px solid #B5DDEB;
         }
 
         .dashboard-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            background: #304B6E;
+            background: #D9EEF7;
         }
 
         .dashboard-card h3 {
-            color: #AFCBE3;
+            color: #4A4A4A;
             font-size: 24px;
             text-align: center;
         }
 
         .dashboard-card p {
             font-size: 16px;
-            color: #C0D1E3;
+            color: #6B6B6B;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -127,13 +126,13 @@
             font-size: 16px;
             padding: 10px 20px;
             border-radius: 8px;
-            background-color: #405B84;
-            color: #FFFFFF;
+            background-color: #D2ECF5;
+            color: #4A4A4A;
             transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
         }
 
         .dashboard-card a:hover {
-            background-color: #2A3E5D;
+            background-color: #B5DDEB;
             transform: scale(1.05);
         }
 
@@ -162,7 +161,7 @@
         <a href="/jadwal">Penjadwalan</a>
         <a href="/penyewaan">Penyewaan</a>
 
-        <!-- Spacer untuk memindahkan tombol ke bawah -->
+        <!-- Spacer -->
         <div style="flex-grow: 1;"></div>
 
         <!-- Tombol Logout -->
@@ -176,7 +175,6 @@
     <div class="content">
         <h1>Selamat Datang di Sanggar Galuh Pelaihari</h1>
         <div class="row g-4">
-            <!-- Penjadwalan Latihan -->
             <div class="col-md-6">
                 <div class="card dashboard-card">
                     <div class="card-body">
@@ -189,7 +187,6 @@
                 </div>
             </div>
 
-            <!-- Lihat Profil -->
             <div class="col-md-6">
                 <div class="card dashboard-card">
                     <div class="card-body">
@@ -202,7 +199,6 @@
                 </div>
             </div>
 
-            <!-- Lihat Penyewaan -->
             <div class="col-md-6">
                 <div class="card dashboard-card">
                     <div class="card-body">
@@ -215,7 +211,6 @@
                 </div>
             </div>
 
-            <!-- Lihat Pendaftaran -->
             <div class="col-md-6">
                 <div class="card dashboard-card">
                     <div class="card-body">

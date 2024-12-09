@@ -9,16 +9,16 @@
     <style>
         /* Gaya latar belakang halaman */
         body {
-            background-color: #f1f3f5;
-            color: #333;
-            font-family: Arial, sans-serif;
+            background-color: #F4FAFD; /* Biru pastel lembut */
+            color: #4A4A4A;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 20px;
         }
 
         /* Gaya judul halaman */
         h1 {
-            color: #007bff;
+            color: #4A4A4A; /* Warna teks utama */
             font-weight: bold;
             text-transform: uppercase;
             margin-bottom: 40px;
@@ -27,10 +27,10 @@
 
         /* Gaya tabel */
         .table {
-            background-color: #ffffff;
+            background-color: #EAF6FB; /* Warna tabel biru pastel */
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .table th, .table td {
@@ -41,28 +41,28 @@
         }
 
         .table th {
-            background-color: #007bff;
-            color: white;
+            background-color: #B5DDEB; /* Header tabel biru pastel lebih gelap */
+            color: #4A4A4A;
             font-weight: bold;
         }
 
         .table td {
-            background-color: #ffffff;
-            color: #333;
+            background-color: #EAF6FB;
+            color: #4A4A4A;
         }
 
         /* Hover effect untuk tabel */
         .table tbody tr:hover {
-            background-color: #f1f1f1;
+            background-color: #D9EEF7; /* Hover biru pastel lebih cerah */
         }
 
         /* Styling tombol */
         .btn {
-            background-color: #007bff;
-            color: white;
-            padding: 8px 15px;
+            background-color: #B5DDEB; /* Warna biru pastel */
+            color: #4A4A4A;
+            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-weight: bold;
             text-decoration: none;
             display: inline-block;
@@ -71,7 +71,7 @@
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #A2D4E8; /* Warna hover tombol lebih gelap */
         }
     </style>
 </head>
@@ -104,7 +104,7 @@
         </table>
 
         <!-- Kembali ke Dashboard -->
-        <a href="{{ url('/dashboard') }}" class="btn btn-primary">Kembali ke Dashboard</a>
+        <a href="{{ url('/dashboard') }}" class="btn">Kembali ke Dashboard</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
