@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\DropBoxController;
@@ -176,3 +177,5 @@ Route::get('/dropbox/upload-file', [DropBoxController::class, 'uploadFile']);
 Route::get('/dropbox/get-temp-link', [DropBoxController::class, 'getTemporaryLink']);
 Route::get('/dropbox/move-file', [DropBoxController::class, 'moveFile']);
 
+//galeri
+Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
