@@ -35,28 +35,30 @@
             overflow: hidden;
             margin-bottom: 30px;
             transition: transform 0.3s;
+            padding: 10px;
         }
 
         .gallery-card img {
             width: 100%;
-            height: auto; /* Mempertahankan rasio gambar */
-            max-height: 200px; /* Membatasi tinggi maksimal gambar */
+            height: auto;
+            max-height: 300px; /* Membatasi tinggi maksimal gambar */
             object-fit: cover;
+            border-radius: 8px;
         }
 
         .gallery-card .card-body {
-            padding: 20px;
+            padding: 15px;
         }
 
         .gallery-card h3 {
-            font-size: 22px;
+            font-size: 20px;
             color: #003366;
             text-align: center;
             margin-top: 10px;
         }
 
         .gallery-card p {
-            font-size: 16px;
+            font-size: 14px;
             color: #555;
             text-align: center;
             margin-top: 10px;
@@ -73,23 +75,27 @@
             }
 
             .gallery-card img {
-                max-height: 150px; /* Mengurangi ukuran gambar pada perangkat lebih kecil */
+                max-height: 200px; /* Mengurangi ukuran gambar pada perangkat lebih kecil */
             }
+        }
+
+        /* Hover effect for better visibility */
+        .gallery-card img:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease-in-out;
         }
     </style>
 </head>
 <body>
     <!-- Konten Utama -->
     <div class="content">
-        <h1>Galeri Baju Adat & Tarian</h1>
+        <h1>Baju Adat & Tarian Sanggar Galuh Pelaihari</h1>
         <div class="row">
             <!-- Baju 1 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/Baksa Kembang.jpg') }}" alt="Baksa Kembang">
                     <div class="card-body">
-                        <h3>Baju Tarian Baksa Kembang</h3>
-                        <p>Baju adat untuk acara tradisional dan upacara penting.</p>
                     </div>
                 </div>
             </div>
@@ -99,8 +105,6 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/Radap Rahayu.jpg') }}" alt="Radap Rahayu">
                     <div class="card-body">
-                        <h3>Baju Adat 2</h3>
-                        <p>Baju adat dengan desain khas daerah.</p>
                     </div>
                 </div>
             </div>
@@ -110,8 +114,6 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/Giring giring.jpg') }}" alt="Giring giring">
                     <div class="card-body">
-                        <h3>Baju Adat 3</h3>
-                        <p>Baju adat untuk perayaan dan acara besar.</p>
                     </div>
                 </div>
             </div>
@@ -121,8 +123,6 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/Dayak.jpg') }}" alt="Dayak Cewe">
                     <div class="card-body">
-                        <h3>Baju Adat 4</h3>
-                        <p>Baju adat untuk acara keluarga dan pertemuan.</p>
                     </div>
                 </div>
             </div>
@@ -132,8 +132,6 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/Dayak cowo.jpg') }}" alt="Dayak Cowo">
                     <div class="card-body">
-                        <h3>Baju Adat 5</h3>
-                        <p>Baju adat dengan ornamen khas tradisional.</p>
                     </div>
                 </div>
             </div>
@@ -143,8 +141,6 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/baju banjar cewe.jpg') }}" alt="Baju Banjar Cewe">
                     <div class="card-body">
-                        <h3>Baju Adat 6</h3>
-                        <p>Baju adat dengan sentuhan modern.</p>
                     </div>
                 </div>
             </div>
@@ -154,8 +150,6 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/baju banjar cowo.jpg') }}" alt="Baju Banjar Cowo">
                     <div class="card-body">
-                        <h3>Baju Adat 7</h3>
-                        <p>Baju adat dengan warna cerah dan desain elegan.</p>
                     </div>
                 </div>
             </div>
@@ -165,8 +159,6 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/baju nanang.jpg') }}" alt="baju nanang">
                     <div class="card-body">
-                        <h3>Baju Adat 8</h3>
-                        <p>Baju adat dengan aksesoris khas daerah.</p>
                     </div>
                 </div>
             </div>
@@ -176,8 +168,6 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/bali cewe.jpg') }}" alt="Bali Cewe">
                     <div class="card-body">
-                        <h3>Baju Adat 9</h3>
-                        <p>Baju adat untuk acara kebudayaan dan kesenian.</p>
                     </div>
                 </div>
             </div>
@@ -185,10 +175,8 @@
             <!-- Baju 10 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/Bali.jpg') }}" alt="Bali">
+                    <img src="{{ asset('assets/img/bali.jpg') }}" alt="Bali">
                     <div class="card-body">
-                        <h3>Baju Adat 10</h3>
-                        <p>Baju adat dengan desain yang klasik dan mewah.</p>
                     </div>
                 </div>
             </div>
@@ -196,10 +184,8 @@
             <!-- Baju 11 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju11.jpg') }}" alt="Baju 11">
+                    <img src="{{ asset('assets/img/batak.jpg') }}" alt="Batak">
                     <div class="card-body">
-                        <h3>Baju Adat 11</h3>
-                        <p>Baju adat dengan kombinasi warna yang menarik.</p>
                     </div>
                 </div>
             </div>
@@ -207,10 +193,8 @@
             <!-- Baju 12 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju12.jpg') }}" alt="Baju 12">
+                    <img src="{{ asset('assets/img/galuh banjar.jpg') }}" alt="Galuh banjar">
                     <div class="card-body">
-                        <h3>Baju Adat 12</h3>
-                        <p>Baju adat dengan motif yang elegan dan anggun.</p>
                     </div>
                 </div>
             </div>
@@ -218,10 +202,8 @@
             <!-- Baju 13 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju13.jpg') }}" alt="Baju 13">
+                    <img src="{{ asset('assets/img/jas cewe.jpg') }}" alt="Jas Cewe">
                     <div class="card-body">
-                        <h3>Baju Adat 13</h3>
-                        <p>Baju adat dengan desain simpel namun menarik.</p>
                     </div>
                 </div>
             </div>
@@ -229,10 +211,8 @@
             <!-- Baju 14 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju14.jpg') }}" alt="Baju 14">
+                    <img src="{{ asset('assets/img/jas cowo.jpg') }}" alt="Jas Cowo">
                     <div class="card-body">
-                        <h3>Baju Adat 14</h3>
-                        <p>Baju adat dengan kesan modern dan elegan.</p>
                     </div>
                 </div>
             </div>
@@ -240,10 +220,8 @@
             <!-- Baju 15 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju15.jpg') }}" alt="Baju 15">
+                    <img src="{{ asset('assets/img/jawa cewe.jpg') }}" alt="Jawa Cewe">
                     <div class="card-body">
-                        <h3>Baju Adat 15</h3>
-                        <p>Baju adat untuk acara besar dan formal.</p>
                     </div>
                 </div>
             </div>
@@ -251,10 +229,8 @@
             <!-- Baju 16 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju16.jpg') }}" alt="Baju 16">
+                    <img src="{{ asset('assets/img/jawa.jpg') }}" alt="Jawa Cowo">
                     <div class="card-body">
-                        <h3>Baju Adat 16</h3>
-                        <p>Baju adat dengan ornamen berkilau dan cantik.</p>
                     </div>
                 </div>
             </div>
@@ -262,10 +238,8 @@
             <!-- Baju 17 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju17.jpg') }}" alt="Baju 17">
+                    <img src="{{ asset('assets/img/Kebaya.jpg') }}" alt="Kebaya KutuBaru">
                     <div class="card-body">
-                        <h3>Baju Adat 17</h3>
-                        <p>Baju adat dengan gaya tradisional yang khas.</p>
                     </div>
                 </div>
             </div>
@@ -273,10 +247,8 @@
             <!-- Baju 18 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju18.jpg') }}" alt="Baju 18">
+                    <img src="{{ asset('assets/img/ntt.jpg') }}" alt="Baju Ntt">
                     <div class="card-body">
-                        <h3>Baju Adat 18</h3>
-                        <p>Baju adat dengan detail yang sangat menawan.</p>
                     </div>
                 </div>
             </div>
@@ -286,8 +258,6 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/baju19.jpg') }}" alt="Baju 19">
                     <div class="card-body">
-                        <h3>Baju Adat 19</h3>
-                        <p>Baju adat dengan aksen bordir tangan yang indah.</p>
                     </div>
                 </div>
             </div>
@@ -297,8 +267,6 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/baju20.jpg') }}" alt="Baju 20">
                     <div class="card-body">
-                        <h3>Baju Adat 20</h3>
-                        <p>Baju adat yang mewah dan penuh warna.</p>
                     </div>
                 </div>
             </div>
