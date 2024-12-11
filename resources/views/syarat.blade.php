@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
       body {
-        background-color: #f8f9fa;
+        background-color: #E8F0FE;
       }
 
       .container {
@@ -21,7 +21,7 @@
       h3 {
         margin-bottom: 20px;
         font-weight: bold;
-        color: #343a40;
+        color: #333;
       }
 
       .form-group label {
@@ -31,17 +31,22 @@
 
       .form-control {
         border-radius: 5px;
-        border: 1px solid #ced4da;
+        border: 1px solid #AFCBFF;
+      }
+
+      .form-control:focus {
+        border-color: #7DA3FF;
       }
 
       .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
+        background-color: #4D8BFF;
+        border-color: #4D8BFF;
+        color: white;
         transition: background-color 0.3s ease;
       }
 
       .btn-primary:hover {
-        background-color: #0056b3;
+        background-color: #3B72D3;
       }
 
       .btn {
@@ -55,7 +60,13 @@
   </head>
   <body>
     <div class="container">
-        <h3>Masukkan Berkas Disini</h3>
+        <p><strong>Persyaratan yang diperlukan sebagai berikut:</strong></p>
+        <ul>
+            <li>Kartu Keluarga</li>
+            <li>Akta</li>
+            <li>Pas Foto diri sendiri</li>
+            <li>Ijazah Terakhir/SKHU</li>
+        </ul>
         <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="form-group mb-3">
@@ -63,7 +74,7 @@
               <input type="file" name="file" id="file" class="form-control">
           </div>
       
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Upload</button>
       </form>      
     </div>
     <a href="{{ url('/project') }}" class="btn btn-primary">Kembali ke Pendaftaran</a>
