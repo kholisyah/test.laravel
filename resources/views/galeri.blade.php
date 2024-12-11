@@ -88,7 +88,7 @@
                 <div class="card gallery-card">
                     <img src="{{ asset('assets/img/Baksa Kembang.jpg') }}" alt="Baksa Kembang">
                     <div class="card-body">
-                        <h3>Baju Tarian Baks Kembang</h3>
+                        <h3>Baju Tarian Baksa Kembang</h3>
                         <p>Baju adat untuk acara tradisional dan upacara penting.</p>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
             <!-- Baju 3 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/Dayak.jpg') }}" alt="Dayak">
+                    <img src="{{ asset('assets/img/Giring giring.jpg') }}" alt="Giring giring">
                     <div class="card-body">
                         <h3>Baju Adat 3</h3>
                         <p>Baju adat untuk perayaan dan acara besar.</p>
@@ -119,7 +119,7 @@
             <!-- Baju 4 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/Giring giring.jpg') }}" alt="Giring giring">
+                    <img src="{{ asset('assets/img/Dayak.jpg') }}" alt="Dayak Cewe">
                     <div class="card-body">
                         <h3>Baju Adat 4</h3>
                         <p>Baju adat untuk acara keluarga dan pertemuan.</p>
@@ -130,7 +130,7 @@
             <!-- Baju 5 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju5.jpg') }}" alt="Baju 5">
+                    <img src="{{ asset('assets/img/Dayak cowo.jpg') }}" alt="Dayak Cowo">
                     <div class="card-body">
                         <h3>Baju Adat 5</h3>
                         <p>Baju adat dengan ornamen khas tradisional.</p>
@@ -141,7 +141,7 @@
             <!-- Baju 6 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju6.jpg') }}" alt="Baju 6">
+                    <img src="{{ asset('assets/img/baju banjar cewe.jpg') }}" alt="Baju Banjar Cewe">
                     <div class="card-body">
                         <h3>Baju Adat 6</h3>
                         <p>Baju adat dengan sentuhan modern.</p>
@@ -152,7 +152,7 @@
             <!-- Baju 7 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju7.jpg') }}" alt="Baju 7">
+                    <img src="{{ asset('assets/img/baju banjar cowo.jpg') }}" alt="Baju Banjar Cowo">
                     <div class="card-body">
                         <h3>Baju Adat 7</h3>
                         <p>Baju adat dengan warna cerah dan desain elegan.</p>
@@ -163,7 +163,7 @@
             <!-- Baju 8 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju8.jpg') }}" alt="Baju 8">
+                    <img src="{{ asset('assets/img/baju nanang.jpg') }}" alt="baju nanang">
                     <div class="card-body">
                         <h3>Baju Adat 8</h3>
                         <p>Baju adat dengan aksesoris khas daerah.</p>
@@ -174,7 +174,7 @@
             <!-- Baju 9 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju9.jpg') }}" alt="Baju 9">
+                    <img src="{{ asset('assets/img/bali cewe.jpg') }}" alt="Bali Cewe">
                     <div class="card-body">
                         <h3>Baju Adat 9</h3>
                         <p>Baju adat untuk acara kebudayaan dan kesenian.</p>
@@ -185,7 +185,7 @@
             <!-- Baju 10 -->
             <div class="col-md-4">
                 <div class="card gallery-card">
-                    <img src="{{ asset('assets/img/baju10.jpg') }}" alt="Baju 10">
+                    <img src="{{ asset('assets/img/Bali.jpg') }}" alt="Bali">
                     <div class="card-body">
                         <h3>Baju Adat 10</h3>
                         <p>Baju adat dengan desain yang klasik dan mewah.</p>
