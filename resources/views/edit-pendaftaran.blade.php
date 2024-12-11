@@ -16,7 +16,7 @@
 
         /* Gaya dasar untuk body, background dan padding */
         body {
-            background-color: #f0f2f5;
+            background-color: #e3f2fd; /* Biru muda untuk latar belakang */
             padding: 20px;
         }
 
@@ -24,7 +24,7 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #fff;
+            background-color: #ffffff; /* Putih bersih untuk latar belakang kontainer */
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -33,7 +33,7 @@
         /* Pengaturan gaya untuk judul */
         h2 {
             text-align: center;
-            color: #333;
+            color: #1565c0; /* Biru tua untuk teks judul */
             margin-bottom: 20px;
         }
 
@@ -48,7 +48,7 @@
         input[type="text"], input[type="date"], input[type="email"], input[type="tel"], select {
             width: 100%;
             padding: 15px;
-            border: 1px solid #ddd;
+            border: 1px solid #90caf9; /* Warna biru muda pada border */
             border-radius: 5px;
             font-size: 16px;
             outline: none;
@@ -57,13 +57,13 @@
 
         /* Pengaturan perubahan warna border ketika input aktif */
         input[type="text"]:focus, input[type="date"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus {
-            border-color: #6c63ff;
+            border-color: #1565c0; /* Biru tua untuk border saat fokus */
         }
 
         /* Pengaturan gaya tombol submit */
         button {
             padding: 12px 20px;
-            background-color: #6c63ff;
+            background-color: #42a5f5; /* Biru terang untuk tombol */
             color: white;
             border: none;
             border-radius: 5px;
@@ -74,7 +74,14 @@
 
         /* Efek hover pada tombol */
         button:hover {
-            background-color: #574bcc;
+            background-color: #1e88e5; /* Biru tua saat hover */
+        }
+
+        /* Label tambahan */
+        label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -86,27 +93,27 @@
             @csrf
             @method('PUT')
             <!-- Input nama -->
-            <input type="text" name="nama" value="{{ $pendaftaran->nama }}">
-            
+            <input type="text" name="nama" value="{{ $pendaftaran->nama }}" required>
+
             <!-- Input email -->
-            <input type="email" name="email" value="{{ $pendaftaran->email }}">
-            
+            <input type="email" name="email" value="{{ $pendaftaran->email }}" required>
+
             <!-- Ganti input password menjadi alamat -->
-            <input type="text" name="alamat" value="{{ $pendaftaran->alamat }}">
-            
+            <input type="text" name="alamat" value="{{ $pendaftaran->alamat }}" required>
+
             <!-- Input nomor telepon -->
-            <input type="tel" name="no_telepon" value="{{ $pendaftaran->no_telepon }}">
+            <input type="tel" name="no_telepon" value="{{ $pendaftaran->no_telepon }}" required>
 
             <!-- Keterangan Kategori -->
-            <label for="kategori">Kategori: </label>
-            <select name="kategori" id="kategori">
+            <label for="kategori">Kategori:</label>
+            <select name="kategori" id="kategori" required>
                 <option value="dewasa" {{ $pendaftaran->kategori == 'dewasa' ? 'selected' : '' }}>Dewasa</option>
                 <option value="anak-anak" {{ $pendaftaran->kategori == 'anak-anak' ? 'selected' : '' }}>Anak-anak</option>
             </select>
 
             <!-- Keterangan Biaya Administrasi -->
-            <label for="biaya_administrasi">Biaya Administrasi: </label>
-            <select name="biaya_administrasi" id="biaya_administrasi">
+            <label for="biaya_administrasi">Biaya Administrasi:</label>
+            <select name="biaya_administrasi" id="biaya_administrasi" required>
                 <option value="25000" {{ $pendaftaran->biaya_administrasi == '25000' ? 'selected' : '' }}>25.000</option>
             </select>
 

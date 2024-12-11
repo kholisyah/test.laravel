@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Halaman Pendaftaran</title>
     <style>
-        /* Reset gaya dasar elemen dan pengaturan box model */
         * {
             margin: 0;
             padding: 0;
@@ -14,56 +13,49 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Gaya dasar untuk body, background dan padding */
         body {
-            background-color: #EAF6FB;
+            background-color: #E8F0FE;
             padding: 20px;
         }
 
-        /* Pengaturan untuk container form pendaftaran */
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #F4FAFD;
+            background-color: #FFFFFF;
             padding: 30px;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Gaya dasar untuk judul */
         h2 {
             text-align: center;
             color: #333;
             margin-bottom: 20px;
         }
 
-        /* Pengaturan tata letak form agar vertikal dengan jarak antar elemen */
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        /* Pengaturan input form */
         input[type="text"], input[type="email"], input[type="tel"], select {
             width: 100%;
             padding: 15px;
-            border: 1px solid #ddd;
+            border: 1px solid #AFCBFF;
             border-radius: 5px;
             font-size: 16px;
             outline: none;
             transition: border 0.3s ease;
         }
 
-        /* Perubahan warna border ketika input aktif */
         input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus {
-            border-color: #B5DDEB;
+            border-color: #7DA3FF;
         }
 
-        /* Gaya tombol submit */
         button {
             padding: 12px 20px;
-            background-color: #B5DDEB;
+            background-color: #4D8BFF;
             color: white;
             border: none;
             border-radius: 5px;
@@ -72,21 +64,18 @@
             transition: background-color 0.3s ease;
         }
 
-        /* Efek hover pada tombol */
         button:hover {
-            background-color: #A2D4E8;
+            background-color: #3B72D3;
         }
 
-        /* Container untuk menampilkan data yang telah tersimpan */
         .data-container {
             margin-top: 40px;
         }
 
-        /* Gaya item data */
         .data-item {
-            background-color: #fafafa;
+            background-color: #F9FAFB;
             padding: 20px;
-            margin-bottom: 10px; 
+            margin-bottom: 10px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             display: flex;
@@ -94,48 +83,41 @@
             align-items: center;
         }
 
-        /* Gaya judul dalam item data */
         .data-item h3 {
-            color: #4A90E2;
+            color: #4D8BFF;
             margin-bottom: 5px;
         }
 
-        /* Bagian detail tersembunyi yang akan ditampilkan saat tombol View diklik */
         .data-item .detail {
             display: none;
             color: #666;
         }
 
-        /* Gaya link untuk tombol View dan Edit */
         .data-item a {
-            color: #4A90E2;
+            color: #4D8BFF;
             text-decoration: none;
             margin-right: 15px;
             font-size: 14px;
             cursor: pointer;
         }
 
-        /* Efek hover pada link */
         .data-item a:hover {
             text-decoration: underline;
         }
 
-        /* Pengaturan tampilan actions yang berisi link dan tombol */
         .actions {
             display: flex;
             align-items: center;
         }
 
-        /* Gaya untuk tombol Delete */
         .delete-form button {
-            background-color: #FFAAAA;
+            background-color: #FF7070;
             padding: 8px 12px;
             border-radius: 5px;
         }
 
-        /* Efek hover untuk tombol Delete */
         .delete-form button:hover {
-            background-color: #FF8A8A;
+            background-color: #FF4C4C;
         }
     </style>
 </head>
