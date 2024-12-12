@@ -39,6 +39,10 @@ Route::get('/syarat', function () {
     return view('syarat');
 });
 
+Route::get('/tari', function () {
+    return view('tari');
+});
+
 // Route untuk menampilkan form login
 Route::get('/login', function () {
     return view('login');
