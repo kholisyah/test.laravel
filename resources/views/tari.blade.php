@@ -49,6 +49,46 @@
                         <h4>{{ $tarian->nama_tari }}</h4>
                         <p>Pelatih: {{ $tarian->pelatih }}</p>
                         <p>Kategori: {{ $tarian->kategori }}</p>
+                        <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $tarian->id }}">Edit</a>
+                        <form action="{{ route('tarian.destroy', $tarian->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal Edit -->
+                <div class="modal fade" id="editModal{{ $tarian->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $tarian->id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="{{ route('tarian.update', $tarian->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel{{ $tarian->id }}">Edit Tarian</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-2">
+                                        <label for="jenis_tari" class="form-label">Nama Tari</label>
+                                        <input type="text" name="jenis_tari" class="form-control" value="{{ $tarian->nama_tari }}" required>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="pelatih" class="form-label">Pelatih</label>
+                                        <input type="text" name="pelatih" class="form-control" value="{{ $tarian->pelatih }}" required>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="kategori" class="form-label">Kategori</label>
+                                        <input type="text" name="kategori" class="form-control" value="{{ $tarian->kategori }}" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             @endforeach

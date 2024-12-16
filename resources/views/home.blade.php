@@ -79,7 +79,7 @@
 <body>
 
     <div class="navbar">
-        <a href="lihat-profil">Profil</a>
+        <a href="home">Beranda</a>
         <a href="project">Pendaftaran</a>
         <a href="login">Jadwal</a>
         <a href="galeri">Penyewaan</a>
@@ -88,14 +88,13 @@
     <div class="hero">
         <h1>Selamat Datang di Sanggar Galuh</h1>
         <p>Pelajari lebih lanjut tentang budaya dan seni melalui layanan kami.</p>
-        <button>Hubungi Kami</button>
     </div>
 
     <div class="content">
         <section id="profil">
-            <h2>Deskripsi sanggar</h2>
-            <p>Sanggar Galuh didirikan pada tahun 2010 oleh Maulida, S.Pd, dengan tujuan untuk melestarikan dan mengembangkan seni tari tradisional Indonesia, khususnya tari-tarian daerah Kalimantan Selatan. Sanggar ini tidak hanya berfokus pada pembelajaran tari, tetapi juga memberikan ruang bagi generasi muda untuk mengenal, mencintai, dan melestarikan budaya lokal. Kami menyediakan berbagai pelatihan untuk berbagai usia, mulai dari anak-anak hingga dewasa, dengan pengajaran yang berbasis pada teknik dan filosofi tari tradisional yang mendalam. Sanggar Galuh berlokasi di Komplek Perumahan Hamparan Permai No.68 Blok.4, Desa Atu Atu, depan RTH, samping kolam renang</p>
-        </section>
+            <h2>Pendiri Sanggar</h2>
+            <p>Lihat jadwal terbaru untuk pelatihan dan acara lainnya.</p>
+         </section>
 
         <section id="pendaftaran">
             <h2>Visi Misi</h2>
@@ -108,8 +107,9 @@
         </section>
 
         <section id="pendiri sanggar">
-            <h2>pendiri sanggar</h2>
-            <p>Lihat jadwal terbaru untuk pelatihan dan acara lainnya.</p>
+            <h2>Deskripsi sanggar</h2>
+            <p>Sanggar Galuh didirikan pada tahun 2010 oleh Maulida, S.Pd, dengan tujuan untuk melestarikan dan mengembangkan seni tari tradisional Indonesia, khususnya tari-tarian daerah Kalimantan Selatan. Sanggar ini tidak hanya berfokus pada pembelajaran tari, tetapi juga memberikan ruang bagi generasi muda untuk mengenal, mencintai, dan melestarikan budaya lokal. Kami menyediakan berbagai pelatihan untuk berbagai usia, mulai dari anak-anak hingga dewasa, dengan pengajaran yang berbasis pada teknik dan filosofi tari tradisional yang mendalam. Sanggar Galuh berlokasi di Komplek Perumahan Hamparan Permai No.68 Blok.4, Desa Atu Atu, depan RTH, samping kolam renang</p>
+       
         </section>
     </div>
 
