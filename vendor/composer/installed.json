@@ -761,7 +761,7 @@
             },
             "time": "2023-12-03T20:50:24+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "GrahamCampbell\\GuzzleFactory\\": "src/"
@@ -5437,7 +5437,7 @@
             },
             "time": "2023-06-08T07:13:00+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Spatie\\Dropbox\\": "src"
