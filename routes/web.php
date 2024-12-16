@@ -10,6 +10,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\TarianController;
 use App\Http\Controllers\DropBoxController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenyewaanController;
@@ -183,3 +184,8 @@ Route::get('/dropbox/move-file', [DropBoxController::class, 'moveFile']);
 
 //galeri
 Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
+
+
+Route::get('/tari', [TarianController::class, 'index'])->name('tarian.index'); // Halaman utama
+Route::post('/tari/store', [TarianController::class, 'store'])->name('tarian.store'); // Menyimpan data baru
+Route::post('/create-post', [TarianController::class, 'createPost']);

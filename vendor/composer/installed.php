@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c3095ccf1a8e65dfabe67c32cf78550e80cbb2da',
+        'reference' => '45edbf35edbb3de038777235210c350576e0127f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -385,6 +385,15 @@
                 0 => '*',
             ),
         ),
+        'kunalvarma05/dropbox-php-sdk' => array(
+            'pretty_version' => 'v0.5.0',
+            'version' => '0.5.0.0',
+            'reference' => '77153f9cdb39402e4c39b115910290e8c9ffe41b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kunalvarma05/dropbox-php-sdk',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v11.26.0',
             'version' => '11.26.0.0',
@@ -397,7 +406,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c3095ccf1a8e65dfabe67c32cf78550e80cbb2da',
+            'reference' => '45edbf35edbb3de038777235210c350576e0127f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
