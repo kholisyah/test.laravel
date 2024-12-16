@@ -385,6 +385,15 @@
                 0 => '*',
             ),
         ),
+        'kunalvarma05/dropbox-php-sdk' => array(
+            'pretty_version' => 'v0.5.0',
+            'version' => '0.5.0.0',
+            'reference' => '77153f9cdb39402e4c39b115910290e8c9ffe41b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../kunalvarma05/dropbox-php-sdk',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v11.26.0',
             'version' => '11.26.0.0',
