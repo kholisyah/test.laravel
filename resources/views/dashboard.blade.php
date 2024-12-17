@@ -160,6 +160,7 @@
         <a href="/project">Pendaftaran</a>
         <a href="/jadwal">Penjadwalan</a>
         <a href="/penyewaan">Penyewaan</a>
+        <a href="/tari">Data master</a>
 
         <!-- Spacer -->
         <div style="flex-grow: 1;"></div>
