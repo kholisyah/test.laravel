@@ -34,4 +34,30 @@ class TarianController extends Controller
         // Redirect ke halaman utama dengan pesan sukses
         return redirect()->route('tarian.index')->with('success', 'Data Tarian berhasil ditambahkan.');
     }
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'jenis_tari' => 'required|string|max:255',
+        'pelatih' => 'required|string|max:255',
+        'kategori' => 'required|string|max:255',
+    ]);
+
+    $tarian = Tarian::findOrFail($id);
+    $tarian->update([
+        'nama_tari' => $request->jenis_tari,
+        'pelatih' => $request->pelatih,
+        'kategori' => $request->kategori,
+    ]);
+
+    return redirect()->route('tarian.index')->with('success', 'Data Tarian berhasil diperbarui.');
+}
+
+public function destroy($id)
+{
+    $tarian = Tarian::findOrFail($id);
+    $tarian->delete();
+
+    return redirect()->route('tarian.index')->with('success', 'Data Tarian berhasil dihapus.');
+}
+
 }

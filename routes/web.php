@@ -189,6 +189,7 @@ Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
 Route::get('/tari', [TarianController::class, 'index'])->name('tarian.index'); // Halaman utama
 Route::post('/tari/store', [TarianController::class, 'store'])->name('tarian.store'); // Menyimpan data baru
 Route::post('/create-post', [TarianController::class, 'createPost']);
+<<<<<<< HEAD
 
 
 Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
@@ -198,3 +199,7 @@ Route::put('/transaksi/{id}/update-status', [TransaksiController::class, 'update
 Route::put('/update-transaksi/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
 Route::get('/payment/{id}', [TransaksiController::class, 'showPaymentPage'])->name('transaksi.payment');
 Route::post('/payment', [TransaksiController::class, 'payment'])->name('transaksi.payment');
+=======
+Route::put('/tari/{id}', [TarianController::class, 'update'])->name('tarian.update'); // Update data
+Route::delete('/tari/{id}', [TarianController::class, 'destroy'])->name('tarian.destroy'); // Hapus data
+>>>>>>> 75c1f4fe51b721a1ac626b2d6fea8cb107fad089
