@@ -66,10 +66,35 @@
         .gallery-card:hover {
             transform: scale(1.05);
         }
+                .quantity-controls {
+            display: flex; /* Mengatur elemen menjadi sejajar */
+            align-items: center; /* Pusatkan vertikal */
+            justify-content: center; /* Pusatkan horizontal */
+            gap: 5px; /* Jarak antara elemen */
+        }
+
+        .quantity-btn {
+            width: 30px; /* Lebar tombol */
+            height: 30px; /* Tinggi tombol */
+            border: 1px solid #ccc; /* Tambahkan border */
+            background-color: #f5f5f5; /* Warna latar */
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .quantity-input {
+            width: 50px; /* Lebar input */
+            height: 30px; /* Tinggi input */
+            text-align: center; /* Pusatkan teks */
+            border: 1px solid #ccc; /* Tambahkan border */
+            font-size: 16px; /* Ukuran teks */
+        }
+
     </style>
 </head>
 <body>
-    
+
     </div>
     <!-- Konten Utama -->
     <div class="content">
@@ -718,51 +743,51 @@
         </div>
     </div>
     <script>
-        // Mengatur tombol dan input quantity
-        document.querySelectorAll('.gallery-card').forEach(card => {
-            const decreaseBtn = card.querySelector('.decrease-btn');
-            const increaseBtn = card.querySelector('.increase-btn');
-            const quantityInput = card.querySelector('.quantity-input');
-            const totalPriceElement = card.querySelector('.total-price');
-            const hiddenQuantityInput = card.querySelector('.hidden-quantity');
-            const hiddenTotalInput = card.querySelector('.hidden-total');
-            const pricePerItem = parseInt(increaseBtn.getAttribute('data-price'), 10);
-
-            // Event untuk tombol +
-            increaseBtn.addEventListener('click', () => {
-                let quantity = parseInt(quantityInput.value, 10);
-                quantity++;
-                quantityInput.value = quantity;
-                hiddenQuantityInput.value = quantity;
-
-                const totalPrice = quantity * pricePerItem;
-                totalPriceElement.textContent = `Total: Rp ${totalPrice.toLocaleString()}`;
-                hiddenTotalInput.value = totalPrice;
-                decreaseBtn.disabled = false; // Aktifkan tombol -
-            });
-
-            // Event untuk tombol -
-            decreaseBtn.addEventListener('click', () => {
-                let quantity = parseInt(quantityInput.value, 10);
-                if (quantity > 1) {
-                    quantity--;
-                    quantityInput.value = quantity;
-                    hiddenQuantityInput.value = quantity;
-
-                    const totalPrice = quantity * pricePerItem;
-                    totalPriceElement.textContent = `Total: Rp ${totalPrice.toLocaleString()}`;
-                    hiddenTotalInput.value = totalPrice;
-
-                    if (quantity === 1) {
-                        decreaseBtn.disabled = true; // Nonaktifkan tombol jika quantity 1
+        document.addEventListener("DOMContentLoaded", function () {
+            const quantityInputs = document.querySelectorAll(".quantity-input");
+            const decreaseBtns = document.querySelectorAll(".decrease-btn");
+            const increaseBtns = document.querySelectorAll(".increase-btn");
+            const totalDisplays = document.querySelectorAll(".total-price");
+            const hiddenQuantities = document.querySelectorAll(".hidden-quantity");
+            const hiddenTotals = document.querySelectorAll(".hidden-total");
+            
+            const maxStock = 10; // Batas stok maksimum
+        
+            // Fungsi untuk memperbarui total harga
+            function updateTotal(index, price, quantity) {
+                const total = price * quantity;
+                totalDisplays[index].textContent = `Total: Rp ${total.toLocaleString()}`;
+                hiddenQuantities[index].value = quantity;
+                hiddenTotals[index].value = total;
+            }
+        
+            // Loop untuk setiap produk
+            quantityInputs.forEach((input, index) => {
+                let price = parseInt(increaseBtns[index].dataset.price);
+                let quantity = parseInt(input.value);
+        
+                // Tombol tambah
+                increaseBtns[index].addEventListener("click", () => {
+                    if (quantity < maxStock) {
+                        quantity++;
+                        input.value = quantity;
+                        updateTotal(index, price, quantity);
+                    } else {
+                        alert("Stok maksimal adalah 10!");
                     }
-                }
+                });
+        
+                // Tombol kurang
+                decreaseBtns[index].addEventListener("click", () => {
+                    if (quantity > 1) {
+                        quantity--;
+                        input.value = quantity;
+                        updateTotal(index, price, quantity);
+                    }
+                });
             });
-
-            // Disable tombol - jika jumlah awal = 1
-            decreaseBtn.disabled = parseInt(quantityInput.value, 10) === 1;
         });
-    </script>
+        </script>        
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
