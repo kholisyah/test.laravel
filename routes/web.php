@@ -3,16 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BarangController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TarianController;
-use App\Http\Controllers\DropBoxController;
-use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\DropBoxController;;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\LihatProfilController;
