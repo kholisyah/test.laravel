@@ -33,7 +33,6 @@
             align-items: center;
             background-color: #89c4e9;
             padding: 10px 20px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             border-bottom: 2px solid #6baac8;
         }
 
@@ -67,17 +66,16 @@
             border-radius: 50%;
             object-fit: cover;
             margin-right: 15px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 100px 20px;
-            background-image: url('{{ asset('assets/img/home.jpeg') }}'); /* Gambar latar belakang */
-            background-size: cover; /* Gambar memenuhi area */
-            background-position: center; /* Gambar terpusat */
-            color: white; /* Warna teks putih agar kontras */
+            padding: 195px 50px;
+            background-image: url('{{ asset('assets/img/home.jpeg') }}');
+            background-size: cover;
+            background-position: center;
+            color: white;
             position: relative;
         }
 
@@ -88,39 +86,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Lapisan gelap untuk meningkatkan keterbacaan teks */
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
         .hero h1, .hero p, .hero button {
             position: relative;
-            z-index: 2; /* Membawa teks di atas lapisan gelap */
+            z-index: 2;
         }
 
         .hero h1 {
             font-size: 3em;
             font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .hero button {
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #3a77a7;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .hero button:hover {
-            background-color: #2f5f83;
         }
 
         /* Content Section */
@@ -145,6 +122,25 @@
         section p {
             line-height: 1.8;
             text-align: justify;
+        }
+
+        /* Founder Section */
+        .founder {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .founder img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .founder-info {
+            flex: 1;
         }
 
         /* Footer */
@@ -175,31 +171,36 @@
     <!-- Hero Section -->
     <div class="hero">
         <h1>Selamat Datang di Sanggar Galuh</h1>
+        <p>Mengembangkan dan Melestarikan Tari Tradisional Kalimantan Selatan</p>
     </div>
 
     <!-- Content -->
     <div class="content">
         <section id="profil">
             <h2>Pendiri Sanggar</h2>
-            <p>Sanggar ini didirikan pada tahun 2010 oleh Maulida, S.Pd, seorang pendidik yang berkomitmen melestarikan budaya tari Kalimantan Selatan.</p>
+            <div class="founder">
+                <img src="{{ asset('assets/img/founder.jpeg') }}" alt="Pendiri Sanggar">
+                <div class="founder-info">
+                    <p><strong>Maulida, S.Pd</strong> adalah pendiri Sanggar Galuh pada tahun 2010. Dengan latar belakang pendidikan seni tari, beliau memiliki visi kuat untuk melestarikan kebudayaan Kalimantan Selatan melalui seni tari. Dedikasi beliau tidak hanya mengajarkan tarian tradisional, tetapi juga membangun ruang kreativitas dan apresiasi seni bagi generasi muda.</p>
+                    <p>Melalui bimbingannya, Sanggar Galuh berhasil tampil dalam berbagai acara seni lokal maupun nasional, menjadikan sanggar ini sebagai salah satu pusat seni tari terkemuka di daerah.</p>
+                </div>
+            </div>
         </section>
 
         <section id="deskripsi">
             <h2>Deskripsi Sanggar</h2>
-            <p>Sanggar Galuh didirikan pada tahun 2010 oleh Maulida, S.Pd, dengan tujuan untuk melestarikan dan mengembangkan seni tari tradisional Indonesia, khususnya tari-tarian daerah Kalimantan Selatan. Sanggar ini tidak hanya berfokus pada pembelajaran tari, tetapi juga memberikan ruang bagi generasi muda untuk mengenal, mencintai, dan melestarikan budaya lokal. Kami menyediakan berbagai pelatihan untuk berbagai usia, mulai dari anak-anak hingga dewasa, dengan pengajaran yang berbasis pada teknik dan filosofi tari tradisional yang mendalam. Sanggar Galuh berlokasi di Komplek Perumahan Hamparan Permai No.68 Blok.4, Desa Atu Atu, depan RTH, samping kolam renang.</p>
+            <p>Sanggar Galuh didirikan pada tahun 2010 dengan tujuan untuk melestarikan dan mengembangkan seni tari tradisional Kalimantan Selatan. Kami menyediakan pelatihan profesional dan ruang kreatif bagi semua kalangan usia.</p>
         </section>
 
         <section id="visi-misi">
             <h2>Visi dan Misi</h2>
             <p>
-                <strong>Visi:</strong> Sanggar Galuh adalah menjadi pusat pelatihan seni tari tradisional terkemuka yang tidak hanya melestarikan seni budaya Indonesia, tetapi juga memperkenalkan keindahan seni tari lokal kepada dunia.<br><br>
+                <strong>Visi:</strong> Menjadi pusat pelatihan seni tari tradisional yang melestarikan budaya lokal dan memperkenalkannya ke kancah nasional dan internasional.<br>
                 <strong>Misi:</strong>
                 <ol>
-                    <li>Menyelenggarakan pelatihan seni tari tradisional berkualitas.</li>
-                    <li>Membuka peluang generasi muda untuk menggali potensi dalam seni tari.</li>
-                    <li>Menjadi media pembelajaran seni tari tradisional bagi masyarakat luas.</li>
-                    <li>Berperan meningkatkan kecintaan terhadap budaya tradisional Indonesia.</li>
-                    <li>Mengadakan pertunjukan seni tari untuk mempromosikan hasil karya peserta.</li>
+                    <li>Melatih generasi muda mengenal dan mencintai seni tari tradisional.</li>
+                    <li>Menyelenggarakan pertunjukan seni berkala.</li>
+                    <li>Menjalin kolaborasi untuk pelestarian budaya daerah.</li>
                 </ol>
             </p>
         </section>
@@ -207,7 +208,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        <p>&copy;Sanggar Galuh Pelaihari</p>
+        <p>&copy; 2024 Sanggar Galuh Pelaihari. Semua Hak Dilindungi.</p>
     </div>
 
 </body>
