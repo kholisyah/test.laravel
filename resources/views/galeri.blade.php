@@ -66,10 +66,35 @@
         .gallery-card:hover {
             transform: scale(1.05);
         }
+                .quantity-controls {
+            display: flex; /* Mengatur elemen menjadi sejajar */
+            align-items: center; /* Pusatkan vertikal */
+            justify-content: center; /* Pusatkan horizontal */
+            gap: 5px; /* Jarak antara elemen */
+        }
+
+        .quantity-btn {
+            width: 30px; /* Lebar tombol */
+            height: 30px; /* Tinggi tombol */
+            border: 1px solid #ccc; /* Tambahkan border */
+            background-color: #f5f5f5; /* Warna latar */
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .quantity-input {
+            width: 50px; /* Lebar input */
+            height: 30px; /* Tinggi input */
+            text-align: center; /* Pusatkan teks */
+            border: 1px solid #ccc; /* Tambahkan border */
+            font-size: 16px; /* Ukuran teks */
+        }
+
     </style>
 </head>
 <body>
-    
+
     </div>
     <!-- Konten Utama -->
     <div class="content">
