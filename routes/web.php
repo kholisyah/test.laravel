@@ -185,7 +185,8 @@ Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
 Route::get('/tari', [TarianController::class, 'index'])->name('tarian.index'); // Halaman utama
 Route::post('/tari/store', [TarianController::class, 'store'])->name('tarian.store'); // Menyimpan data baru
 Route::post('/create-post', [TarianController::class, 'createPost']);
-
+Route::put('/tari/{id}', [TarianController::class, 'update'])->name('tarian.update'); // Update data
+Route::delete('/tari/{id}', [TarianController::class, 'destroy'])->name('tarian.destroy'); // Hapus data
 
 Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
@@ -194,5 +195,3 @@ Route::put('/transaksi/{id}/update-status', [TransaksiController::class, 'update
 Route::put('/update-transaksi/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
 Route::get('/payment/{id}', [TransaksiController::class, 'showPaymentPage'])->name('transaksi.payment');
 Route::post('/payment', [TransaksiController::class, 'payment'])->name('transaksi.payment');
-Route::put('/tari/{id}', [TarianController::class, 'update'])->name('tarian.update'); // Update data
-Route::delete('/tari/{id}', [TarianController::class, 'destroy'])->name('tarian.destroy'); // Hapus data
