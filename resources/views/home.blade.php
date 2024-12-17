@@ -13,8 +13,8 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #eef6fb; /* Biru pastel lembut */
-            color: #2a3d55; /* Teks utama */
+            background-color: #eef6fb;
+            color: #2a3d55;
         }
 
         a {
@@ -23,38 +23,78 @@
         }
 
         h2 {
-            color: #3a77a7; /* Judul dengan warna biru pastel */
+            color: #3a77a7;
         }
 
         /* Navbar */
         .navbar {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            background-color: #89c4e9; /* Biru pastel navbar */
-            color: white;
+            background-color: #89c4e9;
             padding: 10px 20px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid #6baac8;
         }
 
-        .navbar a {
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .nav-links a {
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
             transition: background 0.3s ease;
         }
 
-        .navbar a:hover {
-            background-color: #6baac8; /* Biru pastel gelap untuk hover */
+        .navbar .nav-links a:hover {
+            background-color: #6baac8;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
             padding: 100px 20px;
-            background: linear-gradient(to bottom, #89c4e9, #eef6fb); /* Gradien biru pastel */
-            color: #2a3d55;
-            margin-bottom: 20px;
+            background-image: url('{{ asset('assets/img/home.jpeg') }}'); /* Gambar latar belakang */
+            background-size: cover; /* Gambar memenuhi area */
+            background-position: center; /* Gambar terpusat */
+            color: white; /* Warna teks putih agar kontras */
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Lapisan gelap untuk meningkatkan keterbacaan teks */
+            z-index: 1;
+        }
+
+        .hero h1, .hero p, .hero button {
+            position: relative;
+            z-index: 2; /* Membawa teks di atas lapisan gelap */
         }
 
         .hero h1 {
@@ -71,7 +111,7 @@
         .hero button {
             padding: 10px 20px;
             font-size: 1em;
-            background-color: #3a77a7; /* Tombol biru pastel */
+            background-color: #3a77a7;
             color: white;
             border: none;
             border-radius: 5px;
@@ -80,7 +120,7 @@
         }
 
         .hero button:hover {
-            background-color: #2f5f83; /* Hover tombol lebih gelap */
+            background-color: #2f5f83;
         }
 
         /* Content Section */
@@ -109,7 +149,7 @@
 
         /* Footer */
         .footer {
-            background-color: #89c4e9; /* Footer biru pastel */
+            background-color: #89c4e9;
             color: white;
             text-align: center;
             padding: 10px 0;
@@ -120,17 +160,21 @@
 
     <!-- Navbar -->
     <div class="navbar">
-        <a href="home">Beranda</a>
-        <a href="project">Pendaftaran</a>
-        <a href="login">Jadwal</a>
-        <a href="galeri">Penyewaan</a>
+        <div class="logo">
+            <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh" class="logo-circle">
+            Sanggar Galuh
+        </div>
+        <div class="nav-links">
+            <a href="home">Beranda</a>
+            <a href="project">Pendaftaran</a>
+            <a href="login">Jadwal</a>
+            <a href="galeri">Penyewaan</a>
+        </div>
     </div>
 
     <!-- Hero Section -->
     <div class="hero">
         <h1>Selamat Datang di Sanggar Galuh</h1>
-        <p>Pelajari lebih lanjut tentang budaya dan seni melalui layanan kami.</p>
-        <button>Pelajari Lebih Lanjut</button>
     </div>
 
     <!-- Content -->
@@ -163,7 +207,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2024 Sanggar Galuh Pelaihari. All Rights Reserved.</p>
+        <p>&copy;Sanggar Galuh Pelaihari</p>
     </div>
 
 </body>
