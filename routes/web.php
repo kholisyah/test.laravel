@@ -3,12 +3,16 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TarianController;
-use App\Http\Controllers\DropBoxController;;
+use App\Http\Controllers\DropBoxController;
+use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\LihatProfilController;
@@ -188,10 +192,11 @@ Route::post('/create-post', [TarianController::class, 'createPost']);
 Route::put('/tari/{id}', [TarianController::class, 'update'])->name('tarian.update'); // Update data
 Route::delete('/tari/{id}', [TarianController::class, 'destroy'])->name('tarian.destroy'); // Hapus data
 
+
 Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
 Route::resource('transaksi', TransaksiController::class);
 Route::put('/transaksi/{id}/update-status', [TransaksiController::class, 'updateStatus'])->name('transaksi.updateStatus');
 Route::put('/update-transaksi/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
 Route::get('/payment/{id}', [TransaksiController::class, 'showPaymentPage'])->name('transaksi.payment');
-Route::post('/payment', [TransaksiController::class, 'payment'])->name('transaksi.payment');
+
