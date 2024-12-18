@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TarianController;
 use App\Http\Controllers\DropBoxController;
 use App\Http\Controllers\PelangganController;
@@ -56,6 +58,11 @@ Route::post('/login', [UserController::class, 'login']);
 Route::get('/register', function () {
     return view('register');
 });
+
+Route::get('/result', function () {
+    return view('result');
+})->name('result');
+
 Route::get('/profile', [UserController::class, 'showProfile'])->name('profile.show')->middleware('auth');
 // Menampilkan dan mengelola data pengguna
 Route::get('/profile/edit/{id}', [UserController::class, 'editProfile'])->name('profile.edit')->middleware('auth');
@@ -199,4 +206,15 @@ Route::resource('transaksi', TransaksiController::class);
 Route::put('/transaksi/{id}/update-status', [TransaksiController::class, 'updateStatus'])->name('transaksi.updateStatus');
 Route::put('/update-transaksi/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
 Route::get('/payment/{id}', [TransaksiController::class, 'showPaymentPage'])->name('transaksi.payment');
+
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::post('/transaksi/store-from-cart', [TransaksiController::class, 'storeFromCart'])->name('transaksi.storeFromCart');
+
+// routes/web.php
+Route::get('/keranjang', [CartController::class, 'index'])->name('cart.index');
+Route::post('/keranjang/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/keranjang/remove', [CartController::class, 'remove'])->name('cart.remove');
 

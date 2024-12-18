@@ -7,6 +7,24 @@ use App\Models\Transaksi;
 
 class TransaksiController extends Controller
 {
+    public function storeFromCart(Request $request)
+{
+    $cart = session()->get('cart', []);
+
+    foreach ($cart as $item) {
+        Transaksi::create([
+            'status' => 'pending',
+            'total' => $item['total'],
+            'tanggal' => now(),
+        ]);
+    }
+
+    // Kosongkan keranjang
+    session()->forget('cart');
+
+    return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil dibuat!');
+}
+
     
     public function showPaymentPage($id)
 {
