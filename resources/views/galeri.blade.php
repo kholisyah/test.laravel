@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <!-- Meta Information -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Galeri Baju Adat & Tarian - Sanggar Galuh Pelaihari</title>
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
     <style>
         /* Layout Dasar */
         body {
@@ -24,16 +29,52 @@
         }
     
         .content h1 {
-            font-size: 36px;
-            color: #004aad;
+            font-size: 48px;
+            color: #ffffff;
             margin-bottom: 30px;
             text-align: center;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+            font-family: 'Montserrat', sans-serif;
         }
     
+        /* Navbar */
+        .navbar {
+            background-color: #004aad;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+        }
+        
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ffcc00;
+        }
+
         /* Galeri */
         .gallery {
             display: grid;
@@ -150,15 +191,28 @@
             }
         }
     </style>
-    
 </head>
 <body>
-    
-    </div>
-    <!-- Konten Utama -->
-    <div class="content">
-        <h1>Baju Adat & Tarian Sanggar Galuh Pelaihari</h1>
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="logo">
+                <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh" class="logo-circle">
+                Sanggar Galuh
+            </div>
+            <div class="nav-links">
+                <a href="home">Beranda</a>
+                <a href="project">Pendaftaran</a>
+                <a href="login">Jadwal</a>
+                <a href="galeri">Penyewaan</a>
+            </div>
+        </div>
 
+        <!-- Konten Utama -->
+        <div class="content">
+            <h1>Galeri Baju Adat & Tarian</h1>
+        </div>
+</body>
+</html>
         <div class="container">
             <div class="row">
                 <!-- Baju 1 -->

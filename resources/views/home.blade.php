@@ -179,7 +179,7 @@
         <section id="profil">
             <h2>Pendiri Sanggar</h2>
             <div class="founder">
-                <img src="{{ asset('assets/img/founder.jpeg') }}" alt="Pendiri Sanggar">
+                <img src="{{ asset('assets/img/maulida.jpg') }}" alt="Pendiri Sanggar">
                 <div class="founder-info">
                     <p><strong>Maulida, S.Pd</strong> adalah pendiri Sanggar Galuh pada tahun 2010. Dengan latar belakang pendidikan seni tari, beliau memiliki visi kuat untuk melestarikan kebudayaan Kalimantan Selatan melalui seni tari. Dedikasi beliau tidak hanya mengajarkan tarian tradisional, tetapi juga membangun ruang kreativitas dan apresiasi seni bagi generasi muda.</p>
                     <p>Melalui bimbingannya, Sanggar Galuh berhasil tampil dalam berbagai acara seni lokal maupun nasional, menjadikan sanggar ini sebagai salah satu pusat seni tari terkemuka di daerah.</p>
