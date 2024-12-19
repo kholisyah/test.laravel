@@ -204,6 +204,7 @@
                 <a href="project">Pendaftaran</a>
                 <a href="login">Jadwal</a>
                 <a href="galeri">Penyewaan</a>
+                <a href="keranjang">Keranjang</a>
             </div>
         </div>
 
@@ -222,7 +223,16 @@
                         <div class="card-body">
                             <h3>Baju Betawi</h3>
                             <p>Harga: Rp 70.000</p>
-                            <p>Ukuran: Anak-anak, Remaja, Orang Tua</p>
+                            <!-- Dropdown untuk memilih kategori umur -->
+                            <label for="kategori" class="form-label mt-2">Kategori</label>
+                            <select name="kategori" id="kategori" class="form-select">
+                                <option value="" selected disabled>Pilih Kategori</option>
+                                <option value="anak">Anak</option>
+                                <option value="orang_tua">Orang Tua</option>
+                                <option value="dewasa">Remaja</option>
+                            </select>
+
+
                            <!-- Quantity Controls -->
                            <div class="quantity-controls">
                             <button class="quantity-btn decrease-btn" data-price="100000">-</button>
@@ -252,7 +262,14 @@
                         <div class="card-body">
                             <h3>Radap Rahayu</h3>
                             <p>Harga: Rp 100.000</p>
-                            <p>Ukuran: Anak-anak, Remaja, Orang Tua</p>
+                            <label for="kategori" class="form-label mt-2">Kategori</label>
+                            <select name="kategori" id="kategori" class="form-select">
+                                <option value="" selected disabled>Pilih Kategori</option>
+                                <option value="anak">Anak</option>
+                                <option value="orang_tua">Orang Tua</option>
+                                <option value="dewasa">Remaja</option>
+                            </select>
+
                             <!-- Quantity Controls -->
                             <div class="quantity-controls">
                                 <button class="quantity-btn decrease-btn" data-price="100000">-</button>
@@ -283,7 +300,14 @@
                     <div class="card-body">
                         <h3>Baju Giring-Giring</h3>
                         <p>Harga: Rp 75.000</p>
-                        <p>Ukuran: Anak-anak, Remaja, Orang Tua</p>
+                        <label for="kategori" class="form-label mt-2">Kategori</label>
+                        <select name="kategori" id="kategori" class="form-select">
+                            <option value="" selected disabled>Pilih Kategori</option>
+                            <option value="anak">Anak</option>
+                            <option value="orang_tua">Orang Tua</option>
+                            <option value="dewasa">Remaja</option>
+                        </select>
+
                         <!-- Quantity Controls -->
                         <div class="quantity-controls">
                             <button class="quantity-btn decrease-btn" data-price="75000">-</button>
@@ -313,7 +337,14 @@
                     <div class="card-body">
                         <h3>Baju Dayak Cewe</h3>
                         <p>Harga: Rp 60.000</p>
-                        <p>Ukuran: Anak-anak, Remaja, Orang Tua</p>
+                        <label for="kategori" class="form-label mt-2">Kategori</label>
+                        <select name="kategori" id="kategori" class="form-select">
+                            <option value="" selected disabled>Pilih Kategori</option>
+                            <option value="anak">Anak</option>
+                            <option value="orang_tua">Orang Tua</option>
+                            <option value="dewasa">Remaja</option>
+                        </select>
+                        
                        <!-- Quantity Controls -->
                        <div class="quantity-controls">
                         <button class="quantity-btn decrease-btn" data-price="60000">-</button>
@@ -343,7 +374,14 @@
                     <div class="card-body">
                         <h3>Baju Dayak Cowo</h3>
                     <p>Harga: Rp 60.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+                    
                     <!-- Quantity Controls -->
                     <div class="quantity-controls">
                         <button class="quantity-btn decrease-btn" data-price="60000">-</button>
@@ -373,7 +411,14 @@
                     <div class="card-body">
                         <h3>Baju Adat Banjar Cewe</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                    <!-- Quantity Controls -->
                    <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn" data-price="50000">-</button>
@@ -403,7 +448,14 @@
                     <div class="card-body">
                         <h3>Baju Adat Banjar Cowo</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                    <!-- Quantity Controls -->
                    <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn" data-price="50000">-</button>
@@ -433,7 +485,14 @@
                     <div class="card-body">
                         <h3>Baju Nanang Banjar</h3>
                     <p>Harga: Rp 75.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                     <!-- Quantity Controls -->
                     <div class="quantity-controls">
                         <button class="quantity-btn decrease-btn" data-price="75000">-</button>
@@ -463,7 +522,14 @@
                     <div class="card-body">
                         <h3>Baju Adat Bali Cewe</h3>
                     <p>Harga: Rp 60.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                    <!-- Quantity Controls -->
                    <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn" data-price="60000">-</button>
@@ -493,7 +559,14 @@
                     <div class="card-body">
                         <h3>Baju Adat Bali Cowo</h3>
                     <p>Harga: Rp 60.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+                    
                     <!-- Quantity Controls -->
                     <div class="quantity-controls">
                         <button class="quantity-btn decrease-btn" data-price="60000">-</button>
@@ -523,7 +596,14 @@
                     <div class="card-body">
                         <h3>Baju Adat Batak</h3>
                     <p>Harga: Rp 60.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                     <!-- Quantity Controls -->
                     <div class="quantity-controls">
                         <button class="quantity-btn decrease-btn" data-price="60000">-</button>
@@ -553,7 +633,14 @@
                     <div class="card-body">
                         <h3>Baju Galuh Banjar</h3>
                     <p>Harga: Rp 75.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                    <!-- Quantity Controls -->
                    <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn" data-price="75000">-</button>
@@ -583,7 +670,14 @@
                     <div class="card-body">
                         <h3>Jas Cewe</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                     <!-- Quantity Controls -->
                     <div class="quantity-controls">
                         <button class="quantity-btn decrease-btn" data-price="50000">-</button>
@@ -613,7 +707,14 @@
                     <div class="card-body">
                         <h3>Jas Cowo</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+                    
                   <!-- Quantity Controls -->
                   <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn" data-price="50000">-</button>
@@ -643,7 +744,14 @@
                     <div class="card-body">
                         <h3>Baju Adat Jawa Cewe</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                    <!-- Quantity Controls -->
                    <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn" data-price="50000">-</button>
@@ -673,7 +781,14 @@
                     <div class="card-body">
                         <h3>Baju Adat Jawa Cowo</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                   <!-- Quantity Controls -->
                   <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn" data-price="50000">-</button>
@@ -703,7 +818,14 @@
                     <div class="card-body">
                         <h3>Kebaya KutuBaru</h3>
                     <p>Harga: Rp 60.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                    <!-- Quantity Controls -->
                    <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn" data-price="60000">-</button>
@@ -733,7 +855,14 @@
                     <div class="card-body">
                         <h3>Baju Adat NTT</h3>
                     <p>Harga: Rp 70.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                   <!-- Quantity Controls -->
                   <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn" data-price="70000">-</button>
@@ -763,7 +892,14 @@
                     <div class="card-body">
                         <h3>Baju Adat Sumsel</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+
                    <!-- Quantity Controls -->
                    <div class="quantity-controls">
                     <button class="quantity-btn decrease-btn" data-price="50000">-</button>
@@ -793,7 +929,14 @@
                     <div class="card-body">
                         <h3>Baju Adat Sunda</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <p>Ukuran: Anak-anak, Remaja, Orang Tua</p> <!-- Sesuaikan ukuran dengan ukuran yang tersedia -->
+                    <label for="kategori" class="form-label mt-2">Kategori</label>
+                    <select name="kategori" id="kategori" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Remaja</option>
+                    </select>
+                    
                     <!-- Quantity Controls -->
                     <div class="quantity-controls">
                         <button class="quantity-btn decrease-btn" data-price="50000">-</button>
