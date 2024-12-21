@@ -42,7 +42,7 @@
     
         /* Navbar */
         .navbar {
-            background-color: #004aad;
+            background-color: #89c4e9;
             padding: 15px;
             display: flex;
             align-items: center;
@@ -53,6 +53,8 @@
         .navbar .logo {
             display: flex;
             align-items: center;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         .navbar .logo img {
@@ -68,11 +70,16 @@
             color: #fff;
             font-size: 16px;
             font-weight: bold;
-            transition: color 0.3s;
+            transition: color 0.3s, opacity 0.3s;
         }
 
         .navbar a:hover {
-            color: #ffcc00;
+            color: #156ba5;
+        }
+
+        .navbar a.active {
+            color: #156ba5;
+            opacity: 0.7;
         }
 
         /* Galeri */
@@ -196,17 +203,18 @@
         <!-- Navbar -->
         <div class="navbar">
             <div class="logo">
-                <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh" class="logo-circle">
+                <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
                 Sanggar Galuh
             </div>
             <div class="nav-links">
-                <a href="home">Beranda</a>
-                <a href="project">Pendaftaran</a>
-                <a href="login">Jadwal</a>
-                <a href="galeri">Penyewaan</a>
-                <a href="keranjang">Keranjang</a>
+                <a href="/home">Beranda</a>
+                <a href="/project">Pendaftaran</a>
+                <a href="/login">Jadwal</a>
+                <a href="/galeri">Penyewaan</a>
+                <a href="/keranjang">Keranjang</a>
             </div>
         </div>
+        
 
         <!-- Konten Utama -->
         <div class="content">
@@ -223,37 +231,38 @@
                         <div class="card-body">
                             <h3>Baju Betawi</h3>
                             <p>Harga: Rp 70.000</p>
+                
                             <!-- Dropdown untuk memilih kategori umur -->
-                            <label for="kategori" class="form-label mt-2">Kategori</label>
-                            <select name="kategori" id="kategori" class="form-select">
+                            <label for="kategori_betawi" class="form-label mt-2">Kategori</label>
+                            <select name="kategori" id="kategori_betawi" class="form-select">
                                 <option value="" selected disabled>Pilih Kategori</option>
                                 <option value="anak">Anak</option>
                                 <option value="orang_tua">Orang Tua</option>
                                 <option value="dewasa">Remaja</option>
                             </select>
-
-
-                           <!-- Quantity Controls -->
-                           <div class="quantity-controls">
-                            <button class="quantity-btn decrease-btn" data-price="100000">-</button>
-                            <input type="text" class="quantity-input" value="1" readonly>
-                            <button class="quantity-btn increase-btn" data-price="100000">+</button>
-                        </div>
-
-                        <!-- Total Harga -->
-                        <div class="total-price">Total: Rp 100.000</div>
-
-                        <!-- Formulir Tambah ke Keranjang -->
-                        <form action="{{ route('cart.add') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="product_name" value="Baju Betawi">
-                            <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                            <input type="hidden" name="total" value="70000">
-                            <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
-                        </form> 
+                
+                            <!-- Quantity Controls -->
+                            <div class="quantity-controls">
+                                <button class="quantity-btn decrease-btn" data-target="#quantity_betawi" data-price="70000">-</button>
+                                <input type="text" id="quantity_betawi" name="quantity" class="quantity-input" value="1" readonly>
+                                <button class="quantity-btn increase-btn" data-target="#quantity_betawi" data-price="70000">+</button>
+                            </div>
+                
+                            <!-- Total Harga -->
+                            <div class="total-price" id="total_price_betawi">Total: Rp 70.000</div>
+                
+                            <!-- Formulir Tambah ke Keranjang -->
+                            <form class="ajax-form">
+                                @csrf
+                                <input type="hidden" name="product_name" value="Baju Betawi">
+                                <input type="hidden" name="quantity" class="quantity-value" value="1">
+                                <input type="hidden" name="total" class="total-value" value="70000">
+                                <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
+                            </form>   
                         </div>
                     </div>
                 </div>
+                
 
                 <!-- Baju 2 -->
                 <div class="col-md-3">
@@ -281,14 +290,13 @@
                             <div class="total-price">Total: Rp 100.000</div>
 
                             <!-- Formulir Tambah ke Keranjang -->
-                            <form action="{{ route('cart.add') }}" method="POST">
+                            <form class="ajax-form">
                                 @csrf
                                 <input type="hidden" name="product_name" value="Baju Radap Rahayu">
-                                <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                                <input type="hidden" name="total" value="100000">
-                                <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                                <input type="hidden" name="quantity" class="quantity-value" value="1">
+                                <input type="hidden" name="total" class="total-value" value="100000">
+                                <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -319,12 +327,12 @@
                         <div class="total-price">Total: Rp 75.000</div>
 
                         <!-- Formulir Tambah ke Keranjang -->
-                        <form action="{{ route('cart.add') }}" method="POST">
+                        <form class="ajax-form">
                             @csrf
-                            <input type="hidden" name="product_name" value="Baju Giring-Giring">
-                            <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                            <input type="hidden" name="total" value="75000">
-                            <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                            <input type="hidden" name="product_name" value="Baju Giring Giring">
+                            <input type="hidden" name="quantity" class="quantity-value" value="1">
+                            <input type="hidden" name="total" class="total-value" value="75000">
+                            <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                         </form>
                     </div>
                 </div>
@@ -356,12 +364,12 @@
                     <div class="total-price">Total: Rp 60.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form class="ajax-form">
                         @csrf
                         <input type="hidden" name="product_name" value="Baju Dayak Cewe">
-                        <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                        <input type="hidden" name="total" value="60000">
-                        <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                        <input type="hidden" name="quantity" class="quantity-value" value="1">
+                        <input type="hidden" name="total" class="total-value" value="60000">
+                        <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
                 </div>
@@ -393,12 +401,12 @@
                     <div class="total-price">Total: Rp 60.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form class="ajax-form">
                         @csrf
                         <input type="hidden" name="product_name" value="Baju Dayak Cowo">
-                        <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                        <input type="hidden" name="total" value="60000">
-                        <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                        <input type="hidden" name="quantity" class="quantity-value" value="1">
+                        <input type="hidden" name="total" class="total-value" value="60000">
+                        <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
                 </div>
@@ -430,12 +438,12 @@
                 <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
-                <form action="{{ route('cart.add') }}" method="POST">
+                <form class="ajax-form">
                     @csrf
-                    <input type="hidden" name="product_name" value="Baju Adat Banjar Cewe">
-                    <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                    <input type="hidden" name="total" value="50000">
-                    <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                    <input type="hidden" name="product_name" value="Baju Banjar Cewe">
+                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="total" class="total-value" value="50000">
+                    <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
                 </div>
@@ -467,12 +475,12 @@
                 <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
-                <form action="{{ route('cart.add') }}" method="POST">
+                <form class="ajax-form">
                     @csrf
-                    <input type="hidden" name="product_name" value="Baju Adat Banjar Cowo">
-                    <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                    <input type="hidden" name="total" value="50000">
-                    <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                    <input type="hidden" name="product_name" value="Baju Banjar Cowo">
+                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="total" class="total-value" value="50000">
+                    <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
                 </div>
@@ -504,12 +512,12 @@
                     <div class="total-price">Total: Rp 75.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form class="ajax-form">
                         @csrf
-                        <input type="hidden" name="product_name" value="Baju Nanang Banjar">
-                        <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                        <input type="hidden" name="total" value="75000">
-                        <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                        <input type="hidden" name="product_name" value="Baju Nanang">
+                        <input type="hidden" name="quantity" class="quantity-value" value="1">
+                        <input type="hidden" name="total" class="total-value" value="75000">
+                        <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
                 </div>
@@ -541,12 +549,12 @@
                 <div class="total-price">Total: Rp 60.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
-                <form action="{{ route('cart.add') }}" method="POST">
+                <form class="ajax-form">
                     @csrf
-                    <input type="hidden" name="product_name" value="Baju Adat Bali Cewe">
-                    <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                    <input type="hidden" name="total" value="60000">
-                    <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                    <input type="hidden" name="product_name" value="Baju Bali Cewe">
+                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="total" class="total-value" value="60000">
+                    <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
                 </div>
@@ -578,12 +586,12 @@
                     <div class="total-price">Total: Rp 60.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form class="ajax-form">
                         @csrf
                         <input type="hidden" name="product_name" value="Baju Adat Bali Cowo">
-                        <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                        <input type="hidden" name="total" value="60000">
-                        <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                        <input type="hidden" name="quantity" class="quantity-value" value="1">
+                        <input type="hidden" name="total" class="total-value" value="60000">
+                        <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
                 </div>
@@ -615,12 +623,12 @@
                     <div class="total-price">Total: Rp 60.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form class="ajax-form">
                         @csrf
                         <input type="hidden" name="product_name" value="Baju Adat Batak">
-                        <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                        <input type="hidden" name="total" value="60000">
-                        <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                        <input type="hidden" name="quantity" class="quantity-value" value="1">
+                        <input type="hidden" name="total" class="total-value" value="60000">
+                        <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
                 </div>
@@ -652,12 +660,12 @@
                 <div class="total-price">Total: Rp 75.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
-                <form action="{{ route('cart.add') }}" method="POST">
+                <form class="ajax-form">
                     @csrf
                     <input type="hidden" name="product_name" value="Baju Galuh Banjar">
-                    <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                    <input type="hidden" name="total" value="75000">
-                    <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="total" class="total-value" value="75000">
+                    <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
                 </div>
@@ -689,12 +697,12 @@
                     <div class="total-price">Total: Rp 50.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form class="ajax-form">
                         @csrf
                         <input type="hidden" name="product_name" value="Jas Cewe">
-                        <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                        <input type="hidden" name="total" value="50000">
-                        <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                        <input type="hidden" name="quantity" class="quantity-value" value="1">
+                        <input type="hidden" name="total" class="total-value" value="50000">
+                        <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
                 </div>
@@ -726,12 +734,12 @@
                 <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
-                <form action="{{ route('cart.add') }}" method="POST">
+                <form class="ajax-form">
                     @csrf
                     <input type="hidden" name="product_name" value="Jas Cowo">
-                    <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                    <input type="hidden" name="total" value="50000">
-                    <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="total" class="total-value" value="50000">
+                    <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
                 </div>
@@ -763,12 +771,12 @@
                 <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
-                <form action="{{ route('cart.add') }}" method="POST">
+                <form class="ajax-form">
                     @csrf
                     <input type="hidden" name="product_name" value="Baju Adat Jawa Cewe">
-                    <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                    <input type="hidden" name="total" value="50000">
-                    <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="total" class="total-value" value="50000">
+                    <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
                 </div>
@@ -800,12 +808,12 @@
                 <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
-                <form action="{{ route('cart.add') }}" method="POST">
+                <form class="ajax-form">
                     @csrf
                     <input type="hidden" name="product_name" value="Baju Adat Jawa Cowo">
-                    <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                    <input type="hidden" name="total" value="50000">
-                    <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="total" class="total-value" value="50000">
+                    <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
                 </div>
@@ -837,12 +845,12 @@
                 <div class="total-price">Total: Rp 60.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
-                <form action="{{ route('cart.add') }}" method="POST">
+                <form class="ajax-form">
                     @csrf
-                    <input type="hidden" name="product_name" value="Baju Kebaya KutuBaru">
-                    <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                    <input type="hidden" name="total" value="60000">
-                    <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                    <input type="hidden" name="product_name" value="Kebaya KutuBaru">
+                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="total" class="total-value" value="60000">
+                    <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
                 </div>
@@ -874,12 +882,12 @@
                 <div class="total-price">Total: Rp 70.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
-                <form action="{{ route('cart.add') }}" method="POST">
+                <form class="ajax-form">
                     @csrf
                     <input type="hidden" name="product_name" value="Baju Adat NTT">
-                    <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                    <input type="hidden" name="total" value="70000">
-                    <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="total" class="total-value" value="70000">
+                    <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
                 </div>
@@ -911,12 +919,12 @@
                 <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
-                <form action="{{ route('cart.add') }}" method="POST">
+                <form class="ajax-form">
                     @csrf
                     <input type="hidden" name="product_name" value="Baju Adat Sumsel">
-                    <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                    <input type="hidden" name="total" value="50000">
-                    <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="total" class="total-value" value="50000">
+                    <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
                 </div>
@@ -948,43 +956,65 @@
                     <div class="total-price">Total: Rp 50.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form class="ajax-form">
                         @csrf
                         <input type="hidden" name="product_name" value="Baju Adat Sunda">
-                        <input type="hidden" name="quantity" value="1">  <!-- Ganti sesuai inputan user -->
-                        <input type="hidden" name="total" value="50000">
-                        <button type="submit" class="btn btn-success">Tambahkan ke Keranjang</button>
+                        <input type="hidden" name="quantity" class="quantity-value" value="1">
+                        <input type="hidden" name="total" class="total-value" value="50000">
+                        <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        document.querySelectorAll('.quantity-controls').forEach(control => {
-            const decreaseBtn = control.querySelector('.decrease-btn');
-            const increaseBtn = control.querySelector('.increase-btn');
-            const quantityInput = control.querySelector('.quantity-input');
-            const totalPriceElement = control.parentElement.querySelector('.total-price');
-            const price = parseInt(decreaseBtn.getAttribute('data-price'));
-    
-            decreaseBtn.addEventListener('click', () => {
-                let quantity = parseInt(quantityInput.value);
-                if (quantity > 1) {
-                    quantity--;
-                    quantityInput.value = quantity;
-                    totalPriceElement.textContent = `Total: Rp ${quantity * price}`;
-                }
-            });
-    
-            increaseBtn.addEventListener('click', () => {
-                let quantity = parseInt(quantityInput.value);
-                quantity++;
-                quantityInput.value = quantity;
-                totalPriceElement.textContent = `Total: Rp ${quantity * price}`;
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const navLinks = document.querySelectorAll('.navbar a');
+
+        // Tambahkan event listener ke setiap tautan
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                // Hapus kelas aktif dari semua tautan
+                navLinks.forEach(link => link.classList.remove('active'));
+
+                // Tambahkan kelas aktif ke tautan yang diklik
+                event.target.classList.add('active');
             });
         });
-    </script>          
+
+        // Tandai tautan aktif berdasarkan URL saat ini
+        const currentPath = window.location.pathname;
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+            }
+        });
+    });
+    $(document).ready(function () {
+        // Saat tombol Tambahkan ke Keranjang ditekan
+        $(document).on('click', '.add-to-cart', function () {
+            const form = $(this).closest('.ajax-form'); // Ambil form terkait
+            const url = "{{ route('cart.add') }}"; // URL tujuan server
+            
+            $.ajax({
+                url: url,
+                method: "POST",
+                data: form.serialize(), // Kirim data form
+                success: function (response) {
+                    alert('Item berhasil ditambahkan ke keranjang!');
+                    // Opsional: Update UI keranjang
+                },
+                error: function (xhr) {
+                    alert('Terjadi kesalahan, coba lagi.');
+                }
+            });
+        });
+    });
+</script>
+
+            
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

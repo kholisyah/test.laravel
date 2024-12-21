@@ -8,6 +8,28 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    public function viewCart()
+{
+    $cartItems = session('cart.items', []); // Ambil data keranjang dari sesi
+    return view('keranjang', compact('cartItems'));
+}
+
+   public function addToCart(Request $request)
+{
+    $item = [
+        'product_name' => $request->product_name,
+        'quantity' => $request->quantity,
+        'total' => $request->total,
+    ];
+
+    // Simpan item ke sesi keranjang
+    session()->push('cart.items', $item);
+
+    // Kembalikan respons JSON
+    return response()->json(['message' => 'Item berhasil ditambahkan ke keranjang']);
+}
+
+
     // Menambahkan produk ke cart
     public function add(Request $request)
     {

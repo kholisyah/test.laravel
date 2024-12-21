@@ -5,23 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keranjang Belanja Anda</title>
     <style>
-        /* Mengatur ulang margin dan padding */
-        body, h1, p, table, th, td, a, form, button {
+        /* Reset CSS */
+        body, h1, p, table, th, td, a, form, button, img {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Global Styles */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #fafafa; /* Latar belakang abu-abu terang */
-            color: #333; /* Warna teks */
+            background-color: #fafafa;
+            color: #333;
             padding: 20px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #89c4e9;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+
+        /* Navbar link active state */
+        .navbar .nav-links a.active {
+            color: #156ba5;
+            
+        }
+
+        .navbar .nav-links a:hover {
+            color: #156ba5;
+           
         }
 
         /* Header */
         .header {
-            background-color: #4CAF50; /* Hijau */
+            background-color: #89c4e9;
             color: white;
             padding: 20px;
             text-align: center;
@@ -33,6 +82,7 @@
             font-size: 28px;
         }
 
+        /* Table */
         .cart-table {
             width: 100%;
             border-collapse: collapse;
@@ -47,6 +97,7 @@
 
         .cart-table th {
             background-color: #f2f2f2;
+            font-weight: bold;
         }
 
         .cart-table tr:nth-child(even) {
@@ -57,13 +108,13 @@
             background-color: #f1f1f1;
         }
 
+        /* Buttons */
         .btn {
             padding: 10px 15px;
             font-size: 14px;
-            text-align: center;
             border-radius: 5px;
             cursor: pointer;
-            text-decoration: none;
+            text-align: center;
             display: inline-block;
             margin-top: 10px;
         }
@@ -79,16 +130,16 @@
         }
 
         .btn-success {
-            background-color: #28a745;
+            background-color: #89c4e9;
             color: white;
             text-decoration: none;
         }
 
         .btn-success:hover {
-            background-color: #218838;
+            background-color: #89c4e9;
         }
 
-        /* Bagian footer */
+        /* Footer */
         .footer {
             text-align: center;
             margin-top: 50px;
@@ -97,6 +148,20 @@
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+            Sanggar Galuh
+        </div>
+        <div class="nav-links">
+            <a href="home" class="{{ request()->is('home') ? 'active' : '' }}">Beranda</a>
+            <a href="project" class="{{ request()->is('project') ? 'active' : '' }}">Pendaftaran</a>
+            <a href="login" class="{{ request()->is('login') ? 'active' : '' }}">Jadwal</a>
+            <a href="galeri" class="{{ request()->is('galeri') ? 'active' : '' }}">Penyewaan</a>
+            <a href="keranjang" class="{{ request()->is('keranjang') ? 'active' : '' }}">Keranjang</a>
+        </div>
+    </div>
 
     <!-- Header -->
     <div class="header">
@@ -122,7 +187,7 @@
                     <td>Rp {{ number_format($item['total'], 0, ',', '.') }}</td>
                     <td>
                         <!-- Form untuk menghapus item dari keranjang -->
-                        <form action="{{ route('cart.remove') }}" method="POST">
+                        <form action="{{ route('cart.remove') }}" method="POST" style="display: inline;">
                             @csrf
                             <input type="hidden" name="index" value="{{ $index }}">
                             <button type="submit" class="btn btn-danger">Hapus</button>
@@ -134,7 +199,7 @@
     </table>
 
     <!-- Tombol untuk lanjut ke pembayaran -->
-    <div class="actions">
+    <div class="actions" style="text-align: right;">
         <a href="{{ route('transaksi.create') }}" class="btn btn-success">Lanjutkan ke Pembayaran</a>
     </div>
 </body>
