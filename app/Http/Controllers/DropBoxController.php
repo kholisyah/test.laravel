@@ -48,11 +48,15 @@ return view('dropbox.upload'); // Nama view sesuai dengan file blade
 //Mengunggah File
  public function uploadFile(Request $request)
  {
-// Validasi input
- $request->validate([
-// 'folder_path' => 'required|string', // Folder tujuan
-'file' => 'required|file', // File yang dipilih
- ]);
+// Validasi input dengan pesan kesalahan kustom
+$request->validate([
+    'file' => 'required|file|mimes:pdf', // Hanya file PDF yang diizinkan
+], [
+    'file.mimes' => 'File yang diunggah harus berupa file PDF.', // Pesan untuk kesalahan MIME
+    'file.required' => 'File harus diunggah.', // Pesan untuk file wajib diisi
+]);
+
+
 
 // Mendapatkan folder tujuan dari input
 $folderPath = ('saya');
@@ -71,8 +75,7 @@ $dropboxFilePath = $folderPath . '/' . $fileName;
 
 try {
 // Mengunggah file ke Dropbox 
-
- $content = file_get_contents($file->getRealPath());
+ $content = file_get_contents($file);
  $this->client->upload($dropboxFilePath, $content);
 
 return back()->with('status', 'File uploaded successfully!');

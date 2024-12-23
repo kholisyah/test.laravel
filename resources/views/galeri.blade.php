@@ -243,23 +243,21 @@
                             </select>
                 
                             <!-- Quantity Controls -->
-                            <div class="quantity-controls">
-                                <button class="quantity-btn decrease-btn" data-target="#quantity_betawi" data-price="70000">-</button>
-                                <input type="text" id="quantity_betawi" name="quantity" class="quantity-input" value="1" readonly>
-                                <button class="quantity-btn increase-btn" data-target="#quantity_betawi" data-price="70000">+</button>
+                            <div class="card" data-price="70000">
+                                <div class="card-body">
+                                    <div class="total-price">Total: Rp 70,000</div>
+                                </div>
                             </div>
-                
-                            <!-- Total Harga -->
-                            <div class="total-price" id="total_price_betawi">Total: Rp 70.000</div>
                 
                             <!-- Formulir Tambah ke Keranjang -->
                             <form class="ajax-form">
                                 @csrf
-                                <input type="hidden" name="product_name" value="Baju Betawi">
-                                <input type="hidden" name="quantity" class="quantity-value" value="1">
+                                <input type="hidden" name="product_name" value="Baju betawi">
+                                <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                                 <input type="hidden" name="total" class="total-value" value="70000">
                                 <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
-                            </form>   
+                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -281,14 +279,14 @@
                             </select>
 
                             <!-- Quantity Controls -->
-                            <div class="quantity-controls">
-                                <button class="quantity-btn decrease-btn" data-price="100000">-</button>
-                                <input type="text" class="quantity-input" value="1" readonly>
-                                <button class="quantity-btn increase-btn" data-price="100000">+</button>
+                            <div class="card" data-price="100000">
+                                <div class="card-body">
+                                    <input type="number" class="quantity-input" value="1">
+                                    <button class="quantity-btn" data-target=".quantity-input" data-price="100000">+</button>
+                                    <button class="quantity-btn" data-target=".quantity-input" data-price="100000">-</button>
+                                    <div class="total-price">Total: Rp 100,000</div>
+                                </div>
                             </div>
-
-                            <!-- Total Harga -->
-                            <div class="total-price">Total: Rp 100.000</div>
 
                             <!-- Formulir Tambah ke Keranjang -->
                             <form class="ajax-form">
@@ -318,14 +316,14 @@
                         </select>
 
                         <!-- Quantity Controls -->
-                        <div class="quantity-controls">
-                            <button class="quantity-btn decrease-btn" data-price="75000">-</button>
-                            <input type="text" class="quantity-input" value="1" readonly>
-                            <button class="quantity-btn increase-btn" data-price="75000">+</button>
+                        <div class="card" data-price="75000">
+                            <div class="card-body">
+                                <input type="number" class="quantity-input" value="1">
+                                <button class="quantity-btn" data-target=".quantity-input" data-price="75000">+</button>
+                                <button class="quantity-btn" data-target=".quantity-input" data-price="75000">-</button>
+                                <div class="total-price">Total: Rp 75,000</div>
+                            </div>
                         </div>
-
-                        <!-- Total Harga -->
-                        <div class="total-price">Total: Rp 75.000</div>
 
                         <!-- Formulir Tambah ke Keranjang -->
                         <form class="ajax-form">
@@ -355,14 +353,14 @@
                         </select>
                         
                        <!-- Quantity Controls -->
-                       <div class="quantity-controls">
-                        <button class="quantity-btn decrease-btn" data-price="60000">-</button>
-                        <input type="text" class="quantity-input" value="1" readonly>
-                        <button class="quantity-btn increase-btn" data-price="60000">+</button>
+                       <div class="card" data-price="60000">
+                        <div class="card-body">
+                            <input type="number" class="quantity-input" value="1">
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="60000">+</button>
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="60000">-</button>
+                            <div class="total-price">Total: Rp 60,000</div>
+                        </div>
                     </div>
-
-                    <!-- Total Harga -->
-                    <div class="total-price">Total: Rp 60.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
                     <form class="ajax-form">
@@ -392,14 +390,14 @@
                     </select>
                     
                     <!-- Quantity Controls -->
-                    <div class="quantity-controls">
-                        <button class="quantity-btn decrease-btn" data-price="60000">-</button>
-                        <input type="text" class="quantity-input" value="1" readonly>
-                        <button class="quantity-btn increase-btn" data-price="60000">+</button>
+                    <div class="card" data-price="60000">
+                        <div class="card-body">
+                            <input type="number" class="quantity-input" value="1">
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="60000">+</button>
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="60000">-</button>
+                            <div class="total-price">Total: Rp 60,000</div>
+                        </div>
                     </div>
-
-                    <!-- Total Harga -->
-                    <div class="total-price">Total: Rp 60.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
                     <form class="ajax-form">
@@ -429,14 +427,14 @@
                     </select>
 
                    <!-- Quantity Controls -->
-                   <div class="quantity-controls">
-                    <button class="quantity-btn decrease-btn" data-price="50000">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
-                    <button class="quantity-btn increase-btn" data-price="50000">+</button>
+                   <div class="card" data-price="50000">
+                    <div class="card-body">
+                        <input type="number" class="quantity-input" value="1">
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">+</button>
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">-</button>
+                        <div class="total-price">Total: Rp 50,000</div>
+                    </div>
                 </div>
-
-                <!-- Total Harga -->
-                <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
@@ -466,14 +464,14 @@
                     </select>
 
                    <!-- Quantity Controls -->
-                   <div class="quantity-controls">
-                    <button class="quantity-btn decrease-btn" data-price="50000">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
-                    <button class="quantity-btn increase-btn" data-price="50000">+</button>
+                   < <div class="card" data-price="50000">
+                    <div class="card-body">
+                        <input type="number" class="quantity-input" value="1">
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">+</button>
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">-</button>
+                        <div class="total-price">Total: Rp 50,000</div>
+                    </div>
                 </div>
-
-                <!-- Total Harga -->
-                <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
@@ -503,14 +501,14 @@
                     </select>
 
                     <!-- Quantity Controls -->
-                    <div class="quantity-controls">
-                        <button class="quantity-btn decrease-btn" data-price="75000">-</button>
-                        <input type="text" class="quantity-input" value="1" readonly>
-                        <button class="quantity-btn increase-btn" data-price="75000">+</button>
+                    <div class="card" data-price="75000">
+                        <div class="card-body">
+                            <input type="number" class="quantity-input" value="1">
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="75000">+</button>
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="75000">-</button>
+                            <div class="total-price">Total: Rp 75,000</div>
+                        </div>
                     </div>
-
-                    <!-- Total Harga -->
-                    <div class="total-price">Total: Rp 75.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
                     <form class="ajax-form">
@@ -540,14 +538,14 @@
                     </select>
 
                    <!-- Quantity Controls -->
-                   <div class="quantity-controls">
-                    <button class="quantity-btn decrease-btn" data-price="60000">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
-                    <button class="quantity-btn increase-btn" data-price="60000">+</button>
+                   <div class="card" data-price="60000">
+                    <div class="card-body">
+                        <input type="number" class="quantity-input" value="1">
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="60000">+</button>
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="60000">-</button>
+                        <div class="total-price">Total: Rp 60,000</div>
+                    </div>
                 </div>
-
-                <!-- Total Harga -->
-                <div class="total-price">Total: Rp 60.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
@@ -577,14 +575,14 @@
                     </select>
                     
                     <!-- Quantity Controls -->
-                    <div class="quantity-controls">
-                        <button class="quantity-btn decrease-btn" data-price="60000">-</button>
-                        <input type="text" class="quantity-input" value="1" readonly>
-                        <button class="quantity-btn increase-btn" data-price="60000">+</button>
+                    <div class="card" data-price="60000">
+                        <div class="card-body">
+                            <input type="number" class="quantity-input" value="1">
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="60000">+</button>
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="60000">-</button>
+                            <div class="total-price">Total: Rp 60,000</div>
+                        </div>
                     </div>
-
-                    <!-- Total Harga -->
-                    <div class="total-price">Total: Rp 60.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
                     <form class="ajax-form">
@@ -614,14 +612,14 @@
                     </select>
 
                     <!-- Quantity Controls -->
-                    <div class="quantity-controls">
-                        <button class="quantity-btn decrease-btn" data-price="60000">-</button>
-                        <input type="text" class="quantity-input" value="1" readonly>
-                        <button class="quantity-btn increase-btn" data-price="60000">+</button>
+                    <div class="card" data-price="60000">
+                        <div class="card-body">
+                            <input type="number" class="quantity-input" value="1">
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="60000">+</button>
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="60000">-</button>
+                            <div class="total-price">Total: Rp 60,000</div>
+                        </div>
                     </div>
-
-                    <!-- Total Harga -->
-                    <div class="total-price">Total: Rp 60.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
                     <form class="ajax-form">
@@ -651,14 +649,14 @@
                     </select>
 
                    <!-- Quantity Controls -->
-                   <div class="quantity-controls">
-                    <button class="quantity-btn decrease-btn" data-price="75000">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
-                    <button class="quantity-btn increase-btn" data-price="75000">+</button>
+                   <div class="card" data-price="75000">
+                    <div class="card-body">
+                        <input type="number" class="quantity-input" value="1">
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="75000">+</button>
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="75000">-</button>
+                        <div class="total-price">Total: Rp 75,000</div>
+                    </div>
                 </div>
-
-                <!-- Total Harga -->
-                <div class="total-price">Total: Rp 75.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
@@ -688,14 +686,14 @@
                     </select>
 
                     <!-- Quantity Controls -->
-                    <div class="quantity-controls">
-                        <button class="quantity-btn decrease-btn" data-price="50000">-</button>
-                        <input type="text" class="quantity-input" value="1" readonly>
-                        <button class="quantity-btn increase-btn" data-price="50000">+</button>
+                    <div class="card" data-price="50000">
+                        <div class="card-body">
+                            <input type="number" class="quantity-input" value="1">
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="50000">+</button>
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="50000">-</button>
+                            <div class="total-price">Total: Rp 50,000</div>
+                        </div>
                     </div>
-
-                    <!-- Total Harga -->
-                    <div class="total-price">Total: Rp 50.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
                     <form class="ajax-form">
@@ -725,14 +723,14 @@
                     </select>
                     
                   <!-- Quantity Controls -->
-                  <div class="quantity-controls">
-                    <button class="quantity-btn decrease-btn" data-price="50000">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
-                    <button class="quantity-btn increase-btn" data-price="50000">+</button>
+                  <div class="card" data-price="50000">
+                    <div class="card-body">
+                        <input type="number" class="quantity-input" value="1">
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">+</button>
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">-</button>
+                        <div class="total-price">Total: Rp 50,000</div>
+                    </div>
                 </div>
-
-                <!-- Total Harga -->
-                <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
@@ -762,15 +760,14 @@
                     </select>
 
                    <!-- Quantity Controls -->
-                   <div class="quantity-controls">
-                    <button class="quantity-btn decrease-btn" data-price="50000">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
-                    <button class="quantity-btn increase-btn" data-price="50000">+</button>
+                   <div class="card" data-price="50000">
+                    <div class="card-body">
+                        <input type="number" class="quantity-input" value="1">
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">+</button>
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">-</button>
+                        <div class="total-price">Total: Rp 50,000</div>
+                    </div>
                 </div>
-
-                <!-- Total Harga -->
-                <div class="total-price">Total: Rp 50.000</div>
-
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
                     @csrf
@@ -799,14 +796,14 @@
                     </select>
 
                   <!-- Quantity Controls -->
-                  <div class="quantity-controls">
-                    <button class="quantity-btn decrease-btn" data-price="50000">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
-                    <button class="quantity-btn increase-btn" data-price="50000">+</button>
+                  <div class="card" data-price="50000">
+                    <div class="card-body">
+                        <input type="number" class="quantity-input" value="1">
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">+</button>
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">-</button>
+                        <div class="total-price">Total: Rp 50,000</div>
+                    </div>
                 </div>
-
-                <!-- Total Harga -->
-                <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
@@ -836,14 +833,14 @@
                     </select>
 
                    <!-- Quantity Controls -->
-                   <div class="quantity-controls">
-                    <button class="quantity-btn decrease-btn" data-price="60000">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
-                    <button class="quantity-btn increase-btn" data-price="60000">+</button>
+                   <div class="card" data-price="60000">
+                    <div class="card-body">
+                        <input type="number" class="quantity-input" value="1">
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="60000">+</button>
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="60000">-</button>
+                        <div class="total-price">Total: Rp 60,000</div>
+                    </div>
                 </div>
-
-                <!-- Total Harga -->
-                <div class="total-price">Total: Rp 60.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
@@ -873,20 +870,20 @@
                     </select>
 
                   <!-- Quantity Controls -->
-                  <div class="quantity-controls">
-                    <button class="quantity-btn decrease-btn" data-price="70000">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
-                    <button class="quantity-btn increase-btn" data-price="70000">+</button>
+                  <div class="card" data-price="70000">
+                    <div class="card-body">
+                        <input type="number" class="quantity-input" value="1">
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="70000">+</button>
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="70000">-</button>
+                        <div class="total-price">Total: Rp 70,000</div>
+                    </div>
                 </div>
-
-                <!-- Total Harga -->
-                <div class="total-price">Total: Rp 70.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
                     @csrf
                     <input type="hidden" name="product_name" value="Baju Adat NTT">
-                    <input type="hidden" name="quantity" class="quantity-value" value="1">
+                    <input type="hidden" name="quantity" class="quantity-value" value="1" >
                     <input type="hidden" name="total" class="total-value" value="70000">
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
@@ -910,14 +907,14 @@
                     </select>
 
                    <!-- Quantity Controls -->
-                   <div class="quantity-controls">
-                    <button class="quantity-btn decrease-btn" data-price="50000">-</button>
-                    <input type="text" class="quantity-input" value="1" readonly>
-                    <button class="quantity-btn increase-btn" data-price="50000">+</button>
+                   <div class="card" data-price="50000">
+                    <div class="card-body">
+                        <input type="number" class="quantity-input" value="1">
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">+</button>
+                        <button class="quantity-btn" data-target=".quantity-input" data-price="50000">-</button>
+                        <div class="total-price">Total: Rp 50,000</div>
+                    </div>
                 </div>
-
-                <!-- Total Harga -->
-                <div class="total-price">Total: Rp 50.000</div>
 
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
@@ -947,14 +944,14 @@
                     </select>
                     
                     <!-- Quantity Controls -->
-                    <div class="quantity-controls">
-                        <button class="quantity-btn decrease-btn" data-price="50000">-</button>
-                        <input type="text" class="quantity-input" value="1" readonly>
-                        <button class="quantity-btn increase-btn" data-price="50000">+</button>
+                    <div class="card" data-price="50000">
+                        <div class="card-body">
+                            <input type="number" class="quantity-input" value="1">
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="50000">+</button>
+                            <button class="quantity-btn" data-target=".quantity-input" data-price="50000">-</button>
+                            <div class="total-price">Total: Rp 100,000</div>
+                        </div>
                     </div>
-
-                    <!-- Total Harga -->
-                    <div class="total-price">Total: Rp 50.000</div>
 
                     <!-- Formulir Tambah ke Keranjang -->
                     <form class="ajax-form">
@@ -971,6 +968,44 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const card = this.closest('.gallery-card');
+            const productName = card.querySelector('input[name="product_name"]').value;
+            const quantityInput = card.querySelector('.quantity-input');
+            const quantity = parseInt(quantityInput.value);
+            const price = parseInt(card.dataset.price);
+            const totalPrice = quantity * price;
+
+            // Kirim data ke server dengan AJAX
+            fetch('/cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                },
+                body: JSON.stringify({
+                    product_name: productName,
+                    quantity: quantity,
+                    total: totalPrice,
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Item berhasil ditambahkan ke keranjang!');
+                    // Perbarui tampilan keranjang atau lainnya jika diperlukan
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat menambahkan item ke keranjang.');
+                });
+        });
+    });
+});
+
     document.addEventListener('DOMContentLoaded', () => {
         const navLinks = document.querySelectorAll('.navbar a');
 
@@ -1014,9 +1049,64 @@
         });
     });
 </script>
-
-            
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    $('.add-to-cart').on('click', function() {
+        var quantity = $('.quantity-value').val(); // Mengambil nilai jumlah
+        var total = $('.total-value').val(); // Mengambil nilai total
+        
+        // Menghitung total harga berdasarkan jumlah yang dipilih
+        var newTotal = total * quantity;
+        
+        // Update nilai total di hidden input
+        $('.total-value').val(newTotal);
+
+        // Kirimkan form menggunakan AJAX atau metode yang diinginkan
+        $.ajax({
+            url: 'your_cart_route_here', // Ganti dengan route yang sesuai
+            method: 'POST',
+            data: {
+                _token: $('input[name="_token"]').val(),
+                product_name: $('input[name="product_name"]').val(),
+                quantity: quantity,
+                total: newTotal
+            },
+            success: function(response) {
+                // Handle response (misalnya, menampilkan update di cart)
+                console.log(response);
+            }
+        });
+    });
+});
+
+        // Fungsi untuk memperbarui jumlah dan total harga
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.quantity-btn');
+        
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const isIncrease = this.textContent === '+'; // Periksa apakah tombol '+' atau '-'
+                    const targetInput = this.closest('.card').querySelector('.quantity-input'); // Ambil input quantity dalam card yang sama
+                    const totalPriceElement = this.closest('.card-body').querySelector('.total-price'); // Total harga di dalam card yang sama
+                    const productPrice = parseInt(this.closest('.card').dataset.price); // Ambil harga produk dari data atribut card
+        
+                    // Ambil nilai saat ini dan lakukan operasi
+                    let currentValue = parseInt(targetInput.value);
+                    if (isIncrease) {
+                        currentValue += 1;
+                    } else if (currentValue > 1) { // Pastikan jumlah tidak kurang dari 1
+                        currentValue -= 1;
+                    }
+        
+                    // Perbarui nilai di input dan total harga
+                    targetInput.value = currentValue;
+                    totalPriceElement.textContent = `Total: Rp ${(currentValue * productPrice).toLocaleString()}`;
+                });
+            });
+        });
+    </script>
+    
+    
 </body>
 </html>
