@@ -200,7 +200,7 @@
 
     <!-- Tombol untuk lanjut ke pembayaran -->
     <div class="actions" style="text-align: right;">
-        <a href="{{ route('transaksi.create') }}" class="btn btn-success">Lanjutkan ke Pembayaran</a>
+        <a href="{{ route('transaksi.index') }}" class="btn btn-success">Lanjutkan ke Pembayaran</a>
     </div>
 </body>
 </html>

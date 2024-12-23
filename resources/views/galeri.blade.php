@@ -210,15 +210,16 @@
                 <a href="/home">Beranda</a>
                 <a href="/project">Pendaftaran</a>
                 <a href="/login">Jadwal</a>
+                <a href="/index">Perengkingan</a>
                 <a href="/galeri">Penyewaan</a>
-                <a href="/keranjang">Keranjang</a>
+                <a href="/cart">Keranjang</a>
             </div>
         </div>
         
 
         <!-- Konten Utama -->
         <div class="content">
-            <h1>Galeri Baju Adat & Tarian</h1>
+            <h1>Baju Adat & Tarian</h1>
         </div>
 </body>
 </html>

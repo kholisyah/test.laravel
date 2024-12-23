@@ -11,7 +11,7 @@ class CartController extends Controller
     public function viewCart()
 {
     $cartItems = session('cart.items', []); // Ambil data keranjang dari sesi
-    return view('keranjang', compact('cartItems'));
+    return view('cart', compact('cartItems'));
 }
 
    public function addToCart(Request $request)

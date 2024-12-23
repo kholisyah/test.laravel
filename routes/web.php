@@ -12,6 +12,7 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\SawAhpController;
 use App\Http\Controllers\TarianController;
 use App\Http\Controllers\DropBoxController;
 use App\Http\Controllers\PelangganController;
@@ -214,8 +215,4 @@ Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remov
 
 Route::post('/transaksi/store-from-cart', [TransaksiController::class, 'storeFromCart'])->name('transaksi.storeFromCart');
 
-// routes/web.php
-Route::get('/keranjang', [CartController::class, 'index'])->name('cart.index');
-Route::post('/keranjang/add', [CartController::class, 'add'])->name('cart.add');
-Route::post('/keranjang/remove', [CartController::class, 'remove'])->name('cart.remove');
-
+Route::get('/index', [SawAhpController::class, 'index']);
