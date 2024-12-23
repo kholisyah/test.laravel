@@ -11,6 +11,9 @@ class UserController extends Controller
 {
     public function edit($id)
     {
+        if (Auth::check() && Auth::user()->level === 'admin') {
+            # code...
+        }
         $user = User::findOrFail($id);
         return view('edit-login', compact('user')); // Tampilkan form edit dengan data pengguna
     }

@@ -116,12 +116,12 @@ Route::get('/edit-posts/{akun}', [AkunController::class, 'showEditScreen']);
 Route::put('/edit-posts/{akun}', [AkunController::class, 'actuallyUpdatePost']);
 // Rute untuk menghapus akun
 Route::delete('/delete-posts/{akun}', [AkunController::class, 'deletePost']);
-
 // Rute untuk halaman edit
 Route::get('/edit-posts/{id}', [AkunController::class, 'edit'])->name('edit');
-
 // Rute untuk menyimpan pembaruan data
 Route::post('/update-posts/{id}', [AkunController::class, 'update'])->name('update');
+// Rute untuk melihat jadwal latihan
+Route::get('/lihat-jadwal', [JadwalController::class, 'index'])->name('lihat-jadwal');
 
 // Menampilkan daftar penyewaan
 Route::get('/penyewaan', [PenyewaanController::class, 'index'])->name('penyewaan.index');
@@ -151,11 +151,8 @@ Route::delete('/penyewaan/{id}', [PenyewaanController::class, 'destroy'])->name(
 Route::get('/penyewaan/{id}', [PenyewaanController::class, 'show'])->name('penyewaan.show');
 // Penjelasan: Rute ini digunakan untuk menampilkan detail lengkap penyewaan tertentu. Metode show pada PenyewaanController akan menampilkan informasi rinci tentang penyewaan yang dipilih berdasarkan ID yang diberikan di URL ({id}).
 
-
-// Rute untuk melihat jadwal latihan
-Route::get('/lihat-jadwal', [JadwalController::class, 'index'])->name('lihat-jadwal');
-
-//home
+//route halaman home
+Route::post('/create-akun', [AkunController::class, 'createAkun']);
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
