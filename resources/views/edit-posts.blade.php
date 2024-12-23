@@ -94,10 +94,6 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="pelatih" class="form-label">Pelatih</label>
-                        <input type="text" name="pelatih" id="pelatih" class="form-control" value="{{ $akun->pelatih }}" required>
-                    </div>
-                    <div class="mb-3">
                         <label for="anggota" class="form-label">Anggota</label>
                         <input type="text" name="anggota" id="anggota" class="form-control" value="{{ $akun->anggota }}" required>
                     </div>

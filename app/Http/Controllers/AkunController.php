@@ -21,15 +21,17 @@ class AkunController extends Controller
             'tanggal' => 'required|string',
             'waktu' => 'required|string',
             'tarian_id' => 'required|exists:tarians,id',
-            'pelatih' => 'required|string',
+            // 'pelatih' => 'required|string',
             'anggota' => 'required|string'
         ]);
+
+        $pelatih = Tarian::find($request->tarian_id);
 
         $post = new Akun();
         $post->tanggal = $request->input('tanggal');
         $post->waktu = $request->input('waktu');
         $post->tarian_id = $request->input('tarian_id');
-        $post->pelatih = $request->input('pelatih');
+        $post->pelatih = $pelatih->pelatih;
         $post->anggota = $request->input('anggota');
         $post->save();
 
@@ -49,15 +51,17 @@ class AkunController extends Controller
             'tanggal' => 'required',
             'waktu' => 'required',
             'tarian_id' => 'required|exists:tarians,id',
-            'pelatih' => 'required',
+            // 'pelatih' => 'required',
             'anggota' => 'required',
         ]);
+
+        $pelatih = Tarian::find($request->tarian_id);
 
         $akun = Akun::findOrFail($id);
         $akun->tanggal = $request->input('tanggal');
         $akun->waktu = $request->input('waktu');
         $akun->tarian_id = $request->input('tarian_id');
-        $akun->pelatih = $request->input('pelatih');
+        $akun->pelatih = $pelatih->pelatih;
         $akun->anggota = $request->input('anggota');
         $akun->save();
 
