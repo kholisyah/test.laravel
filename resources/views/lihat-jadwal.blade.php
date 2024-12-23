@@ -1,4 +1,3 @@
-<!-- resources/views/lihat-jadwal.blade.php -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,7 +8,7 @@
     <style>
         /* Gaya latar belakang halaman */
         body {
-            background-color: #F4FAFD; /* Biru pastel lembut */
+            background-color: #F9FBFC; /* Biru pastel lembut */
             color: #4A4A4A;
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -27,17 +26,20 @@
 
         /* Gaya tabel */
         .table {
-            background-color: #EAF6FB; /* Warna tabel biru pastel */
+            width: 100%;
+            background-color: #FFFFFF;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         .table th, .table td {
             text-align: center;
             vertical-align: middle;
             padding: 15px;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            border: 1px solid #E3E6E8;
         }
 
         .table th {
@@ -47,7 +49,7 @@
         }
 
         .table td {
-            background-color: #EAF6FB;
+            background-color: #F4FAFD;
             color: #4A4A4A;
         }
 
@@ -58,7 +60,7 @@
 
         /* Styling tombol */
         .btn {
-            background-color: #B5DDEB; /* Warna biru pastel */
+            background: linear-gradient(to right, #A2D4E8, #B5DDEB); /* Warna gradien biru pastel */
             color: #4A4A4A;
             padding: 10px 20px;
             border: none;
@@ -66,12 +68,28 @@
             font-weight: bold;
             text-decoration: none;
             display: inline-block;
-            transition: background-color 0.3s;
-            margin-top: 20px;
+            transition: all 0.3s ease;
+            margin: 5px;
         }
 
         .btn:hover {
-            background-color: #A2D4E8; /* Warna hover tombol lebih gelap */
+            background: linear-gradient(to right, #91CDE4, #A8D8F0); /* Warna hover tombol lebih cerah */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsivitas tabel */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .table-container table {
+            min-width: 900px;
+        }
+
+        /* Pusatkan elemen */
+        .container {
+            max-width: 900px;
+            margin: auto;
         }
     </style>
 </head>
@@ -80,41 +98,45 @@
         <h1>Jadwal Latihan Sanggar Galuh</h1>
         
         <!-- Tabel untuk menampilkan jadwal latihan -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Tanggal</th>
-                    <th>Waktu</th>
-                    <th>Nama Tarian</th>
-                    <th>Pelatih</th>
-                    <th>Anggota</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($akuns as $akun)
-                <tr>
-                    <td>{{ $akun->tanggal }}</td>
-                    <td>{{ $akun->waktu }}</td>
-                    <td>{{ $akun->tarian ? $akun->tarian->nama_tari : 'Tidak ada' }}</td>
-                    <td>{{ $akun->pelatih }}</td>
-                    <td>{{ $akun->anggota }}</td>
-                    <td>
-                        <div class="d-flex">
-                            <a href="/edit-posts/{{ $akun->id }}" class="btn btn-warning">Edit</a>
-                            <form action="/delete-posts/{{ $akun->id }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin dihapus?')">Hapus</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Nama Tarian</th>
+                        <th>Pelatih</th>
+                        <th>Anggota</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($akuns as $akun)
+                    <tr>
+                        <td>{{ $akun->tanggal }}</td>
+                        <td>{{ $akun->waktu }}</td>
+                        <td>{{ $akun->tarian ? $akun->tarian->nama_tari : 'Tidak ada' }}</td>
+                        <td>{{ $akun->pelatih }}</td>
+                        <td>{{ $akun->anggota }}</td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a href="/edit-posts/{{ $akun->id }}" class="btn btn-warning">Edit</a>
+                                <form action="/delete-posts/{{ $akun->id }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin dihapus?')">Hapus</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         <!-- Kembali ke Dashboard -->
-        <a href="{{ url('/dashboard') }}" class="btn">Kembali ke Dashboard</a>
+        <div class="text-center">
+            <a href="{{ url('/dashboard') }}" class="btn">Kembali ke Dashboard</a>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
