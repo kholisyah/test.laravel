@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Akun;
+use App\Models\Tarian;
 use Illuminate\Http\Request;
 
 class JadwalController extends Controller
 {
     public function index()
-{
-    $jadwals = Akun::all(); // Mengambil data dari model Akun
-    return view('lihat-jadwal', compact('jadwals'));
-}
+    {
+        $tarians = Tarian::all();
+        $akuns = Akun::all();
+        return view('lihat-jadwal', compact('tarians', 'akuns'));
+    }
 
 }

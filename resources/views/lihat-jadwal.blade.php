@@ -80,29 +80,39 @@
         <h1>Jadwal Latihan Sanggar Galuh</h1>
         
         <!-- Tabel untuk menampilkan jadwal latihan -->
-        <table class="table table-striped">
+        <table>
             <thead>
                 <tr>
                     <th>Tanggal</th>
                     <th>Waktu</th>
-                    <th>Jenis Tari</th>
+                    <th>Nama Tarian</th>
                     <th>Pelatih</th>
                     <th>Anggota</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($jadwals as $jadwal)
+                @foreach ($akuns as $akun)
                 <tr>
-                    <td>{{ $jadwal->tanggal }}</td>
-                    <td>{{ $jadwal->waktu }}</td>
-                    <td>{{ $jadwal->jenis_tari }}</td>
-                    <td>{{ $jadwal->pelatih }}</td>
-                    <td>{{ $jadwal->anggota }}</td>
+                    <td>{{ $akun->tanggal }}</td>
+                    <td>{{ $akun->waktu }}</td>
+                    <td>{{ $akun->tarian ? $akun->tarian->nama_tari : 'Tidak ada' }}</td>
+                    <td>{{ $akun->pelatih }}</td>
+                    <td>{{ $akun->anggota }}</td>
+                    <td>
+                        <div class="d-flex">
+                            <a href="/edit-posts/{{ $akun->id }}" class="btn btn-warning">Edit</a>
+                            <form action="/delete-posts/{{ $akun->id }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin dihapus?')">Hapus</button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-
         <!-- Kembali ke Dashboard -->
         <a href="{{ url('/dashboard') }}" class="btn">Kembali ke Dashboard</a>
     </div>
