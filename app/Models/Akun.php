@@ -2,18 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Tarian;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Akun extends Model
 {
-
     use HasFactory;
+
+    // Tentukan kolom yang dapat diisi (fillable)
     protected $fillable = [
         'tanggal',
         'waktu',
-        'jenis tari',
+        'tarian_id',  // Gantilah 'jenis_tari' dengan 'tarian_id'
         'pelatih',
-        'anggota'
+        'anggota',
     ];
+
+    // Relasi dengan model Tarian (Akun belongsTo Tarian)
+// Model Akun (app/Models/Akun.php)
+public function tarian()
+{
+    return $this->belongsTo(Tarian::class, 'tarian_id');
+}
+
+
 }

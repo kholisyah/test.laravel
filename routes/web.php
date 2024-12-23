@@ -41,6 +41,9 @@ Route::get('/home', function () {
 Route::get('/syarat', function () {
     return view('syarat');
 });
+Route::get('/jadwal', function () {
+    return view('jadwal');
+});
 
 Route::get('/tari', function () {
     return view('tari');
@@ -68,8 +71,6 @@ Route::get('/profile', [UserController::class, 'showProfile'])->name('profile.sh
 Route::get('/profile/edit/{id}', [UserController::class, 'editProfile'])->name('profile.edit')->middleware('auth');
 Route::delete('/profile/delete/{id}', [UserController::class, 'deleteProfile'])->name('profile.delete')->middleware('auth');
 
-// Rute untuk 'jadwal'
-Route::get('/jadwal', [AkunController::class, 'index']);
 
 // Rute untuk menampilkan semua pendaftaran
 Route::get('/project', [PendaftaranController::class, 'index']);
@@ -105,10 +106,10 @@ Route::put('/dasbord/{profil}', [ProfilController::class, 'actuallyUpdateProfil'
 // Route untuk menghapus profil
 Route::delete('/dasbord/{profil}', [ProfilController::class, 'deleteProfil'])->name('profil.delete');
 
-// Rute untuk halaman jadwal (untuk Akun)
-Route::get('/jadwal', [AkunController::class, 'index']);
-// Rute untuk menambah akun baru
-Route::post('/create-post', [AkunController::class, 'createPost']);
+// Route untuk menampilkan jadwal
+Route::get('/jadwal', [AkunController::class, 'index'])->name('jadwal');
+// Route untuk menyimpan data akun baru
+Route::post('/create.post', [AkunController::class, 'createPost'])->name('create.post');
 // Rute untuk menampilkan halaman edit (untuk Akun)
 Route::get('/edit-posts/{akun}', [AkunController::class, 'showEditScreen']);
 Route::put('/edit-posts/{akun}', [AkunController::class, 'actuallyUpdatePost']);

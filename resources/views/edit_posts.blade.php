@@ -25,7 +25,13 @@
                     </div>
                     <div class="mb-2">
                         <label for="jenis_tari" class="form-label">Jenis Tari</label>
-                        <input type="text" name="jenis_tari" class="form-control" value="{{ $akun->jenis_tari }}" required>
+                        <select name="tarian_id" class="form-control">
+                            @foreach($tarians as $tari)
+                                <option value="{{ $tari->id }}" {{ $akun->tarian_id == $tari->id ? 'selected' : '' }}>
+                                    {{ $tari->nama }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-2">
                         <label for="pelatih" class="form-label">Pelatih</label>

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('akuns', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal'); // Membuat kolom 'tanggal' bertipe DATE untuk menyimpan tanggal
-            $table->time('waktu'); // Membuat kolom 'waktu' bertipe TIME untuk menyimpan waktu
-            $table->string('jenis_tari'); // Membuat kolom 'jenis_tari' bertipe string untuk menyimpan jenis tari
-            $table->string('pelatih'); // Membuat kolom 'pelatih' bertipe string untuk menyimpan nama pelatih
-            $table->string('anggota'); // 'after' menunjukkan posisi kolom
+            $table->date('tanggal'); // Kolom 'tanggal' bertipe DATE untuk menyimpan tanggal
+            $table->time('waktu'); // Kolom 'waktu' bertipe TIME untuk menyimpan waktu
+            $table->foreignId('tarian_id')->constrained('tarians')->onDelete('cascade'); // Menambahkan kolom 'tarian_id' sebagai foreign key
+            $table->string('pelatih'); // Kolom 'pelatih' bertipe string untuk menyimpan nama pelatih
+            $table->string('anggota'); // Kolom 'anggota' bertipe string untuk menyimpan nama anggota
             $table->timestamps();
         });
     }
