@@ -59,6 +59,12 @@
     </style>
   </head>
   <body>
+    @if ($errors->has('file'))
+    <div class="alert alert-danger">
+        {{ $errors->first('file') }}
+    </div>
+@endif
+
     <div class="container">
         <p><strong>Persyaratan yang diperlukan sebagai berikut:</strong></p>
         <ul>

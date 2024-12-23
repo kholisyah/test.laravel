@@ -6,6 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Halaman Pendaftaran</title>
     <style>
+         /* Navbar */
+         .navbar {
+            background-color: #89c4e9;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+        }
+        
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s, opacity 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #156ba5;
+        }
+
+        .navbar a.active {
+            color: #156ba5;
+            opacity: 0.7;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -122,6 +163,21 @@
     </style>
 </head>
 <body>
+     <!-- Navbar -->
+        <div class="navbar">
+            <div class="logo">
+                <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+                Sanggar Galuh
+            </div>
+            <div class="nav-links">
+                <a href="/home">Beranda</a>
+                <a href="/project">Pendaftaran</a>
+                <a href="/login">Jadwal</a>
+                <a href="/index">Perengkingan</a>
+                <a href="/galeri">Penyewaan</a>
+                <a href="/cart">Keranjang</a>
+            </div>
+        </div>
     <div class="container">
         <h2>Pendaftaran</h2>
         <form id="pendaftaranForm" action="/create-pendaftaran" method="POST">

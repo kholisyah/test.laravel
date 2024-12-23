@@ -108,7 +108,7 @@
                         <li class="list-group-item"><strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d-m-Y') }}</li>
                     </ul>
                 </div>
-            </div>
+            </div> 
         </section>
 
         <!-- Tombol WhatsApp untuk Pembayaran -->
@@ -124,5 +124,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<<<<<<< HEAD
 </html>
 
+=======
+</html>
+>>>>>>> 14ccbde8dabf33ab009f5c438d05473f08ede99d
