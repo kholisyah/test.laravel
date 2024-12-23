@@ -144,11 +144,11 @@
                     <input type="text" name="tanggal" placeholder="Tanggal" required>
                     <input type="text" name="waktu" placeholder="Waktu" required>
                     <select name="tarian_id">
+                        <option value="" selected disabled>pilih tari</option>
                         @foreach ($tarians as $tarian)
                             <option value="{{ $tarian->id }}">{{ $tarian->nama_tari }}</option>
                         @endforeach
                     </select>
-                    <input type="text" name="pelatih" placeholder="Pelatih" required>
                     <input type="text" name="anggota" placeholder="Anggota" required>
                     <button type="submit">Simpan</button>
                 </form>
