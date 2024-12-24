@@ -76,7 +76,7 @@
         <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="form-group mb-3">
-              <label for="file">Upload bukti dan persyaratan disini</label>
+              <label for="file">Upload bukti dan persyaratan disini dalam bentuk File PDF</label>
               <input type="file" name="file" id="file" class="form-control">
           </div>
       
