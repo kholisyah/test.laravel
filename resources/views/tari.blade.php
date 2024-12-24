@@ -78,8 +78,13 @@
                                                 </div>
                                                 <div class="mb-2">
                                                     <label class="form-label">Kategori</label>
-                                                    <input type="text" name="kategori" class="form-control" value="{{ $tarian->kategori }}" required>
+                                                    <select name="kategori" class="form-control" required>
+                                                        <option value="">Pilih Kategori</option>
+                                                        <option value="Anak-anak" {{ $tarian->kategori == 'Anak-anak' ? 'selected' : '' }}>Anak-anak</option>
+                                                        <option value="Dewasa" {{ $tarian->kategori == 'Dewasa' ? 'selected' : '' }}>Dewasa</option>
+                                                    </select>
                                                 </div>
+                                                
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -109,7 +114,7 @@
                     <div class="modal-body">
                         <div class="mb-2">
                             <label class="form-label">Nama Tari</label>
-                            <input type="text" name="jenis_tari" class="form-control" placeholder="Masukkan jenis tari" required>
+                            <input type="text" name="jenis_tari" class="form-control" placeholder="Masukkan nama tari" required>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Pelatih</label>
@@ -117,7 +122,11 @@
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Kategori</label>
-                            <input type="text" name="kategori" class="form-control" placeholder="Masukkan kategori tari" required>
+                            <select name="kategori" class="form-control" required>
+                                <option value="">Pilih Kategori</option>
+                                <option value="Anak-anak" {{ $tarian->kategori == 'Anak-anak' ? 'selected' : '' }}>Anak-anak</option>
+                                <option value="Dewasa" {{ $tarian->kategori == 'Dewasa' ? 'selected' : '' }}>Dewasa</option>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">
