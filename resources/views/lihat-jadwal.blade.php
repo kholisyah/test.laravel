@@ -107,7 +107,6 @@
                         <th>Nama Tarian</th>
                         <th>Pelatih</th>
                         <th>Anggota</th>
-                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -118,15 +117,6 @@
                         <td>{{ $akun->tarian ? $akun->tarian->nama_tari : 'Tidak ada' }}</td>
                         <td>{{ $akun->pelatih }}</td>
                         <td>{{ $akun->anggota }}</td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a href="/edit-posts/{{ $akun->id }}" class="btn btn-warning">Edit</a>
-                                <form action="/delete-posts/{{ $akun->id }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin dihapus?')">Hapus</button>
-                                </form>
-                            </div>
                         </td>
                     </tr>
                     @endforeach
