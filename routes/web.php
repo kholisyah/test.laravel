@@ -211,5 +211,6 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::post('/transaksi/store-from-cart', [TransaksiController::class, 'storeFromCart'])->name('transaksi.storeFromCart');
+Route::post('/transaksi/from-cart', [TransaksiController::class, 'storeFromCart'])->name('transaksi.storeFromCart');
 
 Route::get('/index', [SawAhpController::class, 'index']);

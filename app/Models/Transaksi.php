@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
-
-    // Menentukan kolom yang dapat diisi
+    
     protected $fillable = [
         'status',
         'total',

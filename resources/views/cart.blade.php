@@ -160,6 +160,7 @@
             <a href="login" class="{{ request()->is('login') ? 'active' : '' }}">Jadwal</a>
             <a href="galeri" class="{{ request()->is('galeri') ? 'active' : '' }}">Penyewaan</a>
             <a href="keranjang" class="{{ request()->is('keranjang') ? 'active' : '' }}">Keranjang</a>
+            <a href="login" class="{{ request()->is('login') ? 'active' : '' }}">login</a>
         </div>
     </div>
 
@@ -199,8 +200,9 @@
     </table>
 
     <!-- Tombol untuk lanjut ke pembayaran -->
-    <div class="actions" style="text-align: right;">
-        <a href="{{ route('transaksi.index') }}" class="btn btn-success">Lanjutkan ke Pembayaran</a>
-    </div>
+    <form action="{{ route('transaksi.storeFromCart') }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-primary">Proses Transaksi</button>
+    </form>
 </body>
 </html>
