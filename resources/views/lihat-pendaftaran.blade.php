@@ -84,6 +84,37 @@
         .back-button:hover {
             background-color: #A2D4E8; /* Warna hover biru pastel lebih gelap */
         }
+
+        /* Gaya tombol di dalam tabel */
+        .action-buttons a,
+        .action-buttons form button {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 0 4px;
+            font-size: 12px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-buttons a {
+            background-color: #5BC0EB; /* Warna biru untuk tombol edit */
+        }
+
+        .action-buttons a:hover {
+            background-color: #469FC4; /* Warna hover tombol edit */
+        }
+
+        .action-buttons form button {
+            background-color: #F25F5C; /* Warna merah untuk tombol hapus */
+        }
+
+        .action-buttons form button:hover {
+            background-color: #D94442; /* Warna hover tombol hapus */
+        }
     </style>
 </head>
 <body>
@@ -99,6 +130,7 @@
                     <th>No Telepon</th>
                     <th>Kategori</th>
                     <th>Biaya Administrasi</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -110,6 +142,14 @@
                     <td>{{ $pendaftaran->no_telepon }}</td>
                     <td>{{ $pendaftaran->kategori }}</td>
                     <td>Rp{{ number_format($pendaftaran->biaya_administrasi, 0, ',', '.') }}</td>
+                    <td class="action-buttons">
+                        <a href="/edit-pendaftaran/{{ $pendaftaran->id }}">Edit</a>
+                        <form action="/delete-pendaftaran/{{ $pendaftaran->id }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm('Yakin ingin dihapus?')">Hapus</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

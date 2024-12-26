@@ -201,33 +201,7 @@
             <button type="submit">Simpan</button>
         </form>
 
-        <div class="data-container">
-            <h2>Data Pendaftaran Yang Tersimpan</h2>
-            @foreach ($pendaftarans as $pendaftaran)
-            <div class="data-item">
-                <div>
-                    <h3>{{ $pendaftaran->nama }}</h3>
-                    <div class="detail">
-                        <p>Email: {{ $pendaftaran->email }}</p>
-                        <p>Alamat: {{ $pendaftaran->alamat }}</p>
-                        <p>No Telepon: {{ $pendaftaran->no_telepon }}</p>
-                        <p>Kategori: {{ $pendaftaran->kategori }}</p>
-                        <p>Biaya Administrasi: Rp{{ $pendaftaran->biaya_administrasi }}</p>
-                    </div>
-                </div>
-                <div class="actions">
-                    <a class="view-button">View</a>
-                    <a href="/edit-pendaftaran/{{ $pendaftaran->id }}">Edit</a>
-                    <form class="delete-form" action="/delete-pendaftaran/{{ $pendaftaran->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" onclick="return confirm('Yakin ingin dihapus?')">Hapus</button>
-                    </form>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
+        
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
