@@ -214,6 +214,7 @@
                 data: $(this).serialize(),
                 success: function(response) {
                     alert('Data berhasil disimpan!');
+                    window.location.href = '/sukses'; // Redirect ke halaman sukses
                     $('#pendaftaranForm')[0].reset();
                     const newData = `
                         <div class="data-item">
