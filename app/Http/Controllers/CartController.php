@@ -5,72 +5,66 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 class CartController extends Controller
 {
-    public function viewCart()
+    public function index()
 {
-    $cartItems = session('cart.items', []); // Ambil data keranjang dari sesi
-    return view('cart', compact('cartItems'));
+    $cart = session()->get('cart.items', []); // Ambil item dari sesi
+    return view('cart', compact('cart')); // Pastikan ada view bernama 'cart'
 }
 
-   public function addToCart(Request $request)
+    public function addToCart(Request $request)
 {
     $item = [
         'product_name' => $request->product_name,
         'quantity' => $request->quantity,
         'total' => $request->total,
+        'category' => $request->kategori, // Perbaiki kunci ini
     ];
 
-    // Simpan item ke sesi keranjang
     session()->push('cart.items', $item);
 
-    // Kembalikan respons JSON
     return response()->json(['message' => 'Item berhasil ditambahkan ke keranjang']);
 }
 
 
+public function remove(Request $request)
+{
+    $cart = session()->get('cart.items', []); // Gunakan kunci yang sesuai
+    unset($cart[$request->input('index')]);
+
+    session()->put('cart.items', $cart); // Perbarui kembali ke sesi
+
+    return redirect()->route('cart.index')->with('success', 'Item berhasil dihapus');
+}
+
+
+    public function viewCart()
+    {
+        $cartItems = session()->get('cart.items', []); // Format kunci sesuai
+        return view('cart', compact('cartItems'));
+    }
+    
+
     // Menambahkan produk ke cart
     public function add(Request $request)
-    {
-        // Ambil data cart dari sesi
-        $cart = session()->get('cart', []);
+{
+    $cart = session()->get('cart', []);
 
-        // Siapkan produk yang akan ditambahkan
-        $product = [
-            'product_name' => $request->input('product_name'),
-            'quantity' => $request->input('quantity'),
-            'total' => $request->input('total'),
-        ];
+    $product = [
+        'product_name' => $request->input('product_name'),
+        'quantity' => $request->input('quantity'),
+        'total' => $request->input('total'),
+        'category' => $request->input('category'), // Tambahkan kategori
+    ];
 
-        // Tambahkan produk ke cart
-        $cart[] = $product;
+    $cart[] = $product;
 
-        // Simpan kembali ke sesi
-        session()->put('cart', $cart);
+    session()->put('cart', $cart);
 
-        // Cek apakah produk berhasil ditambahkan
-        session()->flash('success', 'Produk berhasil ditambahkan ke keranjang!');
+    session()->flash('success', 'Produk berhasil ditambahkan ke keranjang!');
 
-        // Redirect ke halaman cart
-        return redirect()->route('cart.index');
-    }
+    return redirect()->route('cart.index');
+}
 
-    // Menampilkan cart
-    public function index()
-    {
-        $cart = session()->get('cart', []);
-        return view('cart', compact('cart'));
-    }
-
-    // Menghapus produk dari cart
-    public function remove(Request $request)
-    {
-        $cart = session()->get('cart', []);
-        unset($cart[$request->input('index')]);
-
-        session()->put('cart', $cart);
-
-        return redirect()->route('cart.index');
-    }
 }

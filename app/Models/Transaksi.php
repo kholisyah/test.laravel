@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
-        'status',
         'total',
-        'tanggal',
+        'tanggal', // Ensure these are listed if you want to mass-assign them
     ];
 }

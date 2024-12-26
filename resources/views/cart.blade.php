@@ -170,34 +170,31 @@
     </div>
 
     <!-- Table Keranjang -->
-    <table class="cart-table">
-        <thead>
-            <tr>
-                <th>Nama Produk</th>
-                <th>Kuantitas</th>
-                <th>Total</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Perulangan untuk menampilkan item dalam keranjang -->
-            @foreach ($cart as $index => $item)
+    <table class="cart-table">  
+            <thead>
                 <tr>
-                    <td>{{ $item['product_name'] }}</td>
-                    <td>{{ $item['quantity'] }}</td>
-                    <td>Rp {{ number_format($item['total'], 0, ',', '.') }}</td>
-                    <td>
-                        <!-- Form untuk menghapus item dari keranjang -->
-                        <form action="{{ route('cart.remove') }}" method="POST" style="display: inline;">
-                            @csrf
-                            <input type="hidden" name="index" value="{{ $index }}">
-                            <button type="submit" class="btn btn-danger">Hapus</button>
-                        </form>
-                    </td>
+                    <th>Nama Produk</th>
+                    <th>Kuantitas</th>
+                    <th>Total</th>
+                    <th>Kategori</th>
                 </tr>
-            @endforeach
-        </tbody>
+            </thead>
+            <tbody>
+                @forelse ($cart as $index => $item)
+                    <tr>
+                        <td>{{ $item['product_name'] }}</td>
+                        <td>{{ $item['quantity'] }}</td>
+                        <td>{{ $item['total'] }}</td>
+                        <td>{{ $item['category'] ?? 'Tidak Ada Kategori' }}</td> <!-- Tambahkan fallback untuk category -->
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4">Keranjang kosong</td>
+                    </tr>
+                @endforelse
+            </tbody>
     </table>
+    
 
     <!-- Tombol untuk lanjut ke pembayaran -->
     <form action="{{ route('transaksi.storeFromCart') }}" method="POST">

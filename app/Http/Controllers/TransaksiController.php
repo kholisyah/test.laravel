@@ -38,16 +38,26 @@ public function sendWhatsAppMessage($to, $message) {
     return false;
 }
 
-    public function storeFromCart(Request $request)
+public function storeFromCart(Request $request)
 {
     $cart = session()->get('cart', []);
 
     foreach ($cart as $item) {
-        Transaksi::create([
-            'status' => 'pending',
-            'total' => $item['total'],
-            'tanggal' => now(),
-        ]);
+        // Ensure 'total' exists in the cart item
+        if (isset($item['total'])) {
+            Transaksi::create([
+                'status' => 'pending',
+                'total' => $item['total'],
+                'tanggal' => now(),
+            ]);
+        } else {
+            // Handle missing total, maybe log an error or set a default value
+            Transaksi::create([
+                'status' => 'pending',
+                'total' => 0, // Default value
+                'tanggal' => now(),
+            ]);
+        }
     }
 
     // Kosongkan keranjang
@@ -55,6 +65,7 @@ public function sendWhatsAppMessage($to, $message) {
 
     return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil dibuat!');
 }
+
 
     
     public function showPaymentPage($id)
@@ -122,12 +133,10 @@ public function sendWhatsAppMessage($to, $message) {
 
     // Menampilkan semua transaksi
     public function index()
-    {
-        // Mengambil semua data transaksi
-        $transaksis = Transaksi::all();
-        return view('transaksi', compact('transaksis'));
-
-    }
+{
+    $transaksis = Transaksi::all(); // or use proper query if filtering is needed
+    return view('transaksi', compact('transaksis'));
+}
 
     // Menampilkan halaman form untuk transaksi baru
     public function create()

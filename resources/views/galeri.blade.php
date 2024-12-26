@@ -242,6 +242,7 @@
                                 <option value="orang_tua">Orang Tua</option>
                                 <option value="dewasa">Dewasa</option>
                             </select>
+                            
                 
                             <!-- Quantity Controls -->
                             <div class="card" data-price="70000">
@@ -913,6 +914,36 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function () {
+        const form = this.closest('form');
+        const formData = new FormData(form);
+
+        // Ambil kategori dari dropdown
+        const kategori = form.querySelector('select[name="kategori"]').value;
+        if (!kategori) {
+            alert('Pilih kategori sebelum menambahkan ke keranjang!');
+            return;
+        }
+
+        // Kirim data form via AJAX
+        formData.append('kategori', kategori);
+
+        fetch('/add-to-cart', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': form.querySelector('input[name="_token"]').value,
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+
     document.addEventListener('DOMContentLoaded', function () {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
 
