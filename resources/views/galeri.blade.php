@@ -917,223 +917,124 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', function () {
-        const form = this.closest('form');
-        const formData = new FormData(form);
-
-        // Debug: Pastikan kategori terkirim
-        console.log('Kategori:', formData.get('category'));
-
-        // Kirim data ke server
-        fetch('/cart/add', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message); // Notifikasi sukses
-        })
-        .catch(error => console.error('Error:', error));
-    });
-});
-
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', function () {
-        const form = this.closest('form');
-        const formData = new FormData(form);
-
-        // Debug: Pastikan kategori ada di FormData
-        console.log('Kategori:', formData.get('category'));
-
-        // Kirim data ke server melalui AJAX
-        fetch('/cart/add', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-        })
-        .catch(error => console.error('Error:', error));
-    });
-});
-
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', function () {
-        const form = this.closest('form');
-        const formData = new FormData(form);
-
-        // Ambil kategori dari dropdown
-        const kategori = form.querySelector('select[name="kategori"]').value;
-        if (!kategori) {
-            alert('Pilih kategori sebelum menambahkan ke keranjang!');
-            return;
-        }
-
-        // Kirim data form via AJAX
-        formData.append('kategori', kategori);
-
-        fetch('/add-to-cart', {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': form.querySelector('input[name="_token"]').value,
-            },
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-        })
-        .catch(error => console.error('Error:', error));
-    });
-});
-
-    document.addEventListener('DOMContentLoaded', function () {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const card = this.closest('.gallery-card');
-            const productName = card.querySelector('input[name="product_name"]').value;
-            const quantityInput = card.querySelector('.quantity-input');
-            const quantity = parseInt(quantityInput.value);
-            const price = parseInt(card.dataset.price);
-            const totalPrice = quantity * price;
-
-            // Kirim data ke server dengan AJAX
-            fetch('/cart', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                },
-                body: JSON.stringify({
-                    product_name: productName,
-                    quantity: quantity,
-                    total: totalPrice,
-                }),
-            })
+    <script>
+        // Menambahkan event listener untuk tombol "Add to Cart" di setiap elemen dengan kelas 'add-to-cart'
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                // Mencari form terdekat di dalam elemen tombol dan mengumpulkan data dari form
+                const form = this.closest('form');
+                const formData = new FormData(form);
+    
+                // Debugging: Memastikan kategori terkirim dalam FormData
+                console.log('Kategori:', formData.get('category'));
+    
+                // Mengirim data ke server menggunakan fetch
+                fetch('/cart/add', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content // Menyertakan token CSRF untuk keamanan
+                    }
+                })
                 .then(response => response.json())
                 .then(data => {
-                    alert('Item berhasil ditambahkan ke keranjang!');
-                    // Perbarui tampilan keranjang atau lainnya jika diperlukan
+                    alert(data.message); // Menampilkan notifikasi sukses jika data berhasil ditambahkan
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Terjadi kesalahan saat menambahkan item ke keranjang.');
-                });
-        });
-    });
-});
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const navLinks = document.querySelectorAll('.navbar a');
-
-        // Tambahkan event listener ke setiap tautan
-        navLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                // Hapus kelas aktif dari semua tautan
-                navLinks.forEach(link => link.classList.remove('active'));
-
-                // Tambahkan kelas aktif ke tautan yang diklik
-                event.target.classList.add('active');
+                .catch(error => console.error('Error:', error)); // Menampilkan pesan kesalahan jika terjadi error
             });
         });
-
-        // Tandai tautan aktif berdasarkan URL saat ini
-        const currentPath = window.location.pathname;
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentPath) {
-                link.classList.add('active');
-            }
+    
+        // Menambahkan event listener untuk tombol "Add to Cart" setelah halaman selesai dimuat
+        document.addEventListener('DOMContentLoaded', function () {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    
+            // Iterasi melalui semua tombol dan menambahkan event listener
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Mengambil informasi produk dari elemen terdekat (gallery card)
+                    const card = this.closest('.gallery-card');
+                    const productName = card.querySelector('input[name="product_name"]').value;
+                    const quantityInput = card.querySelector('.quantity-input');
+                    const quantity = parseInt(quantityInput.value); // Mengambil jumlah dari input quantity
+                    const price = parseInt(card.dataset.price); // Mengambil harga produk dari atribut data
+                    const totalPrice = quantity * price; // Menghitung total harga berdasarkan jumlah dan harga produk
+    
+                    // Mengirim data ke server menggunakan fetch (AJAX)
+                    fetch('/cart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json', // Mengirim data dalam format JSON
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Token CSRF
+                        },
+                        body: JSON.stringify({
+                            product_name: productName, // Mengirim nama produk
+                            quantity: quantity, // Mengirim jumlah produk
+                            total: totalPrice, // Mengirim total harga
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('Item berhasil ditambahkan ke keranjang!'); // Notifikasi bahwa item berhasil ditambahkan
+                        // Perbarui tampilan keranjang atau UI lainnya jika diperlukan
+                    })
+                    .catch(error => {
+                        console.error('Error:', error); // Menampilkan pesan kesalahan jika ada masalah dengan request
+                        alert('Terjadi kesalahan saat menambahkan item ke keranjang.');
+                    });
+                });
+            });
         });
-    });
-    $(document).ready(function () {
-        // Saat tombol Tambahkan ke Keranjang ditekan
-        $(document).on('click', '.add-to-cart', function () {
-            const form = $(this).closest('.ajax-form'); // Ambil form terkait
-            const url = "{{ route('cart.add') }}"; // URL tujuan server
-            
-            $.ajax({
-                url: url,
-                method: "POST",
-                data: form.serialize(), // Kirim data form
-                success: function (response) {
-                    alert('Item berhasil ditambahkan ke keranjang!');
-                    // Opsional: Update UI keranjang
-                },
-                error: function (xhr) {
-                    alert('Terjadi kesalahan, coba lagi.');
+    
+        // Menambahkan event listener untuk tautan navigasi agar dapat menandai tautan aktif
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.navbar a');
+    
+            // Menambahkan event listener untuk setiap tautan di navbar
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    // Menghapus kelas aktif dari semua tautan
+                    navLinks.forEach(link => link.classList.remove('active'));
+    
+                    // Menambahkan kelas aktif pada tautan yang diklik
+                    event.target.classList.add('active');
+                });
+            });
+    
+            // Menandai tautan aktif berdasarkan URL saat ini
+            const currentPath = window.location.pathname;
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active'); // Menandai tautan yang sesuai dengan path saat ini
                 }
             });
         });
-    });
-</script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(document).ready(function() {
-    $('.add-to-cart').on('click', function() {
-        var quantity = $('.quantity-value').val(); // Mengambil nilai jumlah
-        var total = $('.total-value').val(); // Mengambil nilai total
-        
-        // Menghitung total harga berdasarkan jumlah yang dipilih
-        quantity * price;
-        
-        // Update nilai total di hidden input
-        $('.total-value').val(newTotal);
-
-        // Kirimkan form menggunakan AJAX atau metode yang diinginkan
-        $.ajax({
-            url: '/cart', // Ganti dengan route yang sesuai
-            method: 'POST',
-            data: {
-                _token: $('input[name="_token"]').val(),
-                product_name: $('input[name="product_name"]').val(),
-                quantity: quantity,
-                total: newTotal
-            },
-            success: function(response) {
-                // Handle response (misalnya, menampilkan update di cart)
-                console.log(response);
-            }
-        });
-    });
-});
-
-        // Fungsi untuk memperbarui jumlah dan total harga
-        document.addEventListener('DOMContentLoaded', () => {
-            const buttons = document.querySelectorAll('.quantity-btn');
-        
-            buttons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const isIncrease = this.textContent === '+'; // Periksa apakah tombol '+' atau '-'
-                    const targetInput = this.closest('.card').querySelector('.quantity-input'); // Ambil input quantity dalam card yang sama
-                    const totalPriceElement = this.closest('.card-body').querySelector('.total-price'); // Total harga di dalam card yang sama
-                    const productPrice = parseInt(this.closest('.card').dataset.price); // Ambil harga produk dari data atribut card
-        
-                    // Ambil nilai saat ini dan lakukan operasi
-                    let currentValue = parseInt(targetInput.value);
-                    if (isIncrease) {
-                        currentValue += 1;
-                    } else if (currentValue > 1) { // Pastikan jumlah tidak kurang dari 1
-                        currentValue -= 1;
+    
+        // Menangani event klik pada tombol "Add to Cart" menggunakan jQuery
+        $(document).ready(function () {
+            // Event listener untuk tombol "Add to Cart"
+            $(document).on('click', '.add-to-cart', function () {
+                const form = $(this).closest('.ajax-form'); // Mendapatkan form terkait dengan tombol
+                const url = "{{ route('cart.add') }}"; // URL tujuan server
+    
+                // Mengirim data form menggunakan AJAX
+                $.ajax({
+                    url: url, // Menyertakan URL tujuan
+                    method: "POST", // Metode HTTP yang digunakan
+                    data: form.serialize(), // Menyertakan data form dalam format URL encoded
+                    success: function (response) {
+                        alert('Item berhasil ditambahkan ke keranjang!'); // Menampilkan notifikasi sukses
+                        // Opsional: Update UI keranjang jika diperlukan
+                    },
+                    error: function (xhr) {
+                        alert('Terjadi kesalahan, coba lagi.'); // Menampilkan pesan kesalahan jika gagal
                     }
-        
-                    // Perbarui nilai di input dan total harga
-                    targetInput.value = currentValue;
-                    totalPriceElement.textContent = `Total: Rp ${(currentValue * productPrice).toLocaleString()}`;
                 });
             });
         });
+    
+       
     </script>
+    
     
     
 </body>
