@@ -2,11 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 use App\Models\Transaksi;
+use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
+
+public function sendWhatsAppMessage($to, $message) {
+    $apiKey = env('ZYwGTa1u1VS5wRdtWda8'); // Ambil API Key dari .env
+    $sender = env('+6281351244556'); // Nomor WhatsApp yang digunakan (dari Fonnte)
+    
+    $client = new Client();
+
+    // Endpoint Fonnte untuk mengirim pesan
+    $url = 'https://api.fonnte.com/v1/send';
+
+    $response = $client->post($url, [
+        'json' => [
+            'api_key' => $apiKey, // API Key
+            'sender' => $sender,  // Nomor pengirim
+            'to' => $to,          // Nomor tujuan
+            'message' => $message // Isi pesan
+        ]
+    ]);
+
+    $body = $response->getBody();
+    $data = json_decode($body, true);
+
+    // Cek apakah pesan berhasil terkirim
+    if (isset($data['status']) && $data['status'] == 'success') {
+        return true;
+    }
+
+    return false;
+}
+
     public function storeFromCart(Request $request)
 {
     $cart = session()->get('cart', []);
