@@ -63,6 +63,10 @@ Route::get('/register', function () {
     return view('register');
 });
 
+Route::get('/sukses', function () {
+    return view('sukses');
+});
+
 Route::get('/result', function () {
     return view('result');
 })->name('result');
