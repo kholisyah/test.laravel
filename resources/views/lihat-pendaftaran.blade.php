@@ -14,16 +14,39 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Gaya dasar untuk body, background dan padding */
+        /* Gaya dasar untuk body, background, dan padding */
         body {
             background-color: #F4FAFD; /* Latar belakang biru pastel */
-            padding: 20px;
+            padding: 0;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: #B5DDEB; /* Warna biru pastel */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            color: #4A4A4A;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #A2D4E8; /* Warna hover */
         }
 
         /* Pengaturan untuk container tabel */
         .container {
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 20px auto;
             background-color: #EAF6FB; /* Warna biru pastel lembut */
             padding: 30px;
             border-radius: 12px;
@@ -69,22 +92,6 @@
             background-color: #CDEAF5; /* Efek hover baris tabel */
         }
 
-        /* Tombol kembali */
-        .back-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #B5DDEB; /* Tombol biru pastel */
-            color: #4A4A4A;
-            text-decoration: none;
-            border-radius: 8px;
-            text-align: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .back-button:hover {
-            background-color: #A2D4E8; /* Warna hover biru pastel lebih gelap */
-        }
-
         /* Gaya tombol di dalam tabel */
         .action-buttons a,
         .action-buttons form button {
@@ -118,6 +125,12 @@
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="{{ url('/dashboard') }}">Kembali ke Dashboard</a>
+    </div>
+
+    <!-- Konten Utama -->
     <div class="container">
         <h2>Data Pendaftaran</h2>
 
@@ -154,9 +167,6 @@
                 @endforeach
             </tbody>
         </table>
-
-        <!-- Kembali ke Dashboard -->
-        <a href="{{ url('/dashboard') }}" class="back-button">Kembali ke Dashboard</a>
     </div>
 </body>
 </html>
