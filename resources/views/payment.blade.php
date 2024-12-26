@@ -115,7 +115,7 @@
         <!-- Tombol WhatsApp untuk Pembayaran -->
         <section class="text-center">
             <a 
-                href="https://wa.me/6285750274278?text=Halo%20saya%20ingin%20membayar%20transaksi%20ID%20%3A%20{{ $transaksi->id }}%20dengan%20total%20Rp%20{{ number_format($transaksi->total, 0, ',', '.') }}" 
+                href="https://api.whatsapp.com/send?phone=628123456789&text=Halo%2C%20saya%20ingin%20membayar%20transaksi%20dengan%20ID%20Transaksi%20%3A%20{{ $transaksi->id }}%20dan%20total%20Rp.%20{{ number_format($transaksi->total, 0, ',', '.') }}."
                 class="btn btn-success btn-lg" 
                 target="_blank">
                 Bayar Lewat WhatsApp
@@ -125,6 +125,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
-
 </html>
