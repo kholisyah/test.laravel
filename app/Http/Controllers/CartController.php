@@ -9,23 +9,33 @@ class CartController extends Controller
 {
     public function index()
 {
-    $cart = session()->get('cart.items', []); // Ambil item dari sesi
-    return view('cart', compact('cart')); // Pastikan ada view bernama 'cart'
+    $cart = session()->get('cart.items', []);
+    return view('cart', compact('cart'));
 }
 
-    public function addToCart(Request $request)
+
+public function addToCart(Request $request)
 {
+    $request->validate([
+        'product_name' => 'required|string',
+        'quantity' => 'required|integer|min:1',
+        'total' => 'required|numeric',
+        'category' => 'required|string', // Validasi kategori
+    ]);
+
     $item = [
         'product_name' => $request->product_name,
         'quantity' => $request->quantity,
         'total' => $request->total,
-        'category' => $request->kategori, // Perbaiki kunci ini
+        'category' => $request->category,
     ];
 
     session()->push('cart.items', $item);
 
     return response()->json(['message' => 'Item berhasil ditambahkan ke keranjang']);
 }
+
+
 
 
 public function remove(Request $request)
@@ -39,11 +49,12 @@ public function remove(Request $request)
 }
 
 
-    public function viewCart()
-    {
-        $cartItems = session()->get('cart.items', []); // Format kunci sesuai
-        return view('cart', compact('cartItems'));
-    }
+public function viewCart()
+{
+    $cartItems = session()->get('cart.items', []); // Ambil data dari sesi
+    return view('cart', compact('cartItems'));
+}
+
     
 
     // Menambahkan produk ke cart

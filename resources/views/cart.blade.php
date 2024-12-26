@@ -60,12 +60,10 @@
         /* Navbar link active state */
         .navbar .nav-links a.active {
             color: #156ba5;
-            
         }
 
         .navbar .nav-links a:hover {
             color: #156ba5;
-           
         }
 
         /* Header */
@@ -129,14 +127,14 @@
             background-color: #ff3333;
         }
 
-        .btn-success {
+        .btn-primary {
             background-color: #89c4e9;
             color: white;
             text-decoration: none;
         }
 
-        .btn-success:hover {
-            background-color: #89c4e9;
+        .btn-primary:hover {
+            background-color: #156ba5;
         }
 
         /* Footer */
@@ -170,32 +168,27 @@
     </div>
 
     <!-- Table Keranjang -->
-    <table class="cart-table">  
-            <thead>
-                <tr>
-                    <th>Nama Produk</th>
-                    <th>Kuantitas</th>
-                    <th>Total</th>
-                    <th>Kategori</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($cart as $index => $item)
-                    <tr>
-                        <td>{{ $item['product_name'] }}</td>
-                        <td>{{ $item['quantity'] }}</td>
-                        <td>{{ $item['total'] }}</td>
-                        <td>{{ $item['category'] ?? 'Tidak Ada Kategori' }}</td> <!-- Tambahkan fallback untuk category -->
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="4">Keranjang kosong</td>
-                    </tr>
-                @endforelse
-            </tbody>
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Nama Produk</th>
+                <th>Kuantitas</th>
+                <th>Total</th>
+                <th>Kategori</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($cart as $item)
+            <tr>
+                <td>{{ $item['product_name'] }}</td>
+                <td>{{ $item['quantity'] }}</td>
+                <td>{{ number_format($item['total'], 0, ',', '.') }}</td>
+                <td>{{ $item['category'] ?? 'Tidak ada' }}</td>
+            </tr>
+            @endforeach
+        </tbody>
     </table>
     
-
     <!-- Tombol untuk lanjut ke pembayaran -->
     <form action="{{ route('transaksi.storeFromCart') }}" method="POST">
         @csrf
