@@ -15,7 +15,7 @@ class PendaftaranController extends Controller
     // Fungsi untuk menghapus pendaftaran berdasarkan instance model Pendaftaran
     public function deletePendaftaran(Pendaftaran $pendaftaran) {
         $pendaftaran->delete();
-        return redirect('/project');
+        return redirect('/lihat-pendaftaran');
     }
 
     // Fungsi untuk memperbarui data pendaftaran
@@ -31,7 +31,7 @@ class PendaftaranController extends Controller
             ]);
 
             $pendaftaran->update($incomingField);
-            return redirect('/project');
+            return redirect('/lihat-pendaftaran');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->validator->errors());
         }
