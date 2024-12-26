@@ -12,6 +12,55 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
         }
+        /* Navbar */
+ .navbar {
+            background-color: #89c4e9;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+        }
+        
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s, opacity 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #156ba5;
+        }
+
+        .navbar a.active {
+            color: #156ba5;
+            opacity: 0.7;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
 
         .container {
             max-width: 800px;
@@ -20,7 +69,7 @@
 
         h1 {
             font-size: 2rem;
-            color: #0056b3;
+            color: #156ba5;
             margin-bottom: 20px;
         }
 
@@ -38,7 +87,7 @@
 
         .card-title {
             font-size: 1.5rem;
-            color: #0056b3;
+            color: #156ba5;
             margin-bottom: 15px;
         }
 
@@ -54,7 +103,7 @@
         form button {
             width: 100%;
             padding: 10px;
-            background-color: #0056b3;
+            background-color: #156ba5;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -63,7 +112,7 @@
         }
 
         form button:hover {
-            background-color: #003f8a;
+            background-color: #156ba5;
         }
 
         .btn-warning {
@@ -134,6 +183,22 @@
     </style>
 </head>
 <body>
+       <!-- Navbar -->
+   <div class="navbar">
+    <div class="logo">
+        <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+        Sanggar Galuh
+    </div>
+    <div class="nav-links">
+        <a href="/home">Beranda</a>
+        <a href="/project">Pendaftaran</a>
+        <a href="/login">Jadwal</a>
+        <a href="/index">Perengkingan</a>
+        <a href="/galeri">Penyewaan</a>
+        <a href="/cart">Keranjang</a>
+        <a href="/login">Login</a>
+    </div>
+</div>
     <div class="container">
         <h1 class="text-center">PENJADWALAN SANGGAR GALUH</h1>
         <div class="card">
@@ -141,14 +206,29 @@
                 <h2 class="card-title text-center">Jadwal Latihan</h2>
                 <form action="{{ route('create.post') }}" method="POST">
                     @csrf
-                    <input type="text" name="tanggal" placeholder="Tanggal" required>
-                    <input type="text" name="waktu" placeholder="Waktu" required>
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal</label>
+                        <div class="input-group">
+                            <input type="date" id="tanggal" name="tanggal" class="form-control" required>
+                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="waktu">Waktu</label>
+                        <div class="input-group">
+                            <input type="time" id="waktu" name="waktu" class="form-control" required>
+                            <span class="input-group-text"><i class="fa fa-clock"></i></span>
+                        </div>
+                    </div>
+                    <label for="Nama tari">nama tari</label>
                     <select name="tarian_id">
                         <option value="" selected disabled>pilih tari</option>
                         @foreach ($tarians as $tarian)
                             <option value="{{ $tarian->id }}">{{ $tarian->nama_tari }}</option>
                         @endforeach
                     </select>
+                    <label for="anggota">Anggota</label>
                     <input type="text" name="anggota" placeholder="Anggota" required>
                     <button type="submit">Simpan</button>
                 </form>

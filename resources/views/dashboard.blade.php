@@ -194,7 +194,7 @@
                         <h3>Lihat Profil</h3>
                         <p>Informasi mengenai sanggar dan anggota.</p>
                         <div class="text-center">
-                            <a href="/lihat-profil">Lihat Profil</a>
+                            <a href="/home">Lihat beranda</a>
                         </div>
                     </div>
                 </div>
