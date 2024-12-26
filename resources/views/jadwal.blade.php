@@ -13,7 +13,7 @@
             line-height: 1.6;
         }
         /* Navbar */
- .navbar {
+        .navbar {
             background-color: #89c4e9;
             padding: 15px;
             display: flex;
@@ -183,28 +183,29 @@
     </style>
 </head>
 <body>
-       <!-- Navbar -->
-   <div class="navbar">
-    <div class="logo">
-        <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
-        Sanggar Galuh
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+            Sanggar Galuh
+        </div>
+        <div class="nav-links">
+            <a href="/home">Beranda</a>
+            <a href="/project">Pendaftaran</a>
+            <a href="/login">Jadwal</a>
+            <a href="/index">Perengkingan</a>
+            <a href="/galeri">Penyewaan</a>
+            <a href="/cart">Keranjang</a>
+            <a href="/login">Login</a>
+        </div>
     </div>
-    <div class="nav-links">
-        <a href="/home">Beranda</a>
-        <a href="/project">Pendaftaran</a>
-        <a href="/login">Jadwal</a>
-        <a href="/index">Perengkingan</a>
-        <a href="/galeri">Penyewaan</a>
-        <a href="/cart">Keranjang</a>
-        <a href="/login">Login</a>
-    </div>
-</div>
+    
     <div class="container">
         <h1 class="text-center">PENJADWALAN SANGGAR GALUH</h1>
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title text-center">Jadwal Latihan</h2>
-                <form action="{{ route('create.post') }}" method="POST">
+                <form action="{{ route('create.post') }}" method="POST" onsubmit="return validateInput()">
                     @csrf
                     <div class="form-group">
                         <label for="tanggal">Tanggal</label>
@@ -229,7 +230,7 @@
                         @endforeach
                     </select>
                     <label for="anggota">Anggota</label>
-                    <input type="text" name="anggota" placeholder="Anggota" required>
+                    <input type="text" name="anggota" id="anggota" placeholder="Anggota" required>
                     <button type="submit">Simpan</button>
                 </form>
             </div>
@@ -272,10 +273,11 @@
 
     <script>
         const jadwal = @json($akuns);
+        
         function validateInput() {
-            const tanggal = document.getElementById('tanggal').value;
-            const waktu = document.getElementById('waktu').value;
-            const anggota = document.getElementById('anggota').value;
+            const tanggal = document.getElementById('tanggal').value.trim();
+            const waktu = document.getElementById('waktu').value.trim();
+            const anggota = document.getElementById('anggota').value.trim();
 
             for (let i = 0; i < jadwal.length; i++) {
                 if (jadwal[i].tanggal === tanggal && jadwal[i].waktu === waktu && jadwal[i].anggota === anggota) {
