@@ -60,12 +60,10 @@
         /* Navbar link active state */
         .navbar .nav-links a.active {
             color: #156ba5;
-            
         }
 
         .navbar .nav-links a:hover {
             color: #156ba5;
-           
         }
 
         /* Header */
@@ -129,14 +127,14 @@
             background-color: #ff3333;
         }
 
-        .btn-success {
+        .btn-primary {
             background-color: #89c4e9;
             color: white;
             text-decoration: none;
         }
 
-        .btn-success:hover {
-            background-color: #89c4e9;
+        .btn-primary:hover {
+            background-color: #156ba5;
         }
 
         /* Footer */
@@ -176,29 +174,21 @@
                 <th>Nama Produk</th>
                 <th>Kuantitas</th>
                 <th>Total</th>
-                <th>Aksi</th>
+                <th>Kategori</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Perulangan untuk menampilkan item dalam keranjang -->
-            @foreach ($cart as $index => $item)
-                <tr>
-                    <td>{{ $item['product_name'] }}</td>
-                    <td>{{ $item['quantity'] }}</td>
-                    <td>Rp {{ number_format($item['total'], 0, ',', '.') }}</td>
-                    <td>
-                        <!-- Form untuk menghapus item dari keranjang -->
-                        <form action="{{ route('cart.remove') }}" method="POST" style="display: inline;">
-                            @csrf
-                            <input type="hidden" name="index" value="{{ $index }}">
-                            <button type="submit" class="btn btn-danger">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
+            @foreach($cart as $item)
+            <tr>
+                <td>{{ $item['product_name'] }}</td>
+                <td>{{ $item['quantity'] }}</td>
+                <td>{{ number_format($item['total'], 0, ',', '.') }}</td>
+                <td>{{ $item['category'] ?? 'Tidak ada' }}</td>
+            </tr>
             @endforeach
         </tbody>
     </table>
-
+    
     <!-- Tombol untuk lanjut ke pembayaran -->
     <form action="{{ route('transaksi.storeFromCart') }}" method="POST">
         @csrf

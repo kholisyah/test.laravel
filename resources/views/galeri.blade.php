@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <!-- Meta Information -->
     <meta charset="UTF-8">
@@ -20,14 +21,14 @@
             padding: 0;
             color: #333;
         }
-    
+
         /* Konten Utama */
         .content {
             padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
-    
+
         .content h1 {
             font-size: 48px;
             color: #ffffff;
@@ -39,7 +40,7 @@
             text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
             font-family: 'Montserrat', sans-serif;
         }
-    
+
         /* Navbar */
         .navbar {
             background-color: #89c4e9;
@@ -49,7 +50,7 @@
             justify-content: space-between;
             color: #fff;
         }
-        
+
         .navbar .logo {
             display: flex;
             align-items: center;
@@ -88,7 +89,7 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
-    
+
         .gallery-card {
             background: #ffffff;
             border-radius: 12px;
@@ -96,134 +97,81 @@
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-    
+
         .gallery-card img {
             width: 100%;
             height: 180px;
             object-fit: cover;
             border-radius: 12px 12px 0 0;
         }
-    
+
         .gallery-card .card-body {
             padding: 15px;
             text-align: center;
             background: #e8f4ff;
         }
-    
+
         .gallery-card h3 {
             font-size: 20px;
             color: #004aad;
             margin: 10px 0 5px;
             font-weight: 600;
         }
-    
+
         .gallery-card p {
             font-size: 14px;
             color: #555;
             margin-top: 5px;
             line-height: 1.5;
         }
-    
+
         .gallery-card:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-    
-        /* Kontrol Kuantitas */
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-    
-        .quantity-btn {
-            width: 35px;
-            height: 35px;
-            border: none;
-            background: #004aad;
-            color: #fff;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-    
-        .quantity-btn:hover {
-            background: #005dbb;
-            transform: scale(1.1);
-        }
-    
-        .quantity-input {
-            width: 50px;
-            height: 35px;
-            text-align: center;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 16px;
-            background: #f1faff;
-            color: #004aad;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-    
+
         /* Layout Responsif */
         @media (max-width: 768px) {
             .content h1 {
                 font-size: 28px;
             }
-    
+
             .gallery-card img {
                 height: 150px;
             }
-    
+
             .gallery-card h3 {
                 font-size: 18px;
             }
-    
+
             .gallery-card p {
                 font-size: 13px;
-            }
-    
-            .quantity-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 14px;
-            }
-    
-            .quantity-input {
-                width: 45px;
-                height: 30px;
             }
         }
     </style>
 </head>
-<body>
-        <!-- Navbar -->
-        <div class="navbar">
-            <div class="logo">
-                <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
-                Sanggar Galuh
-            </div>
-            <div class="nav-links">
-                <a href="/home">Beranda</a>
-                <a href="/project">Pendaftaran</a>
-                <a href="/login">Jadwal</a>
-                <a href="/index">Perengkingan</a>
-                <a href="/galeri">Penyewaan</a>
-                <a href="/cart">Keranjang</a>
-                <a href="/login">Login</a>
-            </div>
-        </div>
-        
 
-        <!-- Konten Utama -->
-        <div class="content">
-            <h1>Baju Adat & Tarian</h1>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+            Sanggar Galuh
         </div>
-</body>
-</html>
+        <div class="nav-links">
+            <a href="/home">Beranda</a>
+            <a href="/project">Pendaftaran</a>
+            <a href="/login">Jadwal</a>
+            <a href="/index">Perengkingan</a>
+            <a href="/galeri">Penyewaan</a>
+            <a href="/cart">Keranjang</a>
+            <a href="/login">Login</a>
+        </div>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="content">
+        <h1>Baju Adat & Tarian</h1>
         <div class="container">
             <div class="row">
                 <!-- Baju 1 -->
@@ -233,32 +181,32 @@
                         <div class="card-body">
                             <h3>Baju Betawi</h3>
                             <p>Harga: Rp 70.000</p>
-                
-                            <!-- Dropdown untuk memilih kategori umur -->
-                            <label for="kategori_betawi" class="form-label mt-2">Kategori</label>
-                            <select name="kategori" id="kategori_betawi" class="form-select">
-                                <option value="" selected disabled>Pilih Kategori</option>
-                                <option value="anak">Anak</option>
-                                <option value="orang_tua">Orang Tua</option>
-                                <option value="dewasa">Dewasa</option>
-                            </select>
-                
+
                             <!-- Quantity Controls -->
                             <div class="card" data-price="70000">
                                 <div class="card-body">
                                     <div class="total-price">Total: Rp 70,000</div>
                                 </div>
                             </div>
-                
+
                             <!-- Formulir Tambah ke Keranjang -->
                             <form class="ajax-form">
                                 @csrf
                                 <input type="hidden" name="product_name" value="Baju betawi">
                                 <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                                 <input type="hidden" name="total" class="total-value" value="70000">
+
+                                <!-- Dropdown Kategori -->
+                                <label for="kategori_betawi" class="form-label mt-2">Kategori</label>
+                                <select name="category" id="kategori_betawi" class="form-select">
+                                    <option value="" selected disabled>Pilih Kategori</option>
+                                    <option value="anak">Anak</option>
+                                    <option value="orang_tua">Orang Tua</option>
+                                    <option value="dewasa">Dewasa</option>
+                                </select>
+
                                 <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                             </form>
-                            
                         </div>
                     </div>
                 </div>
@@ -271,13 +219,6 @@
                         <div class="card-body">
                             <h3>Radap Rahayu</h3>
                             <p>Harga: Rp 100.000</p>
-                            <label for="kategori" class="form-label mt-2">Kategori</label>
-                            <select name="kategori" id="kategori" class="form-select">
-                                <option value="" selected disabled>Pilih Kategori</option>
-                                <option value="anak">Anak</option>
-                                <option value="orang_tua">Orang Tua</option>
-                                <option value="dewasa">Dewasa</option>
-                            </select>
 
                             <!-- Quantity Controls -->
                             <div class="card" data-price="100000">
@@ -292,7 +233,17 @@
                                 <input type="hidden" name="product_name" value="Baju Radap Rahayu">
                                 <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                                 <input type="hidden" name="total" class="total-value" value="100000">
-                                <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
+
+                                <!-- Dropdown Kategori -->
+                                <label for="kategori_Radap Rahayu" class="form-label mt-2">Kategori</label>
+                                <select name="category" id="kategori_Radap Rahayu" class="form-select">
+                                    <option value="" selected disabled>Pilih Kategori</option>
+                                    <option value="anak">Anak</option>
+                                    <option value="orang_tua">Orang Tua</option>
+                                    <option value="dewasa">Dewasa</option>
+                                </select>
+
+                                <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang </button>
                             </form>
                         </div>
                     </div>
@@ -305,13 +256,6 @@
                     <div class="card-body">
                         <h3>Baju Giring-Giring</h3>
                         <p>Harga: Rp 75.000</p>
-                        <label for="kategori" class="form-label mt-2">Kategori</label>
-                        <select name="kategori" id="kategori" class="form-select">
-                            <option value="" selected disabled>Pilih Kategori</option>
-                            <option value="anak">Anak</option>
-                            <option value="orang_tua">Orang Tua</option>
-                            <option value="dewasa">Dewasa</option>
-                        </select>
 
                         <!-- Quantity Controls -->
                         <div class="card" data-price="75000">
@@ -326,6 +270,16 @@
                             <input type="hidden" name="product_name" value="Baju Giring-Giring">
                             <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                             <input type="hidden" name="total" class="total-value" value="75000">
+
+                            <!-- Dropdown Kategori -->
+                            <label for="kategori_Giring-Giring" class="form-label mt-2">Kategori</label>
+                            <select name="category" id="kategori_Giring-Giring" class="form-select">
+                                <option value="" selected disabled>Pilih Kategori</option>
+                                <option value="anak">Anak</option>
+                                <option value="orang_tua">Orang Tua</option>
+                                <option value="dewasa">Dewasa</option>
+                            </select>
+
                             <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                         </form>
                     </div>
@@ -339,13 +293,6 @@
                     <div class="card-body">
                         <h3>Baju Dayak Cewe</h3>
                         <p>Harga: Rp 60.000</p>
-                        <label for="kategori" class="form-label mt-2">Kategori</label>
-                        <select name="kategori" id="kategori" class="form-select">
-                            <option value="" selected disabled>Pilih Kategori</option>
-                            <option value="anak">Anak</option>
-                            <option value="orang_tua">Orang Tua</option>
-                            <option value="dewasa">Dewasa</option>
-                        </select>
                         
                        <!-- Quantity Controls -->
                        <div class="card" data-price="60000">
@@ -360,6 +307,16 @@
                         <input type="hidden" name="product_name" value="Baju Dayak Cewe">
                         <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                         <input type="hidden" name="total" class="total-value" value="60000">
+
+                        <!-- Dropdown Kategori -->
+                        <label for="kategori_Dayak Cewe" class="form-label mt-2">Kategori</label>
+                        <select name="category" id="kategori_Dayak Cewe" class="form-select">
+                            <option value="" selected disabled>Pilih Kategori</option>
+                            <option value="anak">Anak</option>
+                            <option value="orang_tua">Orang Tua</option>
+                            <option value="dewasa">Dewasa</option>
+                        </select>
+
                         <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
@@ -373,13 +330,6 @@
                     <div class="card-body">
                         <h3>Baju Dayak Cowo</h3>
                     <p>Harga: Rp 60.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
                     
                     <!-- Quantity Controls -->
                     <div class="card" data-price="60000">
@@ -394,6 +344,16 @@
                         <input type="hidden" name="product_name" value="Baju Dayak Cowo">
                         <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                         <input type="hidden" name="total" class="total-value" value="60000">
+
+                        <!-- Dropdown Kategori -->
+                        <label for="kategori_Dayak Cowo" class="form-label mt-2">Kategori</label>
+                        <select name="category" id="kategori_Dayak Cowo" class="form-select">
+                            <option value="" selected disabled>Pilih Kategori</option>
+                            <option value="anak">Anak</option>
+                            <option value="orang_tua">Orang Tua</option>
+                            <option value="dewasa">Dewasa</option>
+                        </select>
+
                         <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
@@ -407,13 +367,6 @@
                     <div class="card-body">
                         <h3>Baju Adat Banjar Cewe</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
 
                    <!-- Quantity Controls -->
                    <div class="card" data-price="50000">
@@ -425,9 +378,19 @@
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
                     @csrf
-                    <input type="hidden" name="product_name" value="Baju Adat Banjar Cewe">
+                    <input type="hidden" name="product_name" value="Baju Banjar Cewe">
                     <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                     <input type="hidden" name="total" class="total-value" value="50000">
+
+                    <!-- Dropdown Kategori -->
+                    <label for="kategori_Banjar Cewe" class="form-label mt-2">Kategori</label>
+                    <select name="category" id="kategori_Banjar Cewe" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Dewasa</option>
+                    </select>
+
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
@@ -441,14 +404,7 @@
                     <div class="card-body">
                         <h3>Baju Adat Banjar Cowo</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
-
+    
                    <!-- Quantity Controls -->
                    <div class="card" data-price="50000">
                     <div class="card-body">
@@ -459,9 +415,19 @@
                 <!-- Formulir Tambah ke Keranjang -->
                 <form class="ajax-form">
                     @csrf
-                    <input type="hidden" name="product_name" value="Baju Adat Banjar Cewe">
+                    <input type="hidden" name="product_name" value="Baju Adat Banjar Cowo">
                     <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                     <input type="hidden" name="total" class="total-value" value="50000">
+
+                    <!-- Dropdown Kategori -->
+                    <label for="kategori_Banjar Cowo" class="form-label mt-2">Kategori</label>
+                    <select name="category" id="kategori_Banjar Cowo" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Dewasa</option>
+                    </select>
+
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
@@ -475,13 +441,6 @@
                     <div class="card-body">
                         <h3>Baju Nanang Banjar</h3>
                     <p>Harga: Rp 75.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
 
                     <!-- Quantity Controls -->
                     <div class="card" data-price="75000">
@@ -496,6 +455,16 @@
                         <input type="hidden" name="product_name" value="Baju Nanang Banjar">
                         <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                         <input type="hidden" name="total" class="total-value" value="75000">
+
+                        <!-- Dropdown Kategori -->
+                        <label for="kategori_Nanang Banjar" class="form-label mt-2">Kategori</label>
+                        <select name="category" id="kategori_Nanang Banjar" class="form-select">
+                            <option value="" selected disabled>Pilih Kategori</option>
+                            <option value="anak">Anak</option>
+                            <option value="orang_tua">Orang Tua</option>
+                            <option value="dewasa">Dewasa</option>
+                        </select>
+
                         <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
@@ -509,14 +478,7 @@
                     <div class="card-body">
                         <h3>Baju Adat Bali Cewe</h3>
                     <p>Harga: Rp 60.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
-
+            
                    <!-- Quantity Controls -->
                    <div class="card" data-price="60000">
                     <div class="card-body">
@@ -530,6 +492,16 @@
                     <input type="hidden" name="product_name" value="Baju Adat Bali Cewe">
                     <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                     <input type="hidden" name="total" class="total-value" value="60000">
+
+                    <!-- Dropdown Kategori -->
+                    <label for="kategori_Bali Cewe" class="form-label mt-2">Kategori</label>
+                    <select name="category" id="kategori_Bali Cewe" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Dewasa</option>
+                    </select>
+
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
@@ -543,13 +515,6 @@
                     <div class="card-body">
                         <h3>Baju Adat Bali Cowo</h3>
                     <p>Harga: Rp 60.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
                     
                     <!-- Quantity Controls -->
                     <div class="card" data-price="60000">
@@ -564,6 +529,16 @@
                         <input type="hidden" name="product_name" value="Baju Adat Bali Cowo">
                         <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                         <input type="hidden" name="total" class="total-value" value="60000">
+
+                        <!-- Dropdown Kategori -->
+                        <label for="kategori_Bali Cowo" class="form-label mt-2">Kategori</label>
+                        <select name="category" id="kategori_Bali Cowo" class="form-select">
+                            <option value="" selected disabled>Pilih Kategori</option>
+                            <option value="anak">Anak</option>
+                            <option value="orang_tua">Orang Tua</option>
+                            <option value="dewasa">Dewasa</option>
+                        </select>
+
                         <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
@@ -577,13 +552,6 @@
                     <div class="card-body">
                         <h3>Baju Adat Batak</h3>
                     <p>Harga: Rp 60.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
 
                     <!-- Quantity Controls -->
                     <div class="card" data-price="60000">
@@ -598,6 +566,16 @@
                         <input type="hidden" name="product_name" value="Baju Adat Batak">
                         <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                         <input type="hidden" name="total" class="total-value" value="60000">
+
+                        <!-- Dropdown Kategori -->
+                        <label for="kategori_Batak" class="form-label mt-2">Kategori</label>
+                        <select name="category" id="kategori_Batak" class="form-select">
+                            <option value="" selected disabled>Pilih Kategori</option>
+                            <option value="anak">Anak</option>
+                            <option value="orang_tua">Orang Tua</option>
+                            <option value="dewasa">Dewasa</option>
+                        </select>
+
                         <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
@@ -611,14 +589,7 @@
                     <div class="card-body">
                         <h3>Baju Galuh Banjar</h3>
                     <p>Harga: Rp 75.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
-
+                    
                    <!-- Quantity Controls -->
                    <div class="card" data-price="75000">
                     <div class="card-body">
@@ -632,6 +603,16 @@
                     <input type="hidden" name="product_name" value="Baju Galuh Banjar">
                     <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                     <input type="hidden" name="total" class="total-value" value="75000">
+
+                    <!-- Dropdown Kategori -->
+                    <label for="kategori_Galuh Banjar" class="form-label mt-2">Kategori</label>
+                    <select name="category" id="kategori_Galuh Banjar" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Dewasa</option>
+                    </select>
+
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
@@ -645,14 +626,7 @@
                     <div class="card-body">
                         <h3>Jas Cewe</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
-
+                    
                     <!-- Quantity Controls -->
                     <div class="card" data-price="50000">
                         <div class="card-body">
@@ -666,6 +640,16 @@
                         <input type="hidden" name="product_name" value="Jas Cewe">
                         <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                         <input type="hidden" name="total" class="total-value" value="50000">
+
+                        <!-- Dropdown Kategori -->
+                        <label for="kategori_Jas Cewe" class="form-label mt-2">Kategori</label>
+                        <select name="category" id="kategori_Jas Cewe" class="form-select">
+                            <option value="" selected disabled>Pilih Kategori</option>
+                            <option value="anak">Anak</option>
+                            <option value="orang_tua">Orang Tua</option>
+                            <option value="dewasa">Dewasa</option>
+                        </select>
+
                         <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
@@ -679,14 +663,7 @@
                     <div class="card-body">
                         <h3>Jas Cowo</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
-                    
+                   
                   <!-- Quantity Controls -->
                   <div class="card" data-price="50000">
                     <div class="card-body">
@@ -700,6 +677,16 @@
                     <input type="hidden" name="product_name" value="Jas Cowo">
                     <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                     <input type="hidden" name="total" class="total-value" value="50000">
+
+                    <!-- Dropdown Kategori -->
+                    <label for="kategori_Jas Cowo" class="form-label mt-2">Kategori</label>
+                    <select name="category" id="kategori_Jas Cowo" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Dewasa</option>
+                    </select>
+
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
@@ -713,13 +700,6 @@
                     <div class="card-body">
                         <h3>Baju Adat Jawa Cewe</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
 
                    <!-- Quantity Controls -->
                    <div class="card" data-price="50000">
@@ -734,6 +714,16 @@
                     <input type="hidden" name="product_name" value="Baju Adat Jawa Cewe">
                     <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                     <input type="hidden" name="total" class="total-value" value="50000">
+
+                    <!-- Dropdown Kategori -->
+                    <label for="kategori_Jawa Cewe" class="form-label mt-2">Kategori</label>
+                    <select name="category" id="kategori_Jawa Cewe" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Dewasa</option>
+                    </select>
+
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
@@ -747,14 +737,7 @@
                     <div class="card-body">
                         <h3>Baju Adat Jawa Cowo</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
-
+                
                   <!-- Quantity Controls -->
                   <div class="card" data-price="50000">
                     <div class="card-body">
@@ -768,6 +751,16 @@
                     <input type="hidden" name="product_name" value="Baju Adat Jawa Cowo">
                     <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                     <input type="hidden" name="total" class="total-value" value="50000">
+
+                    <!-- Dropdown Kategori -->
+                    <label for="kategori_Jawa Cowo" class="form-label mt-2">Kategori</label>
+                    <select name="category" id="kategori_Jawa Cowo" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Dewasa</option>
+                    </select>
+
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
@@ -781,13 +774,6 @@
                     <div class="card-body">
                         <h3>Kebaya KutuBaru</h3>
                     <p>Harga: Rp 60.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
 
                    <!-- Quantity Controls -->
                    <div class="card" data-price="60000">
@@ -802,6 +788,16 @@
                     <input type="hidden" name="product_name" value="Kebaya KutuBaru">
                     <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                     <input type="hidden" name="total" class="total-value" value="60000">
+
+                    <!-- Dropdown Kategori -->
+                    <label for="kategori_KutuBaru" class="form-label mt-2">Kategori</label>
+                    <select name="category" id="kategori_KutuBaru" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Dewasa</option>
+                    </select>
+
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
@@ -815,14 +811,7 @@
                     <div class="card-body">
                         <h3>Baju Adat NTT</h3>
                     <p>Harga: Rp 70.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
-
+                  
                   <!-- Quantity Controls -->
                   <div class="card" data-price="70000">
                     <div class="card-body">
@@ -836,6 +825,16 @@
                     <input type="hidden" name="product_name" value="Baju Adat NTT">
                     <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                     <input type="hidden" name="total" class="total-value" value="70000">
+
+                    <!-- Dropdown Kategori -->
+                    <label for="kategori_NTT" class="form-label mt-2">Kategori</label>
+                    <select name="category" id="kategori_NTT" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Dewasa</option>
+                    </select>
+
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
@@ -849,14 +848,7 @@
                     <div class="card-body">
                         <h3>Baju Adat Sumsel</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
-
+                    
                    <!-- Quantity Controls -->
                    <div class="card" data-price="50000">
                     <div class="card-body">
@@ -870,6 +862,16 @@
                     <input type="hidden" name="product_name" value="Baju Adat Sumsel">
                     <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                     <input type="hidden" name="total" class="total-value" value="50000">
+
+                    <!-- Dropdown Kategori -->
+                    <label for="kategori_Sumsel" class="form-label mt-2">Kategori</label>
+                    <select name="category" id="kategori_Sumsel" class="form-select">
+                        <option value="" selected disabled>Pilih Kategori</option>
+                        <option value="anak">Anak</option>
+                        <option value="orang_tua">Orang Tua</option>
+                        <option value="dewasa">Dewasa</option>
+                    </select>
+
                     <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                 </form>
                     </div>
@@ -883,13 +885,6 @@
                     <div class="card-body">
                         <h3>Baju Adat Sunda</h3>
                     <p>Harga: Rp 50.000</p> <!-- Sesuaikan harga sesuai dengan harga baju -->
-                    <label for="kategori" class="form-label mt-2">Kategori</label>
-                    <select name="kategori" id="kategori" class="form-select">
-                        <option value="" selected disabled>Pilih Kategori</option>
-                        <option value="anak">Anak</option>
-                        <option value="orang_tua">Orang Tua</option>
-                        <option value="dewasa">Dewasa</option>
-                    </select>
                     
                     <!-- Quantity Controls -->
                     <div class="card" data-price="50000">
@@ -904,6 +899,16 @@
                         <input type="hidden" name="product_name" value="Baju Adat Sunda">
                         <input type="number" name="quantity" class="quantity-value" value="1" min="1">
                         <input type="hidden" name="total" class="total-value" value="50000">
+    
+                        <!-- Dropdown Kategori -->
+                        <label for="kategori_Sunda" class="form-label mt-2">Kategori</label>
+                        <select name="category" id="kategori_Sunda" class="form-select">
+                            <option value="" selected disabled>Pilih Kategori</option>
+                            <option value="anak">Anak</option>
+                            <option value="orang_tua">Orang Tua</option>
+                            <option value="dewasa">Dewasa</option>
+                        </select>
+    
                         <button type="button" class="btn btn-success add-to-cart">Tambahkan ke Keranjang</button>
                     </form>
                     </div>
@@ -912,145 +917,124 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const card = this.closest('.gallery-card');
-            const productName = card.querySelector('input[name="product_name"]').value;
-            const quantityInput = card.querySelector('.quantity-input');
-            const quantity = parseInt(quantityInput.value);
-            const price = parseInt(card.dataset.price);
-            const totalPrice = quantity * price;
-
-            // Kirim data ke server dengan AJAX
-            fetch('/cart', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                },
-                body: JSON.stringify({
-                    product_name: productName,
-                    quantity: quantity,
-                    total: totalPrice,
-                }),
-            })
+    <script>
+        // Menambahkan event listener untuk tombol "Add to Cart" di setiap elemen dengan kelas 'add-to-cart'
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                // Mencari form terdekat di dalam elemen tombol dan mengumpulkan data dari form
+                const form = this.closest('form');
+                const formData = new FormData(form);
+    
+                // Debugging: Memastikan kategori terkirim dalam FormData
+                console.log('Kategori:', formData.get('category'));
+    
+                // Mengirim data ke server menggunakan fetch
+                fetch('/cart/add', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content // Menyertakan token CSRF untuk keamanan
+                    }
+                })
                 .then(response => response.json())
                 .then(data => {
-                    alert('Item berhasil ditambahkan ke keranjang!');
-                    // Perbarui tampilan keranjang atau lainnya jika diperlukan
+                    alert(data.message); // Menampilkan notifikasi sukses jika data berhasil ditambahkan
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Terjadi kesalahan saat menambahkan item ke keranjang.');
-                });
-        });
-    });
-});
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const navLinks = document.querySelectorAll('.navbar a');
-
-        // Tambahkan event listener ke setiap tautan
-        navLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                // Hapus kelas aktif dari semua tautan
-                navLinks.forEach(link => link.classList.remove('active'));
-
-                // Tambahkan kelas aktif ke tautan yang diklik
-                event.target.classList.add('active');
+                .catch(error => console.error('Error:', error)); // Menampilkan pesan kesalahan jika terjadi error
             });
         });
-
-        // Tandai tautan aktif berdasarkan URL saat ini
-        const currentPath = window.location.pathname;
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentPath) {
-                link.classList.add('active');
-            }
+    
+        // Menambahkan event listener untuk tombol "Add to Cart" setelah halaman selesai dimuat
+        document.addEventListener('DOMContentLoaded', function () {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    
+            // Iterasi melalui semua tombol dan menambahkan event listener
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Mengambil informasi produk dari elemen terdekat (gallery card)
+                    const card = this.closest('.gallery-card');
+                    const productName = card.querySelector('input[name="product_name"]').value;
+                    const quantityInput = card.querySelector('.quantity-input');
+                    const quantity = parseInt(quantityInput.value); // Mengambil jumlah dari input quantity
+                    const price = parseInt(card.dataset.price); // Mengambil harga produk dari atribut data
+                    const totalPrice = quantity * price; // Menghitung total harga berdasarkan jumlah dan harga produk
+    
+                    // Mengirim data ke server menggunakan fetch (AJAX)
+                    fetch('/cart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json', // Mengirim data dalam format JSON
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Token CSRF
+                        },
+                        body: JSON.stringify({
+                            product_name: productName, // Mengirim nama produk
+                            quantity: quantity, // Mengirim jumlah produk
+                            total: totalPrice, // Mengirim total harga
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('Item berhasil ditambahkan ke keranjang!'); // Notifikasi bahwa item berhasil ditambahkan
+                        // Perbarui tampilan keranjang atau UI lainnya jika diperlukan
+                    })
+                    .catch(error => {
+                        console.error('Error:', error); // Menampilkan pesan kesalahan jika ada masalah dengan request
+                        alert('Terjadi kesalahan saat menambahkan item ke keranjang.');
+                    });
+                });
+            });
         });
-    });
-    $(document).ready(function () {
-        // Saat tombol Tambahkan ke Keranjang ditekan
-        $(document).on('click', '.add-to-cart', function () {
-            const form = $(this).closest('.ajax-form'); // Ambil form terkait
-            const url = "{{ route('cart.add') }}"; // URL tujuan server
-            
-            $.ajax({
-                url: url,
-                method: "POST",
-                data: form.serialize(), // Kirim data form
-                success: function (response) {
-                    alert('Item berhasil ditambahkan ke keranjang!');
-                    // Opsional: Update UI keranjang
-                },
-                error: function (xhr) {
-                    alert('Terjadi kesalahan, coba lagi.');
+    
+        // Menambahkan event listener untuk tautan navigasi agar dapat menandai tautan aktif
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.navbar a');
+    
+            // Menambahkan event listener untuk setiap tautan di navbar
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    // Menghapus kelas aktif dari semua tautan
+                    navLinks.forEach(link => link.classList.remove('active'));
+    
+                    // Menambahkan kelas aktif pada tautan yang diklik
+                    event.target.classList.add('active');
+                });
+            });
+    
+            // Menandai tautan aktif berdasarkan URL saat ini
+            const currentPath = window.location.pathname;
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active'); // Menandai tautan yang sesuai dengan path saat ini
                 }
             });
         });
-    });
-</script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(document).ready(function() {
-    $('.add-to-cart').on('click', function() {
-        var quantity = $('.quantity-value').val(); // Mengambil nilai jumlah
-        var total = $('.total-value').val(); // Mengambil nilai total
-        
-        // Menghitung total harga berdasarkan jumlah yang dipilih
-        quantity * price;
-        
-        // Update nilai total di hidden input
-        $('.total-value').val(newTotal);
-
-        // Kirimkan form menggunakan AJAX atau metode yang diinginkan
-        $.ajax({
-            url: '/cart', // Ganti dengan route yang sesuai
-            method: 'POST',
-            data: {
-                _token: $('input[name="_token"]').val(),
-                product_name: $('input[name="product_name"]').val(),
-                quantity: quantity,
-                total: newTotal
-            },
-            success: function(response) {
-                // Handle response (misalnya, menampilkan update di cart)
-                console.log(response);
-            }
-        });
-    });
-});
-
-        // Fungsi untuk memperbarui jumlah dan total harga
-        document.addEventListener('DOMContentLoaded', () => {
-            const buttons = document.querySelectorAll('.quantity-btn');
-        
-            buttons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const isIncrease = this.textContent === '+'; // Periksa apakah tombol '+' atau '-'
-                    const targetInput = this.closest('.card').querySelector('.quantity-input'); // Ambil input quantity dalam card yang sama
-                    const totalPriceElement = this.closest('.card-body').querySelector('.total-price'); // Total harga di dalam card yang sama
-                    const productPrice = parseInt(this.closest('.card').dataset.price); // Ambil harga produk dari data atribut card
-        
-                    // Ambil nilai saat ini dan lakukan operasi
-                    let currentValue = parseInt(targetInput.value);
-                    if (isIncrease) {
-                        currentValue += 1;
-                    } else if (currentValue > 1) { // Pastikan jumlah tidak kurang dari 1
-                        currentValue -= 1;
+    
+        // Menangani event klik pada tombol "Add to Cart" menggunakan jQuery
+        $(document).ready(function () {
+            // Event listener untuk tombol "Add to Cart"
+            $(document).on('click', '.add-to-cart', function () {
+                const form = $(this).closest('.ajax-form'); // Mendapatkan form terkait dengan tombol
+                const url = "{{ route('cart.add') }}"; // URL tujuan server
+    
+                // Mengirim data form menggunakan AJAX
+                $.ajax({
+                    url: url, // Menyertakan URL tujuan
+                    method: "POST", // Metode HTTP yang digunakan
+                    data: form.serialize(), // Menyertakan data form dalam format URL encoded
+                    success: function (response) {
+                        alert('Item berhasil ditambahkan ke keranjang!'); // Menampilkan notifikasi sukses
+                        // Opsional: Update UI keranjang jika diperlukan
+                    },
+                    error: function (xhr) {
+                        alert('Terjadi kesalahan, coba lagi.'); // Menampilkan pesan kesalahan jika gagal
                     }
-        
-                    // Perbarui nilai di input dan total harga
-                    targetInput.value = currentValue;
-                    totalPriceElement.textContent = `Total: Rp ${(currentValue * productPrice).toLocaleString()}`;
                 });
             });
         });
+    
+       
     </script>
+    
     
     
 </body>

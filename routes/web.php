@@ -210,7 +210,7 @@ Route::put('/transaksi/{id}/update-status', [TransaksiController::class, 'update
 Route::put('/update-transaksi/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
 Route::get('/payment/{id}', [TransaksiController::class, 'showPaymentPage'])->name('transaksi.payment');
 
-Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 

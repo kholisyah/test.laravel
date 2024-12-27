@@ -168,9 +168,14 @@
         Sanggar Galuh
     </div>
     <div class="nav-links">
+<<<<<<< HEAD
         <a href="/home">Beranda</a>
         <a href="/syarat">Pendaftaran</a>
         <a href="/login">Jadwal</a>
+=======
+        <a href="/project">Pendaftaran</a>
+        <a href="/lihat-jadwal">Jadwal</a>
+>>>>>>> 94c8033f6ee524eb9b2ce4337179010e4f0af42e
         <a href="/index">Perengkingan</a>
         <a href="/galeri">Penyewaan</a>
         <a href="/cart">Keranjang</a>

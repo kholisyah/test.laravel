@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->string('status');
             $table->integer('total');
             $table->date('tanggal');
             $table->timestamps();

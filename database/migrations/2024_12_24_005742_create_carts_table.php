@@ -6,24 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
-{
-    Schema::create('carts', function (Blueprint $table) {
-        $table->id();
-        $table->string('product_name');
-        $table->integer('quantity');
-        $table->integer('total');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('carts', function (Blueprint $table) {
+            $table->id();
+            $table->string('product_name');
+            $table->integer('quantity');
+            $table->integer('total');
+            $table->string('category'); // Tambahkan kolom kategori
+            $table->timestamps();
+        });
+    }
 
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('carts');
