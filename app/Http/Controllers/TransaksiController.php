@@ -40,7 +40,7 @@ public function sendWhatsAppMessage($to, $message) {
 
 public function storeFromCart(Request $request)
 {
-    $cart = session()->get('cart', []);
+    $cart = session()->get('cart.items', []);
 
     foreach ($cart as $item) {
         // Ensure 'total' exists in the cart item
@@ -54,9 +54,10 @@ public function storeFromCart(Request $request)
             // Handle missing total, maybe log an error or set a default value
             Transaksi::create([
                 'status' => 'pending',
-                'total' => 0, // Default value
+                'total' => 10000, // Default value
                 'tanggal' => now(),
             ]);
+
         }
     }
 

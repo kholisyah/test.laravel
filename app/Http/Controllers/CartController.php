@@ -18,20 +18,23 @@ public function addToCart(Request $request)
 {
     $request->validate([
         'product_name' => 'required|string',
-        'quantity' => 'required|integer|min:1',
+        'quantity' => 'required|integer|min:1|max:10',
         'total' => 'required|numeric',
         'category' => 'required|string', // Validasi kategori
     ]);
 
+    $total = $request->quantity * $request->total;
+
     $item = [
         'product_name' => $request->product_name,
         'quantity' => $request->quantity,
-        'total' => $request->total,
+        'total' => $total,
         'category' => $request->category,
     ];
 
+    
     session()->push('cart.items', $item);
-
+    
     return response()->json(['message' => 'Item berhasil ditambahkan ke keranjang']);
 }
 
