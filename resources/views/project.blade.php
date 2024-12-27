@@ -193,11 +193,6 @@
             </select>
             <label for="biaya_administrasi">Biaya Administrasi Sebesar:</label>
             <input type="text" name="biaya_administrasi" id="biaya_administrasi" value="25000" readonly>
-
-            <!-- Added description and the link here -->
-            <p><strong>Upload Persyaratan</strong></p>
-            <a href="{{ url('/syarat') }}" class="btn btn-primary">Klik Disini</a>
-
             <button type="submit">Simpan</button>
         </form>
 
