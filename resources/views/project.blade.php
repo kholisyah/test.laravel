@@ -14,6 +14,8 @@
             align-items: center;
             justify-content: space-between;
             color: #fff;
+            width: 100%; /* Navbar memenuhi lebar penuh */
+            position: relative; /* Tetap pada alur dokumen */
         }
 
         .navbar .logo {
@@ -57,7 +59,8 @@
 
         body {
             background-color: #E8F0FE;
-            padding: 20px;
+            margin: 0; /* Menghapus padding body */
+            padding: 0; /* Menghapus padding body */
         }
 
         .container {
@@ -109,76 +112,25 @@
         button:hover {
             background-color: #3B72D3;
         }
-
-        .data-container {
-            margin-top: 40px;
-        }
-
-        .data-item {
-            background-color: #F9FAFB;
-            padding: 20px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .data-item h3 {
-            color: #4D8BFF;
-            margin-bottom: 5px;
-        }
-
-        .data-item .detail {
-            display: none;
-            color: #666;
-        }
-
-        .data-item a {
-            color: #4D8BFF;
-            text-decoration: none;
-            margin-right: 15px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .data-item a:hover {
-            text-decoration: underline;
-        }
-
-        .actions {
-            display: flex;
-            align-items: center;
-        }
-
-        .delete-form button {
-            background-color: #FF7070;
-            padding: 8px 12px;
-            border-radius: 5px;
-        }
-
-        .delete-form button:hover {
-            background-color: #FF4C4C;
-        }
     </style>
 </head>
 <body>
-     <!-- Navbar -->
-        <div class="navbar">
-            <div class="logo">
-                <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
-                Sanggar Galuh
-            </div>
-            <div class="nav-links">
-                <a href="/home">Beranda</a>
-                <a href="/project">Pendaftaran</a>
-                <a href="/login">Jadwal</a>
-                <a href="/index">Perengkingan</a>
-                <a href="/galeri">Penyewaan</a>
-                <a href="/cart">Keranjang</a>
-            </div>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+            Sanggar Galuh
         </div>
+        <div class="nav-links">
+            <a href="/home">Beranda</a>
+            <a href="/project">Pendaftaran</a>
+            <a href="/login">Jadwal</a>
+            <a href="/index">Perengkingan</a>
+            <a href="/galeri">Penyewaan</a>
+            <a href="/cart">Keranjang</a>
+            <a href="/login">Login</a>
+        </div>
+    </div>
     <div class="container">
         <h2>Pendaftaran</h2>
         <form id="pendaftaranForm" action="/create-pendaftaran" method="POST">
@@ -196,58 +148,6 @@
             <input type="text" name="biaya_administrasi" id="biaya_administrasi" value="25000" readonly>
             <button type="submit">Simpan</button>
         </form>
-
-        
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $('#pendaftaranForm').on('submit', function(event) {
-            event.preventDefault();
-
-            $.ajax({
-                url: '/create-pendaftaran',
-                method: 'POST',
-                data: $(this).serialize(),
-                success: function(response) {
-                    alert('Data berhasil disimpan!');
-                    window.location.href = '/sukses'; // Redirect ke halaman sukses
-                    $('#pendaftaranForm')[0].reset();
-                    const newData = `
-                        <div class="data-item">
-                            <div>
-                                <h3>${response.nama}</h3>
-                                <div class="detail" style="display: none;">
-                                    <p>Email: ${response.email}</p>
-                                    <p>Alamat: ${response.alamat}</p>
-                                    <p>No Telepon: ${response.no_telepon}</p>
-                                    <p>Kategori: ${response.kategori}</p>
-                                    <p>Biaya Administrasi: Rp${response.biaya_administrasi}</p>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <a class="view-button">View</a>
-                                <a href="/edit-pendaftaran/${response.id}">Edit</a>
-                                <form class="delete-form" action="/delete-pendaftaran/${response.id}" method="POST">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" onclick="return confirm('Yakin ingin dihapus?')">Delete</button>
-                                </form>
-                            </div>
-                        </div>`;
-                    $('.data-container').append(newData);
-                    $('.view-button').last().on('click', function() {
-                        $(this).closest('.data-item').find('.detail').slideToggle();
-                    });
-                },
-                error: function(xhr, status, error) {
-                    alert('Terjadi kesalahan saat menyimpan data: ' + error);
-                }
-            });
-        });
-
-        $(document).on('click', '.view-button', function() {
-            $(this).closest('.data-item').find('.detail').slideToggle();
-        });
-    </script>
+    </div>
 </body>
 </html>
