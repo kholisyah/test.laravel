@@ -79,7 +79,7 @@
         .hero {
             text-align: center;
             padding: 195px 50px;
-            background-image: url('{{ asset('assets/img/home.jpeg') }}');
+            background-image: url('{{ asset('assets/img/Baksa Kembang.jpg') }}');
             background-size: cover;
             background-position: center;
             color: white;
@@ -170,8 +170,6 @@
     <div class="nav-links">
         <a href="/home">Beranda</a>
         <a href="/syarat">Pendaftaran</a>
-        <a href="/login">Jadwal</a>
-        <a href="/project">Pendaftaran</a>
         <a href="/lihat-jadwal">Jadwal</a>
         <a href="/index">Perengkingan</a>
         <a href="/galeri">Penyewaan</a>
