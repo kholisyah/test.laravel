@@ -148,8 +148,8 @@
                                                     <label class="form-label">Kategori</label>
                                                     <select name="kategori" class="form-control" required>
                                                         <option value="">Pilih Kategori</option>
-                                                        <option value="Anak-anak" {{ $tarian->kategori == 'Anak-anak' ? 'selected' : '' }}>Anak-anak</option>
-                                                        <option value="Dewasa" {{ $tarian->kategori == 'Dewasa' ? 'selected' : '' }}>Dewasa</option>
+                                                        <option value="dewasa">Dewasa</option>
+                                                        <option value="anak-anak">Anak-anak</option>
                                                     </select>
                                                 </div>
                                                 
@@ -192,8 +192,8 @@
                             <label class="form-label">Kategori</label>
                             <select name="kategori" class="form-control" required>
                                 <option value="">Pilih Kategori</option>
-                                <option value="Anak-anak" {{ $tarian->kategori == 'Anak-anak' ? 'selected' : '' }}>Anak-anak</option>
-                                <option value="Dewasa" {{ $tarian->kategori == 'Dewasa' ? 'selected' : '' }}>Dewasa</option>
+                                <option value="dewasa">Dewasa</option>
+                                <option value="anak-anak">Anak-anak</option>
                             </select>
                     </div>
                     <div class="modal-footer">
