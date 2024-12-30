@@ -149,5 +149,55 @@
             <button type="submit">Simpan</button>
         </form>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#pendaftaranForm').on('submit', function(event) {
+            event.preventDefault();
+
+            $.ajax({
+                url: '/create-pendaftaran',
+                method: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    alert('Data berhasil disimpan!');
+                    window.location.href = '/sukses'; // Redirect ke halaman sukses
+                    $('#pendaftaranForm')[0].reset();
+                    const newData = `
+                        <div class="data-item">
+                            <div>
+                                <h3>${response.nama}</h3>
+                                <div class="detail" style="display: none;">
+                                    <p>Email: ${response.email}</p>
+                                    <p>Alamat: ${response.alamat}</p>
+                                    <p>No Telepon: ${response.no_telepon}</p>
+                                    <p>Kategori: ${response.kategori}</p>
+                                    <p>Biaya Administrasi: Rp${response.biaya_administrasi}</p>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <a class="view-button">View</a>
+                                <a href="/edit-pendaftaran/${response.id}">Edit</a>
+                                <form class="delete-form" action="/delete-pendaftaran/${response.id}" method="POST">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" onclick="return confirm('Yakin ingin dihapus?')">Delete</button>
+                                </form>
+                            </div>
+                        </div>`;
+                    $('.data-container').append(newData);
+                    $('.view-button').last().on('click', function() {
+                        $(this).closest('.data-item').find('.detail').slideToggle();
+                    });
+                },
+                error: function(xhr, status, error) {
+                    alert('Terjadi kesalahan saat menyimpan data: ' + error);
+                }
+            });
+        });
+
+        $(document).on('click', '.view-button', function() {
+            $(this).closest('.data-item').find('.detail').slideToggle();
+        });
+    </script>
 </body>
 </html>
