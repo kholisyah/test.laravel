@@ -9,6 +9,55 @@
       body {
         background-color: #E8F0FE;
       }
+      /* Navbar */
+ .navbar {
+            background-color: #89c4e9;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+        }
+        
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s, opacity 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #156ba5;
+        }
+
+        .navbar a.active {
+            color: #156ba5;
+            opacity: 0.7;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
 
       .container {
         margin-top: 50px;
@@ -59,6 +108,21 @@
     </style>
   </head>
   <body>
+    <div class="navbar">
+      <div class="logo">
+          <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+          Sanggar Galuh
+      </div>
+      <div class="nav-links">
+          <a href="/home">Beranda</a>
+          <a href="/syarat">Pendaftaran</a>
+          <a href="/lihat-jadwal">Jadwal</a>
+          <a href="/index">Perengkingan</a>
+          <a href="/galeri">Penyewaan</a>
+          <a href="/cart">Keranjang</a>
+          <a href="/login">Login</a>
+      </div>
+  </div>
     @if ($errors->has('file'))
     <div class="alert alert-danger">
         {{ $errors->first('file') }}

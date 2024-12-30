@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Halaman Pendaftaran</title>
     <style>
-         /* Navbar */
-         .navbar {
+        /* Navbar */
+        .navbar {
             background-color: #89c4e9;
             padding: 15px;
             display: flex;
@@ -15,7 +15,7 @@
             justify-content: space-between;
             color: #fff;
         }
-        
+
         .navbar .logo {
             display: flex;
             align-items: center;
@@ -47,6 +47,7 @@
             color: #156ba5;
             opacity: 0.7;
         }
+
         * {
             margin: 0;
             padding: 0;
@@ -61,7 +62,7 @@
 
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 40px auto; /* Jarak antara navbar dan container */
             background-color: #FFFFFF;
             padding: 30px;
             border-radius: 10px;
