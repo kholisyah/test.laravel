@@ -15,6 +15,7 @@ use App\Http\Controllers\ResultController;
 use App\Http\Controllers\SawAhpController;
 use App\Http\Controllers\TarianController;
 use App\Http\Controllers\DropBoxController;
+use App\Http\Controllers\PelatihController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\TransaksiController;
@@ -218,3 +219,10 @@ Route::post('/transaksi/store-from-cart', [TransaksiController::class, 'storeFro
 Route::post('/transaksi/from-cart', [TransaksiController::class, 'storeFromCart'])->name('transaksi.storeFromCart');
 
 Route::get('/index', [SawAhpController::class, 'index']);
+
+Route::get('/pelatih', [PelatihController::class, 'index'])->name('pelatih');
+ // Halaman utama
+Route::post('/pelatih/store', [PelatihController::class, 'store'])->name('pelatih.store'); // Menyimpan data baru
+Route::post('/create-post', [PelatihController::class, 'createPost']);
+Route::put('/pelatih/{id}', [PelatihController::class, 'update'])->name('pelatih.update'); // Update data
+Route::delete('/pelatih/{id}', [PelatihController::class, 'destroy'])->name('pelatih.destroy'); // Hapus data
