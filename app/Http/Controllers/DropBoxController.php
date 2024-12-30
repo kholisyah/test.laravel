@@ -69,6 +69,7 @@ $fileName = $file->getClientOriginalName(); // Nama asli file
 $dropboxFilePath = $folderPath . '/' . $fileName;
 // Mengecek apakah file sudah ada di folder Dropbox
 
+
  if ($this->isFileExists($dropboxFilePath)) {
  return back()->withErrors(['error' => 'File already exists in the folder.']);
  }
@@ -78,7 +79,7 @@ try {
  $content = file_get_contents($file);
  $this->client->upload($dropboxFilePath, $content);
 
-return back()->with('status', 'File uploaded successfully!');
+ return view('project');
  } catch (\Exception $e) {
 return back()->withErrors(['error' => 'Failed to upload file: ' . $e->getMessage()]);
  }

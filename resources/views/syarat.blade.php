@@ -66,7 +66,7 @@
 @endif
 
     <div class="container">
-        <p><strong>Persyaratan yang diperlukan sebagai berikut:</strong></p>
+        <p><strong>Syarat pendaftaran yang diperlukan sebagai berikut:</strong></p>
         <ul>
             <li>Kartu Keluarga</li>
             <li>Akta</li>
@@ -76,14 +76,13 @@
         <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="form-group mb-3">
-              <label for="file">Upload bukti dan persyaratan disini dalam bentuk File PDF</label>
+              <label for="file">Upload bukti persyaratan disini dalam bentuk 1 File PDF dengan format file (Nama Anda):</label>
               <input type="file" name="file" id="file" class="form-control">
           </div>
       
-          <button type="submit" class="btn btn-primary">Upload</button>
+          <button type="submit" class="btn btn-primary">Selanjutnya</button>
       </form>      
     </div>
-    <a href="{{ url('/project') }}" class="btn btn-primary">Kembali ke Pendaftaran</a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
