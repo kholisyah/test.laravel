@@ -94,6 +94,14 @@
     </style>
 </head>
 <body>
+           <!-- Navbar -->
+   <div class="navbar">
+    <div class="logo">
+        <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+        Sanggar Galuh
+    </div>
+    <div class="nav-links">
+        <a href="/dashboard">kembali ke dashboard</a>
     <div class="container mt-5">
         <h1>Jadwal Latihan Sanggar Galuh</h1>
         

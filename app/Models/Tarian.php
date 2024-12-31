@@ -11,7 +11,13 @@ class Tarian extends Model
 
     protected $fillable = [
         'nama_tari',
-        'pelatih',
+        'pelatih_id',
         'kategori',
     ];
+
+    public function pelatih()
+{
+    return $this->belongsTo(Pelatih::class, 'pelatih_id');
+}
+
 }

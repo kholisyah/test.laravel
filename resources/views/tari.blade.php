@@ -40,6 +40,15 @@
             transition: color 0.3s, opacity 0.3s;
         }
 
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+
         .navbar a:hover {
             color: #156ba5;
         }
@@ -67,13 +76,8 @@
         Sanggar Galuh
     </div>
     <div class="nav-links">
-        <a href="/home">Beranda</a>
-        <a href="/project">Pendaftaran</a>
-        <a href="/login">Jadwal</a>
-        <a href="/index">Perengkingan</a>
-        <a href="/galeri">Penyewaan</a>
-        <a href="/cart">Keranjang</a>
-        <a href="/login">Login</a>
+        <a href="/dashboard">Kembali ke dashboard</a>
+
     </div>
 </div>
     <div class="container mt-3">
@@ -109,7 +113,7 @@
                             <tr>
                                 <td class="text-center">{{ $key + 1 }}</td>
                                 <td>{{ $tarian->nama_tari }}</td>
-                                <td>{{ $tarian->pelatih }}</td>
+                                <td>{{ $tarian->pelatih->nama }}</td>
                                 <td>{{ $tarian->kategori }}</td>
                                 <td class="text-center">
                                     <!-- Edit Button -->
@@ -141,8 +145,13 @@
                                                     <input type="text" name="jenis_tari" class="form-control" value="{{ $tarian->nama_tari }}" required>
                                                 </div>
                                                 <div class="mb-2">
-                                                    <label class="form-label">Pelatih</label>
-                                                    <input type="text" name="pelatih" class="form-control" value="{{ $tarian->pelatih }}" required>
+                                                    <label for="pelatih">pelatih</label><br>
+                                                    <select name="pelatih_id" class="form-control">
+                                                        <option value="" selected disabled>pilih pelatih</option>
+                                                        @foreach ($pelatihs as $pelatih)
+                                                            <option value="{{ $pelatih->id }}">{{ $pelatih->nama }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                                 <div class="mb-2">
                                                     <label class="form-label">Kategori</label>
@@ -185,8 +194,13 @@
                             <input type="text" name="jenis_tari" class="form-control" placeholder="Masukkan nama tari" required>
                         </div>
                         <div class="mb-2">
-                            <label class="form-label">Pelatih</label>
-                            <input type="text" name="pelatih" class="form-control" placeholder="Masukkan nama pelatih" required>
+                            <label for="pelatih">pelatih</label><br>
+                            <select name="pelatih_id">
+                                <option value="" selected disabled>pilih pelatih</option>
+                                @foreach ($pelatihs as $pelatih)
+                                    <option value="{{ $pelatih->id }}">{{ $pelatih->nama }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Kategori</label>

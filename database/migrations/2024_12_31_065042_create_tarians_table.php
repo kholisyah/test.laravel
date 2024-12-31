@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tarians', function (Blueprint $table) {
             $table->id();
             $table->string('nama_tari'); 
-            $table->string('pelatih');
+            $table->foreignId('pelatih_id')->constrained('pelatihs')->onDelete('cascade'); // Menambahkan kolom 'tarian_id' sebagai foreign key
             $table->string('kategori');
             $table->timestamps();
         });

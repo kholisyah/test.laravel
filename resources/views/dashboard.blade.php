@@ -7,27 +7,25 @@
     <title>Sanggar Galuh Pelaihari</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Layout dasar */
         body {
             display: flex;
             min-height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #CFE9F3, #EAF6FB); /* Warna biru pastel lembut */
+            background: linear-gradient(135deg, #156ba5, #89c4e9);
             font-family: 'Poppins', sans-serif;
             color: #4A4A4A;
         }
 
-        /* Sidebar */
         .sidebar {
             min-width: 240px;
-            background-color: #D9EEF7; /* Biru pastel cerah */
+            background-color: #89c4e9;
             color: #4A4A4A;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            border-right: 2px solid #B5DDEB; 
+            border-right: 2px solid #156ba5;
         }
 
         .sidebar img {
@@ -36,7 +34,7 @@
             border-radius: 50%;
             margin-bottom: 20px;
             object-fit: cover;
-            border: 3px solid #A2D4E8;
+            border: 3px solid #156ba5;
         }
 
         .sidebar h4 {
@@ -46,41 +44,40 @@
         }
 
         .sidebar a {
-            display: block;
-            color: #4A4A4A;
+            color: #000;
             text-decoration: none;
-            margin: 10px 0;
-            padding: 12px;
-            border-radius: 8px;
-            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-            font-weight: 500;
+            font-size: 16px;
+            margin: 12px 0;
+            padding: 8px 0;
             width: 100%;
+            transition: color 0.3s ease-in-out, transform 0.2s;
             text-align: center;
-            background-color: #EAF6FB;
         }
 
         .sidebar a:hover {
-            background-color: #D2ECF5;
-            transform: translateX(5px);
+            color: #4A4A4A;
+            transform: translateX(8px);
         }
 
         .sidebar .btn-danger {
-            background-color: #EAF6FB;
+            background-color: #e74c3c;
+            color: #fff;
             border: none;
-            color: #4A4A4A;
-            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+            width: 100%;
+            margin-top: 30px;
+            padding: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
         .sidebar .btn-danger:hover {
-            background-color: #D2ECF5;
-            transform: scale(1.05);
+            background-color: #c0392b;
         }
 
-        /* Konten Utama */
         .content {
             flex: 1;
             padding: 30px;
-            background-color: #F4FAFD; /* Biru pastel sangat lembut */
+            background-color: #ffffff;
         }
 
         .content h1 {
@@ -90,7 +87,6 @@
             color: #4A4A4A;
         }
 
-        /* Kartu Dashboard */
         .dashboard-card {
             background: #EAF6FB;
             border: none;
@@ -100,6 +96,7 @@
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             height: 100%;
             border: 1px solid #B5DDEB;
+            text-align: center;
         }
 
         .dashboard-card:hover {
@@ -111,13 +108,12 @@
         .dashboard-card h3 {
             color: #4A4A4A;
             font-size: 24px;
-            text-align: center;
+            margin-bottom: 10px;
         }
 
         .dashboard-card p {
             font-size: 16px;
             color: #6B6B6B;
-            text-align: center;
             margin-bottom: 20px;
         }
 
@@ -136,54 +132,33 @@
             transform: scale(1.05);
         }
 
-        /* Responsivitas */
-        @media (max-width: 768px) {
-            .sidebar {
-                min-width: 200px;
-            }
-
-            .content {
-                padding: 20px;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Logo -->
         <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
         <h4>Sanggar Galuh Pelaihari</h4>
 
-        <!-- Menu -->
         <a href="/lihat-login">Akun</a>
-        {{-- <a href="/project">Pendaftaran</a> --}}
         <a href="/jadwal">Penjadwalan</a>
-        {{-- <a href="/penyewaan">Penyewaan</a> --}}
-        <a href="/tari">Data master</a>
+        <a href="/tari">Data Tari</a>
+        <a href="/pelatih">Data Pelatih</a>
 
-        <!-- Spacer -->
-        <div style="flex-grow: 1;"></div>
-
-        <!-- Tombol Logout -->
         <form action="{{ route('logout') }}" method="POST" style="width: 100%; text-align: center;">
             @csrf
             <button type="submit" class="btn btn-danger w-100">Logout</button>
         </form>
     </div>
 
-    <!-- Konten Utama -->
     <div class="content">
-        <h1>Selamat Datang di Sanggar Galuh Pelaihari</h1>
+        <h1>Managemen Sanggar Galuh Pelaihari</h1>
         <div class="row g-4">
             <div class="col-md-6">
                 <div class="card dashboard-card">
                     <div class="card-body">
                         <h3>Penjadwalan Latihan</h3>
                         <p>Kelola jadwal latihan tarian di sanggar.</p>
-                        <div class="text-center">
-                            <a href="/lihat-jadwal">Lihat Jadwal</a>
-                        </div>
+                        <a href="/lihat-jadwal">Lihat Jadwal</a>
                     </div>
                 </div>
             </div>
@@ -193,9 +168,7 @@
                     <div class="card-body">
                         <h3>Lihat Profil</h3>
                         <p>Informasi mengenai sanggar dan anggota.</p>
-                        <div class="text-center">
-                            <a href="/home">Lihat beranda</a>
-                        </div>
+                        <a href="/home">Lihat Beranda</a>
                     </div>
                 </div>
             </div>
@@ -205,9 +178,7 @@
                     <div class="card-body">
                         <h3>Lihat Penyewaan</h3>
                         <p>Cek daftar penyewaan baju di sanggar.</p>
-                        <div class="text-center">
-                            <a href="/lihat-penyewaan">Lihat Penyewaan</a>
-                        </div>
+                        <a href="/lihat-penyewaan">Lihat Penyewaan</a>
                     </div>
                 </div>
             </div>
@@ -217,15 +188,11 @@
                     <div class="card-body">
                         <h3>Lihat Pendaftaran</h3>
                         <p>Lihat daftar pendaftaran yang ada.</p>
-                        <div class="text-center">
-                            <a href="/lihat-pendaftaran">Lihat Pendaftaran</a>
-                        </div>
+                        <a href="/lihat-pendaftaran">Lihat Pendaftaran</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
