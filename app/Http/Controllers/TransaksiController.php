@@ -8,6 +8,24 @@ use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
+    public function payment($id)
+{
+    // Ambil detail transaksi berdasarkan ID
+    $transaksi = Transaksi::find($id);
+
+    // Format pesan untuk WhatsApp
+    $whatsappNumber = '6285750274278'; // Nomor WhatsApp tujuan
+    $message = "Halo, saya ingin melakukan pembayaran untuk transaksi berikut:\n" .
+               "ID Transaksi: $transaksi->id\n" .
+               "Total: Rp " . number_format($transaksi->total, 0, ',', '.') . "\n" .
+               "Tanggal: " . $transaksi->tanggal;
+
+    // Redirect ke WhatsApp
+    $whatsappLink = "https://wa.me/$whatsappNumber?text=" . urlencode($message);
+
+    return redirect($whatsappLink);
+}
+
 
 public function sendWhatsAppMessage($to, $message) {
     $apiKey = env('ZYwGTa1u1VS5wRdtWda8'); // Ambil API Key dari .env

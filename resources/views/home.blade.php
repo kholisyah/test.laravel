@@ -219,7 +219,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2024 Sanggar Galuh Pelaihari. Semua Hak Dilindungi.</p>
+        <p> Sanggar Galuh Pelaihari.</p>
     </div>
 
 </body>
