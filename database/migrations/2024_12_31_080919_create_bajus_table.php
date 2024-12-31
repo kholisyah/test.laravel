@@ -17,9 +17,11 @@ return new class extends Migration
             $table->integer('harga');
             $table->string('jumlah_aksesoris'); 
             $table->string('jumlah_sewa');  
+            $table->string('foto')->nullable(); // Kolom untuk foto
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

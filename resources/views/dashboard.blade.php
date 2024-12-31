@@ -141,6 +141,7 @@
         <a href="/jadwal">Penjadwalan</a>
         <a href="/tari">Data Tari</a>
         <a href="/pelatih">Data Pelatih</a>
+        <a href="/bajus">Data Baju</a>
 
         <form action="{{ route('logout') }}" method="POST" style="width: 100%; text-align: center;">
             @csrf
