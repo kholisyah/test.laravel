@@ -134,8 +134,9 @@
         <ul>
             <li>Kartu Keluarga</li>
             <li>Akta</li>
-            <li>Pas Foto diri sendiri</li>
+            <li>Pas Foto 3x4</li>
             <li>Ijazah Terakhir/SKHU</li>
+            <li>Bukti pembayaran sebesar Rp25.000 ke No rekening (4557 0100 8242 506)</li>
         </ul>
         <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
           @csrf
