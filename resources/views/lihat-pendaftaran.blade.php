@@ -25,25 +25,17 @@
             background-color: #B5DDEB; /* Warna biru pastel */
             padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Pusatkan judul navbar */
             align-items: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .navbar a {
+        .navbar h1 {
             color: #4A4A4A;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
+            font-size: 18px;
         }
 
-        .navbar a:hover {
-            background-color: #A2D4E8; /* Warna hover */
-        }
-
-        /* Pengaturan untuk container tabel */
+        /* Pengaturan untuk container */
         .container {
             max-width: 1000px;
             margin: 20px auto;
@@ -58,7 +50,31 @@
             text-align: center;
             color: #4A4A4A;
             margin-bottom: 20px;
-            font-size: 24px;
+            font-size: 32px; /* Ukuran lebih besar untuk judul */
+            font-weight: bold;
+        }
+
+        /* Gaya tombol kembali */
+        .back-button-container {
+            margin: 20px auto; /* Margin otomatis untuk pusatkan kontainer */
+            display: flex;
+            justify-content: flex-start; /* Posisi tombol ke kiri */
+            max-width: 1000px; /* Lebar maksimum mengikuti container utama */
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: white;
+            background-color: #5BC0EB; /* Warna biru untuk tombol */
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #469FC4; /* Warna hover tombol */
         }
 
         /* Tabel styling */
@@ -80,12 +96,8 @@
             color: #4A4A4A;
         }
 
-        tr:nth-child(even) {
-            background-color: #FFFFFF; /* Baris tabel putih */
-        }
-
-        tr:nth-child(odd) {
-            background-color: #D9EEF7; /* Baris tabel biru pastel terang */
+        tr {
+            background-color: #FFFFFF; /* Warna latar belakang putih untuk semua baris */
         }
 
         tr:hover {
@@ -122,14 +134,30 @@
         .action-buttons form button:hover {
             background-color: #D94442; /* Warna hover tombol hapus */
         }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 24px;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            th, td {
+                font-size: 12px;
+                padding: 8px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <a href="{{ url('/dashboard') }}">Kembali ke Dashboard</a>
-    </div>
-
+   <!-- Tombol Kembali -->
+   <div class="back-button-container">
+    <a href="{{ url('/dashboard') }}" class="back-button">Kembali ke Dashboard</a>
+   </div>
     <!-- Konten Utama -->
     <div class="container">
         <h2>Data Pendaftaran</h2>
