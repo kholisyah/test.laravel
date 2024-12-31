@@ -157,9 +157,9 @@
 
         <!-- Menu -->
         <a href="/lihat-login">Akun</a>
-        <a href="/project">Pendaftaran</a>
+        {{-- <a href="/project">Pendaftaran</a> --}}
         <a href="/jadwal">Penjadwalan</a>
-        <a href="/penyewaan">Penyewaan</a>
+        {{-- <a href="/penyewaan">Penyewaan</a> --}}
         <a href="/tari">Data master</a>
 
         <!-- Spacer -->

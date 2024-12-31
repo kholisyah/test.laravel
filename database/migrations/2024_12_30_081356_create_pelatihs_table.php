@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tarians', function (Blueprint $table) {
+        Schema::create('pelatihs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_tari'); // Membuat kolom 'jenis_tari' bertipe string untuk menyimpan jenis tari
-            $table->string('pelatih'); // Membuat kolom 'pelatih' bertipe string untuk menyimpan nama pelatih
-            $table->string('kategori');
+            $table->string('nama'); 
+            $table->string('email');
+            $table->string('no_hp');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tarians');
+        Schema::dropIfExists('pelatihs');
     }
 };

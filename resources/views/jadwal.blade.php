@@ -201,7 +201,6 @@
     </div>
     
     <div class="container">
-        <h1 class="text-center">PENJADWALAN SANGGAR GALUH</h1>
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title text-center">Jadwal Latihan</h2>

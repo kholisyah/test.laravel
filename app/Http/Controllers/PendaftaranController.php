@@ -60,7 +60,7 @@ class PendaftaranController extends Controller
                 return response()->json($pendaftaran);
             }
 
-            return redirect('/pendaftarans');
+            return redirect('/sukses');
         } catch (\Illuminate\Validation\ValidationException $e) {
             return redirect()->back()->withErrors($e->validator->errors());
         }
