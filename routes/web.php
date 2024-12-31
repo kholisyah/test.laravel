@@ -194,7 +194,8 @@ Route::get('/dropbox/move-file', [DropBoxController::class, 'moveFile']);
 
 //galeri
 Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
-
+// Rute untuk menyimpan biodata
+Route::post('/galeri', [GaleriController::class, 'store'])->name('galeri.store');
 
 Route::get('/tari', [TarianController::class, 'index'])->name('tarian.index'); // Halaman utama
 Route::post('/tari/store', [TarianController::class, 'store'])->name('tarian.store'); // Menyimpan data baru
@@ -212,9 +213,12 @@ Route::get('/payment/{id}', [TransaksiController::class, 'showPaymentPage'])->na
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::post('/transaksi/store-from-cart', [TransaksiController::class, 'storeFromCart'])->name('transaksi.storeFromCart');
 Route::post('/transaksi/from-cart', [TransaksiController::class, 'storeFromCart'])->name('transaksi.storeFromCart');
 
 Route::get('/index', [SawAhpController::class, 'index']);
+
+Route::get('/biodata', [CartController::class, 'showBiodataForm'])->name('biodata.form');
+Route::post('/biodata', [CartController::class, 'saveBiodata'])->name('biodata.save');

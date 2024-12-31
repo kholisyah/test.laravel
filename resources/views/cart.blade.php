@@ -175,6 +175,7 @@
                 <th>Kuantitas</th>
                 <th>Total</th>
                 <th>Kategori</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -184,15 +185,15 @@
                 <td>{{ $item['quantity'] }}</td>
                 <td>{{ number_format($item['total'], 0, ',', '.') }}</td>
                 <td>{{ $item['category'] ?? 'Tidak ada' }}</td>
+                <td>
+                <form action="{{ route('transaksi.storeFromCart') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Proses Transaksi</button>
+                </form>
+            </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    
-    <!-- Tombol untuk lanjut ke pembayaran -->
-    <form action="{{ route('transaksi.storeFromCart') }}" method="POST">
-        @csrf
-        <button type="submit" class="btn btn-primary">Proses Transaksi</button>
-    </form>
 </body>
 </html>

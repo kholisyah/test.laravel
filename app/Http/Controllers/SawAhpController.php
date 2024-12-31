@@ -13,7 +13,7 @@ class SawAhpController extends Controller
             ["Baju Dayak Cowo", 60000, 62, 4],
             ["Baju Dayak Cewe", 60000, 62, 5],
             ["Baju Galuh", 75000, 29, 4],
-            ["Baju Kebaya", 60000, 24, 1], 
+            ["Baju Kebaya", 60000, 24, 1],
             ["Baju Jas Cowo", 50000, 15, 1],
             ["Baju Jas Cewe", 50000, 10, 1],
             ["Baju Adat Jawa Cowo", 50000, 15, 2],
@@ -33,7 +33,7 @@ class SawAhpController extends Controller
         ];
 
         // Kriteria (1: benefit, -1: cost)
-        $kriteria = [1, 1, -1];  // Harga Sewa (cost), Jumlah Sewa (benefit), Banyak Aksesoris (benefit)
+        $kriteria = [1, 1, -1];  // Harga Sewa (benefit), Jumlah Sewa (benefit), Banyak Aksesoris (cost)
 
         // Matriks Keputusan
         $matriks = array_map(function ($row) {
@@ -56,8 +56,8 @@ class SawAhpController extends Controller
             }
         }
 
-        // Bobot Kriteria
-        $bobot = [0.3, 0.5, 0.2];  // Sesuaikan dengan kebutuhan
+        // Bobot Kriteria (Updated)
+        $bobot = [0.5679, 0.3339, 0.0982];  // Updated Bobot Kriteria
 
         // Nilai Preferensi SAW
         $nilai_saw = array_map(function ($row) use ($bobot) {

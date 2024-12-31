@@ -12,8 +12,8 @@
             background-color: #f0f8ff; /* Biru muda */
         }
 
-         /* Navbar */
-         .navbar {
+        /* Navbar */
+        .navbar {
             background-color: #89c4e9;
             padding: 15px;
             display: flex;
@@ -21,7 +21,7 @@
             justify-content: space-between;
             color: #fff;
         }
-        
+
         .navbar .logo {
             display: flex;
             align-items: center;
@@ -65,6 +65,7 @@
         h1 {
             color: #0056b3; /* Biru gelap */
             font-weight: bold;
+            text-align: center; /* Center the title */
         }
 
         .card {
@@ -78,6 +79,7 @@
         .card-body {
             padding: 15px;
             background-color: #cce5ff; /* Biru terang */
+            text-align: center; /* Center the content inside the card */
         }
 
         .card-title {
@@ -107,18 +109,19 @@
             <a href="/index">Perengkingan</a>
             <a href="/galeri">Penyewaan</a>
             <a href="/cart">Keranjang</a>
+            <a href="/login">Login</a>
         </div>
     </div>
 
     <div class="container">
-        <h1 class="my-4">Perengkingan Baju Terbaik</h1>
-        <div class="row">
-            @foreach ($results as $result)
+        <h1 class="my-4">Baju Terbaik</h1>
+        <div class="row justify-content-center"> <!-- Center the row of cards -->
+            @foreach ($results as $index => $result)
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $result['nama'] }}</h5>
-                            <p class="card-text">Hasil Perhitungan: <strong>{{ $result['hasil_saw'] }}</strong></p>
+                            <h5 class="card-title">Baju Terbaik {{ $index + 1 }}</h5> <!-- Dynamic ranking -->
+                            <p class="card-text">{{ $result['nama'] }} - Hasil Perhitungan: <strong>{{ $result['hasil_saw'] }}</strong></p>
                         </div>
                     </div>
                 </div>

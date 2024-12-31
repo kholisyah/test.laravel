@@ -7,6 +7,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 class CartController extends Controller
 {
+    public function showBiodataForm()
+    {
+        // Menampilkan form biodata
+        return view('biodata'); // Ganti dengan nama view yang sesuai
+    }
     public function index()
 {
     $cart = session()->get('cart.items', []);
