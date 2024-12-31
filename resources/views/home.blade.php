@@ -168,7 +168,6 @@
         Sanggar Galuh
     </div>
     <div class="nav-links">
-        <a href="/home">Beranda</a>
         <a href="/syarat">Pendaftaran</a>
         <a href="/lihat-jadwal">Jadwal</a>
         <a href="/index">Perengkingan</a>
