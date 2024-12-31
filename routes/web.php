@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\BajuController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -45,6 +46,9 @@ Route::get('/syarat', function () {
 });
 Route::get('/jadwal', function () {
     return view('jadwal');
+});
+Route::get('/baju', function () {
+    return view('baju');
 });
 
 Route::get('/tari', function () {
@@ -229,3 +233,11 @@ Route::post('/pelatih/store', [PelatihController::class, 'store'])->name('pelati
 Route::post('/create-post', [PelatihController::class, 'createPost']);
 Route::put('/pelatih/{id}', [PelatihController::class, 'update'])->name('pelatih.update'); // Update data
 Route::delete('/pelatih/{id}', [PelatihController::class, 'destroy'])->name('pelatih.destroy'); // Hapus data
+
+Route::get('/baju', [BajuController::class, 'index'])->name('baju.index');
+Route::get('/baju', [BajuController::class, 'create'])->name('baju.create');
+Route::resource('bajus', BajuController::class);
+Route::post('/baju/store', [BajuController::class, 'store'])->name('baju.store'); // Menyimpan data baru
+Route::post('/create-post', [BajuController::class, 'createPost']);
+Route::put('/baju/{id}', [BajuController::class, 'update'])->name('baju.update'); // Update data
+Route::delete('/baju/{id}', [BajuController::class, 'destroy'])->name('baju.destroy'); // Hapus data
