@@ -3,148 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>REGISTER</title>
     <style>
-        /* Reset CSS */
-        * {
-            box-sizing: border-box;
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
         }
 
-        .register-container {
-            background: #ffffff;
-            border-radius: 10px; /* Lebih kecil */
-            padding: 20px; /* Mengurangi padding */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 350px; /* Lebar maksimal lebih kecil */
-        }
-
-        .register-container h1 {
+        h1 {
             text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Container */
+        form {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        form div {
             margin-bottom: 15px;
-            font-size: 22px; /* Font lebih kecil */
-            font-weight: 600;
-            color: #333333;
         }
 
-        .register-container form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px; /* Spasi antar elemen lebih kecil */
+        /* Input Fields */
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
         }
 
-        .form-row label {
+        select {
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        /* Button */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional Styles */
+        label {
+            font-size: 14px;
+            color: #555;
             display: block;
             margin-bottom: 5px;
-            font-size: 14px; /* Font label lebih kecil */
-            color: #555;
-            font-weight: 500;
         }
 
-        .form-row input {
-            width: 100%;
-            padding: 10px; /* Input lebih ramping */
-            border: 2px solid #f0f0f0;
-            border-radius: 5px; /* Border lebih kecil */
-            font-size: 14px; /* Font input lebih kecil */
-            background: #f9f9f9;
-            color: #333;
-            transition: 0.3s;
-        }
-
-        .form-row input:focus {
-            border-color: #7DD3FC;
-            background: #ffffff;
-            outline: none;
-        }
-
-        .form-row .toggle-password {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .register-container button {
-            width: 100%;
-            padding: 10px; /* Tombol lebih kecil */
-            background: #7DD3FC;
-            border: none;
-            border-radius: 5px; /* Radius lebih kecil */
-            color: #fff;
-            font-size: 14px; /* Font tombol lebih kecil */
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .register-container button:hover {
-            background: #38BDF8;
-            transform: translateY(-3px);
-        }
-
-        .register-container button:active {
-            background: #0284C7;
-            transform: translateY(0);
-        }
-
-        .register-container .extra-link {
+        /* Footer */
+        footer {
             text-align: center;
-            margin-top: 15px;
-            font-size: 12px; /* Font keterangan lebih kecil */
-            color: #333;
-        }
-
-        .register-container .extra-link a {
-            color: #0284C7;
-            text-decoration: none;
-        }
-
-        .register-container .extra-link a:hover {
-            text-decoration: underline;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
         }
     </style>
 </head>
 <body>
-    <div class="register-container">
-        <h1>Halaman Register</h1>
-        <form action="/register" method="POST">
-            @csrf
-            <div class="form-row">
-                <input id="nama" name="nama" type="text" placeholder="Nama" required>
-            </div>
-
-            <div class="form-row">
-                <input id="email" name="email" type="email" placeholder="Email" required>
-            </div>
-
-            <div class="form-row">
-                <input id="password" name="password" type="password" placeholder="Password" required>
-            </div>
-
-            <div class="form-row">
-                <input id="confirm-password" name="confirm-password" type="password" placeholder="Konfirmasi Password" required>
-            </div>
-
-            <button type="submit">Register</button>
-        </form>
-        <div class="extra-link">
-            <span>Sudah punya akun? <a href="/login">Klik disini</a></span>
+    <form action="/register" method="POST">
+        @csrf
+        <h1>Register</h1>
+        <div>
+            <label for="nama">Nama</label>
+            <input 
+                id="nama" 
+                name="nama" 
+                type="text" 
+                placeholder="Masukkan Nama Anda" 
+                required
+            >
         </div>
-    </div>
+        <div>
+            <label for="password">Password</label>
+            <input 
+                id="password" 
+                name="password" 
+                type="password" 
+                placeholder="Masukkan Password Anda" 
+                required
+            >
+        </div>
+        <div>
+            <label for="role">Role</label>
+            <select name="role" id="role" required>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Register</button>
+        </div>
+        <footer>
+            <p>Sudah punya akun? 
+                <a href="/login">Login</a>
+            </p>
+        </footer>
+    </form>
 </body>
 </html>

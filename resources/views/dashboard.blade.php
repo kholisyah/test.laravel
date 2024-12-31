@@ -138,8 +138,6 @@
     <div class="sidebar">
         <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
         <h4>Sanggar Galuh Pelaihari</h4>
-
-        <a href="/lihat-login">Akun</a>
         <a href="/jadwal">Penjadwalan</a>
         <a href="/tari">Data Tari</a>
         <a href="/pelatih">Data Pelatih</a>
