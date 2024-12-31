@@ -72,7 +72,7 @@
                     success: function(response) {
                         $('#alert').removeClass('d-none alert-danger').addClass('alert-success').text('Biodata berhasil disimpan!');
                         setTimeout(function() {
-                            window.location.href = '/galeri';  // pastikan rute ini ada
+                            window.location.href = '/cart';  // pastikan rute ini ada
                         }, 2000);
                     },
                     error: function(xhr) {

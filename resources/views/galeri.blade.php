@@ -975,6 +975,7 @@
                     .then(response => response.json())
                     .then(data => {
                         alert('Item berhasil ditambahkan ke keranjang!'); // Notifikasi bahwa item berhasil ditambahkan
+                    window.location.href = '/sukses';
                         // Perbarui tampilan keranjang atau UI lainnya jika diperlukan
                     })
                     .catch(error => {
@@ -1024,6 +1025,7 @@
                     success: function (response) {
                         alert('Item berhasil ditambahkan ke keranjang!'); // Menampilkan notifikasi sukses
                         // Opsional: Update UI keranjang jika diperlukan
+                        window.location.href = '/biodata';
                     },
                     error: function (xhr) {
                         alert('Terjadi kesalahan, coba lagi.'); // Menampilkan pesan kesalahan jika gagal
