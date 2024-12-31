@@ -4,76 +4,61 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function edit($id)
+    // Fungsi login
+    public function login(Request $request)
     {
-        if (Auth::check() && Auth::user()->level === 'admin') {
-            # code...
-        }
-        $user = User::findOrFail($id);
-        return view('edit-login', compact('user')); // Tampilkan form edit dengan data pengguna
-    }
-    
-    public function destroy($id)
-    {
-        $user = User::findOrFail($id);
-        $user->delete(); // Hapus pengguna
-        return redirect()->route('lihat-login'); // Kembali ke halaman daftar login setelah penghapusan
-    }
-    
-
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+        // Validasi input
+        $incomingFields = $request->validate([
+            'nama' => 'required',
+            'password' => 'required',
         ]);
 
-        $user = User::findOrFail($id);
-        $user->update($request->all());
-
-        return redirect()->route('lihat-login')->with('success', 'Data berhasil diperbarui');
-    }
-
-    public function index()
-{
-    $logins = DB::table('user')->get(); // Ganti 'akun' dengan nama tabel login
-    return view('lihat-login', ['logins' => $logins]);
-}
-
-         //login
-         public function login(Request $request){
-            $incomingFields = $request->validate([
-                'nama' =>'required',
-                 'password' =>'required'
-            ]);
-            if (Auth::attempt(['nama' => $incomingFields['nama'], 'password' => $incomingFields['password']])) {
-                $request->session()->regenerate();
-            }
+        // Cek apakah username dan password benar
+        if (Auth::attempt(['nama' => $incomingFields['nama'], 'password' => $incomingFields['password']])) {
+            // Regenerate session jika login berhasil
+            $request->session()->regenerate();
             return redirect('/dashboard');
         }
-        public function logout(){
-            Auth::logout();
-            return redirect('/login');
-        }
-        public function register(Request $request)
+
+        // Jika login gagal, kembalikan ke halaman login dengan pesan error
+        return back()->withErrors([
+            'loginError' => 'nama atau password salah.',
+        ])->withInput($request->except('password'));
+    }
+
+    // Fungsi logout
+    public function logout()
     {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'password' => 'required|string|min:8',
-            'email' => 'required|email|max:255|unique:user',
-        ]);
-        
-        // Simpan data ke database
-        User::create([
-            'nama' => $request->nama,
-            'password' => bcrypt($request->password),
-            'email' => $request->email,
-        ]);
+        Auth::logout();
         return redirect('/login');
     }
+
+    // Fungsi register
+    public function register(Request $request)
+    {
+        // Validasi input
+        $incomingFields = $request->validate([
+            'nama' => ['required', 'min:3', 'max:10', 'unique:user,nama'],
+            'password' => ['required', 'min:4', 'max:8'],
+            'role' => ['required', 'string', 'in:admin,user']
+        ]);
+
+        // Enkripsi password
+        $incomingFields['password'] = bcrypt($incomingFields['password']);
+
+        // Buat user baru
+        $user = User::create($incomingFields);
+
+        if ($user) {
+            // Setelah registrasi, arahkan ke halaman login dengan pesan sukses
+            return redirect('/login')->with('success', 'Registrasi berhasil! Silakan login.');
+        }
+
+        // Jika registrasi gagal
+        return back()->withErrors(['registerError' => 'Gagal melakukan registrasi.'])->withInput();
     }
+}

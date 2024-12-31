@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->id();
-            $table->string('nama'); 
+            $table->string('nama')->unique();
             $table->string('password');
-            $table->string('email');
+            $table->enum('role', ['user', 'admin'])->default('user');
             $table->timestamps();
         });
+        
     }
+    
 
     /**
      * Reverse the migrations.
