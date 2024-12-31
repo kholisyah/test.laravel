@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Navbar */
- .navbar {
+        .navbar {
             background-color: #89c4e9;
             padding: 15px;
             display: flex;
@@ -16,7 +16,7 @@
             justify-content: space-between;
             color: #fff;
         }
-        
+
         .navbar .logo {
             display: flex;
             align-items: center;
@@ -48,7 +48,6 @@
             border-radius: 5px;
         }
 
-
         .navbar a:hover {
             color: #156ba5;
         }
@@ -65,21 +64,20 @@
             object-fit: cover;
             margin-right: 15px;
         }
-        </style>
-
+    </style>
 </head>
 <body>
-       <!-- Navbar -->
-   <div class="navbar">
-    <div class="logo">
-        <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
-        Sanggar Galuh
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+            Sanggar Galuh
+        </div>
+        <div class="nav-links">
+            <a href="/dashboard">Kembali ke dashboard</a>
+        </div>
     </div>
-    <div class="nav-links">
-        <a href="/dashboard">Kembali ke dashboard</a>
-
-    </div>
-</div>
+    
     <div class="container mt-3">
         <h1 class="text-center">Manajemen Tarian Sanggar Galuh</h1>
 
@@ -142,26 +140,24 @@
                                             <div class="modal-body">
                                                 <div class="mb-2">
                                                     <label class="form-label">Nama Tari</label>
-                                                    <input type="text" name="jenis_tari" class="form-control" value="{{ $tarian->nama_tari }}" required>
+                                                    <input type="text" name="nama_tari" class="form-control" value="{{ $tarian->nama_tari }}" required>
                                                 </div>
                                                 <div class="mb-2">
-                                                    <label for="pelatih">pelatih</label><br>
+                                                    <label for="pelatih">Pelatih</label><br>
                                                     <select name="pelatih_id" class="form-control">
-                                                        <option value="" selected disabled>pilih pelatih</option>
+                                                        <option value="" selected disabled>Pilih Pelatih</option>
                                                         @foreach ($pelatihs as $pelatih)
-                                                            <option value="{{ $pelatih->id }}">{{ $pelatih->nama }}</option>
+                                                            <option value="{{ $pelatih->id }}" @if($tarian->pelatih_id == $pelatih->id) selected @endif>{{ $pelatih->nama }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="mb-2">
                                                     <label class="form-label">Kategori</label>
                                                     <select name="kategori" class="form-control" required>
-                                                        <option value="">Pilih Kategori</option>
-                                                        <option value="dewasa">Dewasa</option>
-                                                        <option value="anak-anak">Anak-anak</option>
+                                                        <option value="dewasa" @if($tarian->kategori == 'dewasa') selected @endif>Dewasa</option>
+                                                        <option value="anak-anak" @if($tarian->kategori == 'anak-anak') selected @endif>Anak-anak</option>
                                                     </select>
                                                 </div>
-                                                
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -191,12 +187,12 @@
                     <div class="modal-body">
                         <div class="mb-2">
                             <label class="form-label">Nama Tari</label>
-                            <input type="text" name="jenis_tari" class="form-control" placeholder="Masukkan nama tari" required>
+                            <input type="text" name="nama_tari" class="form-control" placeholder="Masukkan nama tari" required>
                         </div>
                         <div class="mb-2">
-                            <label for="pelatih">pelatih</label><br>
-                            <select name="pelatih_id">
-                                <option value="" selected disabled>pilih pelatih</option>
+                            <label for="pelatih">Pelatih</label><br>
+                            <select name="pelatih_id" class="form-control">
+                                <option value="" selected disabled>Pilih Pelatih</option>
                                 @foreach ($pelatihs as $pelatih)
                                     <option value="{{ $pelatih->id }}">{{ $pelatih->nama }}</option>
                                 @endforeach
@@ -209,6 +205,7 @@
                                 <option value="dewasa">Dewasa</option>
                                 <option value="anak-anak">Anak-anak</option>
                             </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

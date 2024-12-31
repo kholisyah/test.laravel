@@ -136,12 +136,7 @@
             Sanggar Galuh
         </div>
         <div class="nav-links">
-            <a href="/home">Beranda</a>
-            <a href="/project">Pendaftaran</a>
-            <a href="/index">Perengkingan</a>
-            <a href="/galeri">Penyewaan</a>
-            <a href="/cart">Keranjang</a>
-            <a href="/login">Login</a>
+            <a href="/dashboard">kembali kehalaman dashboard</a>
         </div>
     </div>
 

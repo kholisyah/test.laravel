@@ -190,13 +190,7 @@
             Sanggar Galuh
         </div>
         <div class="nav-links">
-            <a href="/home">Beranda</a>
-            <a href="/project">Pendaftaran</a>
-            <a href="/login">Jadwal</a>
-            <a href="/index">Perengkingan</a>
-            <a href="/galeri">Penyewaan</a>
-            <a href="/cart">Keranjang</a>
-            <a href="/login">Login</a>
+            <a href="/dashboard">kembali kehalaman dashboard</a>
         </div>
     </div>
     
@@ -252,7 +246,7 @@
                     <td>{{ $akun->tanggal }}</td>
                     <td>{{ $akun->waktu }}</td>
                     <td>{{ $akun->tarian ? $akun->tarian->nama_tari : 'Tidak ada' }}</td>
-                    <td>{{ $akun->pelatih }}</td>
+                    <td>{{ $tarian->pelatih->nama }}</td>
                     <td>{{ $akun->anggota }}</td>
                     <td>
                         <div class="d-flex">

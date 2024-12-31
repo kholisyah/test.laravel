@@ -12,8 +12,8 @@ class TarianController extends Controller
     public function index()
     {
         $tarians = Tarian::all(); // Ambil semua data dari database
-        $pelatihs = Pelatih::all();
-        return view('tari', compact('pelatihs', 'tarians'));
+        $pelatihs = Pelatih::all(); // Ambil semua data pelatih
+        return view('tari', compact('pelatihs', 'tarians')); // Kirim data ke view
     }
 
     // Menyimpan data tarian baru
@@ -21,14 +21,14 @@ class TarianController extends Controller
     {
         // Validasi input
         $request->validate([
-            'jenis_tari' => 'required|string|max:255',
-            'pelatih_id' => 'required|exists:pelatihs,id',
+            'nama_tari' => 'required|string|max:255',  // Pastikan nama_tari
+            'pelatih_id' => 'required|exists:pelatihs,id',  // Validasi ID pelatih
             'kategori' => 'required|string|max:255',
         ]);
 
         // Simpan data ke database
         Tarian::create([
-            'nama_tari' => $request->jenis_tari, // Pastikan nama field sesuai
+            'nama_tari' => $request->nama_tari, // Sesuaikan dengan input dari form
             'pelatih_id' => $request->pelatih_id,
             'kategori' => $request->kategori,
         ]);
@@ -36,32 +36,41 @@ class TarianController extends Controller
         // Redirect ke halaman utama dengan pesan sukses
         return redirect()->route('tarian.index')->with('success', 'Data Tarian berhasil ditambahkan.');
     }
+
+    // Mengupdate data tarian
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'jenis_tari' => 'required|string|max:255',
-        'pelatih_id' => 'required|exists:pelatihs,id',
-        'kategori' => 'required|string|max:255',
-    ]);
+    {
+        // Validasi input
+        $request->validate([
+            'nama_tari' => 'required|string|max:255',
+            'pelatih_id' => 'required|exists:pelatihs,id',
+            'kategori' => 'required|string|max:255',
+        ]);
 
-    $tarian = Tarian::findOrFail($id);
-    $pelatihs = Pelatih::findOrFail($id);
-    $tarian->update([
-        'nama_tari' => $request->jenis_tari,
-        'pelatih_id' => $request->pelatih_id,
-        'kategori' => $request->kategori,
-    ]);
+        // Cari data tarian berdasarkan ID
+        $tarian = Tarian::findOrFail($id);
 
-    return redirect()->route('tarian.index')->with('success', 'Data Tarian berhasil diperbarui.');
-}
+        // Update data tarian
+        $tarian->update([
+            'nama_tari' => $request->nama_tari,  // Sesuaikan dengan input dari form
+            'pelatih_id' => $request->pelatih_id,
+            'kategori' => $request->kategori,
+        ]);
 
-public function destroy($id)
-{
-    $tarian = Tarian::findOrFail($id);
-    $pelatihs = Pelatih::findOrFail($id);
-    $tarian->delete();
+        // Redirect ke halaman utama dengan pesan sukses
+        return redirect()->route('tarian.index')->with('success', 'Data Tarian berhasil diperbarui.');
+    }
 
-    return redirect()->route('tarian.index')->with('success', 'Data Tarian berhasil dihapus.');
-}
+    // Menghapus data tarian
+    public function destroy($id)
+    {
+        // Cari data tarian berdasarkan ID
+        $tarian = Tarian::findOrFail($id);
 
+        // Hapus data tarian
+        $tarian->delete();
+
+        // Redirect ke halaman utama dengan pesan sukses
+        return redirect()->route('tarian.index')->with('success', 'Data Tarian berhasil dihapus.');
+    }
 }
