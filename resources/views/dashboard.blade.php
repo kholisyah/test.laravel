@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sanggar Galuh Pelaihari</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -18,14 +19,14 @@
 
         .sidebar {
             min-width: 240px;
-            background-color: #89c4e9;
-            color: #4A4A4A;
+            background-color: #156ba5;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            border-right: 2px solid #156ba5;
+            border-right: 2px solid #0f4c75;
         }
 
         .sidebar img {
@@ -34,7 +35,7 @@
             border-radius: 50%;
             margin-bottom: 20px;
             object-fit: cover;
-            border: 3px solid #156ba5;
+            border: 3px solid #0f4c75;
         }
 
         .sidebar h4 {
@@ -44,19 +45,24 @@
         }
 
         .sidebar a {
-            color: #000;
+            color: #ffffff;
             text-decoration: none;
             font-size: 16px;
             margin: 12px 0;
-            padding: 8px 0;
+            padding: 12px 0;
             width: 100%;
-            transition: color 0.3s ease-in-out, transform 0.2s;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s;
         }
 
         .sidebar a:hover {
-            color: #4A4A4A;
+            background-color: #0f4c75;
             transform: translateX(8px);
+            border-radius: 8px;
         }
 
         .sidebar .btn-danger {
@@ -138,13 +144,12 @@
     <div class="sidebar">
         <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
         <h4>Sanggar Galuh Pelaihari</h4>
-        <a href="/jadwal">Penjadwalan</a>
-        <a href="/tari">Data Tari</a>
-        <a href="/pelatih">Data Pelatih</a>
-
+        <a href="/jadwal"><i class="fas fa-calendar-alt"></i> Penjadwalan</a>
+        <a href="/tari"><i class="fas fa-music"></i> Data Tari</a>
+        <a href="/pelatih"><i class="fas fa-user-tie"></i> Data Pelatih</a>
         <form action="{{ route('logout') }}" method="POST" style="width: 100%; text-align: center;">
             @csrf
-            <button type="submit" class="btn btn-danger w-100">Logout</button>
+            <button type="submit" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </form>
     </div>
 
@@ -160,7 +165,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6">
                 <div class="card dashboard-card">
                     <div class="card-body">
@@ -170,7 +174,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6">
                 <div class="card dashboard-card">
                     <div class="card-body">
@@ -180,7 +183,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6">
                 <div class="card dashboard-card">
                     <div class="card-body">
