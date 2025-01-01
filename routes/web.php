@@ -190,7 +190,7 @@ Route::delete('/delete-login/{id}', [UserController::class, 'destroy'])->name('d
 Route::get('/lihat-login', [UserController::class, 'index'])->name('lihat-login');
 
 //DropBox
-route::post('upload',[DropBoxController::class, 'uploadFile'])->name('upload');
+Route::post('upload', [DropBoxController::class, 'uploadFile'])->name('upload');
 route::get('/dropbox/create-folder',[DropBoxController::class, 'createFolder']);
 Route::get('/dropbox/list-folder', [DropBoxController::class, 'listFolder']);
 Route::get('/dropbox/upload-file', [DropBoxController::class, 'uploadFile']);
@@ -243,3 +243,6 @@ Route::put('/baju/{id}', [BajuController::class, 'update'])->name('baju.update')
 Route::delete('/baju/{id}', [BajuController::class, 'destroy'])->name('baju.destroy'); // Hapus data
 Route::post('/baju', [BajuController::class, 'store'])->name('bajus.store');
 Route::post('/upload', [BajuController::class, 'upload'])->name('baju.upload');
+
+
+Route::post('upload', [DropBoxController::class, 'uploadFile'])->name('upload');
