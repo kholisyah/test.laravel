@@ -27,7 +27,6 @@ class PendaftaranController extends Controller
                 'alamat' => 'required',
                 'no_telepon' => 'required',
                 'kategori' => 'required|in:dewasa,anak-anak',
-                'biaya_administrasi' => 'required|numeric|min:25000'
             ]);
 
             $pendaftaran->update($incomingField);
@@ -51,7 +50,6 @@ class PendaftaranController extends Controller
                 'alamat' => 'required',
                 'no_telepon' => 'required',
                 'kategori' => 'required|in:dewasa,anak-anak',
-                'biaya_administrasi' => 'required|numeric|min:25000'
             ]);
 
             $pendaftaran = Pendaftaran::create($incomingField);

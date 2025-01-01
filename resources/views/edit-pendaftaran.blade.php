@@ -111,12 +111,6 @@
                 <option value="anak-anak" {{ $pendaftaran->kategori == 'anak-anak' ? 'selected' : '' }}>Anak-anak</option>
             </select>
 
-            <!-- Keterangan Biaya Administrasi -->
-            <label for="biaya_administrasi">Biaya Administrasi:</label>
-            <select name="biaya_administrasi" id="biaya_administrasi" required>
-                <option value="25000" {{ $pendaftaran->biaya_administrasi == '25000' ? 'selected' : '' }}>25.000</option>
-            </select>
-
             <!-- Tombol submit untuk memperbarui data -->
             <button type="submit">Update</button>
         </form>

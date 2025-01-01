@@ -144,8 +144,6 @@
                 <option value="dewasa">Dewasa</option>
                 <option value="anak-anak">Anak-anak</option>
             </select>
-            <label for="biaya_administrasi">Biaya Administrasi Sebesar:</label>
-            <input type="text" name="biaya_administrasi" id="biaya_administrasi" value="25000" readonly>
             <button type="submit">Simpan</button>
         </form>
     </div>
@@ -171,7 +169,6 @@
                                     <p>Alamat: ${response.alamat}</p>
                                     <p>No Telepon: ${response.no_telepon}</p>
                                     <p>Kategori: ${response.kategori}</p>
-                                    <p>Biaya Administrasi: Rp${response.biaya_administrasi}</p>
                                 </div>
                             </div>
                             <div class="actions">

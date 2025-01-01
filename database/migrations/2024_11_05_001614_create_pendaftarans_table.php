@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('alamat'); // Menambahkan kolom alamat
             $table->string('no_telepon'); // Menambahkan kolom no telepon
             $table->enum('kategori', ['dewasa', 'anak-anak']); // Menambahkan kolom kategori
-            $table->integer('biaya_administrasi')->default(25000); // Menambahkan kolom biaya administrasi
         });
     }
 

@@ -13,7 +13,9 @@ class Baju extends Model
         'nama_baju',
         'harga',
         'jumlah_aksesoris',
-        'jumlah_sewa'
+        'jumlah_sewa',
+        'foto'
     ];
+    
 }
 

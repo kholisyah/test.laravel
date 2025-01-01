@@ -241,3 +241,5 @@ Route::post('/baju/store', [BajuController::class, 'store'])->name('baju.store')
 Route::post('/create-post', [BajuController::class, 'createPost']);
 Route::put('/baju/{id}', [BajuController::class, 'update'])->name('baju.update'); // Update data
 Route::delete('/baju/{id}', [BajuController::class, 'destroy'])->name('baju.destroy'); // Hapus data
+Route::post('/baju', [BajuController::class, 'store'])->name('bajus.store');
+Route::post('/upload', [BajuController::class, 'upload'])->name('baju.upload');
