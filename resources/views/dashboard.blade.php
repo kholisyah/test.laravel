@@ -144,17 +144,10 @@
     <div class="sidebar">
         <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
         <h4>Sanggar Galuh Pelaihari</h4>
-<<<<<<< HEAD
         <a href="/jadwal"><i class="fas fa-calendar-alt"></i> Penjadwalan</a>
         <a href="/tari"><i class="fas fa-music"></i> Data Tari</a>
         <a href="/pelatih"><i class="fas fa-user-tie"></i> Data Pelatih</a>
-=======
-        <a href="/jadwal">Penjadwalan</a>
-        <a href="/tari">Data Tari</a>
-        <a href="/pelatih">Data Pelatih</a>
-        <a href="/bajus">Data Baju</a>
 
->>>>>>> fabccca18c79bf1e11040504044aa73c4fdf344d
         <form action="{{ route('logout') }}" method="POST" style="width: 100%; text-align: center;">
             @csrf
             <button type="submit" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
