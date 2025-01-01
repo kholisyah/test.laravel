@@ -147,6 +147,7 @@
         <a href="/jadwal"><i class="fas fa-calendar-alt"></i> Penjadwalan</a>
         <a href="/tari"><i class="fas fa-music"></i> Data Tari</a>
         <a href="/pelatih"><i class="fas fa-user-tie"></i> Data Pelatih</a>
+        <a href="/pelatih"><i class="fas fa-user-tie"></i> Data Pelatih</a>
 
         <form action="{{ route('logout') }}" method="POST" style="width: 100%; text-align: center;">
             @csrf

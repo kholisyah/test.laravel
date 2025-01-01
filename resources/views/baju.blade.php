@@ -112,7 +112,7 @@
                             <td>{{ $key + 1 }}</td>
                             <td>
                                 @if ($baju->foto)
-                                    <img src="{{ Storage::url($baju->foto) }}" alt="Foto" width="100">
+                                    <img src="{{ asset('storage/' . $baju->foto) }}" alt="{{ $baju->nama_baju }}">
                                 @else
                                     Tidak ada foto
                                 @endif
@@ -123,9 +123,8 @@
                             <td>{{ $baju->jumlah_sewa }}</td>
                             <td class="text-center">
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $baju->id }}">Edit</button>
-                                <form action="{{ route('bajus.destroy', $baju->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('baju.destroy', $baju->id) }}" method="POST" class="d-inline">
                                     @csrf
-                                    @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                 </form>
                             </td>
@@ -135,9 +134,8 @@
                         <div class="modal fade" id="editModal{{ $baju->id }}" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form action="{{ route('bajus.update', $baju->id) }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('baju.update', $baju->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        @method('PUT')
                                         <div class="modal-header">
                                             <h5 class="modal-title">Edit Baju</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -184,7 +182,7 @@
     <div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="{{ route('bajus.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('baju.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title">Tambah Baju</h5>
@@ -193,24 +191,23 @@
                     <div class="modal-body">
                         <div class="mb-2">
                             <label class="form-label">Foto</label>
-                            <input type="file" name="foto" class="form-control">
+                            <input type="file" name="foto" id="foto" class="form-control">
                         </div>
-                        
                         <div class="mb-2">
                             <label class="form-label">Nama Baju</label>
-                            <input type="text" name="nama_baju" class="form-control" required>
+                            <input type="text" name="nama_baju" id="nama_baju" class="form-control" required>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Harga</label>
-                            <input type="number" name="harga" class="form-control" required>
+                            <input type="number" name="harga" id="harga" class="form-control" required>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Jumlah Aksesoris</label>
-                            <input type="number" name="jumlah_aksesoris" class="form-control" required>
+                            <input type="number" name="jumlah_aksesoris" id="jumlah_aksesoris" class="form-control" required>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Jumlah Sewa</label>
-                            <input type="number" name="jumlah_sewa" class="form-control" required>
+                            <input type="number" name="jumlah_sewa" id="jumlah_sewa" class="form-control" required>
                         </div>
                     </div>
                     <div class="modal-footer">

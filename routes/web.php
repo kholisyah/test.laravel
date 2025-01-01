@@ -235,14 +235,18 @@ Route::put('/pelatih/{id}', [PelatihController::class, 'update'])->name('pelatih
 Route::delete('/pelatih/{id}', [PelatihController::class, 'destroy'])->name('pelatih.destroy'); // Hapus data
 
 Route::get('/baju', [BajuController::class, 'index'])->name('baju.index');
-Route::get('/baju', [BajuController::class, 'create'])->name('baju.create');
-Route::resource('bajus', BajuController::class);
-Route::post('/baju/store', [BajuController::class, 'store'])->name('baju.store'); // Menyimpan data baru
-Route::post('/create-post', [BajuController::class, 'createPost']);
-Route::put('/baju/{id}', [BajuController::class, 'update'])->name('baju.update'); // Update data
-Route::delete('/baju/{id}', [BajuController::class, 'destroy'])->name('baju.destroy'); // Hapus data
-Route::post('/baju', [BajuController::class, 'store'])->name('bajus.store');
-Route::post('/upload', [BajuController::class, 'upload'])->name('baju.upload');
+Route::post('/baju/store', [BajuController::class, 'store'])->name('baju.store');
+Route::post('/baju/update/{id}', [BajuController::class, 'update'])->name('baju.update');
+Route::post('/baju/destroy/{id}', [BajuController::class, 'destroy'])->name('baju.destroy');
+
+// Route::get('/baju/create', [BajuController::class, 'create'])->name('baju.create');
+// Route::resource('bajus', BajuController::class);
+// Route::post('/baju/store', [BajuController::class, 'store'])->name('baju.store'); // Menyimpan data baru
+// Route::post('/create-post', [BajuController::class, 'createPost']);
+// Route::put('/baju/update/{id}', [BajuController::class, 'update'])->name('baju.update'); // Update data
+// Route::delete('/baju/destroy/{id}', [BajuController::class, 'destroy'])->name('baju.destroy'); // Hapus data
+// Route::post('/baju/store', [BajuController::class, 'store'])->name('bajus.store');
+// Route::post('/upload', [BajuController::class, 'upload'])->name('baju.upload');
 
 
 Route::post('upload', [DropBoxController::class, 'uploadFile'])->name('upload');

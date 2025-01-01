@@ -14,9 +14,6 @@ class BajuController extends Controller
         return view('baju', compact('bajus'));
     }
     
-    
-    
-
     // Show the form for creating a new baju
     public function create()
     {
@@ -27,16 +24,29 @@ class BajuController extends Controller
     // Store a newly created baju in storage
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_baju' => 'required|string|max:255',
-            'harga' => 'required|integer',
-            'jumlah_aksesoris' => 'required|string',
-            'jumlah_sewa' => 'required|string'
+        $validated = $request->validate([
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'nama_baju' => 'required|string',
+            'harga' => 'required|numeric',
+            'jumlah_aksesoris' => 'required|numeric',
+            'jumlah_sewa' => 'required|numeric',
         ]);
+        // dd($validated);
 
-        Baju::create($request->all());
+        $baju = new Baju();
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $path = $file->store('public/baju'); // Simpan foto di folder public/baju
+            // dd($path);
+            $baju->foto = $path;
+        }
+        $baju->nama_baju = $request->nama_baju;
+        $baju->harga = $request->harga;
+        $baju->jumlah_aksesoris = $request->jumlah_aksesoris;
+        $baju->jumlah_sewa = $request->jumlah_sewa;
+        $baju->save();
 
-        return redirect()->route('bajus.index')->with('success', 'Baju created successfully.');
+        return redirect()->route('baju.index')->with('success', 'Baju berhasil ditambahkan');
     }
 
     // Show the form for editing the specified baju
@@ -58,7 +68,7 @@ class BajuController extends Controller
         ]);
         $baju->update($request->all());
 
-        return redirect()->route('bajus.index')->with('success', 'Baju updated successfully.');
+        return redirect()->route('baju.index')->with('success', 'Baju updated successfully.');
     }
 
     // Remove the specified baju from storage
@@ -66,6 +76,6 @@ class BajuController extends Controller
     {
         $baju->delete();
 
-        return redirect()->route('bajus.index')->with('success', 'Baju deleted successfully.');
+        return redirect()->route('baju.index')->with('success', 'Baju deleted successfully.');
     }
 }
