@@ -202,13 +202,6 @@ Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
 // Rute untuk menyimpan biodata
 Route::post('/galeri', [GaleriController::class, 'store'])->name('galeri.store');
 
-Route::get('/tari', [TarianController::class, 'index'])->name('tarian.index'); // Halaman utama
-Route::post('/tari/store', [TarianController::class, 'store'])->name('tarian.store'); // Menyimpan data baru
-Route::post('/create-post', [TarianController::class, 'createPost']);
-Route::put('/tari/{id}', [TarianController::class, 'update'])->name('tarian.update'); // Update data
-Route::delete('/tari/{id}', [TarianController::class, 'destroy'])->name('tarian.destroy'); // Hapus data
-
-
 Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
 Route::resource('transaksi', TransaksiController::class);
@@ -227,6 +220,13 @@ Route::get('/index', [SawAhpController::class, 'index']);
 
 Route::get('/biodata', [CartController::class, 'showBiodataForm'])->name('biodata.form');
 Route::post('/biodata', [CartController::class, 'saveBiodata'])->name('biodata.save');
+
+// Rute untuk menampilkan daftar tarian
+Route::get('/tari', [TarianController::class, 'index'])->name('tarian.index');
+Route::post('/tari', [TarianController::class, 'store'])->name('tarian.store'); // Menyimpan data baru
+Route::put('/tari/{id}', [TarianController::class, 'update'])->name('tarian.update'); // Update data
+Route::delete('/tari/{id}', [TarianController::class, 'destroy'])->name('tarian.destroy'); // Hapus data
+
 Route::get('/pelatih', [PelatihController::class, 'index'])->name('pelatih');
  // Halaman utama
 Route::post('/pelatih/store', [PelatihController::class, 'store'])->name('pelatih.store'); // Menyimpan data baru
@@ -241,3 +241,5 @@ Route::post('/baju/store', [BajuController::class, 'store'])->name('baju.store')
 Route::post('/create-post', [BajuController::class, 'createPost']);
 Route::put('/baju/{id}', [BajuController::class, 'update'])->name('baju.update'); // Update data
 Route::delete('/baju/{id}', [BajuController::class, 'destroy'])->name('baju.destroy'); // Hapus data
+Route::post('/baju', [BajuController::class, 'store'])->name('bajus.store');
+Route::post('/upload', [BajuController::class, 'upload'])->name('baju.upload');
