@@ -83,7 +83,7 @@
         </div>
         <div class="nav-links">
             <a href="/home">Beranda</a>
-            <a href="/project">Pendaftaran</a>
+            <a href="/syrat">Pendaftaran</a>
             <a href="/login">Jadwal</a>
             <a href="/index">Perengkingan</a>
             <a href="/galeri">Penyewaan</a>
