@@ -170,7 +170,6 @@
                     <th>Alamat</th>
                     <th>No Telepon</th>
                     <th>Kategori</th>
-                    <th>Biaya Administrasi</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -182,7 +181,6 @@
                     <td>{{ $pendaftaran->alamat }}</td>
                     <td>{{ $pendaftaran->no_telepon }}</td>
                     <td>{{ $pendaftaran->kategori }}</td>
-                    <td>Rp{{ number_format($pendaftaran->biaya_administrasi, 0, ',', '.') }}</td>
                     <td class="action-buttons">
                         <a href="/edit-pendaftaran/{{ $pendaftaran->id }}">Edit</a>
                         <form action="/delete-pendaftaran/{{ $pendaftaran->id }}" method="POST" style="display: inline;">

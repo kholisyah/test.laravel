@@ -15,6 +15,5 @@ class Pendaftaran extends Model
         'alamat',
         'no_telepon',
         'kategori',
-        'biaya_administrasi'
     ];
 }
