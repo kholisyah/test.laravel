@@ -232,5 +232,7 @@ Route::put('/baju/update/{id}', [BajuController::class, 'update'])->name('baju.u
 // Route::post('/baju/store', [BajuController::class, 'store'])->name('bajus.store');
 // Route::post('/upload', [BajuController::class, 'upload'])->name('baju.upload');
 
+Route::get('/penyewaan', [PenyewaanController::class, 'lihatPenyewaan'])->name('penyewaan.lihat');
+Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
 
 Route::post('upload', [DropBoxController::class, 'uploadFile'])->name('upload');
