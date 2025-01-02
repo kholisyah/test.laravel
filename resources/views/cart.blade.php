@@ -154,7 +154,7 @@
         </div>
         <div class="nav-links">
             <a href="home" class="{{ request()->is('home') ? 'active' : '' }}">Beranda</a>
-            <a href="project" class="{{ request()->is('project') ? 'active' : '' }}">Pendaftaran</a>
+            <a href="syarat" class="{{ request()->is('syarat') ? 'active' : '' }}">Pendaftaran</a>
             <a href="login" class="{{ request()->is('login') ? 'active' : '' }}">Jadwal</a>
             <a href="galeri" class="{{ request()->is('galeri') ? 'active' : '' }}">Penyewaan</a>
             <a href="keranjang" class="{{ request()->is('keranjang') ? 'active' : '' }}">Keranjang</a>
