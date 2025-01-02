@@ -163,7 +163,6 @@
             <a href="/syarat">Pendaftaran</a>
             <a href="/login">Jadwal</a>
             <a href="/index">Perengkingan</a>
-            <a href="/cart">Keranjang</a>
             <a href="/login">Login</a>
         </div>
     </div>
@@ -1024,7 +1023,7 @@
                     success: function (response) {
                         alert('Item berhasil ditambahkan ke keranjang!'); // Menampilkan notifikasi sukses
                         // Opsional: Update UI keranjang jika diperlukan
-                        window.location.href = '/biodata';
+                        window.location.href = '/cart';
                     },
                     error: function (xhr) {
                         alert('Terjadi kesalahan, coba lagi.'); // Menampilkan pesan kesalahan jika gagal

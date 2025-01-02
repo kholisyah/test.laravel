@@ -128,7 +128,6 @@
             <a href="/login">Jadwal</a>
             <a href="/index">Perengkingan</a>
             <a href="/galeri">Penyewaan</a>
-            <a href="/cart">Keranjang</a>
             <a href="/login">Login</a>
         </div>
     </div>
