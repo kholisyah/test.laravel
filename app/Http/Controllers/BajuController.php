@@ -7,18 +7,18 @@ use Illuminate\Http\Request;
 
 class BajuController extends Controller
 {
-    // Display a listing of bajus
-    public function index()
-    {
-        $bajus = Baju::all();
-        return view('baju', compact('bajus'));
-    }
-    
-    // Show the form for creating a new baju
-    public function create()
-    {
-        return view('baju.create');  // Halaman create biasanya tidak butuh $bajus
-    }
+     // Display a listing of bajus
+     public function index()
+     {
+         $bajus = Baju::all();
+         return view('baju', compact('bajus'));
+     }
+     
+     // Show the form for creating a new baju
+     public function create()
+     {
+         return view('baju.create');  
+     }
     
 
     // Store a newly created baju in storage
@@ -55,27 +55,29 @@ class BajuController extends Controller
         return view('baju', compact('baju'));
     }
 
-    // Update the specified baju in storage
-    public function update(Request $request, Baju $baju)
-    {
-        
-        
-        $request->validate([
-            'nama_baju' => 'required|string|max:255',
-            'harga' => 'required|integer',
-            'jumlah_aksesoris' => 'required|string',
-            'jumlah_sewa' => 'required|string'
-        ]);
-        $baju->update($request->all());
+     // Update the specified baju in storage
+     public function update(Request $request, Baju $baju)
+     {
+         
+         
+         $request->validate([
+             'nama_baju' => 'required|string|max:255',
+             'harga' => 'required|integer',
+             'jumlah_aksesoris' => 'required|string',
+             'jumlah_sewa' => 'required|string'
+         ]);
+         $baju->update($request->all());
+ 
+         return redirect()->route('baju.index')->with('success', 'Baju updated successfully.');
+     }
+    
+ 
+   // Remove the specified baju from storage
+   public function destroy(Baju $baju)
+{
+    $baju->delete();
 
-        return redirect()->route('baju.index')->with('success', 'Baju updated successfully.');
-    }
+    return redirect()->route('baju.index')->with('success', 'Baju deleted successfully.');
+}
 
-    // Remove the specified baju from storage
-    public function destroy(Baju $baju)
-    {
-        $baju->delete();
-
-        return redirect()->route('baju.index')->with('success', 'Baju deleted successfully.');
-    }
 }

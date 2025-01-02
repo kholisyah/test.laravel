@@ -236,8 +236,8 @@ Route::delete('/pelatih/{id}', [PelatihController::class, 'destroy'])->name('pel
 
 Route::get('/baju', [BajuController::class, 'index'])->name('baju.index');
 Route::post('/baju/store', [BajuController::class, 'store'])->name('baju.store');
-Route::post('/baju/update/{id}', [BajuController::class, 'update'])->name('baju.update');
-Route::post('/baju/destroy/{id}', [BajuController::class, 'destroy'])->name('baju.destroy');
+Route::delete('/baju/destroy/{baju}', [BajuController::class, 'destroy'])->name('baju.destroy');
+Route::put('/baju/update/{id}', [BajuController::class, 'update'])->name('baju.update');
 
 // Route::get('/baju/create', [BajuController::class, 'create'])->name('baju.create');
 // Route::resource('bajus', BajuController::class);

@@ -2,20 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Baju extends Model
 {
-    use HasFactory;
+    // Tentukan nama tabel jika berbeda dari nama default
+    protected $table = 'bajus'; 
 
-    protected $fillable = [
-        'nama_baju',
-        'harga',
-        'jumlah_aksesoris',
-        'jumlah_sewa',
-        'foto'
-    ];
-    
+    // Tentukan kolom yang dapat diisi
+    protected $fillable = ['nama_baju', 'harga', 'jumlah_aksesoris', 'jumlah_sewa', 'foto'];
 }
-

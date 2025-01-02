@@ -108,11 +108,11 @@
                     </thead>
                     <tbody>
                         @foreach ($bajus as $key => $baju)
-                        <tr>
+                        <tr>    
                             <td>{{ $key + 1 }}</td>
                             <td>
                                 @if ($baju->foto)
-                                    <img src="{{ asset('storage/' . $baju->foto) }}" alt="{{ $baju->nama_baju }}">
+                                        <img src="{{ asset('storage/' . $baju->foto) }}" alt="{{ $baju->nama_baju }}">
                                 @else
                                     Tidak ada foto
                                 @endif
@@ -123,10 +123,11 @@
                             <td>{{ $baju->jumlah_sewa }}</td>
                             <td class="text-center">
                                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $baju->id }}">Edit</button>
-                                <form action="{{ route('baju.destroy', $baju->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('baju.destroy', $baju->id) }}" method="POST">
                                     @csrf
+                                    @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                </form>
+                                </form>                                
                             </td>
                         </tr>
 
@@ -134,8 +135,9 @@
                         <div class="modal fade" id="editModal{{ $baju->id }}" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form action="{{ route('baju.update', $baju->id) }}" method="POST" enctype="multipart/form-data">
+                                         <form action="{{ route('baju.update', $baju->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        @method('PUT') <!-- Menentukan metode PUT untuk pembaruan -->
                                         <div class="modal-header">
                                             <h5 class="modal-title">Edit Baju</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
