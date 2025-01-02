@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+
 use Spatie\Dropbox\Client;
 use App\Services\DropboxTokenProvider;
 use Illuminate\Support\ServiceProvider;
