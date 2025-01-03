@@ -105,15 +105,14 @@
         <div class="nav-links">
             <a href="/home">Beranda</a>
             <a href="/Syarat">Pendaftaran</a>
-            <a href="/login">Jadwal</a>
+            <a href="/lihat-jadwal">Jadwal</a>
             <a href="/galeri">Penyewaan</a>
-            <a href="/cart">Keranjang</a>
             <a href="/login">Login</a>
         </div>
     </div>
 
     <div class="container">
-        <h1 class="my-4">Baju Terbaik</h1>
+        <h1 class="my-4">Rekomendasi Baju Terbaik Sanggar Galuh</h1>
         <div class="row justify-content-center"> <!-- Center the row of cards -->
             @foreach ($results as $index => $result)
                 <div class="col-md-4">

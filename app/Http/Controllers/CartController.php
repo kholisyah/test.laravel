@@ -4,9 +4,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
+
 class CartController extends Controller
 {
+
+
+public function checkout()
+{
+    $cart = session()->get('cart.items', []);
+
+    if (empty($cart)) {
+        return redirect()->route('cart.index')->with('error', 'Keranjang kosong');
+    }
+
+    foreach ($cart as $item) {
+        Order::create([
+            'product_name' => $item['product_name'],
+            'quantity' => $item['quantity'],
+            'total' => $item['total'],
+            'category' => $item['category'],
+        ]);
+    }
+
+    session()->forget('cart.items'); // Kosongkan keranjang setelah disimpan
+
+    return redirect()->route('penyewaan.lihat')->with('success', 'Transaksi berhasil disimpan');
+}
+
     public function showBiodataForm()
     {
         // Menampilkan form biodata

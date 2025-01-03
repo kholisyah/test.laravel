@@ -179,7 +179,7 @@
                     <div class="card-body">
                         <h3>Lihat Penyewaan</h3>
                         <p>Cek daftar penyewaan baju di sanggar.</p>
-                        <a href="/lihat-penyewaan">Lihat Penyewaan</a>
+                        <a href="/penyewaan">Lihat Penyewaan</a>
                     </div>
                 </div>
             </div>

@@ -161,7 +161,7 @@
         <div class="nav-links">
             <a href="/home">Beranda</a>
             <a href="/syarat">Pendaftaran</a>
-            <a href="/login">Jadwal</a>
+            <a href="/lihat-jadwal">Jadwal</a>
             <a href="/index">Perengkingan</a>
             <a href="/login">Login</a>
         </div>

@@ -20,19 +20,54 @@
             padding: 0;
         }
 
-        /* Navbar styling */
-        .navbar {
-            background-color: #B5DDEB; /* Warna biru pastel */
-            padding: 10px 20px;
+            /* Navbar */
+ .navbar {
+            background-color: #89c4e9;
+            padding: 15px;
             display: flex;
-            justify-content: center; /* Pusatkan judul navbar */
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            color: #fff;
+        }
+        
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
         }
 
-        .navbar h1 {
-            color: #4A4A4A;
-            font-size: 18px;
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s, opacity 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #156ba5;
+        }
+
+        .navbar a.active {
+            color: #156ba5;
+            opacity: 0.7;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
         }
 
         /* Pengaturan untuk container */
@@ -150,14 +185,23 @@
                 font-size: 12px;
                 padding: 8px;
             }
+
+    
         }
     </style>
 </head>
 <body>
-   <!-- Tombol Kembali -->
-   <div class="back-button-container">
-    <a href="{{ url('/dashboard') }}" class="back-button">Kembali ke Dashboard</a>
-   </div>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+            Sanggar Galuh
+        </div>
+        <div class="nav-links">
+            <a href="/dashboard">kembali kehalaman dashboard</a>
+
+        </div>
+    </div>
     <!-- Konten Utama -->
     <div class="container">
         <h2>Data Pendaftaran</h2>
