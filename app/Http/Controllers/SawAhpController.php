@@ -43,14 +43,16 @@ class SawAhpController extends Controller
         // Normalisasi Matriks (Metode SAW)
         $normalisasi = $matriks;
         for ($i = 0; $i < count($kriteria); $i++) {
-            if ($kriteria[$i] == 1) {  // Benefit
-                $max = max(array_column($matriks, $i));
+            if ($kriteria[$i] == 1) {  // Jika kriteria adalah benefit
+                $max = max(array_column($matriks, $i)); // Mencari nilai maksimum pada kolom ke-i
                 foreach ($normalisasi as &$row) {
+                // Membagi nilai pada kolom ke-i dengan nilai maksimum untuk normalisasi
                     $row[$i] = $row[$i] / $max;
                 }
-            } elseif ($kriteria[$i] == -1) {  // Cost
-                $min = min(array_column($matriks, $i));
+            } elseif ($kriteria[$i] == -1) {  // Jika kriteria adalah cost
+                $min = min(array_column($matriks, $i)); // Mencari nilai minimum pada kolom ke-i
                 foreach ($normalisasi as &$row) {
+                // Membagi nilai minimum dengan nilai pada kolom ke-i untuk normalisasi
                     $row[$i] = $min / $row[$i];
                 }
             }
@@ -60,7 +62,9 @@ class SawAhpController extends Controller
         $bobot = [0.5679, 0.3339, 0.0982];  // Updated Bobot Kriteria
 
         // Nilai Preferensi SAW
+        // Menghitung nilai SAW untuk setiap baris data
         $nilai_saw = array_map(function ($row) use ($bobot) {
+         // Mengalikan setiap elemen baris dengan bobot yang sesuai dan menjumlahkannya
             return array_sum(array_map(function ($x, $w) {
                 return $x * $w;
             }, $row, $bobot));
@@ -70,11 +74,12 @@ class SawAhpController extends Controller
         $results = [];
         foreach ($data as $index => $row) {
             $results[] = [
-                'nama' => $row[0],
-                'hasil_saw' => number_format($nilai_saw[$index], 4)
+                'nama' => $row[0],  // Mengambil nama dari kolom pertama data asli
+                'hasil_saw' => number_format($nilai_saw[$index], 4) // Memformat nilai SAW dengan 4 desimal
             ];
         }
-
+        
+        // Mengembalikan view 'index' dengan data 'results'
         return view('index', compact('results'));
     }
 }

@@ -25,12 +25,16 @@ $tokenProvider = new DropboxTokenProvider();
 return $tokenProvider->getToken();
 }
 
+
+
 //Membuat Folder
 public function createFolder($path)
 {
 $this->client->createFolder($path);
 return back()->with('status', 'Folder created successfully!');
 }
+
+
 
 //Melihat Daftar File dalam Folder
 public function listFolder($path = '/')
@@ -39,11 +43,15 @@ $response = $this->client->listFolder($path);
  return view('dropbox.list', ['files' => $response['entries']]);
  }
 
+
+
 // Menampilkan form untuk memilih file
 public function showUploadForm()
 {
 return view('dropbox.upload'); // Nama view sesuai dengan file blade
  }
+
+
 
 //Mengunggah File
  public function uploadFile(Request $request)
@@ -56,8 +64,6 @@ $request->validate([
     'file.required' => 'File harus diunggah.', // Pesan untuk file wajib diisi
 ]);
 
-
-
 // Mendapatkan folder tujuan dari input
 $folderPath = ('saya');
 // $request->input('folder_path'); // Folder tujuan di Dropbox
@@ -65,25 +71,25 @@ $file = $request->file('file'); // File yang diunggah
 $fileName = $file->getClientOriginalName(); // Nama asli file
 
 // Tentukan path lengkap untuk file di Dropbox
-
 $dropboxFilePath = $folderPath . '/' . $fileName;
+
 // Mengecek apakah file sudah ada di folder Dropbox
-
-
  if ($this->isFileExists($dropboxFilePath)) {
  return back()->withErrors(['error' => 'File already exists in the folder.']);
  }
 
 try {
 // Mengunggah file ke Dropbox 
- $content = file_get_contents($file);
- $this->client->upload($dropboxFilePath, $content);
-
- return view('project');
+ $content = file_get_contents($file);  // Membaca seluruh isi file ke dalam sebuah string
+ $this->client->upload($dropboxFilePath, $content);  // Mengunggah konten file ke Dropbox pada path yang ditentukan
+ return view('project');// Mengembalikan tampilan 'project' jika unggahan berhasil
  } catch (\Exception $e) {
+// Jika terjadi kesalahan, kembali ke halaman sebelumnya dengan pesan error
 return back()->withErrors(['error' => 'Failed to upload file: ' . $e->getMessage()]);
  }
 }
+
+
 
 // Mengecek apakah file sudah ada di folder Dropbox
 private function isFileExists($dropboxFilePath)
@@ -109,12 +115,16 @@ if ($entry['name'] === basename($dropboxFilePath)) {
  }
  }
 
+
+
  //Mendapatkan Link Sementara untuk File
 public function getTemporaryLink($filePath)
  {
 $link = $this->client->getTemporaryLink($filePath);
  return view('dropbox.link', ['link' => $link]);
  }
+
+
 
  //Memindahkan File
  public function moveFile($from, $to)
