@@ -165,7 +165,7 @@
         
             var total = "{{ number_format($transaksi->total, 0, ',', '.') }}";
             
-            var waLink = "https://api.whatsapp.com/send?phone=6281349931679&text=" + 
+            var waLink = "https://api.whatsapp.com/send?phone=6285750274278&text=" + 
                 " saya " + nama + 
                 " ingin membayar tagihan sebesar Rp. " + total +
                 "%0AAlamat: " + alamat + 
