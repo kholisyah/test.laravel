@@ -9,8 +9,14 @@ class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'total',
-        'tanggal', // Ensure these are listed if you want to mass-assign them
-    ];
+    protected $table = 'transaksis'; // Nama tabel di database
+    protected $fillable = ['total', 'tanggal', 'status']; // Sesuaikan dengan kolom tabel
+
+    // Relasi many-to-many dengan Baju
+    public function items()
+    {
+        return $this->belongsToMany(Baju::class, 'transaksi_baju', 'transaksi_id', 'baju_id')
+                    ->withPivot('jumlah') // Tambahan kolom pivot seperti 'jumlah'
+                    ->withTimestamps();   // Timestamps di tabel pivot jika ada
+    }
 }

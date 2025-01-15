@@ -106,7 +106,7 @@
             <a href="/home">Beranda</a>
             <a href="/Syarat">Pendaftaran</a>
             <a href="/lihat-jadwal">Jadwal</a>
-            <a href="/galeri">Penyewaan</a>
+            <a href="/penyewaan">Penyewaan</a>
             <a href="/login">Login</a>
         </div>
     </div>

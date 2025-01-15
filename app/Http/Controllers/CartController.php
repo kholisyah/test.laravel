@@ -1,115 +1,92 @@
 <?php
 
-// App\Http\Controllers\CartController.php
-
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Baju;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-
-
-public function checkout()
+    public function checkoutSummary()
 {
-    $cart = session()->get('cart.items', []);
+    // Ambil data checkout dari session
+    $checkoutItems = session('checkout_items', collect());
 
-    if (empty($cart)) {
-        return redirect()->route('cart.index')->with('error', 'Keranjang kosong');
-    }
+    // Hitung total harga
+    $totalPrice = $checkoutItems->sum(function ($item) {
+        return ($item['harga_sewa'] ?? 0) * ($item['jumlah'] ?? 1);
+    });
 
-    foreach ($cart as $item) {
-        Order::create([
-            'product_name' => $item['product_name'],
-            'quantity' => $item['quantity'],
-            'total' => $item['total'],
-            'category' => $item['category'],
-        ]);
-    }
-
-    session()->forget('cart.items'); // Kosongkan keranjang setelah disimpan
-
-    return redirect()->route('penyewaan.lihat')->with('success', 'Transaksi berhasil disimpan');
+    return view('checkout-summary', compact('checkoutItems', 'totalPrice'));
 }
 
-    public function showBiodataForm()
+    public function checkout(Request $request)
     {
-        // Menampilkan form biodata
-        return view('biodata'); // Ganti dengan nama view yang sesuai
+        // Ambil item yang dipilih dari form
+        $selectedItems = $request->input('selected_items', []);
+    
+        // Ambil data dari session cart
+        $cart = session('cart', []);
+    
+        // Filter hanya item yang dipilih
+        $selectedCartItems = collect($cart)->only($selectedItems);
+    
+        // Simpan data checkout di session untuk halaman berikutnya
+        session(['checkout_items' => $selectedCartItems]);
+    
+        // Redirect ke halaman ringkasan checkout
+        return redirect()->route('checkout.summary');
     }
+    
     public function index()
 {
-    $cart = session()->get('cart.items', []);
+    // Retrieve the cart from the session
+    $cart = session()->get('cart', []);
+
+    // Return the cart view and pass the cart data
     return view('cart', compact('cart'));
 }
 
-
-public function addToCart(Request $request)
+public function addToCart(Request $request, $id)
 {
+    $baju = Baju::findOrFail($id);
+
+    // Validasi jumlah yang disewa
     $request->validate([
-        'product_name' => 'required|string',
-        'quantity' => 'required|integer|min:1|max:10',
-        'total' => 'required|numeric',
-        'category' => 'required|string', // Validasi kategori
+        'jumlah' => 'required|integer|min:1|max:' . $baju->stok,
     ]);
 
-    $total = $request->quantity * $request->total;
+    $jumlah = $request->input('jumlah');
 
-    $item = [
-        'product_name' => $request->product_name,
-        'quantity' => $request->quantity,
-        'total' => $total,
-        'category' => $request->category,
-    ];
+    if ($baju->stok >= $jumlah) {
+        // Kurangi stok baju
+        $baju->stok -= $jumlah;
+        $baju->save();
 
-    
-    session()->push('cart.items', $item);
-    
-    return response()->json(['message' => 'Item berhasil ditambahkan ke keranjang']);
+        // Tambahkan ke keranjang
+        session()->push('cart', [
+            'id' => $baju->id,
+            'nama' => $baju->nama,
+            'kategori' => $baju->kategori,
+            'jumlah' => $jumlah,
+            'harga_sewa' => $baju->harga_sewa,
+            'foto' => $baju->foto,
+        ]);
+        
+
+        return redirect()->back()->with('success', 'item berhasil ditambahkan ke keranjang!');
+    }
+
+    return redirect()->back()->with('error', 'Stok tidak mencukupi.');
 }
 
 
+    public function showCart()
+    {
+        // Get the cart from the session
+        $cart = session()->get('cart', []);
 
-
-public function remove(Request $request)
-{
-    $cart = session()->get('cart.items', []); // Gunakan kunci yang sesuai
-    unset($cart[$request->input('index')]);
-
-    session()->put('cart.items', $cart); // Perbarui kembali ke sesi
-
-    return redirect()->route('cart.index')->with('success', 'Item berhasil dihapus');
-}
-
-
-public function viewCart()
-{
-    $cartItems = session()->get('cart.items', []); // Ambil data dari sesi
-    return view('cart', compact('cartItems'));
-}
-
-    
-
-    // Menambahkan produk ke cart
-    public function add(Request $request)
-{
-    $cart = session()->get('cart', []);
-
-    $product = [
-        'product_name' => $request->input('product_name'),
-        'quantity' => $request->input('quantity'),
-        'total' => $request->input('total'),
-        'category' => $request->input('category'), // Tambahkan kategori
-    ];
-
-    $cart[] = $product;
-
-    session()->put('cart', $cart);
-
-    session()->flash('success', 'Produk berhasil ditambahkan ke keranjang!');
-
-    return redirect()->route('cart.index');
-}
-
+        return view('cart', compact('cart'));
+    }
 }
