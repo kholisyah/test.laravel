@@ -147,10 +147,8 @@
         <a href="/jadwal"><i class="fas fa-calendar-alt"></i> Penjadwalan</a>
         <a href="/tari"><i class="fas fa-music"></i> Data Tari</a>
         <a href="/pelatih"><i class="fas fa-user-tie"></i> Data Pelatih</a>
-        <form action="{{ route('logout') }}" method="POST" style="width: 100%; text-align: center;">
-            @csrf
-            <button type="submit" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
-        </form>
+        <a href="/home"><i class="fas fa-user"></i> logout</a>
+        
     </div>
 
     <div class="content">
