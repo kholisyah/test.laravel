@@ -249,5 +249,5 @@ Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::get('/checkout-summary', [CartController::class, 'checkoutSummary'])->name('checkout.summary');
 
 Route::get('/bayar', function () {
-    return view('checkout-summary'); // Ganti 'bayar' dengan nama file Blade Anda.
+    return view('checkout-summary'); 
 })->name('bayar');
