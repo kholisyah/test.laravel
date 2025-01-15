@@ -104,7 +104,7 @@
         </div>
         <div class="nav-links">
             <a href="/home">Beranda</a>
-            <a href="/Syarat">Pendaftaran</a>
+            <a href="/syarat">Pendaftaran</a>
             <a href="/lihat-jadwal">Jadwal</a>
             <a href="/penyewaan">Penyewaan</a>
             <a href="/login">Login</a>

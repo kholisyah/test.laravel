@@ -4,7 +4,11 @@
 
 namespace Composer\Autoload;
 
+<<<<<<< HEAD
 class ComposerStaticInitebd8345029a7780da9cab7042791e2c0
+=======
+class ComposerStaticInitc62468c322b9d6e95e25b165250b55b5
+>>>>>>> f07f6e5675c769c77c53cc27c8cea452e8cea1fd
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -553,6 +557,7 @@ class ComposerStaticInitebd8345029a7780da9cab7042791e2c0
         'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
         'App\\Models\\Galeri' => __DIR__ . '/../..' . '/app/Models/Galeri.php',
         'App\\Models\\LihatProfil' => __DIR__ . '/../..' . '/app/Models/LihatProfil.php',
+        'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
         'App\\Models\\Pelatih' => __DIR__ . '/../..' . '/app/Models/Pelatih.php',
         'App\\Models\\Pendaftaran' => __DIR__ . '/../..' . '/app/Models/Pendaftaran.php',
         'App\\Models\\Profil' => __DIR__ . '/../..' . '/app/Models/Profil.php',
@@ -6659,9 +6664,15 @@ class ComposerStaticInitebd8345029a7780da9cab7042791e2c0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+<<<<<<< HEAD
             $loader->prefixLengthsPsr4 = ComposerStaticInitebd8345029a7780da9cab7042791e2c0::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitebd8345029a7780da9cab7042791e2c0::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitebd8345029a7780da9cab7042791e2c0::$classMap;
+=======
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc62468c322b9d6e95e25b165250b55b5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc62468c322b9d6e95e25b165250b55b5::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc62468c322b9d6e95e25b165250b55b5::$classMap;
+>>>>>>> f07f6e5675c769c77c53cc27c8cea452e8cea1fd
 
         }, null, ClassLoader::class);
     }
