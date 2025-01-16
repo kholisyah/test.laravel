@@ -118,7 +118,7 @@
           <a href="/syarat">Pendaftaran</a>
           <a href="/lihat-jadwal">Jadwal</a>
           <a href="/index">Perengkingan</a>
-          <a href="/galeri">Penyewaan</a>
+          <a href="/penyewaan">Penyewaan</a>
           <a href="/cart">Keranjang</a>
           <a href="/login">Login</a>
       </div>

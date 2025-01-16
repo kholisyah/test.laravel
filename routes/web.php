@@ -236,3 +236,18 @@ Route::get('/penyewaan', [PenyewaanController::class, 'lihatPenyewaan'])->name('
 Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
 
 Route::post('upload', [DropBoxController::class, 'uploadFile'])->name('upload');
+
+Route::get('/penyewaan', [PenyewaanController::class, 'index'])->name('penyewaan.index');
+Route::post('/penyewaan/store', [PenyewaanController::class, 'store'])->name('penyewaan.store');
+
+Route::post('/penyewaan/sewa/{id}', [PenyewaanController::class, 'sewa'])->name('penyewaan.sewa');
+
+Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/penyewaan/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('penyewaan.addToCart');
+
+Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::get('/checkout-summary', [CartController::class, 'checkoutSummary'])->name('checkout.summary');
+
+Route::get('/bayar', function () {
+    return view('checkout-summary'); 
+})->name('bayar');

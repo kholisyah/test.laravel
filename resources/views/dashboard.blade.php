@@ -7,12 +7,13 @@
     <title>Sanggar Galuh Pelaihari</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             display: flex;
             min-height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #156ba5, #89c4e9);
+            background-color: #f4f6f9;
             font-family: 'Poppins', sans-serif;
             color: #4A4A4A;
         }
@@ -23,174 +24,122 @@
             color: #ffffff;
             display: flex;
             flex-direction: column;
-            align-items: center;
             padding: 20px;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            border-right: 2px solid #0f4c75;
         }
 
         .sidebar img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            margin-bottom: 20px;
+            margin: 20px auto;
             object-fit: cover;
-            border: 3px solid #0f4c75;
         }
 
         .sidebar h4 {
-            font-size: 22px;
-            margin-bottom: 20px;
             text-align: center;
+            margin-bottom: 20px;
         }
 
         .sidebar a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 16px;
-            margin: 12px 0;
-            padding: 12px 0;
-            width: 100%;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: background-color 0.3s ease-in-out, transform 0.2s;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 5px 0;
         }
 
         .sidebar a:hover {
             background-color: #0f4c75;
-            transform: translateX(8px);
-            border-radius: 8px;
-        }
-
-        .sidebar .btn-danger {
-            background-color: #e74c3c;
-            color: #fff;
-            border: none;
-            width: 100%;
-            margin-top: 30px;
-            padding: 10px 0;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .sidebar .btn-danger:hover {
-            background-color: #c0392b;
         }
 
         .content {
             flex: 1;
             padding: 30px;
-            background-color: #ffffff;
         }
 
-        .content h1 {
-            font-size: 34px;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #4A4A4A;
-        }
-
-        .dashboard-card {
-            background: #EAF6FB;
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            height: 100%;
-            border: 1px solid #B5DDEB;
-            text-align: center;
-        }
-
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            background: #D9EEF7;
-        }
-
-        .dashboard-card h3 {
-            color: #4A4A4A;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .dashboard-card p {
-            font-size: 16px;
-            color: #6B6B6B;
+        .card {
             margin-bottom: 20px;
-        }
-
-        .dashboard-card a {
-            text-decoration: none;
-            font-size: 16px;
-            padding: 10px 20px;
             border-radius: 8px;
-            background-color: #D2ECF5;
-            color: #4A4A4A;
-            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-
-        .dashboard-card a:hover {
-            background-color: #B5DDEB;
-            transform: scale(1.05);
-        }
-
     </style>
 </head>
 <body>
     <div class="sidebar">
         <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
         <h4>Sanggar Galuh Pelaihari</h4>
-        <a href="/jadwal"><i class="fas fa-calendar-alt"></i> Penjadwalan</a>
-        <a href="/tari"><i class="fas fa-music"></i> Data Tari</a>
-        <a href="/pelatih"><i class="fas fa-user-tie"></i> Data Pelatih</a>
-        <a href="/home"><i class="fas fa-user"></i> logout</a>
-        
+        <a href="/jadwal"><i class="fas fa-calendar-check"></i> Penjadwalan Latihan</a>
+        <a href="/lihat-penyewaan"><i class="fas fa-clipboard-list"></i> Lihat Penyewaan</a>
+        <a href="/lihat-pendaftaran"><i class="fas fa-user"></i> Lihat Pendaftaran</a>
+        <a href="/tari"><i class="fas fa-book"></i> Data Tari</a>
+        <a href="/pelatih"><i class="fas fa-chalkboard-teacher"></i> Data Pelatih</a>
+        <form action="{{ route('logout') }}" method="POST" style="width: 100%; text-align: center;">
+            @csrf
+            <button type="submit" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </form>
     </div>
 
     <div class="content">
         <h1>Managemen Sanggar Galuh Pelaihari</h1>
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card dashboard-card">
-                    <div class="card-body">
-                        <h3>Penjadwalan Latihan</h3>
-                        <p>Kelola jadwal latihan tarian di sanggar.</p>
-                        <a href="/lihat-jadwal">Lihat Jadwal</a>
-                    </div>
+        
+        <!-- Row for cards -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Total Penyewaan</h5>
+                    <p class="fs-4">120</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card dashboard-card">
-                    <div class="card-body">
-                        <h3>Lihat Profil</h3>
-                        <p>Informasi mengenai sanggar dan anggota.</p>
-                        <a href="/home">Lihat Beranda</a>
-                    </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Total Pendaftaran</h5>
+                    <p class="fs-4">80</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card dashboard-card">
-                    <div class="card-body">
-                        <h3>Lihat Penyewaan</h3>
-                        <p>Cek daftar penyewaan baju di sanggar.</p>
-                        <a href="/penyewaan">Lihat Penyewaan</a>
-                    </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Data Pelatih</h5>
+                    <p class="fs-4">10</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card dashboard-card">
-                    <div class="card-body">
-                        <h3>Lihat Pendaftaran</h3>
-                        <p>Lihat daftar pendaftaran yang ada.</p>
-                        <a href="/lihat-pendaftaran">Lihat Pendaftaran</a>
-                    </div>
+        </div>
+
+        <!-- Row for chart -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card p-4">
+                    <h5>Grafik Penjadwalan</h5>
+                    <canvas id="scheduleChart" height="100"></canvas>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Data untuk grafik
+        const ctx = document.getElementById('scheduleChart').getContext('2d');
+        const scheduleChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Jumlah Penjadwalan',
+                    data: [12, 19, 3, 5, 2, 3, 10],
+                    backgroundColor: 'rgba(21, 107, 165, 0.6)',
+                    borderColor: 'rgba(21, 107, 165, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

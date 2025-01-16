@@ -4,32 +4,36 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreatePenyewaansTable extends Migration
 {
     /**
-     * Jalankan migration untuk membuat tabel 'penyewaans'.
+     * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        // Membuat tabel baru bernama 'penyewaans'
         Schema::create('penyewaans', function (Blueprint $table) {
             $table->id('id_penyewaan');
-            $table->string('nama_penyewa');
-            $table->text('alamat');
-            $table->string('no_hp');
-            $table->string('jenis_baju');
-            $table->date('tanggal_peminjaman');
-            $table->string('kategori');
+            $table->unsignedBigInteger('id_barang');
+            $table->integer('jumlah');
+            $table->decimal('total_harga', 10, 2);
+            $table->string('nama_penyewa', 100);
+            $table->date('tanggal');
             $table->timestamps();
+
+            // Foreign key
+            $table->foreign('id_barang')->references('id_barang')->on('barangs')->onDelete('cascade');
         });
     }
 
     /**
-     * Reverse the migrations (membatalkan perubahan yang dilakukan oleh 'up').
+     * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        // Menghapus tabel 'penyewaans' jika migration ini dibatalkan
         Schema::dropIfExists('penyewaans');
     }
-};
+}
