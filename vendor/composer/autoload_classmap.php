@@ -33,7 +33,6 @@ return array(
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
     'App\\Models\\Pelatih' => $baseDir . '/app/Models/Pelatih.php',
     'App\\Models\\Pendaftaran' => $baseDir . '/app/Models/Pendaftaran.php',
-    'App\\Models\\Penyewaan' => $baseDir . '/app/Models/Penyewaan.php',
     'App\\Models\\Profil' => $baseDir . '/app/Models/Profil.php',
     'App\\Models\\Tarian' => $baseDir . '/app/Models/Tarian.php',
     'App\\Models\\Transaksi' => $baseDir . '/app/Models/Transaksi.php',
