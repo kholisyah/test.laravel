@@ -156,16 +156,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($transaksis as $transaksi)
+                    @foreach ($transaksi as $transaksis)
                         <tr>
                             <td>{{ $transaksi->id }}</td>
                             <td>{{ number_format($transaksi->total, 0, ',', '.') }}</td>
                             <td>{{ \Carbon\Carbon::parse($transaksi->tanggal)->format('d-m-Y') }}</td>
                             <td>
-                                <!-- Tombol Bayar -->
                                 <a href="{{ route('transaksi.payment', $transaksi->id) }}" class="btn btn-success btn-sm">Bayar Lewat WhatsApp</a>
-                
-                                <!-- Tombol Hapus -->
                                 <form action="{{ route('transaksi.destroy', $transaksi->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')

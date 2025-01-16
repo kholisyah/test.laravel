@@ -117,11 +117,6 @@
         <div>
             <button type="submit">Login</button>
         </div>
-        <footer>
-            <p>Belum punya akun? 
-                <a href="/register">Register</a>
-            </p>
-        </footer>
     </form>
 </body>
 </html>

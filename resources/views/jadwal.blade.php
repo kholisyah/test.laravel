@@ -222,8 +222,13 @@
                             <option value="{{ $tarian->id }}">{{ $tarian->nama_tari }}</option>
                         @endforeach
                     </select>
-                    <label for="anggota">Anggota</label>
-                    <input type="text" name="anggota" id="anggota" placeholder="Anggota" required>
+                    <label for="Nama anggota">nama anggota</label>
+                    <select name="tarian_id">
+                        <option value="" selected disabled>pilih anggota</option>
+                        @foreach ($pendaftarans as $pendaftaran)
+                            <option value="{{ $pendaftaran->id }}">{{ $pendaftaran->namai }}</option>
+                        @endforeach
+                    </select>
                     <button type="submit">Simpan</button>
                 </form>
             </div>
@@ -247,7 +252,8 @@
                     <td>{{ $akun->waktu }}</td>
                     <td>{{ $akun->tarian ? $akun->tarian->nama_tari : 'Tidak ada' }}</td>
                     <td>{{ $tarian->pelatih->nama }}</td>
-                    <td>{{ $akun->anggota }}</td>
+                    <td>{{ $akun->pendaftaran ? $akun->pendaftaran->nama : 'Tidak ada' }}</td>
+                   
                     <td>
                         <div class="d-flex">
                             <a href="/edit-posts/{{ $akun->id }}" class="btn btn-warning">Edit</a>

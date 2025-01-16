@@ -41,7 +41,7 @@ class SawAhpController extends Controller
         }, $data);
 
         // Normalisasi Matriks (Metode SAW)
-        $normalisasi = $matriks;
+        $normalisasi = $matriks; 
         for ($i = 0; $i < count($kriteria); $i++) {
             if ($kriteria[$i] == 1) {  // Jika kriteria adalah benefit
                 $max = max(array_column($matriks, $i)); // Mencari nilai maksimum pada kolom ke-i

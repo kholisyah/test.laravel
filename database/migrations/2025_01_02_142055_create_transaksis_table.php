@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -12,11 +13,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transaksis', function (Blueprint $table) {
-            $table->id();
-            $table->integer('total');
-            $table->date('tanggal');
+            $table->id('id_transaksi');
+            $table->date('tanggal')->default(DB::raw('CURRENT_DATE')); // Atur default
+            $table->string('status')->default('pending');
+            $table->decimal('total', 10, 2)->default(0);
             $table->timestamps();
         });
+        
     }
         
 

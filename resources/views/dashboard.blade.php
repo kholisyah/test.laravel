@@ -69,8 +69,8 @@
     <div class="sidebar">
         <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
         <h4>Sanggar Galuh Pelaihari</h4>
-        <a href="/lihat-jadwal"><i class="fas fa-calendar-check"></i> Penjadwalan Latihan</a>
-        <a href="/penyewaan"><i class="fas fa-clipboard-list"></i> Lihat Penyewaan</a>
+        <a href="/jadwal"><i class="fas fa-calendar-check"></i> Penjadwalan Latihan</a>
+        <a href="/lihat-penyewaan"><i class="fas fa-clipboard-list"></i> Lihat Penyewaan</a>
         <a href="/lihat-pendaftaran"><i class="fas fa-user"></i> Lihat Pendaftaran</a>
         <a href="/tari"><i class="fas fa-book"></i> Data Tari</a>
         <a href="/pelatih"><i class="fas fa-chalkboard-teacher"></i> Data Pelatih</a>
