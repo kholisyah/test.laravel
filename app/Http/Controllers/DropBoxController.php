@@ -103,12 +103,26 @@ class DropBoxController extends Controller
         }
     }
 
-    // Mendapatkan Link Sementara untuk File
-    public function getTemporaryLink($filePath)
+    
+    public function getTemporaryLink($fileName)
     {
-        $link = $this->client->getTemporaryLink($filePath);
-        return view('dropbox.link', ['link' => $link]);
+        $dropboxPath = "/file/{$fileName}";
+    
+        try {
+            $link = $this->client->getTemporaryLink($dropboxPath);
+    
+            return response()->json([
+                'file' => $fileName,
+                'temporary_link' => $link,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Gagal mendapatkan link sementara dari Dropbox.',
+                'message' => $e->getMessage(),
+            ], 500);
+        }
     }
+        
 
     // Memindahkan File
     public function moveFile($from, $to)
