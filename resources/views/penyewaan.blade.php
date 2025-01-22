@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penyewaan</title>
     <style>
-            /* Navbar */
-            .navbar {
+        /* Navbar */
+        .navbar {
             background-color: #89c4e9;
             padding: 15px;
             display: flex;
@@ -54,11 +54,11 @@
         }
 
         body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        margin: 0; /* Atur margin menjadi 0 */
-        padding-top: 80px; /* Tambahkan padding untuk mengkompensasi tinggi navbar */
-    }
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding-top: 80px; /* Untuk kompensasi tinggi navbar */
+        }
 
         h1 {
             text-align: center;
@@ -68,7 +68,7 @@
 
         .baju-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
         }
@@ -80,12 +80,15 @@
             overflow: hidden;
             text-align: center;
             padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .baju-card img {
             width: 100%;
-            height: 200px; /* Menentukan tinggi konsisten untuk semua gambar */
-            object-fit: cover; /* Memastikan gambar menyesuaikan ukuran tanpa distorsi */
+            height: 250px; /* Tinggi gambar lebih besar */
+            object-fit: cover; /* Gambar menyesuaikan ukuran tanpa distorsi */
             border-radius: 5px;
         }
 
@@ -98,7 +101,7 @@
         .baju-card p {
             color: #777;
             font-size: 14px;
-            margin-bottom: 10px;
+            margin: 5px 0;
         }
 
         .baju-card .price {
@@ -149,7 +152,7 @@
             <a href="/lihat-jadwal">Jadwal</a>
             <a href="/index">Perengkingan</a>
             <a href="/penyewaan" class="active">Penyewaan</a>
-            <a href="/cart">Keranjang</a>
+            <a href="{{ route('cart.index') }}">Keranjang</a>
             <a href="/login">Login</a>
         </div>
     </div>

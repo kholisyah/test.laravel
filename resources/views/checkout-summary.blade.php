@@ -175,18 +175,18 @@
             <tbody>
                 @foreach($checkoutItems as $id => $item)
                     <tr>
-                        <td>{{ $id }}</td>
-                        <td>{{ $item['nama'] ?? 'Tidak Ada Nama' }}</td>
-                        <td>{{ $item['jumlah'] ?? 0 }}</td>
-                        <td>Rp {{ number_format($item['harga_sewa'] ?? 0, 0, ',', '.') }}</td>
-                        <td>Rp {{ number_format(($item['harga_sewa'] ?? 0) * ($item['jumlah'] ?? 1), 0, ',', '.') }}</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->product_name }}</td>
+                        <td>{{ $item->quantity }}</td>
+                        <td>Rp {{ $item->prices }}</td>
+                        <td>Rp {{ $item->total }}</td>
                     </tr>
                 @endforeach
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="4" class="total">Total Harga</td>
-                    <td class="total">Rp {{ number_format($totalPrice, 0, ',', '.') }}</td>
+            <td class="total">Rp {{ $totalPrice }}</td>
                 </tr>
             </tfoot>
         </table>
@@ -254,11 +254,11 @@
             }
 
             if (isValid) {
-                const whatsappLink = `https://wa.me/6285750274278?text=Halo%20Sanggar%20Galuh,%20saya%20${encodeURIComponent(nama)}%20ingin%20melakukan%20pembayaran%20dengan%20total%20biaya%20Rp%20${encodeURIComponent(totalPrice)}.%20Alamat:%20${encodeURIComponent(alamat)}.%20Nomor%20Telepon:%20${encodeURIComponent(telepon)}.%20Mohon%20informasi%20lebih%20lanjut.`;
+                const ids = {!! json_encode($checkoutItems) !!}.map(item => item.id);
+            const whatsappLink = `https://wa.me/6285750274278?text=Halo%20Sanggar%20Galuh,%20saya%20${encodeURIComponent(nama)}%20ingin%20melakukan%20pembayaran%20dengan%20id%20checkout%20${ids.join(', ')}%20total%20biaya%20Rp%20${encodeURIComponent(totalPrice)}.%20Alamat:%20${encodeURIComponent(alamat)}.%20Nomor%20Telepon:%20${encodeURIComponent(telepon)}.%20Mohon%20informasi%20lebih%20lanjut.`;
                 window.open(whatsappLink, '_blank');
             }
         }
     </script>
 </body>
-
 </html>
