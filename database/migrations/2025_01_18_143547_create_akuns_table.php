@@ -17,7 +17,8 @@ return new class extends Migration
             $table->time('waktu'); // Kolom 'waktu' bertipe TIME untuk menyimpan waktu
             $table->foreignId('tarian_id')->constrained('tarians')->onDelete('cascade'); // Menambahkan kolom 'tarian_id' sebagai foreign key
             $table->string('pelatih'); // Kolom 'pelatih' bertipe string untuk menyimpan nama pelatih
-            $table->foreignId('pendaftaran_id')->constrained('pendaftarans')->onDelete('cascade');//anggota
+            $table->foreignId('pendaftaran_id')->constrained('pendaftarans')->onDelete('cascade');
+            //anggota
             $table->timestamps();
         });
     }

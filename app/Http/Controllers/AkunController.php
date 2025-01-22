@@ -14,7 +14,7 @@ class AkunController extends Controller
         $tarians = Tarian::all();
         $akuns = Akun::all();
         $pendaftarans = Pendaftaran::all();
-        return view('jadwal', compact('tarians', 'akuns','pendaftarans'));
+        return view('jadwal', compact('tarians','pendaftarans', 'akuns',));
     }
 
     public function createPost(Request $request)
@@ -25,7 +25,8 @@ class AkunController extends Controller
             'tarian_id' => 'required|exists:tarians,id',
             // 'pelatih' => 'required|string',
            // 'anggota' => 'required|string'
-           'pendaftaran_id' => 'required|exists:pendaftaran,id',
+      'pendaftaran_id' => 'required|exists:pendaftarans,id',
+
         ]);
 
         $pelatih = Tarian::find($request->tarian_id);

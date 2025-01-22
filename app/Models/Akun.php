@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Tarian;
+use App\Models\Pendaftaran;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -12,11 +13,7 @@ class Akun extends Model
 
     // Tentukan kolom yang dapat diisi (fillable)
     protected $fillable = [
-        'tanggal',
-        'waktu',
-        'tarian_id',  // Gantilah 'jenis_tari' dengan 'tarian_id'
-        'pelatih',
-        'pendaftaran_id',
+        'tanggal', 'waktu', 'tarian_id', 'pelatih', 'pendaftaran_id'
     ];
 
     // Relasi dengan model Tarian (Akun belongsTo Tarian)
@@ -25,9 +22,9 @@ public function tarian()
 {
     return $this->belongsTo(Tarian::class, 'tarian_id');
 }
-public function  pendaftaran()
+public function pendaftaran()
 {
-    return $this->belongsTo(Pendaftaran::class, 'pebdaftaran_id');
+    return $this->belongsTo(Pendaftaran::class, 'pendaftaran_id');
 }
 
 }
