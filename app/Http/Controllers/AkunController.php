@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Akun;
 use App\Models\Tarian;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
 class AkunController extends Controller
@@ -12,7 +13,8 @@ class AkunController extends Controller
     {
         $tarians = Tarian::all();
         $akuns = Akun::all();
-        return view('jadwal', compact('tarians', 'akuns'));
+        $pendaftarans = Pendaftaran::all();
+        return view('jadwal', compact('tarians', 'akuns','pendaftarans'));
     }
 
     public function createPost(Request $request)
@@ -22,7 +24,8 @@ class AkunController extends Controller
             'waktu' => 'required|string',
             'tarian_id' => 'required|exists:tarians,id',
             // 'pelatih' => 'required|string',
-            'anggota' => 'required|string'
+           // 'anggota' => 'required|string'
+           'pendaftaran_id' => 'required|exists:pendaftaran,id',
         ]);
 
         $pelatih = Tarian::find($request->tarian_id);
@@ -32,7 +35,8 @@ class AkunController extends Controller
         $post->waktu = $request->input('waktu');
         $post->tarian_id = $request->input('tarian_id');
         $post->pelatih = $pelatih->pelatih;
-        $post->anggota = $request->input('anggota');
+        $post->pendaftaran_id = $request->input('pendaftaran_id');
+       // $post->anggota = $request->input('anggota');
         $post->save();
 
         return redirect()->route('jadwal');
@@ -52,7 +56,8 @@ class AkunController extends Controller
             'waktu' => 'required',
             'tarian_id' => 'required|exists:tarians,id',
             // 'pelatih' => 'required',
-            'anggota' => 'required',
+           // 'anggota' => 'required',
+           'pendaftaran_id' => 'required|exists:pendaftaran,id',
         ]);
 
         $pelatih = Tarian::find($request->tarian_id);
@@ -62,7 +67,7 @@ class AkunController extends Controller
         $akun->waktu = $request->input('waktu');
         $akun->tarian_id = $request->input('tarian_id');
         $akun->pelatih = $pelatih->pelatih;
-        $akun->anggota = $request->input('anggota');
+        $akun->pendaftaran_id = $request->input('pendaftaran_id');
         $akun->save();
 
         return redirect('/jadwal')->with('success', 'Jadwal berhasil diupdate!');

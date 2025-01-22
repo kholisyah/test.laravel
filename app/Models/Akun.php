@@ -16,7 +16,7 @@ class Akun extends Model
         'waktu',
         'tarian_id',  // Gantilah 'jenis_tari' dengan 'tarian_id'
         'pelatih',
-        'anggota',
+        'pendaftaran_id',
     ];
 
     // Relasi dengan model Tarian (Akun belongsTo Tarian)
@@ -25,6 +25,9 @@ public function tarian()
 {
     return $this->belongsTo(Tarian::class, 'tarian_id');
 }
-
+public function  pendaftaran()
+{
+    return $this->belongsTo(Pendaftaran::class, 'pebdaftaran_id');
+}
 
 }
