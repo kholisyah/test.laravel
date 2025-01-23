@@ -222,10 +222,9 @@
                             <option value="{{ $tarian->id }}">{{ $tarian->nama_tari }}</option>
                         @endforeach
                     </select>
-                    <label for="Nama anggota">nama anggota</label>
-                    <select name="pendaftaran_id">
-                        <option value="" selected disabled>pilih anggota</option>
-                        @foreach($pendaftarans as $pendaftaran)
+                    <label for="Nama anggota">Nama Anggota</label>
+                    <select name="pendaftaran_id[]" multiple class="form-control select2" id="anggota">
+                        @foreach ($pendaftarans as $pendaftaran)
                             <option value="{{ $pendaftaran->id }}">{{ $pendaftaran->nama }}</option>
                         @endforeach
                     </select>
