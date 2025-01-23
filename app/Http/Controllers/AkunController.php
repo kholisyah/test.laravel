@@ -15,7 +15,6 @@ class AkunController extends Controller
         $akuns = Akun::all();
         $pendaftarans = Pendaftaran::all();
         return view('jadwal', compact('tarians', 'pendaftarans', 'akuns'));
-<<<<<<< HEAD
     }
 
     public function store(Request $request)
@@ -26,45 +25,6 @@ class AkunController extends Controller
         'nama_tarian' => 'required|string',
         'id_anggota' => 'required|array', // Pastikan ini array
     ]);
-=======
-    }
-
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'tanggal' => 'required|string',
-            'waktu' => 'required|string',
-            'tarian_id' => 'required|exists:tarians,id',
-            'pendaftarans' => 'required|array', // Pastikan ini adalah array
-            'pendaftarans.*' => 'exists:pendaftarans,id', // Validasi setiap anggota
-        ]);
-
-        // Ambil pelatih dari model Tarian
-        $pelatih = Tarian::find($request->tarian_id);
-
-        // Simpan data jadwal ke tabel akuns
-        $akun = new Akun();
-        $akun->tanggal = $request->input('tanggal');
-        $akun->waktu = $request->input('waktu');
-        $akun->tarian_id = $request->input('tarian_id');
-        $akun->pelatih = $pelatih->pelatih;
-        $akun->save();
-
-        // Simpan anggota ke tabel pivot
-        $akun->pendaftarans()->sync($request->pendaftarans);
-
-        return redirect()->route('jadwal')->with('success', 'Jadwal berhasil dibuat!');
-    }
-
-    public function createPost(Request $request)
-    {
-        $validated = $request->validate([
-            'tanggal' => 'required|string',
-            'waktu' => 'required|string',
-            'tarian_id' => 'required|exists:tarians,id',
-            'pendaftaran_id' => 'required|exists:pendaftarans,id',
-        ]);
->>>>>>> 7e698f9d4030b72eb997066928c474fc945d1bcf
 
     $jadwal = akun::create([
         'tanggal' => $request->tanggal,
@@ -98,13 +58,8 @@ public function createPost(Request $request)
         $post->tanggal = $request->input('tanggal');
         $post->waktu = $request->input('waktu');
         $post->tarian_id = $request->input('tarian_id');
-<<<<<<< HEAD
         $post->pelatih = $pelatih;
         $post->pendaftaran_id = $pendaftaranId;
-=======
-        $post->pelatih = $pelatih->pelatih;
-        $post->pendaftaran_id = $request->input('pendaftaran_id');
->>>>>>> 7e698f9d4030b72eb997066928c474fc945d1bcf
         $post->save();
     }
 
