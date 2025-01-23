@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Akun;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pendaftaran extends Model
 {
@@ -16,4 +17,9 @@ class Pendaftaran extends Model
         'no_telepon',
         'kategori',
     ];
+
+    public function akuns()
+    {
+        return $this->belongsToMany(Akun::class, 'pendaftaran_id', 'akun_id');
+    }
 }

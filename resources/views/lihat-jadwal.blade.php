@@ -158,15 +158,31 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+    $lastTanggal = null;
+    $lastWaktu = null;
+    $lastTarian = null;
+    $lastPelatih = null;
+@endphp
                 @foreach ($akuns as $akun)
-                <tr>
-                    <td>{{ $akun->tanggal }}</td>
-                    <td>{{ $akun->waktu }}</td>
-                    <td>{{ $akun->tarian ? $akun->tarian->nama_tari : 'Tidak ada' }}</td>
-                    <td>{{ $akun->tarian->pelatih->nama }}</td>
-                    <td>{{ $akun->anggota }}</td>
-                </tr>
-                @endforeach
+    <tr>
+        @if ($akun->tanggal !== $lastTanggal || $akun->waktu !== $lastWaktu || ($akun->tarian ? $akun->tarian->nama_tari : 'Tidak ada') !== $lastTarian || $akun->tarian->pelatih->nama !== $lastPelatih)
+            <td>{{ $akun->tanggal }}</td>
+            <td>{{ $akun->waktu }}</td>
+            <td>{{ $akun->tarian ? $akun->tarian->nama_tari : 'Tidak ada' }}</td>
+            <td>{{ $akun->tarian->pelatih->nama }}</td>
+            @php
+                $lastTanggal = $akun->tanggal;
+                $lastWaktu = $akun->waktu;
+                $lastTarian = $akun->tarian ? $akun->tarian->nama_tari : 'Tidak ada';
+                $lastPelatih = $akun->tarian->pelatih->nama;
+            @endphp
+        @else
+            <td colspan="4"></td>
+        @endif
+        <td>{{ $akun->pendaftaran->nama }}</td>
+    </tr>
+@endforeach
             </tbody>
         </table>
     </div>
