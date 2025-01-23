@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaksi_baju', function (Blueprint $table) {
+        Schema::create('checkout', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transaksi_id')->constrained()->onDelete('cascade');
-            $table->foreignId('baju_id')->constrained()->onDelete('cascade');
-            $table->integer('jumlah')->default(1); // Kolom jumlah item
+            $table->integer('id_baju');
+            $table->string('product_name');
+            $table->integer('quantity');
+            $table->integer('prices');
+            $table->integer('total');
+            $table->string('status');
             $table->timestamps();
         });
-        
     }
 
     /**
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksi_baju');
+        Schema::dropIfExists('checkout_baju');
     }
 };

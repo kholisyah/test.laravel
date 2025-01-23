@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keranjang</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         /* Navbar */
         .navbar {
@@ -59,91 +60,61 @@
         h1 {
             text-align: center;
             color: #333;
+            margin-bottom: 20px;
         }
 
-        p {
-            font-size: 16px;
-            color: #333;
+        /* Table */
+        .table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
         }
 
+        .table th {
+            background-color: #89c4e9;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+        
+
+        /* Messages */
         .success-message {
             color: #28a745;
             font-weight: bold;
+            text-align: center;
         }
 
         .error-message {
             color: #dc3545;
             font-weight: bold;
-        }
-
-        /* Cart Items */
-        .cart-items {
-            margin-top: 20px;
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .cart-items li {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 15px;
-        }
-
-        .cart-items li img {
-            width: 70px;
-            height: auto;
-            margin-right: 20px;
-            border-radius: 5px;
-        }
-
-        .cart-items li p {
-            margin: 5px 0;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .cart-items li .price {
-            font-weight: bold;
-            color: #28a745;
-        }
-
-        .cart-items li .quantity {
-            color: #777;
-        }
-
-        .cart-items li .checkbox {
-            margin-right: 20px;
-        }
-
-        /* Checkout Button */
-        .checkout-btn {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 10px;
             text-align: center;
-            background-color: #28a745;
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
         }
 
-        .checkout-btn:hover {
-            background-color: #218838;
-        }
-
-        /* Empty Cart Message */
         .empty-cart-message {
             text-align: center;
             font-size: 18px;
             color: #888;
+            margin-top: 30px;
         }
+
+        /* Buttons */
+        .btn {
+            width: 100px;
+            font-size: 14px;
+        }
+        
     </style>
 </head>
 
@@ -165,6 +136,7 @@
         </div>
     </div>
 
+    <!-- Page Title -->
     <h1>Keranjang Anda</h1>
 
     <!-- Success or Error Messages -->
@@ -177,29 +149,62 @@
     @endif
 
     <!-- Cart Items -->
-    @if(session('cart') && count(session('cart')) > 0)
-    <form action="/checkout" method="POST">
-        @csrf
-        <ul class="cart-items">
-            @foreach(session('cart') as $id => $details)
-                <li>
-                    <input type="checkbox" name="selected_items[]" value="{{ $id }}" class="checkbox">
-                    <img src="{{ isset($details['foto']) ? asset('assets/img/' . $details['foto']) : asset('assets/img/default.png') }}" 
-                         alt="{{ $details['nama'] ?? 'Item' }}">
-
-                    <div>
-                        <p><strong>{{ $details['nama'] ?? 'Tidak Ada Nama' }}</strong></p>
-                        <p class="price">Rp {{ number_format($details['harga_sewa'] ?? 0, 0, ',', '.') }}</p>
-                        <p class="quantity">Jumlah: {{ $details['jumlah'] ?? 0 }}</p>
-                    </div>
-                </li>
-            @endforeach
-        </ul>
-        <button type="submit" class="checkout-btn">Checkout</button>
-    </form>
+    @if(count($cart) > 0)
+        <table class="table table-striped table-primary">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Nama Baju</th>
+                    <th style="text-align: right;">Harga Sewa</th>
+                    <th>Jumlah</th>
+                    <th style="text-align: right;">Total</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($cart as $carts)
+                    <tr>
+                        <td>
+                            <img 
+                                src="{{ isset($carts['foto']) ? asset('assets/img/' . $carts['foto']) : asset('assets/img/default.png') }}" 
+                                width="150" 
+                                height="150" 
+                                alt="{{ $carts['product_name'] ?? 'Tidak Ada Nama' }}"
+                                style="border: 2px solid #ddd; border-radius: 5px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);">
+                        </td>                                             
+                        <td>{{ $carts['product_name'] ?? 'Tidak Ada Nama' }}</td>
+                        <td style="text-align: right;">
+                            Rp {{ number_format($carts['prices'] ?? 0, 0, ',', '.') }}
+                        </td>
+                        <td>{{ $carts['quantity'] ?? 0 }}</td>
+                        <td style="text-align: right;">
+                            Rp {{ number_format(($carts['prices'] ?? 0) * ($carts['quantity'] ?? 1), 0, ',', '.') }}
+                        </td>
+                        <td>
+                            <form 
+                                action="{{ route('checkout', $carts['id']) }}" 
+                                method="POST" 
+                                style="display: inline-block;">
+                                @csrf
+                                <button type="submit" class="btn btn-success">CheckOut</button>
+                            </form>
+                            <form 
+                                action="{{ route('cart.delete', $carts['id']) }}" 
+                                method="POST" 
+                                style="display: inline-block;">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Batalkan</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     @else
-    <p class="empty-cart-message">Keranjang Anda kosong.</p>
+        <p class="empty-cart-message">Keranjang Anda Kosong</p>
     @endif
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

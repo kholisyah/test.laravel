@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Baju;
+use App\Models\checkout;
+use Illuminate\Http\Request;
 
 class PenyewaanController extends Controller
 {
@@ -23,5 +24,11 @@ class PenyewaanController extends Controller
 
         $baju->decrement('stok');
         return redirect()->back()->with('success', 'Baju berhasil disewa!');
+    }
+
+    public function lihatPenyewaan(){
+        $penyewaans = checkout::all();
+        
+        return view('lihat-penyewaan', compact('penyewaans'));
     }
 }

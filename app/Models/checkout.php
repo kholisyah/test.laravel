@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class checkout extends Model
 {
     use HasFactory;
+    protected $table = 'checkout';
+
     protected $fillable = [
         'id_baju',
-        'foto',
-        'product_name', 
-        'quantity', 
+        'product_name',
+        'quantity',
         'prices',
-        'total', 
-        'category'
-    ]; // Tambahkan 'category'
+        'total',
+        'status',
+    ];
 }

@@ -17,6 +17,7 @@ use App\Http\Controllers\SawAhpController;
 use App\Http\Controllers\TarianController;
 use App\Http\Controllers\DropBoxController;
 use App\Http\Controllers\PelatihController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\TransaksiController;
@@ -194,9 +195,9 @@ Route::put('/transaksi/{id}/update-status', [TransaksiController::class, 'update
 Route::put('/update-transaksi/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
 Route::get('/payment/{id}', [TransaksiController::class, 'showPaymentPage'])->name('transaksi.payment');
 
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+// Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+// Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+// Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
 Route::post('/transaksi/store-from-cart', [TransaksiController::class, 'storeFromCart'])->name('transaksi.storeFromCart');
 Route::post('/transaksi/from-cart', [TransaksiController::class, 'storeFromCart'])->name('transaksi.storeFromCart');
@@ -243,10 +244,12 @@ Route::post('/penyewaan/store', [PenyewaanController::class, 'store'])->name('pe
 
 Route::post('/penyewaan/sewa/{id}', [PenyewaanController::class, 'sewa'])->name('penyewaan.sewa');
 
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/delete/{id}', [CartController::class, 'deleteToCart'])->name('cart.delete');
 Route::post('/penyewaan/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('penyewaan.addToCart');
 
-Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::post('/checkout/{id}', [CartController::class, 'checkout'])->name('checkout');
 Route::get('/checkout-summary', [CartController::class, 'checkoutSummary'])->name('checkout.summary');
 
 Route::get('/bayar', function () {

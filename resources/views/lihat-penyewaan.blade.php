@@ -6,11 +6,58 @@
     <title>Lihat Penyewaan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Style untuk body dan tampilan umum */
+        /* Navbar */
+        .navbar {
+            background-color: #89c4e9;
+            padding: 10px 15px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        .navbar-nav a {
+            color: white !important;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav a:hover {
+            color: #156ba5;
+        }
+
+        .navbar-nav .active {
+            color: #156ba5;
+        }
+
+        /* Body styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #F4FAFD; /* Latar belakang biru pastel */
-            margin: 0;
+            background-color: #F4FAFD;
+            margin-top: 70px; /* Memberikan ruang untuk navbar fixed */
             padding: 20px;
         }
 
@@ -31,7 +78,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            background-color: #EAF6FB; /* Warna biru pastel lembut */
+            background-color: #EAF6FB;
         }
 
         .table th, .table td {
@@ -42,7 +89,7 @@
         }
 
         .table th {
-            background-color: #B5DDEB; /* Header tabel biru pastel */
+            background-color: #B5DDEB;
             color: #4A4A4A;
         }
 
@@ -53,12 +100,12 @@
 
         /* Styling untuk row hover */
         .table tbody tr:hover {
-            background-color: #CDEAF5; /* Efek hover baris tabel */
+            background-color: #CDEAF5;
         }
 
         /* Styling tombol */
         .btn {
-            background-color: #B5DDEB; /* Tombol biru pastel */
+            background-color: #B5DDEB;
             color: #4A4A4A;
             padding: 8px 15px;
             border: none;
@@ -70,7 +117,7 @@
         }
 
         .btn:hover {
-            background-color: #A2D4E8; /* Warna hover biru pastel lebih gelap */
+            background-color: #A2D4E8;
         }
 
         /* Styling untuk tombol kembali ke dashboard */
@@ -85,37 +132,57 @@
     </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="logo">
+                <img src="{{ asset('assets/img/images.jpeg') }}" alt="Logo Sanggar Galuh">
+                Sanggar Galuh
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link active" href="/dashboard">Kembali ke Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <h1>Data Penyewaan</h1>
-        
+
         <!-- Tabel untuk menampilkan data penyewaan -->
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Nama Penyewa</th>
-                    <th>Alamat</th>
-                    <th>No. HP</th>
-                    <th>Tanggal Peminjaman</th>
-                    <th>Jenis Baju</th>
-                    <th>Kategori</th>
+                    <th>id checkout</th>
+                    <th>nama produk</th>
+                    <th>jumlah checkout</th>
+                    <th>harga satuan</th>
+                    <th>total</th>
+                    <th>tanggal pesanan</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($penyewaans as $penyewaan)
-                <tr>
-                    <td>{{ $penyewaan->nama_penyewa }}</td>
-                    <td>{{ $penyewaan->alamat }}</td>
-                    <td>{{ $penyewaan->no_hp }}</td>
-                    <td>{{ $penyewaan->tanggal_peminjaman }}</td>
-                    <td>{{ $penyewaan->jenis_baju }}</td>
-                    <td>{{ $penyewaan->kategori }}</td>
-                </tr>
+                    <tr>
+                        <td>{{ $penyewaan->id }}</td>
+                        <td>{{ $penyewaan->product_name }}</td>
+                        <td>{{ $penyewaan->quantity }}</td>
+                        <td>{{ $penyewaan->prices }}</td>
+                        <td>{{ $penyewaan->total }}</td>
+                        <td>{{ date('d M Y', strtotime($penyewaan->created_at)) }}</td>
+                        <td>
+                            <select name="status" id="status">
+                                <option value="pending" {{ $penyewaan->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                <option value="lunas" {{ $penyewaan->status == 'lunas' ? 'selected' : '' }}>Lunas</option>
+                                <option value="dikembalikan" {{ $penyewaan->status == 'dikembalikan' ? 'selected' : '' }}>Dikembalikan</option>
+                            </select>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-    <!-- Kembali ke Dashboard -->
-    <a href="{{ url('/dashboard') }}" class="btn btn-primary">Kembali ke Dashboard</a>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

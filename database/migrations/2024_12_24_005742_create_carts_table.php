@@ -10,8 +10,11 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
+            $table->string('id_baju');
+            $table->string('foto');
             $table->string('product_name');
             $table->integer('quantity');
+            $table->integer('prices');
             $table->integer('total');
             $table->string('category'); // Tambahkan kolom kategori
             $table->timestamps();
