@@ -88,13 +88,13 @@
             <div class="col-md-4">
                 <div class="card p-3">
                     <h5>Total Penyewaan</h5>
-                    <p class="fs-4">120</p>
+                    <p class="fs-4">20</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card p-3">
                     <h5>Total Pendaftaran</h5>
-                    <p class="fs-4">80</p>
+                    <p class="fs-4">10<p>
                 </div>
             </div>
             <div class="col-md-4">

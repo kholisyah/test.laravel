@@ -25,6 +25,13 @@ public function tarian()
 public function pendaftaran()
 {
     return $this->belongsTo(Pendaftaran::class, 'pendaftaran_id');
+<<<<<<< HEAD
+=======
+}
+public function pendaftarans()
+{
+    return $this->belongsToMany(Pendaftaran::class, 'akun_pendaftaran');
+>>>>>>> 7e698f9d4030b72eb997066928c474fc945d1bcf
 }
 public function pendaftarans()
     {
@@ -32,4 +39,8 @@ public function pendaftarans()
     }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7e698f9d4030b72eb997066928c474fc945d1bcf
