@@ -93,9 +93,14 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="anggota" class="form-label">Anggota</label>
-                        <input type="text" name="anggota" id="anggota" class="form-control" value="{{ $akun->anggota }}" required>
+                    <div class="mb-3"> 
+                         <label for="Nama anggota">nama anggota</label>
+                        <select name="pendaftaran_id">
+                            <option value="" selected disabled>pilih anggota</option>
+                            @foreach($pendaftarans as $pendaftaran)
+                                <option value="{{ $pendaftaran->id }}">{{ $pendaftaran->nama }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </form>

@@ -116,6 +116,7 @@ Route::get('/edit-posts/{id}', [AkunController::class, 'edit'])->name('edit');
 Route::post('/update-posts/{id}', [AkunController::class, 'update'])->name('update');
 // Rute untuk melihat jadwal latihan
 Route::get('/lihat-jadwal', [JadwalController::class, 'index'])->name('lihat-jadwal');
+Route::post('/jadwal/store', [AkunController::class, 'store'])->name('jadwal.store');
 
 // Menampilkan daftar penyewaan
 Route::get('/penyewaan', [PenyewaanController::class, 'index'])->name('penyewaan.index');

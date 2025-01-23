@@ -14,39 +14,67 @@ class AkunController extends Controller
         $tarians = Tarian::all();
         $akuns = Akun::all();
         $pendaftarans = Pendaftaran::all();
-        return view('jadwal', compact('tarians', 'akuns','pendaftarans'));
+        return view('jadwal', compact('tarians', 'pendaftarans', 'akuns'));
     }
 
-    public function createPost(Request $request)
-    {
-        $validated = $request->validate([
-            'tanggal' => 'required|string',
-            'waktu' => 'required|string',
-            'tarian_id' => 'required|exists:tarians,id',
-            // 'pelatih' => 'required|string',
-           // 'anggota' => 'required|string'
-           'pendaftaran_id' => 'required|exists:pendaftaran,id',
-        ]);
+    public function store(Request $request)
+{
+    $request->validate([
+        'tanggal' => 'required|date',
+        'waktu' => 'required',
+        'nama_tarian' => 'required|string',
+        'id_anggota' => 'required|array', // Pastikan ini array
+    ]);
 
-        $pelatih = Tarian::find($request->tarian_id);
+    $jadwal = akun::create([
+        'tanggal' => $request->tanggal,
+        'waktu' => $request->waktu,
+        'nama_tarian' => $request->nama_tarian,
+    ]);
 
+    // Menyimpan anggota yang dipilih ke jadwal
+    $jadwal->anggotas()->attach($request->id_anggota);
+
+    return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil dibuat.');
+}
+
+public function createPost(Request $request)
+{
+    // Validasi input
+    $validated = $request->validate([
+        'tanggal' => 'required|date',
+        'waktu' => 'required|string',
+        'tarian_id' => 'required|exists:tarians,id',
+        'pendaftaran_id' => 'required|array', // Pastikan ini array
+        'pendaftaran_id.*' => 'exists:pendaftarans,id', // Validasi setiap ID anggota
+    ]);
+
+    // Ambil data pelatih berdasarkan tarian
+    $pelatih = Tarian::findOrFail($request->tarian_id)->pelatih;
+
+    // Loop melalui setiap pendaftaran_id untuk menyimpan data
+    foreach ($request->pendaftaran_id as $pendaftaranId) {
         $post = new Akun();
         $post->tanggal = $request->input('tanggal');
         $post->waktu = $request->input('waktu');
         $post->tarian_id = $request->input('tarian_id');
-        $post->pelatih = $pelatih->pelatih;
-        $post->pendaftaran_id = $request->input('pendaftaran_id');
-       // $post->anggota = $request->input('anggota');
+        $post->pelatih = $pelatih;
+        $post->pendaftaran_id = $pendaftaranId;
         $post->save();
-
-        return redirect()->route('jadwal');
     }
+
+    // Redirect setelah selesai
+    return redirect()->route('jadwal')->with('success', 'Data jadwal dan anggota berhasil disimpan.');
+}
+
+
 
     public function showEditScreen(Akun $akun)
     {
         $tarians = Tarian::all();
         $akuns = Akun::all(); // Mengambil semua data akun untuk validasi
-        return view('edit-posts', compact('akun', 'tarians', 'akuns'));
+        $pendaftarans = Pendaftaran::all();
+        return view('edit-posts', compact('akun', 'tarians', 'akuns', 'pendaftarans'));
     }
 
     public function update(Request $request, $id)
@@ -55,9 +83,8 @@ class AkunController extends Controller
             'tanggal' => 'required',
             'waktu' => 'required',
             'tarian_id' => 'required|exists:tarians,id',
-            // 'pelatih' => 'required',
-           // 'anggota' => 'required',
-           'pendaftaran_id' => 'required|exists:pendaftaran,id',
+            'pendaftarans' => 'required|array', // Validasi array
+            'pendaftarans.*' => 'exists:pendaftarans,id', // Validasi setiap anggota
         ]);
 
         $pelatih = Tarian::find($request->tarian_id);
@@ -67,8 +94,10 @@ class AkunController extends Controller
         $akun->waktu = $request->input('waktu');
         $akun->tarian_id = $request->input('tarian_id');
         $akun->pelatih = $pelatih->pelatih;
-        $akun->pendaftaran_id = $request->input('pendaftaran_id');
         $akun->save();
+
+        // Update anggota di tabel pivot
+        $akun->pendaftarans()->sync($request->pendaftarans);
 
         return redirect('/jadwal')->with('success', 'Jadwal berhasil diupdate!');
     }
