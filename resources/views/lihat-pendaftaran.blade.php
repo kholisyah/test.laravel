@@ -214,6 +214,7 @@
                     <th>Alamat</th>
                     <th>No Telepon</th>
                     <th>Kategori</th>
+                    <th>Link File</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -225,6 +226,14 @@
                     <td>{{ $pendaftaran->alamat }}</td>
                     <td>{{ $pendaftaran->no_telepon }}</td>
                     <td>{{ $pendaftaran->kategori }}</td>
+                    <td>
+                        @if ($pendaftaran->dropbox_link)
+                            <a href="{{ $pendaftaran->dropbox_link }}" target="_blank">Lihat File</a>
+                        @else
+                            Tidak ada file
+                        @endif
+                    </td>
+                    
                     <td class="action-buttons">
                         <a href="/edit-pendaftaran/{{ $pendaftaran->id }}">Edit</a>
                         <form action="/delete-pendaftaran/{{ $pendaftaran->id }}" method="POST" style="display: inline;">

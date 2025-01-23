@@ -17,8 +17,10 @@ class Pendaftaran extends Model
         'no_telepon',
         'kategori',
     ];
+   
     public function akuns()
-    {
-        return $this->hasMany(Akun::class, 'pendaftaran_id');
-    }
+{
+    return $this->belongsToMany(Akun::class, 'akun_pendaftaran');
+}
+
 }
