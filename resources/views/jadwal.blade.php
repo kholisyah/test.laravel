@@ -222,17 +222,25 @@
                             <option value="{{ $tarian->id }}">{{ $tarian->nama_tari }}</option>
                         @endforeach
                     </select>
+<<<<<<< HEAD
+                    <label for="Nama anggota">Nama Anggota</label>
+                    <select name="pendaftaran_id[]" multiple class="form-control select2" id="anggota">
+                        @foreach ($pendaftarans as $pendaftaran)
+=======
                     <label for="Nama anggota">nama anggota</label>
                     <select name="pendaftaran_id">
                         <option value="" selected disabled>pilih anggota</option>
                         @foreach($pendaftarans as $pendaftaran)
+>>>>>>> 7e698f9d4030b72eb997066928c474fc945d1bcf
                             <option value="{{ $pendaftaran->id }}">{{ $pendaftaran->nama }}</option>
                         @endforeach
                     </select>
+                    
                     <button type="submit">Simpan</button>
                 </form>
             </div>
         </div>
+
 
         <table>
             <thead>
@@ -270,24 +278,18 @@
         </table>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    
     <script>
-        const jadwal = @json($akuns);
-        
-        function validateInput() {
-            const tanggal = document.getElementById('tanggal').value.trim();
-            const waktu = document.getElementById('waktu').value.trim();
-            const anggota = document.getElementById('anggota').value.trim();
-
-            for (let i = 0; i < jadwal.length; i++) {
-                if (jadwal[i].tanggal === tanggal && jadwal[i].waktu === waktu && jadwal[i].anggota === anggota) {
-                    alert('Anggota sudah terdaftar pada tanggal dan waktu ini.');
-                    return false;
-                }
-            }
-            return true;
-        }
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: "Pilih anggota",
+                allowClear: true
+            });
+        });
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 </html>

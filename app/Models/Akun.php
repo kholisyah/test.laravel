@@ -27,9 +27,9 @@ public function pendaftaran()
     return $this->belongsTo(Pendaftaran::class, 'pendaftaran_id');
 }
 public function pendaftarans()
-{
-    return $this->belongsToMany(Pendaftaran::class, 'akun_pendaftaran');
-}
+    {
+        return $this->belongsToMany(Pendaftaran::class, 'akun_id', 'pendaftaran_id');
+    }
 
 
 }

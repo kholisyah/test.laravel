@@ -18,53 +18,56 @@ class AkunController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'tanggal' => 'required|string',
-            'waktu' => 'required|string',
-            'tarian_id' => 'required|exists:tarians,id',
-            'pendaftarans' => 'required|array', // Pastikan ini adalah array
-            'pendaftarans.*' => 'exists:pendaftarans,id', // Validasi setiap anggota
-        ]);
+{
+    $request->validate([
+        'tanggal' => 'required|date',
+        'waktu' => 'required',
+        'nama_tarian' => 'required|string',
+        'id_anggota' => 'required|array', // Pastikan ini array
+    ]);
 
-        // Ambil pelatih dari model Tarian
-        $pelatih = Tarian::find($request->tarian_id);
+    $jadwal = akun::create([
+        'tanggal' => $request->tanggal,
+        'waktu' => $request->waktu,
+        'nama_tarian' => $request->nama_tarian,
+    ]);
 
-        // Simpan data jadwal ke tabel akuns
-        $akun = new Akun();
-        $akun->tanggal = $request->input('tanggal');
-        $akun->waktu = $request->input('waktu');
-        $akun->tarian_id = $request->input('tarian_id');
-        $akun->pelatih = $pelatih->pelatih;
-        $akun->save();
+    // Menyimpan anggota yang dipilih ke jadwal
+    $jadwal->anggotas()->attach($request->id_anggota);
 
-        // Simpan anggota ke tabel pivot
-        $akun->pendaftarans()->sync($request->pendaftarans);
+    return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil dibuat.');
+}
 
-        return redirect()->route('jadwal')->with('success', 'Jadwal berhasil dibuat!');
-    }
+public function createPost(Request $request)
+{
+    // Validasi input
+    $validated = $request->validate([
+        'tanggal' => 'required|date',
+        'waktu' => 'required|string',
+        'tarian_id' => 'required|exists:tarians,id',
+        'pendaftaran_id' => 'required|array', // Pastikan ini array
+        'pendaftaran_id.*' => 'exists:pendaftarans,id', // Validasi setiap ID anggota
+    ]);
 
-    public function createPost(Request $request)
-    {
-        $validated = $request->validate([
-            'tanggal' => 'required|string',
-            'waktu' => 'required|string',
-            'tarian_id' => 'required|exists:tarians,id',
-            'pendaftaran_id' => 'required|exists:pendaftarans,id',
-        ]);
+    // Ambil data pelatih berdasarkan tarian
+    $pelatih = Tarian::findOrFail($request->tarian_id)->pelatih;
 
-        $pelatih = Tarian::find($request->tarian_id);
-
+    // Loop melalui setiap pendaftaran_id untuk menyimpan data
+    foreach ($request->pendaftaran_id as $pendaftaranId) {
         $post = new Akun();
         $post->tanggal = $request->input('tanggal');
         $post->waktu = $request->input('waktu');
         $post->tarian_id = $request->input('tarian_id');
-        $post->pelatih = $pelatih->pelatih;
-        $post->pendaftaran_id = $request->input('pendaftaran_id');
+        $post->pelatih = $pelatih;
+        $post->pendaftaran_id = $pendaftaranId;
         $post->save();
-
-        return redirect()->route('jadwal');
     }
+
+    // Redirect setelah selesai
+    return redirect()->route('jadwal')->with('success', 'Data jadwal dan anggota berhasil disimpan.');
+}
+
+
 
     public function showEditScreen(Akun $akun)
     {
