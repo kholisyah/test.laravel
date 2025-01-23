@@ -15,5 +15,6 @@ class Pendaftaran extends Model
         'alamat',
         'no_telepon',
         'kategori',
+        'dropbox_link',
     ];
 }

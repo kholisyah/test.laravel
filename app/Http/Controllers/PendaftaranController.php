@@ -13,8 +13,8 @@ class PendaftaranController extends Controller
 }
 
     // Fungsi untuk menghapus pendaftaran berdasarkan instance model Pendaftaran
-    public function deletePendaftaran(Pendaftaran $pendaftaran) {
-        $pendaftaran->delete();
+    public function deletePendaftaran(Pendaftaran $pendaftarans) {
+        $pendaftarans->delete();
         return redirect('/lihat-pendaftaran');
     }
 
@@ -27,6 +27,7 @@ class PendaftaranController extends Controller
                 'alamat' => 'required',
                 'no_telepon' => 'required',
                 'kategori' => 'required|in:dewasa,anak-anak',
+                'dropbox_link' => 'required|url',
             ]);
 
             $pendaftaran->update($incomingField);

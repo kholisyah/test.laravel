@@ -110,6 +110,9 @@
                 <option value="dewasa" {{ $pendaftaran->kategori == 'dewasa' ? 'selected' : '' }}>Dewasa</option>
                 <option value="anak-anak" {{ $pendaftaran->kategori == 'anak-anak' ? 'selected' : '' }}>Anak-anak</option>
             </select>
+             <!-- input link file dropbox -->
+            <label for="dropbox_link">Link File Dropbox:</label>
+            <input type="text" name="dropbox_link" value="{{ $pendaftaran->dropbox_link }}">
 
             <!-- Tombol submit untuk memperbarui data -->
             <button type="submit">Update</button>

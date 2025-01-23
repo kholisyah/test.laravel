@@ -226,7 +226,7 @@
                     <select name="tarian_id">
                         <option value="" selected disabled>pilih anggota</option>
                         @foreach ($pendaftarans as $pendaftaran)
-                            <option value="{{ $pendaftaran->id }}">{{ $pendaftaran->namai }}</option>
+                            <option value="{{ $pendaftaran->id }}">{{ $pendaftaran->nama }}</option>
                         @endforeach
                     </select>
                     <button type="submit">Simpan</button>
