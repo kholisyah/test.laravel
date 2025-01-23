@@ -222,16 +222,9 @@
                             <option value="{{ $tarian->id }}">{{ $tarian->nama_tari }}</option>
                         @endforeach
                     </select>
-<<<<<<< HEAD
                     <label for="Nama anggota">Nama Anggota</label>
                     <select name="pendaftaran_id[]" multiple class="form-control select2" id="anggota">
                         @foreach ($pendaftarans as $pendaftaran)
-=======
-                    <label for="Nama anggota">nama anggota</label>
-                    <select name="pendaftaran_id">
-                        <option value="" selected disabled>pilih anggota</option>
-                        @foreach($pendaftarans as $pendaftaran)
->>>>>>> 7e698f9d4030b72eb997066928c474fc945d1bcf
                             <option value="{{ $pendaftaran->id }}">{{ $pendaftaran->nama }}</option>
                         @endforeach
                     </select>
