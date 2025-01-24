@@ -13,8 +13,8 @@ class PendaftaranController extends Controller
 }
 
     // Fungsi untuk menghapus pendaftaran berdasarkan instance model Pendaftaran
-    public function deletePendaftaran(Pendaftaran $pendaftarans) {
-        $pendaftarans->delete();
+    public function deletePendaftaran(Pendaftaran $pendaftaran) {
+        $pendaftaran->delete();
         return redirect('/lihat-pendaftaran');
     }
 
